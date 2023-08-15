@@ -1,0 +1,22 @@
+include:
+  - project: univention/customers/dataport/upx/common-ci
+    file:
+      # TODO: Sphinx docs inherits a stage definition from upstream,
+      # has to be included before our default stages to avoid trouble.
+      - jobs/sphinx-docs.yaml
+      - defaults/souvap-workflow.yaml
+      - defaults/stages.yaml
+      - jobs/lint-commit-messages.yaml
+      - jobs/lint-pre-commit.yaml
+
+release:
+  # TODO: Make a base image for this tool
+  image: "${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:18-buster-slim"
+  stage: package
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
+    - npm install -g semantic-release @semantic-release/gitlab conventional-changelog-conventionalcommits
+  script:
+    - semantic-release
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
