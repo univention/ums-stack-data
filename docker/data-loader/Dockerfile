@@ -31,6 +31,9 @@ COPY bin/* /usr/local/bin
 WORKDIR /
 RUN mkdir /join-data
 
+
+FROM final as data-bundled
+
 COPY join-data/* /join-data/
 COPY command.sh /
 
