@@ -34,9 +34,7 @@ RUN mkdir /join-data
 COPY process-all.sh /
 CMD ["/process-all.sh"]
 
+
 FROM final as data-bundled
 
 COPY join-data/* /join-data/
-COPY command.sh /
-
-CMD ["/command.sh"]
