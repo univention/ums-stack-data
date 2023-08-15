@@ -11,6 +11,34 @@ include:
       - jobs/lint-pre-commit.yaml
 
 
+build-data-loader-test-runner:
+  stage: build
+  extends: .kaniko
+  needs: []
+  variables:
+    CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader-test-runner"
+    KANIKO_BUILD_CONTEXT: "docker/data-loader"
+    KANIKO_ARGS: "--target=test"
+
+
+test-data-loader:
+  stage: test
+  needs:
+    - job: build-data-loader-test-runner
+  image: "$BUILD_IMAGE_TAG"
+  script:
+    - cd docker/data-loader
+    - pytest
+
+
+build-data-loader:
+  stage: build
+  extends: .kaniko
+  variables:
+    KANIKO_BUILD_CONTEXT: "docker/data-loader"
+    CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader"
+
+
 build-joinscript-tools:
   stage: build
   extends: .kaniko

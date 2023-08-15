@@ -1,5 +1,31 @@
-
 services:
+
+  data-loader:
+    profiles:
+      - test
+    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/data-loader:${IMAGE_TAG:-latest}
+    build:
+      context: ./docker/data-loader
+    platform: "linux/amd64"
+    working_dir: "/src"
+    volumes:
+      - "./:/src/"
+    environment:
+      UDM_API_URL: "http://udm-rest-api:9979/udm/"
+      UDM_API_USER: "cn=admin"
+      UDM_API_PASSWORD_FILE: "/run/secrets/ldap_secret"
+    secrets:
+      - ldap_secret
+
+  data-loader-test:
+    profiles:
+      - test
+    build:
+      context: ./docker/data-loader
+      target: test
+    platform: "linux/amd64"
+    volumes:
+      - "./:/src/"
 
   joinscript-tools:
     profiles:
@@ -35,6 +61,10 @@ services:
         # a lot.
         source: pre-commit-cache
         target: /cache
+
+secrets:
+  ldap_secret:
+    file: secret/ldap.secret
 
 volumes:
   pre-commit-cache:
