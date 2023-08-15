@@ -34,6 +34,7 @@ test-data-loader:
 build-data-loader:
   stage: build
   extends: .kaniko
+  needs: []
   variables:
     KANIKO_BUILD_CONTEXT: "docker/data-loader"
     CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader"
