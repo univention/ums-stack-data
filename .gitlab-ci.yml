@@ -9,6 +9,7 @@ include:
       - templates/kaniko.yaml
       - jobs/lint-commit-messages.yaml
       - jobs/lint-pre-commit.yaml
+      - jobs/package-and-publish-helm-charts.yaml
 
 
 build-data-loader-test-runner:
