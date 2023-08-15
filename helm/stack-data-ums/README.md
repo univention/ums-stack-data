@@ -21,7 +21,7 @@ Rest API is used to load the data.
 
 ## Installing
 
-To install the chart with the release name `udm-rest-api`:
+To install the chart with the release name `stack-data-ums`:
 
 ```console
 helm upgrade --install stack-data-udm oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/helm/stack-data-udm
