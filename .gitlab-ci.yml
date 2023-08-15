@@ -6,8 +6,19 @@ include:
       - jobs/sphinx-docs.yaml
       - defaults/souvap-workflow.yaml
       - defaults/stages.yaml
+      - templates/kaniko.yaml
       - jobs/lint-commit-messages.yaml
       - jobs/lint-pre-commit.yaml
+
+
+build-joinscript-tools:
+  stage: build
+  extends: .kaniko
+  needs: []
+  variables:
+    KANIKO_BUILD_CONTEXT: "docker/joinscript-tools"
+    CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/joinscript-tools"
+
 
 release:
   # TODO: Make a base image for this tool
