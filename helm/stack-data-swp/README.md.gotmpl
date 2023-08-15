@@ -1,0 +1,54 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+
+{{ template "chart.description" . }}
+
+- **Version**: {{ template "chart.version" . }}
+- **Type**: {{ template "chart.type" . }}
+- {{ template "chart.homepageLine" . }}
+
+## TL;DR
+
+```console
+helm upgrade --install stack-data-udm oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/helm/stack-data-swp
+```
+
+
+## Introduction
+
+The chart does install Kubernetes Jobs to load the SWP specific initial data of
+the UMS Stack.
+
+It depends on:
+
+- A functional UDM Rest API being available and configured. The UDM Rest API is
+  used to load the data.
+
+- The base data from the chart "stack-data-ums".
+
+
+{{ template "chart.maintainersSection" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+
+## Installing
+
+To install the chart with the release name `stack-data-swp`:
+
+```console
+helm upgrade --install stack-data-swp oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/helm/stack-data-swp
+```
+
+
+## Uninstalling
+
+To uninstall the chart with the release name `stack-data-swp`:
+
+```console
+helm uninstall stack-data-swp
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSectionHtml" . }}
