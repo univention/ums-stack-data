@@ -3,9 +3,7 @@ ARG UCS_BASE_IMAGE_TAG=latest
 
 FROM ${UCS_BASE_IMAGE}:${UCS_BASE_IMAGE_TAG}
 
-# TODO: See https://git.knut.univention.de/univention/ucs/-/merge_requests/820
-RUN ucs-dev-add-branch.sh jbornhold-udm-rest-client \
-    && apt-get update \
+RUN apt-get update \
     && apt-get --assume-yes --verbose-versions --no-install-recommends install \
       python3-univention-directory-manager-rest-client=10.* \
       python3-yaml=3.* \
