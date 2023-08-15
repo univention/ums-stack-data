@@ -1,0 +1,35 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "common.names.fullname" . }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+spec:
+  template:
+    metadata:
+      name: {{ include "common.names.name" . }}
+      labels:
+        {{- include "common.labels.standard" . | nindent 8 }}
+    spec:
+      restartPolicy: OnFailure
+      {{- with .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+      - name: load-data-ums
+        {{- with .Values.image }}
+        image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
+        imagePullPolicy: "{{ .pullPolicy }}"
+        {{- end }}
+        envFrom:
+          - configMapRef:
+              name: {{ include "common.names.fullname" . }}
+        volumeMounts:
+          - name: secrets
+            mountPath: /run/secrets/univention.de/data-loader
+      volumes:
+      - name: secrets
+        secret:
+          secretName: {{ include "common.names.fullname" . | quote }}

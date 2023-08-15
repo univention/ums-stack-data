@@ -1,0 +1,12 @@
+---
+{{ include "common.configMap" (dict "top" . "overrides" "stack-data-ums.configMap") }}
+
+{{- define "stack-data-ums.configMap" }}
+{{- with .top }}
+data:
+  UDM_API_URL: "{{ .Values.stackDataUms.udmApiUrl }}"
+  UDM_API_USER: "{{ .Values.stackDataUms.udmApiUser }}"
+  UDM_API_PASSWORD_FILE: "{{ .Values.stackDataUms.udmApiPasswordFile }}"
+{{- end }}
+{{- end }}
+...

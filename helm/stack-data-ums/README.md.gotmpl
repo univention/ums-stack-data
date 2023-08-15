@@ -1,0 +1,49 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+
+{{ template "chart.description" . }}
+
+- **Version**: {{ template "chart.version" . }}
+- **Type**: {{ template "chart.type" . }}
+- {{ template "chart.homepageLine" . }}
+
+## TL;DR
+
+```console
+helm upgrade --install stack-data-udm oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/helm/stack-data-udm
+```
+
+
+## Introduction
+
+The chart does install Kubernetes Jobs to load the initial data of the UMS Stack.
+
+It depends on a functional UDM Rest API being available and configured. The UDM
+Rest API is used to load the data.
+
+
+{{ template "chart.maintainersSection" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+
+## Installing
+
+To install the chart with the release name `udm-rest-api`:
+
+```console
+helm upgrade --install stack-data-udm oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/helm/stack-data-udm
+```
+
+
+## Uninstalling
+
+To uninstall the chart with the release name `stack-data-udm`:
+
+```console
+helm uninstall stack-data-udm
+```
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSectionHtml" . }}

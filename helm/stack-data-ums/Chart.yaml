@@ -1,0 +1,19 @@
+---
+
+apiVersion: "v2"
+type: "application"
+name: "stack-data-ums"
+description: "A Helm chart to load the initial data into the UMS Stack"
+home: "https://www.univention.de/"
+icon: https://www.univention.com/wp-content/themes/univention/assets/images/univention.svg
+
+# Chart version
+# Apply Semantic Versioning (https://semver.org/)
+version: "0.1.0"
+
+dependencies:
+  - name: "common"
+    repository: "oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/helm"
+    version: "^0.2.0"
+
+...
