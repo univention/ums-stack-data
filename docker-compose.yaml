@@ -1,6 +1,17 @@
 
 services:
 
+  joinscript-tools:
+    profiles:
+      - test
+    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/joinscript-tools:${IMAGE_TAG:-latest}
+    build:
+      context: ./docker/joinscript-tools
+    platform: "linux/amd64"
+    working_dir: "/src"
+    volumes:
+      - "./:/src/"
+
   # Environment to build the documentation
   docs:
     image: docker-registry.knut.univention.de/sphinx:latest
