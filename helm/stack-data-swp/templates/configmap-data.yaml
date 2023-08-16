@@ -6,7 +6,7 @@
 metadata:
   name: '{{ include "common.names.fullname" . }}-data'
 data:
-
+{{ ($.top.Files.Glob "data-files/default/*").AsConfig | indent 2 }}
 {{- if .Values.stackDataSwp.loadDevData }}
 {{ ($.top.Files.Glob "data-files/dev/*").AsConfig | indent 2 }}
 {{- end }}
