@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 echo "Load data scripts from /join-data:"
 ls -l /join-data/
 
