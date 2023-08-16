@@ -11,6 +11,8 @@ spec:
       name: {{ include "common.names.name" . }}
       labels:
         {{- include "common.labels.standard" . | nindent 8 }}
+      annotations:
+        checksum/config: '{{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}'
     spec:
       restartPolicy: OnFailure
       {{- with .Values.image.pullSecrets }}
