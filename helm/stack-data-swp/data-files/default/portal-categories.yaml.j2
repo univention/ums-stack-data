@@ -1,0 +1,16 @@
+---
+action: create
+module: portals/category
+position: cn=category,cn=portals,cn=univention,{{ ldap_base }}
+properties:
+  name: "swp.anonymous"
+  displayName:
+    de_DE: "Souveräner Arbeitsplatz"
+    en_US: "Sovereign Workplace"
+---
+action: ensure_list_contains
+module: portals/portal
+position: cn=domain,cn=portal,cn=portals,cn=univention,{{ ldap_base }}
+properties:
+  categories:
+    - "cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ ldap_base }}"
