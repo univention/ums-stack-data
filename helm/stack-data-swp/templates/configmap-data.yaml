@@ -1,0 +1,16 @@
+---
+{{ include "common.configMap" (dict "top" . "overrides" "stack-data-swp.configMap-data") }}
+
+{{- define "stack-data-swp.configMap-data" }}
+{{- with .top }}
+metadata:
+  name: '{{ include "common.names.fullname" . }}-data'
+data:
+
+{{- if .Values.stackDataSwp.loadDevData }}
+{{ ($.top.Files.Glob "data-files/dev/*").AsConfig | indent 2 }}
+{{- end }}
+
+{{- end }}
+{{- end }}
+...

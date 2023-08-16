@@ -162,6 +162,24 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>stackDataSwp.dataConfigMapName</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>The name of the ConfigMap to import the data from</td>
+		</tr>
+		<tr>
+			<td>stackDataSwp.loadDevData</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Load data which is useful during development (opt-in)</td>
+		</tr>
+		<tr>
 			<td>stackDataSwp.udmApiPassword</td>
 			<td>string</td>
 			<td><pre lang="json">

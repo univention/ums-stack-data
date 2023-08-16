@@ -29,7 +29,14 @@ spec:
         volumeMounts:
           - name: secrets
             mountPath: /run/secrets/univention.de/data-loader
+          - name: data
+            mountPath: /join-data
+            readOnly: true
       volumes:
       - name: secrets
         secret:
           secretName: {{ include "common.names.fullname" . | quote }}
+      - name: data
+        configMap:
+          {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
+          name: {{ default $defaultConfigMapName .Values.stackDataSwp.dataConfigMapName | quote }}
