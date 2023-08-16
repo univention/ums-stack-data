@@ -1,0 +1,38 @@
+# TODO: Add a solution to provide these values into the context
+{% set external_mail_domain = "todo.example" %}
+{% set ox_default_context = "10" %}
+
+---
+action: create
+module: users/user
+position: cn=users,{{ ldap_base }}
+properties:
+  username: "test.user"
+  firstname: "test"
+  lastname: "user"
+  password: "SWPtester"
+  # TODO: Provide this value
+  # oxContext: { { ox_default_context }}
+
+  # TODO: The following depend on issue
+  # https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/168
+  # isOxUser: "OK"
+  # swpFileshareEnabled: "TRUE"
+  # swpProjectmanagementEnabled: "TRUE"
+  # swpKnowledgemanagementEnabled: "TRUE"
+  # swpLivecollaborationEnabled: "TRUE"
+
+  # TODO: Provide this value
+  # mailPrimaryAddress: "test.user@{{ external_mail_domain }}"
+---
+action: create
+module: users/user
+position: cn=users,{{ ldap_base }}
+properties:
+  username: "test.admin"
+  firstname: "test"
+  lastname: "admin"
+  primaryGroup: "cn=Domain Admins,cn=groups,{{ ldap_base }}"
+  password: "SWPtester"
+  # TODO: Provide this value
+  # mailPrimaryAddress: "test.user@{{ external_mail_domain }}"
