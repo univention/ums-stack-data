@@ -85,7 +85,7 @@ helm uninstall stack-data-udm
 {
   "imagePullPolicy": "Always",
   "registry": "gitregistry.knut.univention.de",
-  "repository": "univention/customers/dataport/upx/stack-data/data-loader-bundled",
+  "repository": "univention/customers/dataport/upx/stack-data/data-loader",
   "sha256": null,
   "tag": "latest"
 }
@@ -155,6 +155,33 @@ true
 </pre>
 </td>
 			<td></td>
+		</tr>
+		<tr>
+			<td>stackDataContext.initialPasswordAdministrator</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>The initial password will be filled with a random value if it is not provided. The password will be stored in a Kubernetes Secret if a random one is generated.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.ldapBase</td>
+			<td>string</td>
+			<td><pre lang="json">
+"dc=univention-organization,dc=intranet"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>stackDataUms.loadDevData</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Load data which is useful during development (opt-in)</td>
 		</tr>
 		<tr>
 			<td>stackDataUms.udmApiPassword</td>

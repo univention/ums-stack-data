@@ -1,0 +1,46 @@
+{{ with .Values.stackDataContext }}
+
+---
+action: create
+module: container/cn
+position: cn=univention,{{ .ldapBase }}
+properties:
+  name: portals
+---
+action: create
+module: container/cn
+position: cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  name: portal
+---
+action: create
+module: container/cn
+position: cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  name: category
+---
+action: create
+module: container/cn
+position: cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  name: entry
+---
+action: create
+module: container/cn
+position: cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  name: folder
+---
+action: create
+module: container/cn
+position: cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  name: config
+---
+action: create
+module: container/cn
+position: cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  name: announcement
+
+{{ end }}
