@@ -42,16 +42,6 @@ build-data-loader:
     KANIKO_ARGS: "--target=final"
 
 
-build-data-loader-bundled:
-  stage: build
-  extends: .kaniko
-  needs: []
-  variables:
-    KANIKO_BUILD_CONTEXT: "docker/data-loader"
-    CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader-bundled"
-    KANIKO_ARGS: "--target=data-bundled"
-
-
 build-joinscript-tools:
   stage: build
   extends: .kaniko
