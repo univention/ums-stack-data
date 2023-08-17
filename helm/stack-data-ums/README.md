@@ -166,6 +166,15 @@ null
 			<td>The initial password will be filled with a random value if it is not provided. The password will be stored in a Kubernetes Secret if a random one is generated.</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.installUmcPolicies</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>This parameter allows to skip the installation of the default UMC policies if set to "false".</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.ldapBase</td>
 			<td>string</td>
 			<td><pre lang="json">

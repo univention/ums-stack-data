@@ -189,6 +189,8 @@ properties:
   operation:
     - command: "udm/get"
       option: ""
+
+{{ if .installUmcPolicies }}
 ---
 action: ensure_list_contains
 module: policies/umc
@@ -209,5 +211,6 @@ position: "cn=default-udm-self,cn=UMC,cn=policies,{{ .ldapBase }}"
 properties:
   allow:
     - "cn=udm-self,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+{{ end }}
 
 {{ end }}

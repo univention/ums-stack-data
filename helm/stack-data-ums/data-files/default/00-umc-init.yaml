@@ -21,6 +21,8 @@ module: container/cn
 position: cn=UMC,cn=univention,{{ .ldapBase }}
 properties:
   name: operations
+
+{{ if .installUmcPolicies }}
 ---
 action: create
 module: policies/umc
@@ -47,5 +49,6 @@ position: cn=Domain Users,cn=groups,{{ .ldapBase }}
 policies:
   policies/umc:
     - "cn=default-umc-users,cn=UMC,cn=policies,{{ .ldapBase }}"
+{{ end }}
 
 {{ end }}

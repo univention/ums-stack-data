@@ -24,6 +24,10 @@ stackDataContext:
   # is generated.
   initialPasswordAdministrator: null
 
+  # -- This parameter allows to skip the installation of the default UMC
+  # policies if set to "false".
+  installUmcPolicies: true
+
 
 
 # -- Container image configuration
