@@ -39,6 +39,8 @@ class App:
         for action in actions:
             self.process_action(action)
 
+        log.info("Finished file %s", input_filename)
+
     def process_action(self, data):
         if data["action"] == "create":
             self.ensure_udm_object(
