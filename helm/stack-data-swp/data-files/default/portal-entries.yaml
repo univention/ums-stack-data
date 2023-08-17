@@ -304,6 +304,15 @@ properties:
     en_US: "Activity"
   target: "tab_fileshare"
 ---
+action: ensure_list_contains
+module: portals/category
+position: cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  entries:
+  - cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+
+---
 action: create
 module: portals/entry
 position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
@@ -365,12 +374,10 @@ properties:
   target: "tab_fileshare"
 ---
 action: ensure_list_contains
-module: portals/category
-position: cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+module: portals/folder
+position: cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.fileshare_directdoc_ods,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
