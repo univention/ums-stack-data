@@ -1,7 +1,9 @@
+{{ with .Values.stackDataContext }}
+
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.anonymous_login"
   anonymous: true
@@ -19,15 +21,15 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.anonymous_login,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.anonymous_login,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.admin_user"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTI0IDIzLjk1cS0zLjMgMC01LjQtMi4xLTIuMS0yLjEtMi4xLTUuNCAwLTMuMyAyLjEtNS40IDIuMS0yLjEgNS40LTIuMSAzLjMgMCA1LjQgMi4xIDIuMSAyLjEgMi4xIDUuNCAwIDMuMy0yLjEgNS40LTIuMSAyLjEtNS40IDIuMVpNOCA0MHYtNC43cTAtMS45Ljk1LTMuMjVUMTEuNCAzMHEzLjM1LTEuNSA2LjQyNS0yLjI1UTIwLjkgMjcgMjQgMjdxMy4xIDAgNi4xNS43NzUgMy4wNS43NzUgNi40IDIuMjI1IDEuNTUuNyAyLjUgMi4wNS45NSAxLjM1Ljk1IDMuMjVWNDBabTMtM2gyNnYtMS43cTAtLjgtLjQ3NS0xLjUyNS0uNDc1LS43MjUtMS4xNzUtMS4wNzUtMy4yLTEuNTUtNS44NS0yLjEyNVEyNi44NSAzMCAyNCAzMHQtNS41NS41NzVxLTIuNy41NzUtNS44NSAyLjEyNS0uNy4zNS0xLjE1IDEuMDc1UTExIDM0LjUgMTEgMzUuM1ptMTMtMTYuMDVxMS45NSAwIDMuMjI1LTEuMjc1UTI4LjUgMTguNCAyOC41IDE2LjQ1cTAtMS45NS0xLjI3NS0zLjIyNVEyNS45NSAxMS45NSAyNCAxMS45NXEtMS45NSAwLTMuMjI1IDEuMjc1UTE5LjUgMTQuNSAxOS41IDE2LjQ1cTAgMS45NSAxLjI3NSAzLjIyNVEyMi4wNSAyMC45NSAyNCAyMC45NVptMC00LjVaTTI0IDM3WiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
@@ -35,8 +37,8 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:users/user"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ ldap_base }}"
-    - "cn=Support,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+    - "cn=Support,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Benutzerverwaltung"
@@ -48,7 +50,7 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.admin_group"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTEuOSA0MHYtNC43cTAtMS43NS45LTMuMTc1UTMuNyAzMC43IDUuMyAzMHEzLjY1LTEuNiA2LjU3NS0yLjNRMTQuOCAyNyAxNy45IDI3cTMuMSAwIDYgLjd0Ni41NSAyLjNxMS42LjcgMi41MjUgMi4xMjUuOTI1IDEuNDI1LjkyNSAzLjE3NVY0MFptMzUgMHYtNC43cTAtMy4xNS0xLjYtNS4xNzV0LTQuMi0zLjI3NXEzLjQ1LjQgNi41IDEuMTc1dDQuOTUgMS43NzVxMS42NS45NSAyLjYgMi4zNS45NSAxLjQuOTUgMy4xNVY0MFptLTE5LTE2LjA1cS0zLjMgMC01LjQtMi4xLTIuMS0yLjEtMi4xLTUuNCAwLTMuMyAyLjEtNS40IDIuMS0yLjEgNS40LTIuMSAzLjMgMCA1LjQgMi4xIDIuMSAyLjEgMi4xIDUuNCAwIDMuMy0yLjEgNS40LTIuMSAyLjEtNS40IDIuMVptMTgtNy41cTAgMy4zLTIuMSA1LjQtMi4xIDIuMS01LjQgMi4xLS41NSAwLTEuMjI1LS4wNzVUMjUuOTUgMjMuNnExLjItMS4yNSAxLjgyNS0zLjA3NS42MjUtMS44MjUuNjI1LTQuMDc1dC0uNjI1LTMuOTc1UTI3LjE1IDEwLjc1IDI1Ljk1IDkuM3EuNTUtLjE1IDEuMjI1LS4yNXQxLjIyNS0uMXEzLjMgMCA1LjQgMi4xIDIuMSAyLjEgMi4xIDUuNFpNNC45IDM3aDI2di0xLjdxMC0uOC0uNDc1LTEuNTVUMjkuMjUgMzIuN3EtMy42LTEuNi02LjA1LTIuMTUtMi40NS0uNTUtNS4zLS41NS0yLjg1IDAtNS4zMjUuNTVUNi41IDMyLjdxLS43LjMtMS4xNSAxLjA1LS40NS43NS0uNDUgMS41NVptMTMtMTYuMDVxMS45NSAwIDMuMjI1LTEuMjc1UTIyLjQgMTguNCAyMi40IDE2LjQ1cTAtMS45NS0xLjI3NS0zLjIyNVExOS44NSAxMS45NSAxNy45IDExLjk1cS0xLjk1IDAtMy4yMjUgMS4yNzVRMTMuNCAxNC41IDEzLjQgMTYuNDVxMCAxLjk1IDEuMjc1IDMuMjI1UTE1Ljk1IDIwLjk1IDE3LjkgMjAuOTVabTAgMTYuMDVabTAtMjAuNTVaIiBmaWxsPSIjMDA0Qjc2Ii8+PC9zdmc+"
@@ -56,8 +58,8 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:groups/group"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ ldap_base }}"
-    - "cn=Support,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+    - "cn=Support,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Gruppenverwaltung"
@@ -69,16 +71,16 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.admin_user,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.admin_group,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.admin_user,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.admin_group,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.admin_functionalmailbox"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTMxLjMgMzguMjV2NC4xcTAgLjc1LS42IDEuMi0uNi40NS0xLjQuNDVINS42NXEtLjcgMC0xLjE3NS0uNDc1UTQgNDMuMDUgNCA0Mi4zNXYtMTQuOXEwLS43LjQ3NS0xLjE3NS40NzUtLjQ3NSAxLjE3NS0uNDc1aDYuNjVWMTUuNXEwLTQuODUgMy40MjUtOC4xNzVRMTkuMTUgNCAyNCA0aDguNjVxNC43NSAwIDguMDUgMy4zNzVRNDQgMTAuNzUgNDQgMTUuNVY0NGgtM3YtNS43NVptMC0zSDQxVjE1LjVxMC0zLjUtMi40MjUtNlQzMi42NSA3SDI0cS0zLjYgMC02LjE1IDIuNDUtMi41NSAyLjQ1LTIuNTUgNi4wNXYxMC4zaDE0cS44IDAgMS40LjQ1LjYuNDUuNiAxLjJabS0xMS4zLTE2di0zaDE2LjN2M1pNMTcuNjUgMzQuOWwxMC42NS02LjFIN1ptMCAyLjc1TDcgMzEuNTVWNDFoMjEuM3YtOS40NVpNNyAyOC44VjQxIDI4LjhaIiBmaWxsPSIjMDA0Qjc2Ii8+PC9zdmc+"
@@ -86,8 +88,8 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxmail/functional_account"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ ldap_base }}"
-    - "cn=Support,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+    - "cn=Support,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Verwaltung von Funktionspostfächern in der Groupware"
@@ -99,7 +101,7 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.admin_resource"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTYgNDJ2LTNoNC42VjZoMTkuNXYyLjI1aDcuMzVWMzlINDJ2M2gtNy41NVYxMS4yNUgzMC4xVjQyWm03LjYtMzN2MzBabTguOTUgMTdxLjg1IDAgMS40MjUtLjU3NS41NzUtLjU3NS41NzUtMS40MjUgMC0uODUtLjU3NS0xLjQyNVEyMy40IDIyIDIyLjU1IDIycS0uODUgMC0xLjQyNS41NzUtLjU3NS41NzUtLjU3NSAxLjQyNSAwIC44NS41NzUgMS40MjVRMjEuNyAyNiAyMi41NSAyNlpNMTMuNiAzOWgxMy41VjlIMTMuNloiIGZpbGw9IiMwMDRCNzYiLz48L3N2Zz4="
@@ -107,8 +109,8 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxresources/oxresources"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ ldap_base }}"
-    - "cn=Support,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+    - "cn=Support,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Verwaltung von Groupware Kalender Ressourcen"
@@ -120,16 +122,16 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.admin_announcement"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTM2LjUgMjUuNXYtM0g0NHYzWk0zOSA0MGwtNi4wNS00LjUgMS44LTIuNCA2LjA1IDQuNVptLTQuMS0yNS4xNS0xLjgtMi40TDM5IDhsMS44IDIuNFpNMTAuNSAzOHYtOEg3cS0xLjI1IDAtMi4xMjUtLjg3NVQ0IDI3di02cTAtMS4yNS44NzUtMi4xMjVUNyAxOGg5bDEwLTZ2MjRsLTEwLTZoLTIuNXY4Wk0xNSAyNFptMTMgNi43VjE3LjNxMS4zNSAxLjIgMi4xNzUgMi45MjVRMzEgMjEuOTUgMzEgMjR0LS44MjUgMy43NzVRMjkuMzUgMjkuNSAyOCAzMC43Wk03IDIxdjZoOS44bDYuMiAzLjdWMTcuM0wxNi44IDIxWiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
@@ -137,8 +139,8 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:portals/announcement"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ ldap_base }}"
-    - "cn=Support,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+    - "cn=Support,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Verwaltung der allgemeinen Portal-Annoucements"
@@ -150,27 +152,23 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.admin_announcement,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.admin_announcement,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-# TODO: Work out how to provide these parameters
-{% set external_domainname = "localhost" %}
-{% set portal_groupware_link_base = "https://webmail.{{ external_domainname }}" %}
-
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.groupware_mail"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTcgNDBxLTEuMiAwLTIuMS0uOVE0IDM4LjIgNCAzN1YxMXEwLTEuMi45LTIuMVE1LjggOCA3IDhoMzRxMS4yIDAgMi4xLjkuOS45LjkgMi4xdjI2cTAgMS4yLS45IDIuMS0uOS45LTIuMS45Wm0xNy0xNS4xTDcgMTMuNzVWMzdoMzRWMTMuNzVabTAtM0w0MC44IDExSDcuMjVaTTcgMTMuNzVWMTF2MjZaIiBmaWxsPSIjMDA0Qjc2Ii8+PC9zdmc+"
   link:
     - - en_US
-      - "{{ portal_groupware_link_base }}/appsuite/#app=io.ox/mail"
+      - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/mail"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "E-Mails senden und empfangen"
@@ -182,15 +180,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.groupware_calendar"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTkgNDRxLTEuMiAwLTIuMS0uOVE2IDQyLjIgNiA0MVYxMHEwLTEuMi45LTIuMVE3LjggNyA5IDdoMy4yNVY0aDMuMjV2M2gxN1Y0aDMuMjV2M0gzOXExLjIgMCAyLjEuOS45LjkuOSAyLjF2MzFxMCAxLjItLjkgMi4xLS45LjktMi4xLjlabTAtM2gzMFYxOS41SDlWNDFabTAtMjQuNWgzMFYxMEg5Wm0wIDBWMTB2Ni41Wk0yNCAyOHEtLjg1IDAtMS40MjUtLjU3NVEyMiAyNi44NSAyMiAyNnEwLS44NS41NzUtMS40MjVRMjMuMTUgMjQgMjQgMjRxLjg1IDAgMS40MjUuNTc1UTI2IDI1LjE1IDI2IDI2cTAgLjg1LS41NzUgMS40MjVRMjQuODUgMjggMjQgMjhabS04IDBxLS44NSAwLTEuNDI1LS41NzVRMTQgMjYuODUgMTQgMjZxMC0uODUuNTc1LTEuNDI1UTE1LjE1IDI0IDE2IDI0cS44NSAwIDEuNDI1LjU3NVExOCAyNS4xNSAxOCAyNnEwIC44NS0uNTc1IDEuNDI1UTE2Ljg1IDI4IDE2IDI4Wm0xNiAwcS0uODUgMC0xLjQyNS0uNTc1UTMwIDI2Ljg1IDMwIDI2cTAtLjg1LjU3NS0xLjQyNVEzMS4xNSAyNCAzMiAyNHEuODUgMCAxLjQyNS41NzVRMzQgMjUuMTUgMzQgMjZxMCAuODUtLjU3NSAxLjQyNVEzMi44NSAyOCAzMiAyOFptLTggOHEtLjg1IDAtMS40MjUtLjU3NVEyMiAzNC44NSAyMiAzNHEwLS44NS41NzUtMS40MjVRMjMuMTUgMzIgMjQgMzJxLjg1IDAgMS40MjUuNTc1UTI2IDMzLjE1IDI2IDM0cTAgLjg1LS41NzUgMS40MjVRMjQuODUgMzYgMjQgMzZabS04IDBxLS44NSAwLTEuNDI1LS41NzVRMTQgMzQuODUgMTQgMzRxMC0uODUuNTc1LTEuNDI1UTE1LjE1IDMyIDE2IDMycS44NSAwIDEuNDI1LjU3NVExOCAzMy4xNSAxOCAzNHEwIC44NS0uNTc1IDEuNDI1UTE2Ljg1IDM2IDE2IDM2Wm0xNiAwcS0uODUgMC0xLjQyNS0uNTc1UTMwIDM0Ljg1IDMwIDM0cTAtLjg1LjU3NS0xLjQyNVEzMS4xNSAzMiAzMiAzMnEuODUgMCAxLjQyNS41NzVRMzQgMzMuMTUgMzQgMzRxMCAuODUtLjU3NSAxLjQyNVEzMi44NSAzNiAzMiAzNloiIGZpbGw9IiMwMDRCNzYiLz48L3N2Zz4="
   link:
     - - en_US
-      - "{{ portal_groupware_link_base }}/appsuite/#app=io.ox/calendar"
+      - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/calendar"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Termine und Meetings verwalten"
@@ -202,15 +200,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.groupware_contacts"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTI0IDI4cTEuNjUgMCAyLjgyNS0xLjE3NVEyOCAyNS42NSAyOCAyNHEwLTEuNjUtMS4xNzUtMi44MjVRMjUuNjUgMjAgMjQgMjBxLTEuNjUgMC0yLjgyNSAxLjE3NVEyMCAyMi4zNSAyMCAyNHEwIDEuNjUgMS4xNzUgMi44MjVRMjIuMzUgMjggMjQgMjhabS04IDhoMTZ2LTEuMTVxMC0xLjItLjY1LTIuMi0uNjUtMS0xLjgtMS41LTEuMy0uNTUtMi42NzUtLjg1UTI1LjUgMzAgMjQgMzB0LTIuODc1LjNxLTEuMzc1LjMtMi42NzUuODUtMS4xNS41LTEuOCAxLjUtLjY1IDEtLjY1IDIuMlptMjEgOEgxMXEtMS4yIDAtMi4xLS45UTggNDIuMiA4IDQxVjdxMC0xLjIuOS0yLjFROS44IDQgMTEgNGgxNy4wNUw0MCAxNS45NVY0MXEwIDEuMi0uOSAyLjEtLjkuOS0yLjEuOVptMC0zVjE3LjNMMjYuNyA3SDExdjM0Wm0tMjYgMFY3djM0WiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
   link:
     - - en_US
-      - "{{ portal_groupware_link_base }}/appsuite/#app=io.ox/contacts"
+      - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/contacts"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Verwalte persönliche Kontakte und durchsuche globales Adressbuch"
@@ -222,15 +220,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.groupware_tasks"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTQgMzMuNXYtM2gxOHYzWm0wLTE2di0zaDE4djNabTI4Ljk1IDE5LjgtNy4xLTcuMSAyLjEtMi4xIDUgNC45NSA4Ljk1LTguOTUgMi4xIDIuMTVabTAtMTYtNy4xLTcuMSAyLjEtMi4xIDUgNC45NUw0MS45IDguMWwyLjEgMi4xNVoiIGZpbGw9IiMwMDRCNzYiLz48L3N2Zz4="
   link:
     - - en_US
-      - "{{ portal_groupware_link_base }}/appsuite/#app=io.ox/tasks"
+      - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/tasks"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Aufgabenverwaltung"
@@ -242,15 +240,15 @@ properties:
 # ---
 # action: create
 # module: portals/entry
-# position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+# position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 # properties:
 #   name: "swp.groupware_mail_as8"
 #   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTI0IDQ0cS00LjE1IDAtNy44LTEuNTc1LTMuNjUtMS41NzUtNi4zNS00LjI3NS0yLjctMi43LTQuMjc1LTYuMzVRNCAyOC4xNSA0IDI0dDEuNTc1LTcuOFE3LjE1IDEyLjU1IDkuODUgOS44NXEyLjctMi43IDYuMzUtNC4yNzVRMTkuODUgNCAyNCA0dDcuOCAxLjU3NXEzLjY1IDEuNTc1IDYuMzUgNC4yNzUgMi43IDIuNyA0LjI3NSA2LjM1UTQ0IDE5Ljg1IDQ0IDI0djIuNjVxMCAyLjgtMS45NzUgNC43MjVRNDAuMDUgMzMuMyAzNy4yIDMzLjNxLTEuOCAwLTMuNC0uODc1LTEuNi0uODc1LTIuNDUtMi40NzUtMS4zIDEuNy0zLjI1IDIuNTI1VDI0IDMzLjNxLTMuOSAwLTYuNjI1LTIuN1QxNC42NSAyNHEwLTMuOSAyLjcyNS02LjY1UTIwLjEgMTQuNiAyNCAxNC42dDYuNjI1IDIuNzVRMzMuMzUgMjAuMSAzMy4zNSAyNHYyLjY1cTAgMS41NSAxLjEyNSAyLjZUMzcuMiAzMC4zcTEuNTUgMCAyLjY3NS0xLjA1UTQxIDI4LjIgNDEgMjYuNjVWMjRxMC03LjEtNC45NS0xMi4wNVEzMS4xIDcgMjQgN3EtNy4xIDAtMTIuMDUgNC45NVE3IDE2LjkgNyAyNHEwIDcuMSA0Ljk1IDEyLjA1UTE2LjkgNDEgMjQgNDFoMTAuN3YzWm0wLTEzLjdxMi42NSAwIDQuNS0xLjgyNVQzMC4zNSAyNHEwLTIuNy0xLjg1LTQuNTUtMS44NS0xLjg1LTQuNS0xLjg1dC00LjUgMS44NVExNy42NSAyMS4zIDE3LjY1IDI0cTAgMi42NSAxLjg1IDQuNDc1UTIxLjM1IDMwLjMgMjQgMzAuM1oiIGZpbGw9IiMwMDRCNzYiLz48L3N2Zz4="
 #   link:
 #     - - en_US
-#       - "https://webmail8.{{ external_domainname }}"
+#       - "https://webmail8.{{ .externalDomainName }}"
 #   allowedGroups:
-#     - "cn=managed-by-attribute-Groupware,cn=groups,{{ ldap_base }}"
+#     - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
 #   linkTarget: "newwindow"
 #   description:
 #     de_DE: "E-Mails senden und empfangen"
@@ -262,29 +260,26 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.groupware_mail,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.groupware_calendar,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.groupware_contacts,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.groupware_tasks,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.groupware_mail,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.groupware_calendar,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.groupware_contacts,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.groupware_tasks,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-# TODO: Work out how to provide these parameters
-{% set portal_fileshare_link_base = "https://fs.{{ external_domainname }}" %}
-
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.fileshare_files"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTcgNDBxLTEuMTUgMC0yLjA3NS0uOTI1UTQgMzguMTUgNCAzN1YxMXEwLTEuMTUuOTI1LTIuMDc1UTUuODUgOCA3IDhoMTQuMDVsMyAzSDQxcTEuMTUgMCAyLjA3NS45MjVRNDQgMTIuODUgNDQgMTRIMjIuNzVsLTMtM0g3djI2bDUuMS0yMEg0N2wtNS4zNSAyMC43cS0uMyAxLjItMS4xIDEuNzVUMzguNSA0MFptMy4xNS0zaDI4LjZsNC4yLTE3aC0yOC42Wm0wIDAgNC4yLTE3LTQuMiAxN1pNNyAxNHYtMyAzWiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
   link:
     - - en_US
-      - "{{ portal_fileshare_link_base }}/apps/files"
+      - "{{ .portalFileshareLinkBase }}/apps/files"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Dateien verwalten, bearbeiten und teilen"
@@ -296,15 +291,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.fileshare_activity"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgOTYgOTYwIDk2MCIgd2lkdGg9IjQ4Ij48cGF0aCBkPSJNODAgNDY2VjI3NnEwLTI0IDE4LTQydDQyLTE4aDY4MHEyNCAwIDQyIDE4dDE4IDQydjE5MGgtNjBWMjc2SDE0MHYxOTBIODBabTYwIDM1MHEtMjQgMC00Mi0xOHQtMTgtNDJWNTI2aDYwdjIzMGg2ODBWNTI2aDYwdjIzMHEwIDI0LTE4IDQydC00MiAxOEgxNDBaTTQwIDkzNnYtNjBoODgwdjYwSDQwWm00NDAtNDIwWk04MCA1MjZ2LTYwaDI0MHE4LjE2MSAwIDE1LjU4MSA0UTM0MyA0NzQgMzQ3IDQ4Mmw1NSAxMTIgMTMxLTIzMXE0LTggMTEuNS0xMS41dDE1LjYxOS0zLjVxOC4xMTkgMCAxNS41IDMuNVQ1ODcgMzYzbDUwLjU1MyAxMDNIODgwdjYwSDYxOXEtOC4yNSAwLTE1Ljc1LTRUNTkyIDUxMGwtMzQtNjktMTMxIDIyOXEtMy43MjMgOC0xMS4xNyAxMnQtMTUuNjM5IDRxLTguMTkxIDAtMTUuNjkxLTRUMzczIDY3MGwtNzItMTQ0SDgwWiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
   link:
     - - en_US
-      - "{{ portal_fileshare_link_base }}/apps/activity"
+      - "{{ .portalFileshareLinkBase }}/apps/activity"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Aktivitätenverlauf der Dateiverwaltung"
@@ -316,15 +311,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.fileshare_directdoc_odt"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTkgNDJxLTEuMiAwLTIuMS0uOVE2IDQwLjIgNiAzOVY5cTAtMS4yLjktMi4xUTcuOCA2IDkgNmgxOS43djNIOXYzMGgzMFYxOS4zaDNWMzlxMCAxLjItLjkgMi4xLS45LjktMi4xLjlabTcuMDUtNy44NXYtM0gzMnYzWm0wLTYuMzV2LTNIMzJ2M1ptMC02LjM1di0zSDMydjNaTTM0LjYgMTcuOHYtNC40aC00LjR2LTNoNC40VjZoM3Y0LjRINDJ2M2gtNC40djQuNFoiIGZpbGw9IiMwMDRCNzYiLz48L3N2Zz4="
   link:
     - - en_US
-      - "{{ portal_fileshare_link_base }}/apps/integration_swp/office-create/odt"
+      - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odt"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Startet ein leeres Schriftstück"
@@ -336,15 +331,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.fileshare_directdoc_ods"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTkgNDJxLTEuMiAwLTIuMS0uOVE2IDQwLjIgNiAzOVY5cTAtMS4yLjktMi4xUTcuOCA2IDkgNmgxOS43NXYzSDl2MzBoMzBWMTkuMjVoM1YzOXEwIDEuMi0uOSAyLjEtLjkuOS0yLjEuOVptNS4yLTcuODVoM1YyMC40aC0zWm04LjMgMGgzdi0yMC4zaC0zWm04LjMgMGgzdi03LjRoLTNabTMuODUtMTYuNFYxMy40aC00LjR2LTNoNC40VjZoM3Y0LjRINDJ2M2gtNC4zNXY0LjM1WiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
   link:
     - - en_US
-      - "{{ portal_fileshare_link_base }}/apps/integration_swp/office-create/ods"
+      - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/ods"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Startet ein leeres Tabellen-Dokument"
@@ -356,15 +351,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.fileshare_directdoc_odp"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTI5LjQ1IDZ2M0g5djMwaDMwVjE4LjZoM1YzOXEwIDEuMi0uOSAyLjEtLjkuOS0yLjEuOUg5cS0xLjIgMC0yLjEtLjlRNiA0MC4yIDYgMzlWOXEwLTEuMi45LTIuMVE3LjggNiA5IDZaTTM4IDZ2NC4wNWg0LjA1djNIMzh2NC4wNWgtM3YtNC4wNWgtNC4wNXYtM0gzNVY2Wk0xMiAzMy45aDI0bC03LjItOS42LTYuMzUgOC4zNS00LjctNi4yWk05IDl2MzBWOVoiIGZpbGw9IiMwMDRCNzYiLz48L3N2Zz4=%"
   link:
     - - en_US
-      - "{{ portal_fileshare_link_base }}/apps/integration_swp/office-create/odp"
+      - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odp"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Startet eine leere Präsentation"
@@ -376,31 +371,27 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.fileshare_directdoc_ods,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.fileshare_directdoc_ods,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-# TODO: Provide context
-{% set portal_realtime_collaboration_link_base = "https://ucc.{{ external_domainname }}" %}
-{% set portal_realtime_videoconference_link_base = "https://jitsi.{{ external_domainname }}" %}
-
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.realtime_collaboration"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTQgMzRWNi4xcTAtLjcuNjUtMS40VDYgNGgyNS45NXEuNzUgMCAxLjQuNjc1UTM0IDUuMzUgMzQgNi4xdjE3LjhxMCAuNy0uNjUgMS40dC0xLjQuN0gxMlptMTAuMDUgMnEtLjcgMC0xLjM3NS0uN1QxMiAzMy45VjI5aDI1VjEyaDVxLjcgMCAxLjM1LjcuNjUuNy42NSAxLjQ1djI5LjhMMzYuMDUgMzZaTTMxIDdIN3YxOS43NUwxMC43NSAyM0gzMVpNNyA3djE5Ljc1WiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
   link:
     - - en_US
-      - "{{ portal_realtime_collaboration_link_base }}"
+      - "{{ .portalRealtimeCollaborationLinkBase }}"
   allowedGroups:
-    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Kollaborative Meetings"
@@ -412,15 +403,15 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.realtime_videoconference"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iNDgiPjxwYXRoIGQ9Ik04MjQuOTQxLTMwNVE4MDItMzA1IDc4Ni0zMjEuMDQyIDc3MC0zMzcuMDgzIDc3MC0zNjB2LTEwMHEwLTIyLjkxNyAxNi4wNTktMzguOTU4IDE2LjA1OS0xNi4wNDIgMzktMTYuMDQyVDg2NC00OTguOTU4cTE2IDE2LjA0MSAxNiAzOC45NTh2MTAwcTAgMjIuOTE3LTE2LjA1OSAzOC45NTgtMTYuMDU5IDE2LjA0Mi0zOSAxNi4wNDJaTTgxMC0xNjB2LTY2cS01MS04LTg1LTQzLjVUNjkwLTM1NWgzMHEyIDQyIDMyLjUgNzF0NzIuNSAyOXE0MiAwIDcyLjUtMjl0MzIuNS03MWgzMHEtMSA1MC0zNSA4NS41dC04NSA0My45NTdWLTE2MGgtMzBaTTM5OS01MDBxLTY3IDAtMTA4LjUtNDEuNVQyNDktNjUwcTAtNjcgNDEuNS0xMDguNVQzOTktODAwcTcgMCAxOSAxLjV0MjIgMy41cS0yNiAzMS0zOC41IDY2LjVUMzg5LTY1MHEwIDQzIDEyLjUgNzguNVQ0NDAtNTA1cS0xMS4wNSAyLjc3OC0yMi41MjUgMy44ODlRNDA2LTUwMCAzOTktNTAwWk00MC0xNjB2LTk0cTAtMzcgMTcuNS02M3Q1MS41LTQ1cTM5LTIyIDk4LTM3LjVUMzQwLTQyM3EtNjUgMzEtOTAuNSA3NVQyMjQtMjU0djk0SDQwWm01NTktMzQwcS02MyAwLTEwNi41LTQzLjVUNDQ5LTY1MHEwLTYzIDQzLjUtMTA2LjVUNTk5LTgwMHE2MyAwIDEwNi41IDQzLjVUNzQ5LTY1MHEwIDYzLTQzLjUgMTA2LjVUNTk5LTUwMFptMC02MHEzOCAwIDY0LTI2LjQzOCAyNi0yNi40MzcgMjYtNjMuNTYyIDAtMzgtMjYtNjR0LTYzLjUtMjZxLTM3LjUgMC02NCAyNlQ1MDktNjUwLjVxMCAzNy41IDI2LjQzOCA2NFE1NjEuODc1LTU2MCA1OTktNTYwWk0yODQtMTYwdi05NHEwLTM1IDE4LjUtNjMuNVQzNTMtMzYwcTQ3LTIxIDEwOC41LTQwLjVUNTk5LTQyMHE1IDAgMTMuNS41dDE0LjUuNXEtNiAxNS0xMCAyOS41dC02IDI5LjVoLTEycS03MiAwLTEyNCAxNi41VDM3Ny0zMDZxLTE2IDgtMjQuNSAyMS41VDM0NC0yNTR2MzRoMzA0cTExIDE2IDI2IDMxLjV0MzUgMjguNUgyODRabTMxNS00OTBabTAgNDMwWiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
   link:
     - - en_US
-      - "{{ portal_realtime_videoconference_link_base }}"
+      - "{{ .portalRealtimeVideoconferenceLinkBase }}"
   allowedGroups:
-    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Sofort Videokonferenz"
@@ -432,27 +423,24 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.realtime_collaboration,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.realtime_videoconference,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.realtime_collaboration,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.realtime_videoconference,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-# TODO: Provide the context
-{% set portal_management_project_link_base = "https://project.{{ external_domainname }}" %}
-
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.management_project"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTEyLjUgMzQuMDVoMTF2LTNoLTExWm02LTguNTVoMTF2LTNoLTExWm02LTguNTVoMTF2LTNoLTExWk05IDQycS0xLjIgMC0yLjEtLjlRNiA0MC4yIDYgMzlWOXEwLTEuMi45LTIuMVE3LjggNiA5IDZoMzBxMS4yIDAgMi4xLjkuOS45LjkgMi4xdjMwcTAgMS4yLS45IDIuMS0uOS45LTIuMS45Wm0wLTNoMzBWOUg5djMwWk05IDl2MzBWOVoiIGZpbGw9IiMwMDRCNzYiLz48L3N2Zz4="
   link:
     - - en_US
-      - "{{ portal_management_project_link_base }}/auth/keycloak"
+      - "{{ .portalManagementProjectLinkBase }}/auth/keycloak"
   allowedGroups:
-    - "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Projektverwaltung- und steuerung"
@@ -462,20 +450,17 @@ properties:
     en_US: "Projects"
   target: "tab_projectmanagement"
 ---
-# TODO: Provide the context
-{% set portal_management_knowledge_link_base = "https://wiki.{{ external_domainname }}" %}
-
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.management_knowledge"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTI1LjA1IDI3LjlxLjU1IDAgLjk3NS0uNDI1LjQyNS0uNDI1LjQyNS0uOTc1dC0uNDI1LS45NzVxLS40MjUtLjQyNS0uOTc1LS40MjV0LS45NzUuNDI1cS0uNDI1LjQyNS0uNDI1Ljk3NXQuNDI1Ljk3NXEuNDI1LjQyNS45NzUuNDI1Wm0tLjk1LTQuNUgyNnEwLS43NS4xMjUtMS4xMjV0LjU3NS0uOTI1cS4yLS4yLjQ1LS41dC41LS41NXEuNy0uOCAxLTEuNDI1LjMtLjYyNS4zLTEuMzI1IDAtMS41NS0xLjAyNS0yLjVUMjUuMiAxNC4xcS0xLjQ1IDAtMi41MjUuNzI1VDIxLjE1IDE2Ljg1bDEuNzUuN3EuMjUtLjg1Ljg1LTEuMjc1LjYtLjQyNSAxLjM1LS40MjUuODUgMCAxLjQuNTI1LjU1LjUyNS41NSAxLjMyNSAwIC40NS0uMjI1Ljg3NXQtLjcyNS45MjVxLS40LjQtLjc3NS43LS4zNzUuMy0uNjI1LjctLjMuNDUtLjQ1IDEuMDI1LS4xNS41NzUtLjE1IDEuNDc1Wk0xOC40NSA0MnYtNi4zNUgxNC45cS0xLjI1IDAtMi4xMjUtLjg3NVQxMS45IDMyLjY1VjI3LjFoLTJxLTEgMC0xLjUtLjk1dC4wNS0xLjk1TDExLjkgMThxMS4yLTUuMTUgNS4wNzUtOC41NzVRMjAuODUgNiAyNiA2cTUuODUgMCA5LjkyNSA0LjA3NVE0MCAxNC4xNSA0MCAyMHEwIDQuMi0yLjQ3NSA3LjUyNVQzMS4yNSAzMi43VjQyWm03LjUtMjIuNFpNMjEuNDUgMzloNi44di04LjI1bDEuNC0uNjVxMy4xNS0xLjQ1IDUuMjUtNC4wNzVUMzcgMjBxMC00LjYtMy4yLTcuOFQyNiA5cS00LjMgMC03LjUgMi43dC0zLjQ1IDYuOUwxMiAyNC4xaDIuOXY4LjU1aDYuNTVaIiBmaWxsPSIjMDA0Qjc2Ii8+PC9zdmc+"
   link:
     - - en_US
-      - "{{ portal_management_knowledge_link_base }}"
+      - "{{ .portalManagementKnowledgeLinkBase }}"
   allowedGroups:
-    - "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ ldap_base }}"
+    - "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .ldapBase }}"
   linkTarget: "newwindow"
   description:
     de_DE: "Wiki zum Wissensmanagement"
@@ -487,16 +472,16 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/category
-position: cn=swp.management,cn=category,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=swp.management,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   entries:
-  - cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
-  - cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+  - cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.selfservice.change_password"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTguMzUgNDB2LTNoNi41cS0zLjItMi40LTUuMDI1LTUuNDI1UTggMjguNTUgOCAyNC4xNXEwLTUgMi45NS05LjMyNVExMy45IDEwLjUgMTkuMzUgOC44djMuMXEtMy41NSAxLjMtNS45NSA0LjY1LTIuNCAzLjM1LTIuNCA3LjYgMCAzLjIgMS4zNzUgNS44NzVUMTYuODUgMzQuN3YtNi4yaDNWNDBabTI4LjYtMTQuOTVxLjI1LTIuNy0uOTc1LTUuNzc1VDMxLjMgMTMuM3Y2LjJoLTNWOGgxMS41djNoLTYuNTVxNC4xNSAzLjc1IDUuNTc1IDcuMzUgMS40MjUgMy42IDEuMTI1IDYuN1pNMzEuNyA0NHEtLjg1IDAtMS40MjUtLjU3NVEyOS43IDQyLjg1IDI5LjcgNDJ2LTUuOXEwLS44NS41NzUtMS40MjUuNTc1LS41NzUgMS40MjUtLjU3NWguMDV2LTEuOTVxMC0xLjc1IDEuMTc1LTIuOTI1UTM0LjEgMjguMDUgMzUuODUgMjguMDVxMS43NSAwIDIuOTI1IDEuMTc1UTM5Ljk1IDMwLjQgMzkuOTUgMzIuMTV2MS45NUg0MHEuODUgMCAxLjQyNS41NzVRNDIgMzUuMjUgNDIgMzYuMVY0MnEwIC44NS0uNTc1IDEuNDI1UTQwLjg1IDQ0IDQwIDQ0Wm0yLjA1LTkuOWg0LjJ2LTEuOTVxMC0uOTUtLjU3NS0xLjUyNXQtMS41MjUtLjU3NXEtLjk1IDAtMS41MjUuNTc1dC0uNTc1IDEuNTI1WiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
@@ -504,8 +489,8 @@ properties:
     - - en_US
       - "#/selfservice/passwordchange"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ ldap_base }}"
-    - "cn=Domain Users,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+    - "cn=Domain Users,cn=groups,{{ .ldapBase }}"
   linkTarget: "samewindow"
   description:
     de_DE: "Mein Passwort ändern"
@@ -516,7 +501,7 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.selfservice.edit_profile"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTcgNDRxLTEuMiAwLTIuMS0uOVE0IDQyLjIgNCA0MVYxN3EwLTEuMi45LTIuMS45LS45IDIuMS0uOWgxMS44NVY3cTAtMS4yLjktMi4xLjktLjkgMi4xLS45aDQuMzVxMS4yIDAgMi4xLjkuOS45LjkgMi4xdjdINDFxMS4yIDAgMi4xLjkuOS45LjkgMi4xdjI0cTAgMS4yLS45IDIuMS0uOS45LTIuMS45Wm0wLTNoMzRWMTdIMjkuMnEwIDEuNC0uOTI1IDIuMi0uOTI1LjgtMi4zMjUuOGgtMy45cS0xLjM1IDAtMi4yNzUtLjgtLjkyNS0uOC0uOTI1LTIuMkg3djI0Wm00LjYtNS4zNWgxMS45NXYtLjdxMC0uOS0uNDUtMS42LS40NS0uNy0xLjE1LS45NS0xLjYtLjU1LTIuNS0uNzI1LS45LS4xNzUtMS43NS0uMTc1LS45NSAwLTIuMDI1LjIyNXQtMi40MjUuNjc1cS0uNzUuMjUtMS4yLjk1LS40NS43LS40NSAxLjZabTE2LjgtMy4zNWg4LjV2LTIuNWgtOC41Wm0tMTAuNy0yLjVxMS4xNSAwIDEuOTI1LS44Ljc3NS0uOC43NzUtMS45IDAtMS4xNS0uNzc1LTEuOTI1LS43NzUtLjc3NS0xLjkyNS0uNzc1LTEuMSAwLTEuOS43NzUtLjguNzc1LS44IDEuOTI1IDAgMS4xLjggMS45LjguOCAxLjkuOFptMTAuNy0zLjE1aDguNXYtMi41aC04LjVaTTIxLjg1IDE3aDQuMzVWN2gtNC4zNVpNMjQgMjlaIiBmaWxsPSIjMDA0Qjc2Ii8+PC9zdmc+"
@@ -524,7 +509,7 @@ properties:
     - - en_US
       - "#/selfservice/profile"
   allowedGroups:
-    - "cn=Domain Users,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Users,cn=groups,{{ .ldapBase }}"
   linkTarget: "samewindow"
   description:
     de_DE: "Meine Profildaten bearbeiten"
@@ -535,7 +520,7 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.selfservice.protect_account"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTcuMTUgNDBxLTEuMjUgMC0yLjItLjkyNVE0IDM4LjE1IDQgMzdWMTFxMC0xLjE1LjktMi4wNzVRNS44IDggNyA4aDM0cTEuMTUgMCAyLjA3NS45MjVRNDQgOS44NSA0NCAxMXYxMC41aC0zVjE0TDI0IDI0Ljg1IDcgMTR2MjNoMjYuNXYzWk0yNCAyMS42NSA0MSAxMUg3Wk03IDM3VjExdjI2Wm0zMS4yNSAzcS0uNyAwLTEuMjI1LS41MjUtLjUyNS0uNTI1LS41MjUtMS4yMjV2LTZxMC0uNy41NzUtMS4yMjUuNTc1LS41MjUgMS40MjUtLjUyNXYtMi4yNXEwLTEuNTUgMS4xLTIuNjUgMS4xLTEuMSAyLjY1LTEuMSAxLjU1IDAgMi42NSAxLjEgMS4xIDEuMSAxLjEgMi42NXYyLjI1cS44NSAwIDEuNDI1LjUyNS41NzUuNTI1LjU3NSAxLjIyNXY2cTAgLjctLjUyNSAxLjIyNVE0Ni45NSA0MCA0Ni4yNSA0MFpNNDAgMzAuNWg0LjV2LTIuMjVxMC0uOTUtLjY1LTEuNi0uNjUtLjY1LTEuNi0uNjUtLjk1IDAtMS42LjY1LS42NS42NS0uNjUgMS42WiIgZmlsbD0iIzAwNEI3NiIvPjwvc3ZnPg=="
@@ -543,7 +528,7 @@ properties:
     - - en_US
       - "#/selfservice/protectaccount"
   allowedGroups:
-    - "cn=Domain Users,cn=groups,{{ ldap_base }}"
+    - "cn=Domain Users,cn=groups,{{ .ldapBase }}"
   linkTarget: "samewindow"
   description:
     de_DE: "Meine Passwort-Reset Optionen"
@@ -554,17 +539,17 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   userLinks:
-    - "cn=swp.selfservice.change_password,cn=entry,cn=portals,cn=univention,{{ ldap_base }}"
-    - "cn=swp.selfservice.edit_profile,cn=entry,cn=portals,cn=univention,{{ ldap_base }}"
-    - "cn=swp.selfservice.protect_account,cn=entry,cn=portals,cn=univention,{{ ldap_base }}"
+    - "cn=swp.selfservice.change_password,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - "cn=swp.selfservice.edit_profile,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - "cn=swp.selfservice.protect_account,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.externallinks.privacystatement"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTkgNDJxLTEuMiAwLTIuMS0uOVE2IDQwLjIgNiAzOVY5cTAtMS4yLjktMi4xUTcuOCA2IDkgNmgzMHExLjIgMCAyLjEuOS45LjkuOSAyLjF2MzBxMCAxLjItLjkgMi4xLS45LjktMi4xLjlabTAtM2gzMFY5SDl2MzBaIiBmaWxsPSIjMDA0Qjc2Ii8+PC9zdmc+"
@@ -585,7 +570,7 @@ properties:
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.externallinks.legalnotice"
   icon: "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNDgiIHdpZHRoPSI0OCI+PHBhdGggZD0iTTkgNDJxLTEuMiAwLTIuMS0uOVE2IDQwLjIgNiAzOVY5cTAtMS4yLjktMi4xUTcuOCA2IDkgNmgzMHExLjIgMCAyLjEuOS45LjkuOSAyLjF2MzBxMCAxLjItLjkgMi4xLS45LjktMi4xLjlabTAtM2gzMFY5SDl2MzBaIiBmaWxsPSIjMDA0Qjc2Ii8+PC9zdmc+"
@@ -606,8 +591,10 @@ properties:
 ---
 action: ensure_list_contains
 module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ ldap_base }}
+position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   menuLinks:
-    - "cn=swp.externallinks.privacystatement,cn=entry,cn=portals,cn=univention,{{ ldap_base }}"
-    - "cn=swp.externallinks.legalnotice,cn=entry,cn=portals,cn=univention,{{ ldap_base }}"
+    - "cn=swp.externallinks.privacystatement,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - "cn=swp.externallinks.legalnotice,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+
+{{ end }}

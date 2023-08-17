@@ -19,6 +19,20 @@ stackDataSwp:
   # -- Load data which is useful during development (opt-in)
   loadDevData: false
 
+# -- Context used for rendering the data files
+stackDataContext:
+  ldapBase: "dc=univention-organization,dc=intranet"
+  externalDomainName: "univention-organization.test"
+  externalMailDomain: "univention-organization.test"
+  portalGroupwareLinkBase: "https://webmail.{{ .Values.stackDataContext.externalDomainName }}"
+  portalFileshareLinkBase: "https://fs.{{ .Values.stackDataContext.externalDomainName }}"
+  portalRealtimeCollaborationLinkBase: "https://ucc.{{ .Values.stackDataContext.externalDomainName }}"
+  portalRealtimeVideoconferenceLinkBase: "https://jitsi.{{ .Values.stackDataContext.externalDomainName }}"
+  portalManagementProjectLinkBase: "https://project.{{ .Values.stackDataContext.externalDomainName }}"
+  portalManagementKnowledgeLinkBase: "https://wiki.{{ .Values.stackDataContext.externalDomainName }}"
+
+  oxDefaultContext: "10"
+
 
 # -- Container image configuration
 image:

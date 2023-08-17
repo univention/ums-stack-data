@@ -1,18 +1,15 @@
-# TODO: Add a solution to provide these values into the context
-{% set external_mail_domain = "todo.example" %}
-{% set ox_default_context = "10" %}
-
+{{ with .Values.stackDataContext }}
 ---
 action: create
 module: users/user
-position: cn=users,{{ ldap_base }}
+position: cn=users,{{ .ldapBase }}
 properties:
   username: "test.user"
   firstname: "test"
   lastname: "user"
   password: "SWPtester"
   # TODO: Provide this value
-  # oxContext: { { ox_default_context }}
+  # oxContext: {{ .oxDefaultContext }}
 
   # TODO: The following depend on issue
   # https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/168
@@ -23,16 +20,17 @@ properties:
   # swpLivecollaborationEnabled: "TRUE"
 
   # TODO: Provide this value
-  # mailPrimaryAddress: "test.user@{{ external_mail_domain }}"
+  # mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
 ---
 action: create
 module: users/user
-position: cn=users,{{ ldap_base }}
+position: cn=users,{{ .ldapBase }}
 properties:
   username: "test.admin"
   firstname: "test"
   lastname: "admin"
-  primaryGroup: "cn=Domain Admins,cn=groups,{{ ldap_base }}"
+  primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
   password: "SWPtester"
   # TODO: Provide this value
-  # mailPrimaryAddress: "test.user@{{ external_mail_domain }}"
+  # mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
+{{ end }}

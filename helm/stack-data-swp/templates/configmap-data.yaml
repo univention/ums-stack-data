@@ -6,9 +6,26 @@
 metadata:
   name: '{{ include "common.names.fullname" . }}-data'
 data:
-{{ ($.top.Files.Glob "data-files/default/*").AsConfig | indent 2 }}
+{{- /* Simulates one level of recursion
+
+       This applies templating to the values of "stackDataContext" and then
+       injects the result back into "$.top.Values" so that the values can be
+       used as if Helm would apply templating to the values file.
+*/ -}}
+{{- $_ := set $.top.Values "stackDataContext" (fromYaml (tpl (toYaml $.top.Values.stackDataContext) $.top)) }}
+
+{{- range $path, $_ := $.top.Files.Glob "data-files/default/*.yaml" }}
+  {{ base $path }}: |-
+    # Source: {{ $path }}
+{{ tpl ($.top.Files.Get $path) $.top | indent 4 }}
+{{- end }}
+
 {{- if .Values.stackDataSwp.loadDevData }}
-{{ ($.top.Files.Glob "data-files/dev/*").AsConfig | indent 2 }}
+{{- range $path, $_ := $.top.Files.Glob "data-files/dev/*.yaml" }}
+  {{ base $path }}: |-
+    # Source: {{ $path }}
+{{ tpl ($.top.Files.Get $path) $.top | indent 4 }}
+{{- end }}
 {{- end }}
 
 {{- end }}
