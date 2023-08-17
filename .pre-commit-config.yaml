@@ -15,10 +15,10 @@ repos:
       - id: "check-yaml"
         args:
           - "--allow-multiple-documents"
-        exclude: ^helm/.+/templates/
+        exclude: ^helm/.+/(templates|data-files)/
       # "fix end of files"
       - id: "end-of-file-fixer"
-        exclude: ^helm/.+/README.md
+        exclude: ^helm/.+/(README.md|.*.svg)
       # "fix python encoding pragma"
       - id: "fix-encoding-pragma"
         args:
