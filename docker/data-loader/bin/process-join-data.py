@@ -53,6 +53,12 @@ class App:
                 properties=data.get("properties", {}),
                 policies=data.get("policies", {}),
             )
+        elif data["action"] == "modify":
+            self.update_udm_object(
+                module=data["module"],
+                position=data["position"],
+                properties=data.get("properties"),
+            )
         else:
             raise NotImplementedError(f"Action {data['action']} not supported.")
 
@@ -70,6 +76,13 @@ class App:
                 log.info("Object does already exist, not updating anything.")
             else:
                 raise
+
+    def update_udm_object(self, module, position, properties):
+        log.info(f"Updating UDM object {module}, {position}")
+        obj = self.udm.obj_by_dn(position)
+        log.debug(f"Updating properties {list(properties.keys())}")
+        obj.properties.update(properties)
+        obj.save()
 
     def ensure_list_contains(self, module, position, properties, policies):
         log.info(f"Ensuring attribute list contains value {module}, {position}")

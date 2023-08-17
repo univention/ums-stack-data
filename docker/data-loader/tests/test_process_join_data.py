@@ -38,6 +38,20 @@ def test_is_template(filename, expected, process_join_data):
     assert result == expected
 
 
+def test_process_action_handles_modify_action(mocker, app):
+    update_udm_object = mocker.patch.object(app, "update_udm_object", autospec=True)
+    data = {
+        "action": "modify",
+        "module": "users/user",
+        "position": "cn=admin,dc=base",
+        "properties": {
+            "firstname": "stub_firstname",
+        },
+    }
+    app.process_action(data)
+    update_udm_object.assert_called_once()
+
+
 def test_ensure_list_contains_adds_property(app):
     mock_obj = app.udm.obj_by_dn()
     mock_obj.properties = {
@@ -135,3 +149,23 @@ def test_ensure_list_contains_skips_existing_policy(app):
     )
     assert len(mock_obj.policies["policies/umc"]) == 1
     mock_obj.save.assert_not_called()
+
+
+def test_update_udm_object_sets_properties(app):
+    mock_obj = app.udm.obj_by_dn()
+    mock_obj.properties = {
+        "firstname": "stub_firstname",
+        "lastname": "stub_lastname",
+    }
+
+    properties = {
+        "firstname": "new_firstname",
+    }
+
+    app.update_udm_object(
+        "users/user",
+        "cn=admin,dc=base",
+        properties,
+    )
+    assert mock_obj.properties["firstname"] == "new_firstname"
+    mock_obj.save.assert_called()
