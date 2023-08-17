@@ -1,0 +1,10 @@
+{{ with .Values.stackDataContext }}
+
+---
+action: create
+module: mail/domain
+position: cn=domain,cn=mail,{{ .ldapBase }}
+properties:
+  name: {{ .externalMailDomain }}
+
+{{ end }}
