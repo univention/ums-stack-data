@@ -1,0 +1,23 @@
+{{ with .Values.stackDataContext }}
+---
+action: modify
+module: users/user
+position: uid=Administrator,cn=users,{{ .ldapBase }}
+properties:
+  firstname: "Addison"
+  # TODO: Provide this value, an extension module is required
+  # isOxUser: "OK"
+  mailPrimaryAddress: "admin@{{ .externalMailDomain }}"
+---
+action: ensure_list_contains
+module: users/user
+position: uid=Administrator,cn=users,{{ .ldapBase }}
+properties:
+  mailAlternativeAddress:
+    - "abuse@{{ .externalMailDomain }}"
+    - "hostmaster@{{ .externalMailDomain }}"
+    - "postmaster@{{ .externalMailDomain }}"
+    - "system-mails@{{ .externalMailDomain }}"
+    - "root@{{ .externalMailDomain }}"
+    - "webmaster@{{ .externalMailDomain }}"
+{{ end }}
