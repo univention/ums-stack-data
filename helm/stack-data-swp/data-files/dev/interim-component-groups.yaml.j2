@@ -1,0 +1,40 @@
+# TODO: Remove once the component groups are supported into the container Stack
+#
+# For now this does make all entries visible to all users to simplify testing in
+# development deployments.
+
+---
+action: ensure_list_contains
+module: groups/group
+position: cn=managed-by-attribute-Groupware,cn=groups,{{ ldap_base }}
+properties:
+  users:
+    - "uid=test.user,cn=users,{{ ldap_base }}"
+---
+action: ensure_list_contains
+module: groups/group
+position: cn=managed-by-attribute-Fileshare,cn=groups,{{ ldap_base }}
+properties:
+  users:
+    - "uid=test.user,cn=users,{{ ldap_base }}"
+---
+action: ensure_list_contains
+module: groups/group
+position: cn=managed-by-attribute-Projectmanagement,cn=groups,{{ ldap_base }}
+properties:
+  users:
+    - "uid=test.user,cn=users,{{ ldap_base }}"
+---
+action: ensure_list_contains
+module: groups/group
+position: cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ ldap_base }}
+properties:
+  users:
+    - "uid=test.user,cn=users,{{ ldap_base }}"
+---
+action: ensure_list_contains
+module: groups/group
+position: cn=managed-by-attribute-Livecollaboration,cn=groups,{{ ldap_base }}
+properties:
+  users:
+    - "uid=test.user,cn=users,{{ ldap_base }}"
