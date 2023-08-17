@@ -13,11 +13,17 @@ stackDataUms:
   # -- The filename which contains the password
   udmApiPasswordFile: "/run/secrets/univention.de/data-loader/udm_secret"
 
+  # -- Load data which is useful during development (opt-in)
+  loadDevData: false
+
+stackDataContext:
+  ldapBase: "dc=univention-organization,dc=intranet"
+
 
 # -- Container image configuration
 image:
   registry: "gitregistry.knut.univention.de"
-  repository: "univention/customers/dataport/upx/stack-data/data-loader-bundled"
+  repository: "univention/customers/dataport/upx/stack-data/data-loader"
   imagePullPolicy: "Always"
   tag: "latest"
 
