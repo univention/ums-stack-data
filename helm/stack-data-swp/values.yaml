@@ -33,6 +33,27 @@ stackDataContext:
 
   oxDefaultContext: "10"
 
+  portaltileGroupUserStandard:
+    - "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupUserAdmin:
+    - "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - "cn=Support,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupUserAll:
+    - "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupGroupware:
+    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupFileshare:
+    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupManagementProject:
+    - "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupManagementKnowledge:
+    - "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupManagementLearn:
+    - "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupLiveCollaboration:
+    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+
 
 # -- Container image configuration
 image:

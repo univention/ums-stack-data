@@ -162,6 +162,55 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>stackDataContext</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "externalDomainName": "univention-organization.test",
+  "externalMailDomain": "univention-organization.test",
+  "ldapBase": "dc=univention-organization,dc=intranet",
+  "oxDefaultContext": "10",
+  "portalFileshareLinkBase": "https://fs.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalGroupwareLinkBase": "https://webmail.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalManagementKnowledgeLinkBase": "https://wiki.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalManagementProjectLinkBase": "https://project.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalRealtimeCollaborationLinkBase": "https://ucc.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalRealtimeVideoconferenceLinkBase": "https://jitsi.{{ .Values.stackDataContext.externalDomainName }}",
+  "portaltileGroupFileshare": [
+    "cn=managed-by-attribute-Fileshare,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupGroupware": [
+    "cn=managed-by-attribute-Groupware,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupLiveCollaboration": [
+    "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupManagementKnowledge": [
+    "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupManagementLearn": [
+    "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupManagementProject": [
+    "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupUserAdmin": [
+    "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}",
+    "cn=Support,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupUserAll": [
+    "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}",
+    "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
+  "portaltileGroupUserStandard": [
+    "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ]
+}
+</pre>
+</td>
+			<td>Context used for rendering the data files</td>
+		</tr>
+		<tr>
 			<td>stackDataSwp.dataConfigMapName</td>
 			<td>string</td>
 			<td><pre lang="json">

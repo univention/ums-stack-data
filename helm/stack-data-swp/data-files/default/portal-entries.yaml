@@ -37,8 +37,7 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:users/user"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
-    - "cn=Support,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Benutzerverwaltung"
@@ -58,8 +57,7 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:groups/group"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
-    - "cn=Support,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Gruppenverwaltung"
@@ -88,8 +86,7 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxmail/functional_account"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
-    - "cn=Support,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Verwaltung von Funktionspostfächern in der Groupware"
@@ -109,8 +106,7 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxresources/oxresources"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
-    - "cn=Support,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Verwaltung von Groupware Kalender Ressourcen"
@@ -139,8 +135,7 @@ properties:
     - - en_US
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:portals/announcement"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
-    - "cn=Support,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Verwaltung der allgemeinen Portal-Annoucements"
@@ -168,7 +163,7 @@ properties:
     - - en_US
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/mail"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupGroupware | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "E-Mails senden und empfangen"
@@ -188,7 +183,7 @@ properties:
     - - en_US
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/calendar"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupGroupware | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Termine und Meetings verwalten"
@@ -208,7 +203,7 @@ properties:
     - - en_US
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/contacts"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupGroupware | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Verwalte persönliche Kontakte und durchsuche globales Adressbuch"
@@ -228,7 +223,7 @@ properties:
     - - en_US
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/tasks"
   allowedGroups:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupGroupware | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Aufgabenverwaltung"
@@ -248,7 +243,7 @@ properties:
 #     - - en_US
 #       - "https://webmail8.{{ .externalDomainName }}"
 #   allowedGroups:
-#     - "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
+#{{ toYaml .portaltileGroupGroupware | indent 4 }}
 #   linkTarget: "newwindow"
 #   description:
 #     de_DE: "E-Mails senden und empfangen"
@@ -279,7 +274,7 @@ properties:
     - - en_US
       - "{{ .portalFileshareLinkBase }}/apps/files"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Dateien verwalten, bearbeiten und teilen"
@@ -299,7 +294,7 @@ properties:
     - - en_US
       - "{{ .portalFileshareLinkBase }}/apps/activity"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Aktivitätenverlauf der Dateiverwaltung"
@@ -319,7 +314,7 @@ properties:
     - - en_US
       - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odt"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Startet ein leeres Schriftstück"
@@ -339,7 +334,7 @@ properties:
     - - en_US
       - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/ods"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Startet ein leeres Tabellen-Dokument"
@@ -359,7 +354,7 @@ properties:
     - - en_US
       - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odp"
   allowedGroups:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Startet eine leere Präsentation"
@@ -391,7 +386,7 @@ properties:
     - - en_US
       - "{{ .portalRealtimeCollaborationLinkBase }}"
   allowedGroups:
-    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Kollaborative Meetings"
@@ -411,7 +406,7 @@ properties:
     - - en_US
       - "{{ .portalRealtimeVideoconferenceLinkBase }}"
   allowedGroups:
-    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Sofort Videokonferenz"
@@ -440,7 +435,7 @@ properties:
     - - en_US
       - "{{ .portalManagementProjectLinkBase }}/auth/keycloak"
   allowedGroups:
-    - "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupManagementProject | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Projektverwaltung- und steuerung"
@@ -460,7 +455,7 @@ properties:
     - - en_US
       - "{{ .portalManagementKnowledgeLinkBase }}"
   allowedGroups:
-    - "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupManagementKnowledge | indent 4 }}
   linkTarget: "newwindow"
   description:
     de_DE: "Wiki zum Wissensmanagement"
@@ -489,8 +484,7 @@ properties:
     - - en_US
       - "#/selfservice/passwordchange"
   allowedGroups:
-    - "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
-    - "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserAll | indent 4 }}
   linkTarget: "samewindow"
   description:
     de_DE: "Mein Passwort ändern"
@@ -509,7 +503,7 @@ properties:
     - - en_US
       - "#/selfservice/profile"
   allowedGroups:
-    - "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserStandard | indent 4 }}
   linkTarget: "samewindow"
   description:
     de_DE: "Meine Profildaten bearbeiten"
@@ -528,7 +522,7 @@ properties:
     - - en_US
       - "#/selfservice/protectaccount"
   allowedGroups:
-    - "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+{{ toYaml .portaltileGroupUserStandard | indent 4 }}
   linkTarget: "samewindow"
   description:
     de_DE: "Meine Passwort-Reset Optionen"
