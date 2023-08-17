@@ -7,6 +7,6 @@ ls -l /join-data/
 
 for data_file in $(find /join-data -type f | sort)
 do
-    echo "Processing ${data_file}"
+    echo
     process-join-data.py "${data_file}"
 done
