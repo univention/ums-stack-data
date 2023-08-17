@@ -1,11 +1,10 @@
+{{ if not .Values.stackDataSwp.dataConfigMapName }}
 ---
 {{ include "common.configMap" (dict "top" . "overrides" "stack-data-swp.configMap-data") }}
+...
+{{ end }}
 
 {{- define "stack-data-swp.configMap-data" }}
-{{- with .top }}
-metadata:
-  name: '{{ include "common.names.fullname" . }}-data'
-data:
 {{- /* Simulates one level of recursion
 
        This applies templating to the values of "stackDataContext" and then
@@ -14,6 +13,10 @@ data:
 */ -}}
 {{- $_ := set $.top.Values "stackDataContext" (fromYaml (tpl (toYaml $.top.Values.stackDataContext) $.top)) }}
 
+{{- with .top }}
+metadata:
+  name: '{{ include "common.names.fullname" . }}-data'
+data:
 {{- range $path, $_ := $.top.Files.Glob "data-files/default/*.yaml" }}
   {{ base $path }}: |-
     # Source: {{ $path }}
@@ -30,4 +33,3 @@ data:
 
 {{- end }}
 {{- end }}
-...
