@@ -184,6 +184,15 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>stackDataUms.dependencyUdmApiWait</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Wait for the udm-rest-api to be available</td>
+		</tr>
+		<tr>
 			<td>stackDataUms.loadDevData</td>
 			<td>bool</td>
 			<td><pre lang="json">

@@ -20,6 +20,21 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{ if .Values.stackDataUms.dependencyUdmApiWait }}
+      initContainers:
+      - name: wait-for-udm-rest-api
+        command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-udm-rest-api.py"]
+        {{- with .Values.image }}
+        image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
+        imagePullPolicy: "{{ .pullPolicy }}"
+        {{- end }}
+        envFrom:
+          - configMapRef:
+              name: {{ include "common.names.fullname" . }}
+        volumeMounts:
+          - name: secrets
+            mountPath: /run/secrets/univention.de/data-loader
+      {{ end }}
       containers:
       - name: load-data-ums
         {{- with .Values.image }}
