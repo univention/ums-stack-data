@@ -220,6 +220,15 @@ null
 			<td>The name of the ConfigMap to import the data from</td>
 		</tr>
 		<tr>
+			<td>stackDataSwp.dependencyUdmApiWait</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Wait for the udm-rest-api to be available</td>
+		</tr>
+		<tr>
 			<td>stackDataSwp.loadDevData</td>
 			<td>bool</td>
 			<td><pre lang="json">

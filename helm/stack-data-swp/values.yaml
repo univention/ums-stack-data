@@ -19,6 +19,9 @@ stackDataSwp:
   # -- Load data which is useful during development (opt-in)
   loadDevData: false
 
+  # -- Wait for the udm-rest-api to be available
+  dependencyUdmApiWait: true
+
 # -- Context used for rendering the data files
 stackDataContext:
   ldapBase: "dc=univention-organization,dc=intranet"
