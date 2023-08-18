@@ -26,7 +26,7 @@ CMD ["pytest"]
 # hadolint ignore=DL3006
 FROM ${BASE_IMAGE} as final
 
-COPY bin/* /usr/local/bin
+COPY bin/* /usr/local/bin/
 
 WORKDIR /
 RUN mkdir /join-data
