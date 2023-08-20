@@ -232,26 +232,6 @@ properties:
     de_DE: "Aufgaben"
     en_US: "Tasks"
   target: "tab_groupware"
-# ---
-# action: create
-# module: portals/entry
-# position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-# properties:
-#   name: "swp.groupware_mail_as8"
-#   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_mail_as8.svg" | b64enc | quote }}
-#   link:
-#     - - en_US
-#       - "https://webmail8.{{ .externalDomainName }}"
-#   allowedGroups:
-#{{ toYaml .portaltileGroupGroupware | indent 4 }}
-#   linkTarget: "newwindow"
-#   description:
-#     de_DE: "E-Mails senden und empfangen"
-#     en_US: "Send and receive emails"
-#   displayName:
-#     de_DE: "AppSuite8 Preview"
-#     en_US: "AppSuite8 Preview"
-#   target: "tab_groupware_as8"
 ---
 action: ensure_list_contains
 module: portals/category
