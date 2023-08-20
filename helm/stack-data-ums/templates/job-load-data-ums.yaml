@@ -1,6 +1,6 @@
 ---
-apiVersion: batch/v1
-kind: Job
+apiVersion: "batch/v1"
+kind: "Job"
 metadata:
   name: {{ include "common.names.fullnameWithRevision" . }}
   labels:
@@ -15,7 +15,7 @@ spec:
         checksum/config: '{{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}'
         checksum/config: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
     spec:
-      restartPolicy: OnFailure
+      restartPolicy: "OnFailure"
       {{- with .Values.image.pullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -36,7 +36,7 @@ spec:
             mountPath: /run/secrets/univention.de/data-loader
       {{ end }}
       containers:
-      - name: load-data-ums
+      - name: "load-data-ums"
         {{- with .Values.image }}
         image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: "{{ .pullPolicy }}"
@@ -45,16 +45,18 @@ spec:
           - configMapRef:
               name: {{ include "common.names.fullname" . }}
         volumeMounts:
-          - name: secrets
-            mountPath: /run/secrets/univention.de/data-loader
-          - name: data
-            mountPath: /join-data
+          - name: "secrets"
+            mountPath: "/run/secrets/univention.de/data-loader"
+          - name: "data"
+            mountPath: "/join-data"
             readOnly: true
       volumes:
-      - name: secrets
+      - name: "secrets"
         secret:
           secretName: {{ include "common.names.fullname" . | quote }}
-      - name: data
+      - name: "data"
         configMap:
           {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
           name: {{ default $defaultConfigMapName .Values.stackDataUms.dataConfigMapName | quote }}
+
+...

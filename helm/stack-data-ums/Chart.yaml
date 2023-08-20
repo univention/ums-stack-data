@@ -5,7 +5,7 @@ type: "application"
 name: "stack-data-ums"
 description: "A Helm chart to load the initial data into the UMS Stack"
 home: "https://www.univention.de/"
-icon: https://www.univention.com/wp-content/themes/univention/assets/images/univention.svg
+icon: "https://www.univention.com/wp-content/themes/univention/assets/images/univention.svg"
 
 # Chart version
 # Apply Semantic Versioning (https://semver.org/)
