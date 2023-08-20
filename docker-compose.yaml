@@ -1,11 +1,13 @@
+---
+
 services:
 
   data-loader:
     profiles:
-      - test
-    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/data-loader:${IMAGE_TAG:-latest}
+      - "test"
+    image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/data-loader:${IMAGE_TAG:-latest}"
     build:
-      context: ./docker/data-loader
+      context: "./docker/data-loader"
     platform: "linux/amd64"
     working_dir: "/src"
     volumes:
@@ -15,24 +17,24 @@ services:
       UDM_API_USER: "cn=admin"
       UDM_API_PASSWORD_FILE: "/run/secrets/ldap_secret"
     secrets:
-      - ldap_secret
+      - "ldap_secret"
 
   data-loader-test:
     profiles:
-      - test
+      - "test"
     build:
-      context: ./docker/data-loader
-      target: test
+      context: "./docker/data-loader"
+      target: "test"
     platform: "linux/amd64"
     volumes:
       - "./:/src/"
 
   joinscript-tools:
     profiles:
-      - test
-    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/joinscript-tools:${IMAGE_TAG:-latest}
+      - "test"
+    image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/joinscript-tools:${IMAGE_TAG:-latest}"
     build:
-      context: ./docker/joinscript-tools
+      context: "./docker/joinscript-tools"
     platform: "linux/amd64"
     working_dir: "/src"
     volumes:
@@ -40,31 +42,33 @@ services:
 
   # Environment to build the documentation
   docs:
-    image: docker-registry.knut.univention.de/sphinx:latest
-    working_dir: /src/docs
+    image: "docker-registry.knut.univention.de/sphinx:latest"
+    working_dir: "/src/docs"
     volumes:
       - ".:/src"
     profiles:
-      - docs
+      - "docs"
 
   # Environment of the pre-commit linter.
   pre-commit:
     profiles:
-      - test
-    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/container-pre-commit/upx-pre-commit:latest
+      - "test"
+    image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/container-pre-commit/upx-pre-commit:latest"
     volumes:
-      - type: bind
-        source: .
-        target: /code
-      - type: volume
+      - type: "bind"
+        source: "."
+        target: "/code"
+      - type: "volume"
         # pre-commit installs dependencies, having them cached speeds things up
         # a lot.
-        source: pre-commit-cache
-        target: /cache
+        source: "pre-commit-cache"
+        target: "/cache"
 
 secrets:
   ldap_secret:
-    file: secret/ldap.secret
+    file: "secret/ldap.secret"
 
 volumes:
   pre-commit-cache:
+
+...
