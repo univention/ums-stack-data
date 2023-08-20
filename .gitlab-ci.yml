@@ -1,5 +1,7 @@
+---
+
 include:
-  - project: univention/customers/dataport/upx/common-ci
+  - project: "univention/customers/dataport/upx/common-ci"
     file:
       # TODO: Sphinx docs inherits a stage definition from upstream,
       # has to be included before our default stages to avoid trouble.
@@ -13,8 +15,8 @@ include:
 
 
 build-data-loader-test-runner:
-  stage: build
-  extends: .kaniko
+  stage: "build"
+  extends: ".kaniko"
   needs: []
   variables:
     CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader-test-runner"
@@ -23,9 +25,9 @@ build-data-loader-test-runner:
 
 
 test-data-loader:
-  stage: test
+  stage: "test"
   needs:
-    - job: build-data-loader-test-runner
+    - job: "build-data-loader-test-runner"
   image: "$BUILD_IMAGE_TAG"
   script:
     - cd docker/data-loader
@@ -33,8 +35,8 @@ test-data-loader:
 
 
 build-data-loader:
-  stage: build
-  extends: .kaniko
+  stage: "build"
+  extends: ".kaniko"
   needs: []
   variables:
     KANIKO_BUILD_CONTEXT: "docker/data-loader"
@@ -43,8 +45,8 @@ build-data-loader:
 
 
 build-joinscript-tools:
-  stage: build
-  extends: .kaniko
+  stage: "build"
+  extends: ".kaniko"
   needs: []
   variables:
     KANIKO_BUILD_CONTEXT: "docker/joinscript-tools"
@@ -54,11 +56,13 @@ build-joinscript-tools:
 release:
   # TODO: Make a base image for this tool
   image: "${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:18-buster-slim"
-  stage: package
+  stage: "package"
   before_script:
     - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
     - npm install -g semantic-release @semantic-release/gitlab conventional-changelog-conventionalcommits
   script:
     - semantic-release
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
+
+...
