@@ -15,10 +15,10 @@ repos:
       - id: "check-yaml"
         args:
           - "--allow-multiple-documents"
-        exclude: ^helm/.+/(templates|data-files)/
+        exclude: "^helm/.+/(templates|data-files)/"
       # "fix end of files"
       - id: "end-of-file-fixer"
-        exclude: ^helm/.+/(README.md|.*.svg)
+        exclude: "^helm/.+/(README.md|.*.svg)"
       # "fix python encoding pragma"
       - id: "fix-encoding-pragma"
         args:
@@ -93,16 +93,16 @@ repos:
       - id: "hadolint-system"
 
   # "Helm chart linter"
-  - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.21
+  - repo: "https://github.com/gruntwork-io/pre-commit"
+    rev: "v0.1.21"
     hooks:
-      - id: helmlint
+      - id: "helmlint"
 
   # "Helm docs linter"
-  - repo: https://github.com/norwoodj/helm-docs
-    rev: v1.11.0
+  - repo: "https://github.com/norwoodj/helm-docs"
+    rev: "v1.11.0"
     hooks:
-    - id: helm-docs
+    - id: "helm-docs"
       args:
         - "--chart-search-root=helm"
         - "--template-files=README.md.gotmpl"
