@@ -1,137 +1,137 @@
 {{ with .Values.stackDataContext }}
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.anonymous"
   displayName:
     de_DE: "Souveräner Arbeitsplatz"
     en_US: "Sovereign Workplace"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_usersgroups"
   displayName:
     de_DE: "Verwaltung Benutzer & Gruppen"
     en_US: "Administration users & groups"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_groupware"
   displayName:
     de_DE: "Verwaltung Groupware"
     en_US: "Administration groupware"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_portal"
   displayName:
     de_DE: "Verwaltung Portal"
     en_US: "Administration portal"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.groupware"
   displayName:
     de_DE: "Kommunikation & Organisation"
     en_US: "Communicate & organize"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.fileshare"
   displayName:
     de_DE: "Produktivität"
     en_US: "Productivity"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.management"
   displayName:
     de_DE: "Management"
     en_US: "Management"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.management,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/category
-position: cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.realtime"
   displayName:
     de_DE: "Kollaboration"
     en_US: "Collaboration"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   categories:
     - "cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"

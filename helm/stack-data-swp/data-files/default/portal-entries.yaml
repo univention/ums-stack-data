@@ -1,15 +1,15 @@
 {{ with .Values.stackDataContext }}
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.anonymous_login"
   anonymous: true
   icon: {{ $.Files.Get "data-files/default/portal-icons/anonymous_login.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "/univention/saml/?location=%2Funivention%2Fportal%2F"
   linkTarget: "samewindow"
   description:
@@ -19,22 +19,22 @@ properties:
     de_DE: "Anmelden"
     en_US: "Login"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
-  - cn=swp.anonymous_login,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - "cn=swp.anonymous_login,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_user"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_user.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:users/user"
   allowedGroups:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
@@ -47,14 +47,14 @@ properties:
     en_US: "User"
   target: "tab_admin"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_group"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_group.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:groups/group"
   allowedGroups:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
@@ -67,23 +67,23 @@ properties:
     en_US: "Groups"
   target: "tab_admin"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals"/category
+position: "cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
-  - cn=swp.admin_user,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.admin_group,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - "cn=swp.admin_user,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.admin_group,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_functionalmailbox"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_functionalmailbox.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxmail/functional_account"
   allowedGroups:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
@@ -96,14 +96,14 @@ properties:
     en_US: "Functional mailboxes"
   target: "tab_admin"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_resource"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_resource.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxresources/oxresources"
   allowedGroups:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
@@ -116,23 +116,23 @@ properties:
     en_US: "Resources"
   target: "tab_admin"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
-  - cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - "cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.admin_announcement"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_announcement.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:portals/announcement"
   allowedGroups:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
@@ -145,22 +145,22 @@ properties:
     en_US: "Announcements"
   target: "tab_admin"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
   - cn=swp.admin_announcement,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.groupware_mail"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_mail.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/mail"
   allowedGroups:
 {{ toYaml .portaltileGroupGroupware | indent 4 }}
@@ -173,14 +173,14 @@ properties:
     en_US: "E-Mail"
   target: "tab_groupware"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.groupware_calendar"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_calendar.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/calendar"
   allowedGroups:
 {{ toYaml .portaltileGroupGroupware | indent 4 }}
@@ -193,14 +193,14 @@ properties:
     en_US: "Calendar"
   target: "tab_groupware"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.groupware_contacts"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_contacts.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/contacts"
   allowedGroups:
 {{ toYaml .portaltileGroupGroupware | indent 4 }}
@@ -213,14 +213,14 @@ properties:
     en_US: "Contacts"
   target: "tab_groupware"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.groupware_tasks"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_tasks.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalGroupwareLinkBase }}/appsuite/#app=io.ox/tasks"
   allowedGroups:
 {{ toYaml .portaltileGroupGroupware | indent 4 }}
@@ -233,9 +233,9 @@ properties:
     en_US: "Tasks"
   target: "tab_groupware"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
   - cn=swp.groupware_mail,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
@@ -244,14 +244,14 @@ properties:
   - cn=swp.groupware_tasks,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.fileshare_files"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_files.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalFileshareLinkBase }}/apps/files"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
@@ -264,14 +264,14 @@ properties:
     en_US: "Files"
   target: "tab_fileshare"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.fileshare_activity"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_activity.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalFileshareLinkBase }}/apps/activity"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
@@ -284,13 +284,13 @@ properties:
     en_US: "Activity"
   target: "tab_fileshare"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
-  - cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - "cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
 action: create
@@ -300,7 +300,7 @@ properties:
   name: "swp.fileshare_directdoc_odt"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_odt.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odt"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
@@ -313,14 +313,14 @@ properties:
     en_US: "Document"
   target: "tab_fileshare"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.fileshare_directdoc_ods"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_ods.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/ods"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
@@ -333,14 +333,14 @@ properties:
     en_US: "Sheet"
   target: "tab_fileshare"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.fileshare_directdoc_odp"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_odp.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odp"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
@@ -353,9 +353,9 @@ properties:
     en_US: "Presentation"
   target: "tab_fileshare"
 ---
-action: ensure_list_contains
-module: portals/folder
-position: cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/folder"
+position: "cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
   - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
@@ -363,14 +363,14 @@ properties:
   - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.realtime_collaboration"
   icon: {{ $.Files.Get "data-files/default/portal-icons/realtime_collaboration.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalRealtimeCollaborationLinkBase }}"
   allowedGroups:
 {{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
@@ -383,14 +383,14 @@ properties:
     en_US: "Collaboration"
   target: "tab_realtime_collaboration"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.realtime_videoconference"
   icon: {{ $.Files.Get "data-files/default/portal-icons/realtime_videoconference.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalRealtimeVideoconferenceLinkBase }}"
   allowedGroups:
 {{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
@@ -403,23 +403,23 @@ properties:
     en_US: "Ad hoc videoconference"
   target: "tab_realtime_videoconference"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
   - cn=swp.realtime_collaboration,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.realtime_videoconference,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.management_project"
   icon: {{ $.Files.Get "data-files/default/portal-icons/management_project.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalManagementProjectLinkBase }}/auth/keycloak"
   allowedGroups:
 {{ toYaml .portaltileGroupManagementProject | indent 4 }}
@@ -432,14 +432,14 @@ properties:
     en_US: "Projects"
   target: "tab_projectmanagement"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.management_knowledge"
   icon: {{ $.Files.Get "data-files/default/portal-icons/management_knowledge.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "{{ .portalManagementKnowledgeLinkBase }}"
   allowedGroups:
 {{ toYaml .portaltileGroupManagementKnowledge | indent 4 }}
@@ -452,23 +452,23 @@ properties:
     en_US: "Knowledge"
   target: "tab_knowledgemanagement"
 ---
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.management,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.management,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
   - cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.selfservice.change_password"
   icon: {{ $.Files.Get "data-files/default/portal-icons/selfservice_changepassword.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "#/selfservice/passwordchange"
   allowedGroups:
 {{ toYaml .portaltileGroupUserAll | indent 4 }}
@@ -480,14 +480,14 @@ properties:
     de_DE: "Mein Passwort ändern"
     en_US: "Update my password"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.selfservice.edit_profile"
   icon: {{ $.Files.Get "data-files/default/portal-icons/selfservice_editprofile.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "#/selfservice/profile"
   allowedGroups:
 {{ toYaml .portaltileGroupUserStandard | indent 4 }}
@@ -499,14 +499,14 @@ properties:
     de_DE: "Meine Profildaten bearbeiten"
     en_US: "Manage my profile"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.selfservice.protect_account"
   icon: {{ $.Files.Get "data-files/default/portal-icons/selfservice_protectaccount.svg" | b64enc | quote }}
   link:
-    - - en_US
+    - - "en_US"
       - "#/selfservice/protectaccount"
   allowedGroups:
 {{ toYaml .portaltileGroupUserStandard | indent 4 }}
@@ -518,9 +518,9 @@ properties:
     de_DE: "Meine Passwort-Reset Optionen"
     en_US: "My password recovery options"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   userLinks:
     - "cn=swp.selfservice.change_password,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
@@ -528,16 +528,16 @@ properties:
     - "cn=swp.selfservice.protect_account,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.externallinks.privacystatement"
   icon: {{ $.Files.Get "data-files/default/portal-icons/dummy.svg" | b64enc | quote }}
   link:
     - - de_DU
       - "http://www.gesetze-im-internet.de/bdsg_2018/"
-    - - en_US
+    - - "en_US"
       - "http://www.gesetze-im-internet.de/englisch_bdsg/index.html"
   anonymous: false
   linkTarget: "newwindow"
@@ -549,16 +549,16 @@ properties:
     de_DE: "Datenschutz"
     en_US: "Privacy statement"
 ---
-action: create
-module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.externallinks.legalnotice"
   icon: {{ $.Files.Get "data-files/default/portal-icons/dummy.svg" | b64enc | quote }}
   link:
     - - de_DU
       - "https://www.bmi.bund.de/DE/service/impressum/impressum_node.html"
-    - - en_US
+    - - "en_US"
       - "https://www.bmi.bund.de/EN/service/impressum/impressum_node.html"
   anonymous: false
   linkTarget: "newwindow"
@@ -570,9 +570,9 @@ properties:
     de_DE: "Impressum"
     en_US: "Legal notice"
 ---
-action: ensure_list_contains
-module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   menuLinks:
     - "cn=swp.externallinks.privacystatement,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"

@@ -1,8 +1,8 @@
 {{ with .Values.stackDataContext }}
 ---
-action: create
-module: users/user
-position: cn=users,{{ .ldapBase }}
+action: "create"
+module: "users/user"
+position: "cn=users,{{ .ldapBase }}"
 properties:
   username: "test.user"
   firstname: "test"
@@ -22,9 +22,9 @@ properties:
   # TODO: Provide this value
   # mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
 ---
-action: create
-module: users/user
-position: cn=users,{{ .ldapBase }}
+action: "create"
+module: "users/user"
+position: "cn=users,{{ .ldapBase }}"
 properties:
   username: "test.admin"
   firstname: "test"

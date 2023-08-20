@@ -6,37 +6,37 @@
 # development deployments.
 
 ---
-action: ensure_list_contains
-module: groups/group
-position: cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "groups/group"
+position: "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
 properties:
   users:
     - "uid=test.user,cn=users,{{ .ldapBase }}"
 ---
-action: ensure_list_contains
-module: groups/group
-position: cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "groups/group"
+position: "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
 properties:
   users:
     - "uid=test.user,cn=users,{{ .ldapBase }}"
 ---
-action: ensure_list_contains
-module: groups/group
-position: cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "groups/group"
+position: "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .ldapBase }}"
 properties:
   users:
     - "uid=test.user,cn=users,{{ .ldapBase }}"
 ---
-action: ensure_list_contains
-module: groups/group
-position: cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "groups/group"
+position: "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .ldapBase }}"
 properties:
   users:
     - "uid=test.user,cn=users,{{ .ldapBase }}"
 ---
-action: ensure_list_contains
-module: groups/group
-position: cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .ldapBase }}
+action: "ensure_list_contains"
+module: "groups/group"
+position: "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .ldapBase }}"
 properties:
   users:
     - "uid=test.user,cn=users,{{ .ldapBase }}"

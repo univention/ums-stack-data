@@ -1,33 +1,33 @@
 {{ with .Values.stackDataContext }}
 
 ---
-action: create
-module: groups/group
-position: cn=groups,{{ .ldapBase }}
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Groupware"
 ---
-action: create
-module: groups/group
-position: cn=groups,{{ .ldapBase }}
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Fileshare"
 ---
-action: create
-module: groups/group
-position: cn=groups,{{ .ldapBase }}
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Projectmanagement"
 ---
-action: create
-module: groups/group
-position: cn=groups,{{ .ldapBase }}
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Knowledgemanagement"
 ---
-action: create
-module: groups/group
-position: cn=groups,{{ .ldapBase }}
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Livecollaboration"
 
