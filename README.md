@@ -19,6 +19,13 @@ through `ConfigMap` objects which are then mounted into the container.
 
 The data import itself is triggered as `Job` objects in the Kubernetes cluster.
 
+## Known limitations
+
+- The password for `Administrator` has to be injected from the outside as a
+  value to the Helm chart.
+  - It would be preferable if a random password could be deployed and stored
+    into a Secret object as an alternative option.
+
 ## Development setup
 
 Uses the Tilt based development environment at
