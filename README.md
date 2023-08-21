@@ -25,6 +25,8 @@ The data import itself is triggered as `Job` objects in the Kubernetes cluster.
   value to the Helm chart.
   - It would be preferable if a random password could be deployed and stored
     into a Secret object as an alternative option.
+- `process-join-data.py` does not log the object name if the attribute is not
+  called `name`, e.g. for users the attribute is called `username`.
 
 ## Development setup
 
