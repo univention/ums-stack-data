@@ -68,7 +68,7 @@ properties:
   target: "tab_admin"
 ---
 action: "ensure_list_contains"
-module: "portals"/category
+module: "portals/category"
 position: "cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
