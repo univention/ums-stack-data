@@ -9,9 +9,15 @@ include:
       - defaults/souvap-workflow.yaml
       - defaults/stages.yaml
       - templates/kaniko.yaml
+      - templates/souvap.yaml
       - jobs/lint-commit-messages.yaml
       - jobs/lint-pre-commit.yaml
       - jobs/package-and-publish-helm-charts.yaml
+
+
+variables:
+  SOUVAP_HELM_PROJECT_ID: 155
+  SOUVAP_REGISTRY_PATH: souvap/tooling/images/univention
 
 
 build-data-loader-test-runner:
@@ -64,5 +70,17 @@ release:
     - semantic-release
   rules:
     - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
+
+
+publish-image-souvap-data-loader:
+  needs:
+    - job: build-data-loader
+  extends: .push-image-souvap
+  variables:
+    SOUVAP_IMAGE_NAME: "data-loader"
+
+
+publish-helm-charts-souvap:
+  extends: .publish-helm-charts-souvap
 
 ...
