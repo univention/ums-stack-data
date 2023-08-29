@@ -535,7 +535,7 @@ properties:
   name: "swp.externallinks.privacystatement"
   icon: {{ $.Files.Get "data-files/default/portal-icons/dummy.svg" | b64enc | quote }}
   link:
-    - - de_DU
+    - - "de_DE"
       - "http://www.gesetze-im-internet.de/bdsg_2018/"
     - - "en_US"
       - "http://www.gesetze-im-internet.de/englisch_bdsg/index.html"
