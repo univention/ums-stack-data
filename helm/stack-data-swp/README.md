@@ -185,6 +185,8 @@ true
   "portalManagementProjectLinkBase": "https://project.{{ .Values.stackDataContext.externalDomainName }}",
   "portalRealtimeCollaborationLinkBase": "https://ucc.{{ .Values.stackDataContext.externalDomainName }}",
   "portalRealtimeVideoconferenceLinkBase": "https://jitsi.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalTitleDE": "Souveräner Arbeitsplatz",
+  "portalTitleEN": "Sovereign Workplace",
   "portaltileGroupFileshare": [
     "cn=managed-by-attribute-Fileshare,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
   ],
@@ -218,6 +220,24 @@ true
 </pre>
 </td>
 			<td>Context used for rendering the data files</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.portalTitleDE</td>
+			<td>string</td>
+			<td><pre lang="json">
+"Souveräner Arbeitsplatz"
+</pre>
+</td>
+			<td>Portal title (Deutsch)</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.portalTitleEN</td>
+			<td>string</td>
+			<td><pre lang="json">
+"Sovereign Workplace"
+</pre>
+</td>
+			<td>Portal title (English)</td>
 		</tr>
 		<tr>
 			<td>stackDataSwp.dataConfigMapName</td>

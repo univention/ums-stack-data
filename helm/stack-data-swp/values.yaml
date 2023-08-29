@@ -23,6 +23,7 @@ stackDataSwp:
   # -- Wait for the udm-rest-api to be available
   dependencyUdmApiWait: true
 
+
 # -- Context used for rendering the data files
 stackDataContext:
   ldapBase: "dc=univention-organization,dc=intranet"
@@ -57,6 +58,12 @@ stackDataContext:
     - "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
   portaltileGroupLiveCollaboration:
     - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+
+  # -- Portal title (Deutsch)
+  portalTitleDE: "Souveräner Arbeitsplatz"
+
+  # -- Portal title (English)
+  portalTitleEN: "Sovereign Workplace"
 
 
 # -- Container image configuration

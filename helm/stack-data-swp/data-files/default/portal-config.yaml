@@ -1,0 +1,12 @@
+{{ with .Values.stackDataContext }}
+
+---
+action: "modify"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  displayName:
+    de_DE: {{ .portalTitleDE }}
+    en_US: {{ .portalTitleEN }}
+
+{{ end }}
