@@ -31,5 +31,24 @@ data:
 {{- end }}
 {{- end }}
 
+{{- $demoUsers := .Values.stackDataSwp.demoUsers -}}
+{{- if $demoUsers }}
+  demoUsers: |-
+    # Source: local values file
+{{- range $_, $user := $demoUsers }}
+    ---
+    action: "create"
+    module: "users/user"
+    position: "cn=users,{{ $.top.Values.stackDataContext.ldapBase }}"
+    properties:
+      primaryGroup: "cn={{ get $user "primaryGroupCN" }},cn=groups,{{ $.top.Values.stackDataContext.ldapBase }}"
+      {{- $pure_user := omit $user "primaryGroupCN" -}}
+      {{- range $key, $value := $pure_user }}
+      {{ $key }}: {{ $value | quote }}
+      {{- end }}
+    ...
+{{- end }}
+{{- end }}
+
 {{- end }}
 {{- end }}

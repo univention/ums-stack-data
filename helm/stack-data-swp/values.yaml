@@ -17,6 +17,9 @@ stackDataSwp:
   # -- The name of the ConfigMap to import the data from
   dataConfigMapName: null
 
+  # -- The path to an additional set of demo users to be created
+  demoUsers: null
+
   # -- Load data which is useful during development (opt-in)
   loadDevData: false
 
