@@ -8,12 +8,30 @@ import csv
 import sys
 
 
-def format(user_name, first_name, last_name, email):
+def format(user_name, first_name, last_name, email, password):
     """
     Format the user data to match the Jinja2 Template format
     that is used in `process-join-data.py`
     """
+
     ldapBase = '{{ .ldapBase }}'
+
+    primaryGroupCN = "Domain Users"
+    isOxUser = "Not"
+    nonAdminFeatures = [
+        'swpFileshareEnabled: "TRUE"',
+        'swpProjectmanagementEnabled: "TRUE"',
+        'swpKnowledgemanagementEnabled: "TRUE"',
+        'swpLivecollaborationEnabled: "TRUE"',
+    ]
+
+    nonAdminFeaturesFormatted = "\n".join([f"    {feature}" for feature in nonAdminFeatures])
+
+    if "admin" in user_name:
+        primaryGroupCN = "Domain Admins"
+        isOxUser = "OK"
+        nonAdminFeaturesFormatted = ""
+
     return f'''---
 action: "create"
 module: "users/user"
@@ -22,12 +40,15 @@ properties:
     username: "{user_name}"
     firstname: "{first_name}"
     lastname: "{last_name}"
-    primaryGroup: "cn=Domain Admins,cn=groups,{ldapBase}"
-    password: "SWPtester"
+    primaryGroup: "cn={primaryGroupCN},cn=groups,{ldapBase}"
+    PasswordRecoveryEmail: "{email}" 
+    password: "{password}"
+    isOxUser: "{isOxUser}"
+{nonAdminFeaturesFormatted}
 '''
 
 
-def main(input_file):
+def main(input_file, password):
     """
     Iterate over a tab separated file containing one user per line
     with this order of fields: first name, last name, user name, e-mail address.
@@ -41,10 +62,10 @@ def main(input_file):
 
         for row in users_reader:
             (first_name, last_name, user_name, email) = row
-            print(format(user_name, first_name, last_name, email))
+            print(format(user_name, first_name, last_name, email, password))
 
     print("{{ end }}")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2])
