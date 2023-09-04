@@ -153,6 +153,15 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>resources</td>
+			<td>object</td>
+			<td><pre lang="json">
+{}
+</pre>
+</td>
+			<td>Will be mapped into the containers which run the import job as attribute "resources". See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ .</td>
+		</tr>
+		<tr>
 			<td>securityContext</td>
 			<td>object</td>
 			<td><pre lang="json">

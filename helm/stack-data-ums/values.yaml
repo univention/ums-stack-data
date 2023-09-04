@@ -54,6 +54,7 @@ nameOverride: ""
 nodeSelector: {}
 podAnnotations: {}
 podSecurityContext: {}
+resources: {}
 securityContext: {}
 tolerations: []
 

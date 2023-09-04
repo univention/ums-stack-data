@@ -34,6 +34,8 @@ spec:
         volumeMounts:
           - name: secrets
             mountPath: /run/secrets/univention.de/data-loader
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       {{ end }}
       containers:
       - name: "load-data-swp"
@@ -50,6 +52,8 @@ spec:
           - name: "data"
             mountPath: "/join-data"
             readOnly: true
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
       volumes:
       - name: "secrets"
         secret:

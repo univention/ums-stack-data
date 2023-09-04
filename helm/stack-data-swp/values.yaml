@@ -79,6 +79,9 @@ nameOverride: ""
 nodeSelector: {}
 podAnnotations: {}
 podSecurityContext: {}
+# -- Will be mapped into the containers which run the import job as attribute "resources".
+# See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ .
+resources: {}
 securityContext: {}
 tolerations: []
 
