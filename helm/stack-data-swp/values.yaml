@@ -17,7 +17,12 @@ stackDataSwp:
   # -- The name of the ConfigMap to import the data from
   dataConfigMapName: null
 
-  # -- An additional set of demo users, typically supplied in a seperate values file
+  # -- An additional set of demo users, typically supplied in a seperate values file in the form:
+  # - username: dummy.user
+  #   firstname: Dummy
+  #   lastname: User
+  #   primaryGroupCN: Domain Users
+  #   password: secretPW
   demoUsers: null
 
   # -- Load data which is useful during development (opt-in)

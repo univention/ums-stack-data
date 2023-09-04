@@ -249,6 +249,15 @@ null
 			<td>The name of the ConfigMap to import the data from</td>
 		</tr>
 		<tr>
+			<td>stackDataSwp.demoUsers</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>An additional set of demo users, typically supplied in a seperate values file in the form: - username: dummy.user   firstname: Dummy   lastname: User   primaryGroupCN: Domain Users   password: secretPW</td>
+		</tr>
+		<tr>
 			<td>stackDataSwp.dependencyUdmApiWait</td>
 			<td>bool</td>
 			<td><pre lang="json">

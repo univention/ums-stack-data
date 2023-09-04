@@ -2,6 +2,8 @@
 
 """
 Utility script to convert demo user input from csv to be used for initial user import
+It is called puma, because of using the format of the list of users here:
+https://gitlab.souvap-univention.de/souvap/tools/puma
 """
 
 import csv
