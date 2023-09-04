@@ -7,65 +7,67 @@ Utility script to convert demo user input from csv to be used for initial user i
 import csv
 import sys
 
+# 3rd party
+import yaml
 
-def format(user_name, first_name, last_name, email, password):
+
+def create_user_object(user_name, first_name, last_name, password):
     """
-    Format the user data to match the Jinja2 Template format
-    that is used in `process-join-data.py`
+    Create a user object adding conditional properties based on the user type
     """
 
-    ldapBase = '{{ .ldapBase }}'
-
-    primaryGroupCN = "Domain Users"
-    isOxUser = "Not"
-    nonAdminFeatures = [
-        'swpFileshareEnabled: "TRUE"',
-        'swpProjectmanagementEnabled: "TRUE"',
-        'swpKnowledgemanagementEnabled: "TRUE"',
-        'swpLivecollaborationEnabled: "TRUE"',
-    ]
-
-    nonAdminFeaturesFormatted = "\n".join([f"    {feature}" for feature in nonAdminFeatures])
+    user_object = {
+        "username": user_name,
+        "firstname": first_name,
+        "lastname": last_name,
+        "primaryGroupCN": "Domain Users",
+        "password": password,
+    }
 
     if "admin" in user_name:
-        primaryGroupCN = "Domain Admins"
-        isOxUser = "OK"
-        nonAdminFeaturesFormatted = ""
+        user_object["primaryGroupCN"] = "Domain Admins"
+    else:
+        # TODO: there are other fields, that will need to be set,
+        #       based on the admin status of a user, e.g. "isOxUser"
+        pass
 
-    return f'''---
-action: "create"
-module: "users/user"
-position: "cn=users,{ldapBase}"
-properties:
-    username: "{user_name}"
-    firstname: "{first_name}"
-    lastname: "{last_name}"
-    primaryGroup: "cn={primaryGroupCN},cn=groups,{ldapBase}"
-    PasswordRecoveryEmail: "{email}" 
-    password: "{password}"
-    isOxUser: "{isOxUser}"
-{nonAdminFeaturesFormatted}
-'''
+    return user_object
 
 
 def main(input_file, password):
     """
     Iterate over a tab separated file containing one user per line
     with this order of fields: first name, last name, user name, e-mail address.
-    Then format the contents, so that they can be fed to `process-join-data.py`.
-    NOTE: CSV header row is not handled
+    Then create a yaml structure that can be used to import initial users to the
+    SWP stack.
+    NOTE: CSV header row is ignored
     """
-    print("{{ with .Values.stackDataContext }}")
 
     with open(input_file, "r", encoding="utf8") as users_file:
         users_reader = csv.reader(users_file, delimiter="\t")
 
+        config_object = {
+            "stackDataSwp": {
+                "demoUsers": [],
+            },
+        }
+
         for row in users_reader:
             (first_name, last_name, user_name, email) = row
-            print(format(user_name, first_name, last_name, email, password))
+            config_object["stackDataSwp"]["demoUsers"].append(
+                create_user_object(
+                    user_name,
+                    first_name,
+                    last_name,
+                    email,
+                    password,
+                ),
+            )
 
-    print("{{ end }}")
+        yaml.dump(data=config_object, sort_keys=False, stream=sys.stdout)
+
+    return 0
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    sys.exit(main(sys.argv[1], sys.argv[2]))
