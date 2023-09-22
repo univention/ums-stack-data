@@ -1,0 +1,23 @@
+{{ with .Values.stackDataContext }}
+{{- $context := . }}
+
+---
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
+properties:
+  name: "LDAPSearch Users"
+
+{{- range .ldapSearchUsers }}
+---
+action: "create"
+module: "users/user"
+position: "cn=users,{{ $context.ldapBase }}"
+properties:
+  username: {{ .username | quote }}
+  lastname: {{ .lastname | default "LDAPSearchUser" | quote }}
+  password: {{ required "ldapSearchUser.password is missing" .password | quote }}
+  primaryGroup: "cn=LDAPSearch Users,cn=groups,{{ $context.ldapBase }}"
+
+{{ end }}
+{{ end }}

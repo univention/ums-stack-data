@@ -178,6 +178,7 @@ true
   "externalDomainName": "univention-organization.test",
   "externalMailDomain": "univention-organization.test",
   "ldapBase": "dc=univention-organization,dc=intranet",
+  "ldapSearchUsers": [],
   "oxDefaultContext": "10",
   "portalFileshareLinkBase": "https://fs.{{ .Values.stackDataContext.externalDomainName }}",
   "portalGroupwareLinkBase": "https://webmail.{{ .Values.stackDataContext.externalDomainName }}",

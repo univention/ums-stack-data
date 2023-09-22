@@ -35,6 +35,7 @@ stackDataSwp:
 # -- Context used for rendering the data files
 stackDataContext:
   ldapBase: "dc=univention-organization,dc=intranet"
+  ldapSearchUsers: []
   externalDomainName: "univention-organization.test"
   externalMailDomain: "univention-organization.test"
   portalGroupwareLinkBase: "https://webmail.{{ .Values.stackDataContext.externalDomainName }}"
