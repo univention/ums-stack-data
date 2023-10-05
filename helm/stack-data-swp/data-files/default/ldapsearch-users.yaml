@@ -15,7 +15,7 @@ module: "users/user"
 position: "cn=users,{{ $context.ldapBase }}"
 properties:
   username: {{ .username | quote }}
-  lastname: {{ .lastname | default "LDAPSearchUser" | quote }}
+  lastname: {{ .lastname | default "LDAP-Search-User" | quote }}
   password: {{ required "ldapSearchUser.password is missing" .password | quote }}
   primaryGroup: "cn=LDAPSearch Users,cn=groups,{{ $context.ldapBase }}"
 
