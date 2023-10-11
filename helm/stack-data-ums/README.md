@@ -61,6 +61,15 @@ helm uninstall stack-data-udm
 			<td></td>
 		</tr>
 		<tr>
+			<td>configMapUcr</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"common.names.fullname\" . }}-ucr"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>environment</td>
 			<td>object</td>
 			<td><pre lang="json">
@@ -166,6 +175,24 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>stackDataContext.domainname</td>
+			<td>string</td>
+			<td><pre lang="json">
+"univention-organization.intranet"
+</pre>
+</td>
+			<td>Domain name of the instance. Example: `"example.org"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.hostname</td>
+			<td>string</td>
+			<td><pre lang="json">
+"portal"
+</pre>
+</td>
+			<td>Host name of the instance. Example: `"souvap"`</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.initialPasswordAdministrator</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -190,7 +217,34 @@ true
 "dc=univention-organization,dc=intranet"
 </pre>
 </td>
-			<td></td>
+			<td>Base DN of the LDAP directory. Example: `"dc=example,dc=org"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.ldapHost</td>
+			<td>string</td>
+			<td><pre lang="json">
+"ldap-server"
+</pre>
+</td>
+			<td>Hostname of the LDAP server. Example: `"ucs-1234.univention.intranet"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.ldapHostDn</td>
+			<td>string</td>
+			<td><pre lang="json">
+"cn=admin,dc=univention-organization,dc=intranet"
+</pre>
+</td>
+			<td>DN of the UMS instance. Example: `"cn=ucs-1234,cn=dc,cn=computers,dc=example,dc=org"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.ldapPort</td>
+			<td>int</td>
+			<td><pre lang="json">
+389
+</pre>
+</td>
+			<td>Port to connect to the LDAP server. Example: `389`</td>
 		</tr>
 		<tr>
 			<td>stackDataUms.dependencyUdmApiWait</td>

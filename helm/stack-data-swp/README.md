@@ -66,6 +66,15 @@ helm uninstall stack-data-swp
 			<td></td>
 		</tr>
 		<tr>
+			<td>configMapUcrForced</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"common.names.fullname\" . }}-ucr"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>environment</td>
 			<td>object</td>
 			<td><pre lang="json">

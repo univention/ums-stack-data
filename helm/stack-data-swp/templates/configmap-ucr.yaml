@@ -1,0 +1,17 @@
+---
+{{ include "common.configMap" (dict "top" . "overrides" "stack-data-swp.configMap-ucr") }}
+
+{{- define "stack-data-swp.configMap-ucr" }}
+{{- with .top }}
+{{- /*
+  Place any UCR settings specific to the openDesk project here.
+*/ -}}
+metadata:
+  name: '{{ include "common.names.fullname" . }}-ucr'
+data:
+  base.conf: |
+    directory/manager/rest/ldap-connection/user-read/start-tls: 0
+    uldap/start-tls: 0
+{{- end }}
+{{- end }}
+...
