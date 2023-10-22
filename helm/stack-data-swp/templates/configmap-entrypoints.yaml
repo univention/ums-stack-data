@@ -1,0 +1,23 @@
+---
+{{ include "common.configMap" (dict "top" . "overrides" "stack-data-swp.configMap-umc-gateway-entrypoint") }}
+
+{{- define "stack-data-swp.configMap-umc-gateway-entrypoint" }}
+{{- with .top }}
+{{- /*
+  Apply additional modifications to the UMC-gateway container via an entrypoint script.
+*/ -}}
+metadata:
+  name: '{{ include "common.names.fullname" . }}-umc-gateway-entrypoint'
+data:
+  90-swp.sh: |
+    #!/bin/bash
+    echo "Applying SWP UI customization script..."
+    # Remove setupSettingsContextMenu from setupMenus()
+    sed --in-place --expression="/setupCertificateMenu();/d" /usr/share/univention-web/js/umc/hooks/default_menu_entries.js
+    # Remove setupHelpMenu from setupMenus()
+    sed --in-place --expression="/setupHelpMenu();/d" /usr/share/univention-web/js/umc/hooks/default_menu_entries.js
+    # Set username maxLength
+    sed --in-place --expression="s/maxLength: 999,/maxLength: 20,/" /usr/share/univention-management-console-frontend/js/umc/modules/udm/UsernameMaxLengthChecker.js
+{{- end }}
+{{- end }}
+...
