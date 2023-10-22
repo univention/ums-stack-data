@@ -7,20 +7,22 @@ metadata:
   name: '{{ include "common.names.fullname" . }}-ucr'
 data:
   base.conf: |-
-    ldap/master: {{ .Values.stackDataContext.ldapHost }}
-    ldap/master/port: {{ .Values.stackDataContext.ldapPort }}
-    ldap/server/name: {{ .Values.stackDataContext.ldapHost }}
-    ldap/server/port: {{ .Values.stackDataContext.ldapPort }}
-    ldap/hostdn: {{ .Values.stackDataContext.ldapHostDn }}
-    ldap/base: {{ .Values.stackDataContext.ldapBase }}
-    domainname: {{ .Values.stackDataContext.domainname }}
-    hostname: {{ .Values.stackDataContext.hostname }}
-    directory/manager/rest/authorized-groups/dc-backup: cn=DC Backup Hosts,cn=groups,{{ .Values.stackDataContext.ldapBase }}
-    directory/manager/rest/authorized-groups/dc-slaves: cn=DC Slave Hosts,cn=groups,{{ .Values.stackDataContext.ldapBase }}
-    directory/manager/rest/authorized-groups/domain-admins: cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}
+    ad/member: false
+    apache2/autostart: yes
+    apache2/documentroot: /var/www/
+    apache2/force_https/exclude/http_host/localhost: localhost
+    apache2/force_https/exclude/request_uri/mod-status: /server-status
+    apache2/force_https/exclude/request_uri/univention-portal: /univention/get
+    apache2/loglevel: warn
+    apache2/maxclients: 150
+    apache2/startsite: univention/
+    auth/methods: ldap
+    directory/manager/rest/authorized-groups/dc-backup: cn: DC Backup Hosts,cn: groups,{{ .Values.stackDataContext.ldapBase }}
+    directory/manager/rest/authorized-groups/dc-slaves: cn: DC Slave Hosts,cn: groups,{{ .Values.stackDataContext.ldapBase }}
+    directory/manager/rest/authorized-groups/domain-admins: cn: Domain Admins,cn: groups,{{ .Values.stackDataContext.ldapBase }}
     directory/manager/rest/debug_level: 5
     directory/manager/rest/ldap-connection/user-read/start-tls: 2
-    directory/manager/templates/alphanum/whitelist:
+    directory/manager/templates/alphanum/whitelist: ""
     directory/manager/user/activate_ldap_attribute_mailForwardCopyToSelf: yes
     directory/manager/user_group/uniqueness: true
     directory/manager/web/language: de_DE.UTF-8
@@ -41,13 +43,107 @@ data:
     directory/reports/templates/pdf/computer1: computers/computer "PDF Document" /etc/univention/directory/reports/default computers.rml
     directory/reports/templates/pdf/group1: groups/group "PDF Document" /etc/univention/directory/reports/default groups.rml
     directory/reports/templates/pdf/user1: users/user "PDF Document" /etc/univention/directory/reports/default users.rml
+    domainname: {{ .Values.stackDataContext.domainname }}
     groups/default/domainadmins: Domain Admins
     groups/default/printoperators: Printer-Admins
+    hostname: {{ .Values.stackDataContext.hostname }}
+    ldap/base: {{ .Values.stackDataContext.ldapBase }}
+    ldap/hostdn: {{ .Values.stackDataContext.ldapHostDn }}
+    ldap/master: {{ .Values.stackDataContext.ldapHost }}
+    ldap/master/port: {{ .Values.stackDataContext.ldapPort }}
+    ldap/server/name: {{ .Values.stackDataContext.ldapHost }}
+    ldap/server/port: {{ .Values.stackDataContext.ldapPort }}
     license/base: {{ .Values.stackDataContext.ldapBase }}
     locale/default: de_DE.UTF-8:UTF-8
     locale: de_DE.UTF-8:UTF-8 en_US.UTF-8:UTF-8
     password/hashing/method: SHA-512
+    portal/auth-mode: saml
+    portal/paths: /univention/portal/, /univention/umc/
+    server/role: domaincontroller_master
+    ssl/ca/cipher: aes256
+    ssl/common: Univention Corporate Server Root CA (ID: XXX)
+    ssl/country: DE
+    ssl/crl/interval: 7
+    ssl/crl/validity: 10
+    ssl/default/bits: 2048
+    ssl/default/days: 1825
+    ssl/default/hashfunction: sha256
+    ssl/email: ssl@example.org
+    ssl/host/objectclass: univentionDomainController,univentionMemberServer,univentionClient
+    ssl/locality: DE
+    ssl/organization: DE
+    ssl/organizationalunit: Univention Corporate Server
+    ssl/state: DE
+    ssl/update/expired: yes
+    ssl/validity/check: yes
+    ssl/validity/host: 20523
+    ssl/validity/root: 20523
+    ssl/validity/warning: 30
+    system/setup/showloginmessage: false
+    ucr/backup/enabled: yes
+    ucr/encoding/strict: true
+    ucs/server/languages/de_AT: Deutsch (Österreich)
+    ucs/server/languages/de_CH: Deutsch (Schweiz)
+    ucs/server/languages/de_DE: Deutsch
+    ucs/server/languages/en_GB: English (United Kingdom)
+    ucs/server/languages/en_US: English
+    ucs/server/robots/disallow: /
+    ucs/server/saml-idp-server/primary.example.org: primary.example.org
+    ucs/server/sso/fqdn: {{ .Values.stackDataContext.ssoFqdn }}
+    ucs/server/sso/virtualhost: true
+    ucs/web/license/requested: true
     uldap/start-tls: 2
+    umc/http/allowed-session-overtake/ranges: 0.0.0.0/0,::/0
+    umc/http/autostart: yes
+    umc/http/content-security-policy/connect-src: 'self'
+    umc/http/content-security-policy/default-src: 'unsafe-eval'
+    umc/http/content-security-policy/font-src: 'self'
+    umc/http/content-security-policy/form-action: 'self'
+    umc/http/content-security-policy/frame-ancestors: 'self'
+    umc/http/content-security-policy/frame-src: 'self' https://{{ .Values.stackDataContext.ssoFqdn }}
+    umc/http/content-security-policy/img-src: *
+    umc/http/content-security-policy/media-src: *
+    umc/http/content-security-policy/object-src: 'self'
+    umc/http/content-security-policy/script-src: 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com/ https://s.ytimg.com/
+    umc/http/content-security-policy/style-src: 'self' 'unsafe-inline'
+    umc/http/interface: 0.0.0.0
+    umc/http/enforce-session-cookie: true
+    umc/http/port: 8090
+    umc/http/response-timeout: 310
+    umc/http/session/timeout: 28800
+    umc/login/content-security-policy/frame-ancestors: 'self'
+    umc/login/links/how_do_i_login/enabled: true
+    umc/login/links/login_without_sso/enabled: true
+    umc/login/links/login_without_sso/text/de: Ohne Single Sign-On anmelden
+    umc/login/links/login_without_sso/text: Login without Single Sign On
+    umc/module/debug/level: 5
+    umc/module/timeout: 600
+    umc/module/udm/users/self/disabled: true
+    umc/saml/idp-server: {{ .Values.stackDataContext.samlMetadataUrl }}
+    umc/saml/idp-server-internal: {{ .Values.stackDataContext.samlMetadataUrlInternal }}
+    umc/saml/in-memory-identity-cache: false
+    umc/saml/schemes: {{ .Values.stackDataContext.samlSchemes }}
+    umc/saml/sp-server: {{ .Values.stackDataContext.samlSpServer }}
+    umc/saml/trusted/sp/primary.example.org: primary.example.org
+    umc/self-service/allow-authenticated-use: true
+    umc/self-service/content-security-policy/frame-ancestors: 'self'
+    umc/self-service/profiledata/enabled: true
+    umc/server/autostart: yes
+    umc/server/debug/level: 5
+    umc/server/processes: 1
+    umc/server/upload/max: 2048
+    umc/server/upload/min_free_space: 51200
+    umc/web/appliance/fast_setup_mode: true
+    umc/web/cache_bust: 1619020256
+    umc/web/favorites/default: welcome,udm:users/user,udm:groups/group,udm:computers/computer,appcenter:appcenter,updater
+    umc/web/feedback/description: [UMC-Feedback] Traceback
+    umc/web/feedback/mail: feedback@univention.de
+    umc/web/hooks/univention-management-console-module-passwordchange: passwordchange
+    umc/web/hooks/univention-web-js: default_menu_entries
+    umc/web/language: de_DE.UTF-8:UTF-8
+    umc/web/sso/enabled: true
+    umc/web/sso/newwindow: true
+    umc/web/startupdialog: false
     update/available: false
     update/reboot/required: false
     uuid/license: 00000000-0000-0000-0000-000000000000
