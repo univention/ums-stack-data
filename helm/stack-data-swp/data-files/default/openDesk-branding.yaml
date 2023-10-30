@@ -1,0 +1,10 @@
+
+{{ with .Values.stackDataContext }}
+
+---
+action: "modify"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  logo: {{ $.Files.Get "data-files/default/branding-swp/logo_small_border.svg" | b64enc | quote }}
+{{ end }}
