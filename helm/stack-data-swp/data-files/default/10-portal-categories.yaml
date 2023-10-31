@@ -7,8 +7,7 @@ position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   name: "swp.anonymous"
   displayName:
-    de_DE: "Souveräner Arbeitsplatz"
-    en_US: "Sovereign Workplace"
+    en_US: ""
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
