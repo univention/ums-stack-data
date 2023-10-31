@@ -12,6 +12,7 @@ data:
   base.conf: |
     directory/manager/rest/ldap-connection/user-read/start-tls: 0
     uldap/start-tls: 0
+    ucs/web/theme: light
     umc/cookie-banner/show: true
     umc/cookie-banner/text/de: Cookie Zustimmung
     umc/cookie-banner/text/de: Die Nutzung dieses Angebots ist nur möglich, wenn Cookies gespeichert und verarbeitet werden können (essenzielle Cookies). Dafür benötigen wir Ihre Zustimmung. Bitte akzeptieren Sie um fortzufahren oder schließen Sie die Seite.
