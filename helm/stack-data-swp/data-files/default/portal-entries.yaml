@@ -1,6 +1,18 @@
 {{ with .Values.stackDataContext }}
 
 ---
+action: "modify"
+module: "portals/entry"
+position: "cn=login-ucs,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: "cn=umc-domain,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  activated: false
+---
 action: "create"
 module: "portals/entry"
 position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
