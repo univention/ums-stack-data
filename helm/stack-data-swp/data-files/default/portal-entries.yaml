@@ -604,10 +604,10 @@ properties:
   name: "swp.externallinks.legalnotice"
   icon: {{ $.Files.Get "data-files/default/portal-icons/dummy.svg" | b64enc | quote }}
   link:
-    - - de_DU
+    - - "de_DE"
       - "https://www.bmi.bund.de/DE/service/impressum/impressum_node.html"
     - - "en_US"
-      - "https://www.bmi.bund.de/EN/service/impressum/impressum_node.html"
+      - "https://www.bmi.bund.de/DE/service/impressum/impressum_node.html"
   anonymous: false
   linkTarget: "newwindow"
   target: "ext_legalnotice"
