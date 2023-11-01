@@ -60,19 +60,6 @@ build-joinscript-tools:
     CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/joinscript-tools"
 
 
-release:
-  # TODO: Make a base image for this tool
-  image: "${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:18-buster-slim"
-  stage: "package"
-  before_script:
-    - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
-    - npm install -g semantic-release @semantic-release/gitlab conventional-changelog-conventionalcommits
-  script:
-    - semantic-release
-  rules:
-    - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
-
-
 publish-image-souvap-data-loader:
   needs:
     - job: build-data-loader
