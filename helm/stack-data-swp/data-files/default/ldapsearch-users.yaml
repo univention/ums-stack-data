@@ -11,7 +11,7 @@ properties:
 {{- range .ldapSearchUsers }}
 ---
 action: "create"
-module: "users/user"
+module: "users/ldap"
 position: "cn=users,{{ $context.ldapBase }}"
 properties:
   username: {{ .username | quote }}
