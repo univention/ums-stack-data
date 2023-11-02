@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.13.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.0...v0.13.1) (2023-11-02)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** Create LDAP search users as users/ldap, so they are hidden from the Admin UI ([da70394](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/da70394085c1b3f98a17e57f40a9c9c14f40885f))
+* **stack-data-swp:** Reorder productivity icons for openDesk ([ffc241c](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/ffc241c5117d708ebb582cd3d138764a46f1f733))
+
 ## [0.13.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.12.0...v0.13.0) (2023-11-02)
 
 
