@@ -28,6 +28,31 @@ properties:
   operation:
     - command: "udm/*"
       option: "objectType=oxresources/*"
+    - command: "udm/properties"
+      option: "objectType=policies/*"
+    - command: "udm/layout"
+      option: "objectType=policies/*"
+    - command: "udm/query"
+      option: "objectType=policies/*"
+---
+action: create
+module: settings/umc_operationset
+position: "cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "ox-context"
+  description: "Administration for OX contexts"
+  flavor: "oxmail/oxcontext"
+  hosts: []
+  objectFlag: []
+  operation:
+    - command: "udm/*"
+      option: "objectType=oxmail/*"
+    - command: "udm/properties"
+      option: "objectType=policies/*"
+    - command: "udm/layout"
+      option: "objectType=policies/*"
+    - command: "udm/query"
+      option: "objectType=policies/*"
 ---
 action: create
 module: settings/umc_operationset
