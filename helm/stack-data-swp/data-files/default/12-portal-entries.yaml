@@ -339,6 +339,7 @@ properties:
   entries:
   - "cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
   - "cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
 action: create

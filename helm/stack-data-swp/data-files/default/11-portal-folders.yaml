@@ -9,12 +9,5 @@ properties:
   displayName:
     de_DE: "Erstelle neue Dateien"
     en_US: "Create new files"
----
-action: ensure_list_contains
-module: portals/category
-position: cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}
-properties:
-  entries:
-    - "cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
 
 {{ end }}
