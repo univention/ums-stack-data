@@ -17,7 +17,6 @@ properties:
   username: {{ .username | quote }}
   lastname: {{ .lastname | default "LDAP-Search-User" | quote }}
   password: {{ required "ldapSearchUser.password is missing" .password | quote }}
-  primaryGroup: "cn=LDAPSearch Users,cn=groups,{{ $context.ldapBase }}"
 
 {{ end }}
 {{ end }}
