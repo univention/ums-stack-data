@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.1...v0.13.2) (2023-11-03)
+
+
+### Bug Fixes
+
+* **versions:** produce version-tagged Docker images ([c4d929d](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c4d929dcf48ffd45cdc35905c45a35719b54b85b))
+
 ## [0.13.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.0...v0.13.1) (2023-11-02)
 
 
