@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.2...v0.13.3) (2023-11-03)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** Remove invalid property from users/ldap ([37ecf37](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/37ecf37c272977f634fa01904623a147de737d61))
+
 ## [0.13.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.1...v0.13.2) (2023-11-03)
 
 
