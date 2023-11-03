@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.3...v0.14.0) (2023-11-03)
+
+
+### Features
+
+* **swp:** ox-connector install join ([f149606](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f14960641032154d7ba1b15a860bc4c114855bdf))
+
 ## [0.13.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.2...v0.13.3) (2023-11-03)
 
 
