@@ -2,24 +2,28 @@
 
 include:
   - project: "univention/customers/dataport/upx/common-ci"
-    ref: "v0.4.0"
+    ref: "v0.5.0"
     file:
       # TODO: Sphinx docs inherits a stage definition from upstream,
       # has to be included before our default stages to avoid trouble.
-      - jobs/sphinx-docs.yaml
-      - defaults/souvap-workflow.yaml
-      - defaults/stages.yaml
-      - templates/kaniko.yaml
-      - templates/souvap.yaml
-      - jobs/lint-commit-messages.yaml
-      - jobs/lint-pre-commit.yaml
-      - jobs/package-and-publish-helm-charts.yaml
-      - jobs/semantic-release.yaml
+      - "jobs/sphinx-docs.yaml"
+      - "defaults/souvap-workflow.yaml"
+      - "defaults/stages.yaml"
+      - "templates/kaniko.yaml"
+      - "templates/semantic-release-env.yaml"
+      - "templates/souvap.yaml"
+      - "jobs/lint-commit-messages.yaml"
+      - "jobs/lint-pre-commit.yaml"
+      - "jobs/package-and-publish-helm-charts.yaml"
 
 
 variables:
   SOUVAP_HELM_PROJECT_ID: 155
   SOUVAP_REGISTRY_PATH: souvap/tooling/images/univention
+
+
+pre-semantic-release:
+  extends: ".pre-semantic-release"
 
 
 build-data-loader-test-runner:
@@ -45,20 +49,32 @@ test-data-loader:
 build-data-loader:
   stage: "build"
   extends: ".kaniko"
-  needs: []
+  needs:
+    - job: "pre-semantic-release"
+      artifacts: true
   variables:
     KANIKO_BUILD_CONTEXT: "docker/data-loader"
     CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader"
     KANIKO_ARGS: "--target=final"
+    VERSION: "${RELEASE_VERSION}"
 
 
 build-joinscript-tools:
   stage: "build"
   extends: ".kaniko"
-  needs: []
+  needs:
+    - job: "pre-semantic-release"
+      artifacts: true
   variables:
     KANIKO_BUILD_CONTEXT: "docker/joinscript-tools"
     CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/joinscript-tools"
+    VERSION: "${RELEASE_VERSION}"
+
+
+package-helm-charts:
+  needs:
+    - job: "pre-semantic-release"
+      artifacts: true
 
 
 publish-image-souvap-data-loader:
