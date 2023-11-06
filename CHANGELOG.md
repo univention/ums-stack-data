@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.15.0...v0.15.1) (2023-11-06)
+
+
+### Bug Fixes
+
+* Provide stub data to workaround required fields during stack bootstrap ([27dd15d](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/27dd15d5cfe3fdf164ee6c43a28d3143ec1b37a5))
+
 ## [0.15.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.14.0...v0.15.0) (2023-11-06)
 
 
