@@ -184,6 +184,15 @@ true
 			<td>Domain name of the instance. Example: `"example.org"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.externalMailDomain</td>
+			<td>string</td>
+			<td><pre lang="json">
+"univention-organization.test"
+</pre>
+</td>
+			<td>Interim. The external mail domain in use. Currently required to create the Administrator account.</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.hostname</td>
 			<td>string</td>
 			<td><pre lang="json">

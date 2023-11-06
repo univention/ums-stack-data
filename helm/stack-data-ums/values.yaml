@@ -24,6 +24,11 @@ stackDataContext:
   # -- Domain name of the instance.
   # Example: `"example.org"`
   domainname: "univention-organization.intranet"
+  # TODO: Replace workaround
+  # See: https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
+  # -- Interim. The external mail domain in use. Currently required to create
+  # the Administrator account.
+  externalMailDomain: "univention-organization.test"
   # -- Host name of the instance.
   # Example: `"souvap"`
   hostname: "portal"

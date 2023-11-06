@@ -8,6 +8,13 @@ position: "cn=users,{{ .ldapBase }}"
 properties:
   username: "Administrator"
   lastname: "Administrator"
+
+  # TODO: Workaround. We configure currently "firstname" and
+  # "mailPrimaryAddress" as required via UCR settings.
+  # See: https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
+  firstname: "Admin"
+  mailPrimaryAddress: "administrator@{{ .externalMailDomain }}"
+
   password: {{ required "stackDataContext.initialPasswordAdministrator is missing" .initialPasswordAdministrator | quote }}
   primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
 ---

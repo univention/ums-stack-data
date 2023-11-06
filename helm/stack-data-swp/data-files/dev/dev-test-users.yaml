@@ -19,8 +19,7 @@ properties:
   # swpKnowledgemanagementEnabled: "TRUE"
   # swpLivecollaborationEnabled: "TRUE"
 
-  # TODO: Provide this value
-  # mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
 ---
 action: "create"
 module: "users/user"
@@ -31,6 +30,5 @@ properties:
   lastname: "admin"
   primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
   password: "SWPtester"
-  # TODO: Provide this value
-  # mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "test.admin@{{ .externalMailDomain }}"
 {{ end }}
