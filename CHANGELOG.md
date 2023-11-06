@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.15.1...v0.15.2) (2023-11-06)
+
+
+### Bug Fixes
+
+* **docker:** bump common-ci to build latest image ([6c4effe](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/6c4effe97e351ac5d548694c40d99e27ebd4259e))
+
 ## [0.15.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.15.0...v0.15.1) (2023-11-06)
 
 
