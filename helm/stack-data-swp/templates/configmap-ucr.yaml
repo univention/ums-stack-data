@@ -11,6 +11,16 @@ metadata:
 data:
   base.conf: |
     directory/manager/rest/ldap-connection/user-read/start-tls: 0
+    directory/manager/web/modules/users/user/properties/firstname/required: true
+    directory/manager/web/modules/users/user/properties/mailPrimaryAddress/required: true
+    directory/manager/web/modules/users/user/properties/username/syntax: uid
+    directory/manager/web/modules/users/user/search/autosearch: False
+    directory/manager/web/modules/users/user/wizard/property/invite/default: True
+    directory/manager/web/modules/users/user/wizard/property/overridePWLength/default: False
+    directory/manager/web/modules/users/user/wizard/property/overridePWLength/visible: False
+    directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/default: True
+    directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/visible: False
+    directory/manager/web/modules/wizard/disabled: No
     uldap/start-tls: 0
     ucs/web/theme: light
     umc/cookie-banner/show: true
