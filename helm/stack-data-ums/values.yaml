@@ -46,19 +46,22 @@ stackDataContext:
   ldapHostDn: "cn=admin,dc=univention-organization,dc=intranet"
   # -- SAML Identity Provider metadata URL (as visible from the user/internet).
   # Example: `"https://id.souvap.example.org/realms/ucs/protocol/saml/descriptor"`
-  samlMetadataUrl: null
+  idpSamlMetadataUrl: null
   # -- SAML Identity Provider metadata URL (as visible from inside the container), optional.
   # Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`
-  samlMetadataUrlInternal: ""
-  # -- SAML Service Provider hostname
-  # Example: `"souvap.example.org"`
-  samlSpServer: null
+  idpSamlMetadataUrlInternal: ""
+  # -- SAML Service Provider hostname (FQDN of the UMC, which is the service provider)
+  # Example: `"portal.souvap.example.org"`
+  umcSamlSpFqdn: null
   # -- Which address scheme to consider for SAML ACS (string, comma-separated).
   # Example: `"https, http"`
-  samlSchemes: "https"
+  umcSamlSchemes: "https"
   # -- The FQDN of the identity provider (w/o the protocol specification).
-  # Example: `id.souvap.example.org`
-  ssoFqdn: null
+  # Example: `"id.souvap.example.org"`
+  idpFqdn: null
+  # -- List of SAML Service Provider URLs which the LDAP server should trust (comma-separated).
+  # Example: `"https://portal.souvap.example.org/univention/saml/metadata"`
+  ldapSamlSpUrls: null
 
   # -- The initial password will be filled with a random value if it is not
   # provided. The password will be stored in a Kubernetes Secret if a random one

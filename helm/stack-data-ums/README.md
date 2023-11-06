@@ -202,6 +202,33 @@ true
 			<td>Host name of the instance. Example: `"souvap"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.idpFqdn</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>The FQDN of the identity provider (w/o the protocol specification). Example: `"id.souvap.example.org"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.idpSamlMetadataUrl</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>SAML Identity Provider metadata URL (as visible from the user/internet). Example: `"https://id.souvap.example.org/realms/ucs/protocol/saml/descriptor"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.idpSamlMetadataUrlInternal</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>SAML Identity Provider metadata URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.initialPasswordAdministrator</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -256,25 +283,16 @@ true
 			<td>Port to connect to the LDAP server. Example: `389`</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.samlMetadataUrl</td>
+			<td>stackDataContext.ldapSamlSpUrls</td>
 			<td>string</td>
 			<td><pre lang="json">
 null
 </pre>
 </td>
-			<td>SAML Identity Provider metadata URL (as visible from the user/internet). Example: `"https://id.souvap.example.org/realms/ucs/protocol/saml/descriptor"`</td>
+			<td>List of SAML Service Provider URLs which the LDAP server should trust (comma-separated). Example: `"https://portal.souvap.example.org/univention/saml/metadata"`</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.samlMetadataUrlInternal</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>SAML Identity Provider metadata URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.samlSchemes</td>
+			<td>stackDataContext.umcSamlSchemes</td>
 			<td>string</td>
 			<td><pre lang="json">
 "https"
@@ -283,22 +301,13 @@ null
 			<td>Which address scheme to consider for SAML ACS (string, comma-separated). Example: `"https, http"`</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.samlSpServer</td>
+			<td>stackDataContext.umcSamlSpFqdn</td>
 			<td>string</td>
 			<td><pre lang="json">
 null
 </pre>
 </td>
-			<td>SAML Service Provider hostname Example: `"souvap.example.org"`</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.ssoFqdn</td>
-			<td>string</td>
-			<td><pre lang="json">
-null
-</pre>
-</td>
-			<td>The FQDN of the identity provider (w/o the protocol specification). Example: `id.souvap.example.org`</td>
+			<td>SAML Service Provider hostname (FQDN of the UMC, which is the service provider) Example: `"portal.souvap.example.org"`</td>
 		</tr>
 		<tr>
 			<td>stackDataUms.dependencyUdmApiWait</td>
