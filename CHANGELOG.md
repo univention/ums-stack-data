@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.14.0...v0.15.0) (2023-11-06)
+
+
+### Features
+
+* Apply UCR settings regarding the User Creation Wizard ([59696d1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/59696d1e43b3003eb14de76565ea807ccd5e5af6))
+
 ## [0.14.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.13.3...v0.14.0) (2023-11-03)
 
 
