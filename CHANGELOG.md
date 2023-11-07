@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.16.0...v0.17.0) (2023-11-07)
+
+
+### Features
+
+* **swp:** Add OX Context tile ([96f268c](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/96f268c2eb6bd817d8566121c4c61052dd50afb9))
+
 ## [0.16.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.15.2...v0.16.0) (2023-11-07)
 
 
