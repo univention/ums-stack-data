@@ -80,6 +80,7 @@ properties:
   hook: oxContextRW
   groupName: Open-Xchange
   groupPosition: 1
+  disableUDMWeb: False
 
 ---
 action: "create"
@@ -182,6 +183,7 @@ properties:
   hook:
   groupName: Open-Xchange
   groupPosition: 1
+  disableUDMWeb: True
 
 ---
 action: "create"
@@ -216,6 +218,7 @@ properties:
   hook:
   groupName: Open-Xchange
   groupPosition: 1
+  disableUDMWeb: True
 
 ---
 action: "create"
@@ -250,6 +253,7 @@ properties:
   hook:
   groupName: Open-Xchange
   groupPosition: 1
+  disableUDMWeb: True
 
 ---
 action: "create"
@@ -2622,6 +2626,7 @@ properties:
     de_DE: "Gruppen-Konto"
   groupName: Group account
   groupPosition: 1
+  disableUDMWeb: True
 
 ---
 action: "create"
@@ -2724,6 +2729,7 @@ properties:
   hook:
   groupName: Open-Xchange
   groupPosition: 1
+  disableUDMWeb: True
 
 ---
 action: "create"
@@ -2758,6 +2764,7 @@ properties:
   hook:
   groupName: Open-Xchange
   groupPosition: 1
+  disableUDMWeb: True
 
 ---
 action: "create"
@@ -2790,6 +2797,8 @@ properties:
   overwritePosition:
   doNotSearch: False
   hook: oxContextRW
+  disableUDMWeb: False
+  notEditable: False
 
 
 # Create user template
