@@ -31,5 +31,12 @@ data:
 {{- end }}
 {{- end }}
 
+{{- if .Values.stackDataUms.extraDataFiles }}
+{{- range $filename, $filecontent := .Values.stackDataUms.extraDataFiles }}
+  {{ $filename }}: |-
+{{ tpl $filecontent $.top | indent 4 }}
+{{- end }}
+{{- end }}
+
 {{- end }}
 {{- end }}

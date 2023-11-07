@@ -31,6 +31,13 @@ data:
 {{- end }}
 {{- end }}
 
+{{- if .Values.stackDataSwp.extraDataFiles }}
+{{- range $filename, $filecontent := .Values.stackDataSwp.extraDataFiles }}
+  {{ $filename }}: |-
+{{ tpl $filecontent $.top | indent 4 }}
+{{- end }}
+{{- end }}
+
 {{- $demoUsers := .Values.stackDataSwp.demoUsers -}}
 {{- if $demoUsers }}
   demoUsers: |-
