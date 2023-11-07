@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.15.2...v0.16.0) (2023-11-07)
+
+
+### Features
+
+* make the udm-data configmap extensible via custom values files ([f435fe5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f435fe5f68b1047616619a2a84d00a261c282fba))
+
 ## [0.15.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.15.1...v0.15.2) (2023-11-06)
 
 
