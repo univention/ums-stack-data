@@ -164,6 +164,26 @@ properties:
     en_US: "Resources"
   target: "tab_admin"
 ---
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "swp.admin_context"
+  icon: {{ $.Files.Get "data-files/default/portal-icons/admin_context.svg" | b64enc | quote }}
+  link:
+    - - "en_US"
+      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxmail/oxcontext"
+  allowedGroups:
+{{ toYaml .portaltileGroupUserAdmin | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Verwaltung von Groupware-Kontexten"
+    en_US: "Manage contexts for groupware"
+  displayName:
+    de_DE: "OX-Kontext-Objekte"
+    en_US: "OX-Contexts"
+  target: "tab_admin"
+---
 action: "ensure_list_contains"
 module: "portals/category"
 position: "cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
@@ -171,6 +191,7 @@ properties:
   entries:
   - "cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
   - "cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.admin_context,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 
 ---
 action: "create"

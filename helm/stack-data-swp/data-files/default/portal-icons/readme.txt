@@ -5,6 +5,7 @@
 - admin_functionalmailbox.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Alocal_post_office%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
 - admin_group.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
 - admin_resource.svg > https://fonts.google.com/icons?icon.query=room&selected=Material+Symbols+Outlined:meeting_room:FILL@0;wght@400;GRAD@0;opsz@48
+- admin_context.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Abrowse%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
 - admin_user.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
 - anonymous_login.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
 - dummy.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
