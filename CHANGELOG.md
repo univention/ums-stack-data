@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.17.0...v0.18.0) (2023-11-08)
+
+
+### Features
+
+* Apply hardening configuration regarding UMC cookies ([2ac6680](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2ac6680d392db38fdb43806b0effd3b210d752c8))
+
 ## [0.17.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.16.0...v0.17.0) (2023-11-07)
 
 
