@@ -22,6 +22,7 @@ data:
     directory/manager/rest/authorized-groups/domain-admins: cn: Domain Admins,cn: groups,{{ .Values.stackDataContext.ldapBase }}
     directory/manager/rest/debug_level: 5
     directory/manager/rest/ldap-connection/user-read/start-tls: 2
+    directory/manager/rest/show-tracebacks: false
     directory/manager/templates/alphanum/whitelist: ""
     directory/manager/user/activate_ldap_attribute_mailForwardCopyToSelf: yes
     directory/manager/user_group/uniqueness: true
@@ -159,6 +160,7 @@ data:
     umc/http/port: 8090
     umc/http/response-timeout: 310
     umc/http/session/timeout: 28800
+    umc/http/show_tracebacks: false
     umc/login/content-security-policy/frame-ancestors: 'self'
     umc/login/links/how_do_i_login/enabled: true
     umc/login/links/login_without_sso/enabled: true
