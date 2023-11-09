@@ -21,6 +21,8 @@ data:
     directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/default: True
     directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/visible: False
     directory/manager/web/modules/wizard/disabled: No
+    ldap/pw-bcrypt: true
+    password/hashing/bcrypt: true
     uldap/start-tls: 0
     ucs/web/theme: light
     umc/cookie-banner/show: true
