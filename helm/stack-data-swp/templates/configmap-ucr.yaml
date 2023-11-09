@@ -23,8 +23,8 @@ data:
     directory/manager/web/modules/wizard/disabled: No
     ldap/pw-bcrypt: true
     password/hashing/bcrypt: true
-    uldap/start-tls: 0
     ucs/web/theme: light
+    uldap/start-tls: 0
     umc/cookie-banner/show: true
     umc/cookie-banner/text/de: Cookie Zustimmung
     umc/cookie-banner/text/de: Die Nutzung dieses Angebots ist nur möglich, wenn Cookies gespeichert und verarbeitet werden können (essenzielle Cookies). Dafür benötigen wir Ihre Zustimmung. Bitte akzeptieren Sie um fortzufahren oder schließen Sie die Seite.
