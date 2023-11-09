@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.20.0...v0.21.0) (2023-11-09)
+
+
+### Features
+
+* Disable Piwik tracking ([3eebbd0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/3eebbd0de8bc33ade154aed2f98a2d0f21bdf3d2))
+
 ## [0.20.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.19.0...v0.20.0) (2023-11-09)
 
 
