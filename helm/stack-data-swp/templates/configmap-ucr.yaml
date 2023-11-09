@@ -32,6 +32,8 @@ data:
     umc/http/enforce-secure-cookie: true
     umc/login/password-complexity-message/de: Das Passwort muss den folgenden Anforderungen entsprechen:<br><ul><li>Mindestlänge: 8 Zeichen</li></ul>Anmerkung: Wird befinden uns nicht in einer Produktivumgebung.
     umc/login/password-complexity-message/en: Password must comply with the following rules:<br><ul><li>Minimum length: 8 characters</li></ul>Note: We are in a non production (dev/test/demo) system.
+    umc/module/udm/oxmail/oxcontext/disabled: True
+    umc/module/udm/portals/all/disabled: True
 {{- end }}
 {{- end }}
 ...
