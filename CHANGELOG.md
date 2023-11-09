@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.21.0...v0.21.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* **ucr:** include settings for container-ldap ([02ebd68](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/02ebd68166cc0896ded6c58329f683c63ccbee39))
+
 ## [0.21.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.20.0...v0.21.0) (2023-11-09)
 
 
