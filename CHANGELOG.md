@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.18.0...v0.19.0) (2023-11-09)
+
+
+### Features
+
+* Add messages regarding the password complexity rules. ([f66eb9f](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f66eb9f235c8dfd47b5052569bd6cfaf872c55c8))
+
 ## [0.18.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.17.0...v0.18.0) (2023-11-08)
 
 
