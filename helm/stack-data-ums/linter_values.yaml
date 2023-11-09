@@ -1,5 +1,8 @@
 ---
 
+stackDataContext:
+  initialPasswordAdministrator: "stub_password"
+
 stackDataUms:
   udmApiPassword: "stub_password"
 
