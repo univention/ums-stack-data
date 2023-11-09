@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.19.0...v0.20.0) (2023-11-09)
+
+
+### Features
+
+* Disable portal and oxcontext in admin interface ([b078aff](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b078aff12664705b177b4ef8190f16ca0e8fc33c))
+
 ## [0.19.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.18.0...v0.19.0) (2023-11-09)
 
 
