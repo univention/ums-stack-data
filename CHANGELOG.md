@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.22.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.21.1...v0.22.0) (2023-11-09)
+
+
+### Features
+
+* Configure password hashing to use "bcrypt" ([642e308](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/642e308f5f11dee6ba9a54a904d845166d9ac3ca))
+
 ## [0.21.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.21.0...v0.21.1) (2023-11-09)
 
 
