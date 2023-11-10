@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.25.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.24.1...v0.25.0) (2023-11-10)
+
+
+### Features
+
+* Add a stub value for "kerberos/realm" ([a41d990](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a41d9905e1b614f195624ace6948094f723cff9f))
+* Add a stub value for "kerberos/realm" ([a219a44](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a219a44f6023e5fbde09643720964d74d5b22f93))
+
 ## [0.24.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.24.0...v0.24.1) (2023-11-10)
 
 
