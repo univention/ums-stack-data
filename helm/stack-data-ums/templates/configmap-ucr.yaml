@@ -48,6 +48,8 @@ data:
     groups/default/domainadmins: Domain Admins
     groups/default/printoperators: Printer-Admins
     hostname: {{ .Values.stackDataContext.hostname }}
+    # TODO: "kerberos/realm" is needed by "ldap_server" currently.
+    kerberos/realm: stub_value
     ldap/acl/nestedgroups: yes
     ldap/acl/read/anonymous: no
     ldap/acl/slavepdc: yes
