@@ -2771,7 +2771,7 @@ module: "settings/extended_attribute"
 position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
 properties:
   name: "oxContextResource"
-  default: {{ .oxDefaultContext }}
+  default: "{{ .oxDefaultContext }}"
   module: [oxresources/oxresources]
   ldapMapping: oxContextIDNum
   objectClass: oxResourceObject
