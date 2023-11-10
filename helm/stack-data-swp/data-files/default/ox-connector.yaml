@@ -52,7 +52,7 @@ module: "settings/extended_attribute"
 position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
 properties:
   name: "oxContextUser"
-  default: {{ .oxDefaultContext }}
+  default: ""
   module: [users/user]
   ldapMapping: oxContextIDNum
   objectClass: oxUserObject
