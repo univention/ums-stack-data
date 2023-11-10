@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.22.0...v0.23.0) (2023-11-10)
+
+
+### Features
+
+* Disable showing tracebacks in umc and udm rest via UCR values ([1194301](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/119430121b0f3749427aa533ace3365cb20d9968))
+
 ## [0.22.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.21.1...v0.22.0) (2023-11-09)
 
 
