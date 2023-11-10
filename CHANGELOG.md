@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.24.0...v0.24.1) (2023-11-10)
+
+
+### Bug Fixes
+
+* **swp:** oxContext default should be string ([9b04929](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/9b049295804b1672a6f59246ddbc3572485c296e))
+
 ## [0.24.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.23.0...v0.24.0) (2023-11-10)
 
 
