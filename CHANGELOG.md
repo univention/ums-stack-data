@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.24.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.23.0...v0.24.0) (2023-11-10)
+
+
+### Features
+
+* **swp:** create default ox context ([a6128e6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a6128e68cbeeb0e0a5f1590f0855ff9c42692f72))
+
+
+### Bug Fixes
+
+* **swp:** add missing properties to ox extended attributes ([27a4db3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/27a4db38aa86e4add14c314f84d899123c54f111))
+
 ## [0.23.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.22.0...v0.23.0) (2023-11-10)
 
 
