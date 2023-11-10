@@ -168,6 +168,7 @@ action: "create"
 module: "portals/entry"
 position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
+  activated: false
   name: "swp.admin_context"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_context.svg" | b64enc | quote }}
   link:

@@ -2,7 +2,6 @@
 
 # Create extended attributes
 ---
-# FIXME: Likely this is not needed (only to track App container)
 action: "create"
 module: "container/cn"
 position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
@@ -53,7 +52,7 @@ module: "settings/extended_attribute"
 position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
 properties:
   name: "oxContextUser"
-  default: ""
+  default: {{ .oxDefaultContext }}
   module: [users/user]
   ldapMapping: oxContextIDNum
   objectClass: oxUserObject
@@ -2772,7 +2771,7 @@ module: "settings/extended_attribute"
 position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
 properties:
   name: "oxContextResource"
-  default: ""
+  default: {{ .oxDefaultContext }}
   module: [oxresources/oxresources]
   ldapMapping: oxContextIDNum
   objectClass: oxResourceObject
@@ -2949,6 +2948,14 @@ properties:
   multiplemailaccounts: True
   subscription: True
   usm: True
+
+# Create default context
+action: "create"
+module: "oxmail/oxcontext"
+position: "cn=open-xchange,{{ .ldapBase }}"
+properties:
+  contextid: {{ .oxDefaultContext }}
+  name: "{{ .oxDefaultContext }}"
 
 # Setup UMC
 ---

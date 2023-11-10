@@ -45,7 +45,7 @@ stackDataContext:
   portalManagementProjectLinkBase: "https://project.{{ .Values.stackDataContext.externalDomainName }}"
   portalManagementKnowledgeLinkBase: "https://wiki.{{ .Values.stackDataContext.externalDomainName }}"
 
-  oxDefaultContext: "10"
+  oxDefaultContext: 10
 
   portaltileGroupUserStandard:
     - "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
