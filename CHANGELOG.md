@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.25.0...v0.25.1) (2023-11-11)
+
+
+### Bug Fixes
+
+* Quote "oxDefaultContext" in "oxContextResource" ([afb9bc5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/afb9bc5979f3726aa86dddb2af1783ec7a3bcc43))
+
 ## [0.25.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.24.1...v0.25.0) (2023-11-10)
 
 
