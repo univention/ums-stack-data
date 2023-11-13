@@ -1,0 +1,59 @@
+#--------------------------------------------------------------------------
+# Copyright (c) 2022 Univention GmbH
+#--------------------------------------------------------------------------
+# GNU AGPL version 3 or any later version
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#--------------------------------------------------------------------------
+# 1.3.6.1.4.1.10176.99999.133295    BMI/Sovereign Workplace OID within
+#                                   Univention Context (1.3.6.1.4.1.10176)
+# 1.3.6.1.4.1.10176.99999.133295.1  Fileshare namespace
+# 1.3.6.1.4.1.10176.99999.133295.2  Projectmanagement namespace
+# 1.3.6.1.4.1.10176.99999.133295.3  Knowledgemanagement namespace
+# 1.3.6.1.4.1.10176.99999.133295.4  Livecollabration namespace
+# 1.3.6.1.4.1.10176.99999.133295.5  Learnmanagement namespace
+#
+# Within each component's namespace
+# - 1 is used for attributes
+# - 2 is used for object classes
+#--------------------------------------------------------------------------
+
+# Attribute Types
+#-----------------
+
+attributetype ( 1.3.6.1.4.1.10176.99999.133295.5.1.1 NAME 'opendeskLearnmanagementEnabled'
+  DESC 'whether user or group should be available in learn management component'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE
+  )
+
+# Object Classes
+#---------------
+
+objectclass ( 1.3.6.1.4.1.10176.99999.133295.5.2.1 NAME 'opendeskLearnmanagementUser'
+  DESC 'A Sovereign Workplace learn management user'
+  SUP top
+  AUXILIARY
+  MUST ( cn )
+  MAY ( opendeskLearnmanagementEnabled )
+  )
+
+objectclass ( 1.3.6.1.4.1.10176.99999.133295.5.2.2 NAME 'opendeskLearnmanagementGroup'
+  DESC 'A Sovereign Workplace learn management group'
+  SUP top
+  AUXILIARY
+  MUST ( cn )
+  MAY ( opendeskLearnmanagementEnabled )
+  )

@@ -2800,19 +2800,23 @@ properties:
   notEditable: False
 
 
-# Create user template
+# Create user template (see openDesk-attributes.yaml)
 ---
 action: "create"
 module: "settings/usertemplate"
 position: "cn=templates,cn=univention,{{ .ldapBase }}"
 properties:
-  name: "open-xchange groupware account"
+  name: "openDesk User"
+  isOxUser: True
+  opendeskFileshareEnabled: True
+  opendeskProjectmanagementEnabled: True
+  opendeskKnowledgemanagementEnabled: True
+  opendeskLivecollaborationEnabled: True
   mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
   e-mail: ["<username>@{{ .externalMailDomain }}"]
   unixhome: "/home/<username>"
-  oxDisplayName: "<firstname> <lastname>"
+  oxDisplayName: "<firstname> <lastname> (<username>)"
   oxAccess: "premium"
-  isOxUser: True
   primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
 
 # Create container

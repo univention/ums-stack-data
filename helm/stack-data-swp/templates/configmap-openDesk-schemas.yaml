@@ -1,0 +1,19 @@
+---
+{{ include "common.configMap" (dict "top" . "overrides" "stack-data-swp.configMap-schemas") }}
+
+{{- define "stack-data-swp.configMap-schemas" }}
+{{- with .top }}
+{{- /*
+  Apply SWP schemas to ldap-server container.
+*/ -}}
+metadata:
+  name: '{{ include "common.names.fullname" . }}-schemas'
+binaryData:
+  opendeskFileshare.schema: {{ .Files.Get "data-files/default/schemas-openDesk/opendeskFileshare.schema" | b64enc | quote }}
+  opendeskKnowledgemanagement.schema: {{ .Files.Get "data-files/default/schemas-openDesk/opendeskKnowledgemanagement.schema" | b64enc | quote }}
+  opendeskLearnmanagement.schema: {{ .Files.Get "data-files/default/schemas-openDesk/opendeskLearnmanagement.schema" | b64enc | quote }}
+  opendeskLivecollaboration.schema: {{ .Files.Get "data-files/default/schemas-openDesk/opendeskLivecollaboration.schema" | b64enc | quote }}
+  opendeskProjectmanagement.schema: {{ .Files.Get "data-files/default/schemas-openDesk/opendeskProjectmanagement.schema" | b64enc | quote }}
+
+{{- end }}
+{{- end }}

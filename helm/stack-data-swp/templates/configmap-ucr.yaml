@@ -20,6 +20,7 @@ data:
     directory/manager/web/modules/users/user/wizard/property/overridePWLength/visible: False
     directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/default: True
     directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/visible: False
+    directory/manager/web/modules/users/user/add/default: "cn=openDesk User,cn=templates,cn=univention,{{ .Values.ldapBase }}"
     directory/manager/web/modules/wizard/disabled: No
     ldap/pw-bcrypt: true
     password/hashing/bcrypt: true

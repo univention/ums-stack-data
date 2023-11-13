@@ -1,0 +1,173 @@
+{{ with .Values.stackDataContext }}
+
+---
+# Create container for openDesk custom attributes
+action: "create"
+module: "container/cn"
+position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendesk"
+---
+# Create extended attribute Fileshare for user
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskFileshareEnabledUser"
+  CLIName: "opendeskFileshareEnabled"
+  ldapMapping: "opendeskFileshareEnabled"
+  groupName: "Berechtigung: Login/Nutzung"
+  module: ["users/user"]
+  shortDescription: "Fileshare"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "TRUE"
+  objectClass: "opendeskFileshareUser"
+---
+# Create extended attribute Fileshare for group
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskFileshareEnabledGroup"
+  CLIName: "opendeskFileshareEnabled"
+  ldapMapping: "opendeskFileshareEnabled"
+  groupName: "Gruppe in Komponenten bereitstellen"
+  module: ["groups/group"]
+  shortDescription: "Fileshare"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "FALSE"
+  objectClass: "opendeskFileshareGroup"
+---
+# Create extended attribute Projectmanagement for user
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskProjectmanagementEnabledUser"
+  CLIName: "opendeskProjectmanagementEnabled"
+  ldapMapping: "opendeskProjectmanagementEnabled"
+  groupName: "Berechtigung: Login/Nutzung"
+  module: ["users/user"]
+  shortDescription: "Projectmanagement"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "TRUE"
+  objectClass: "opendeskProjectmanagementUser"
+---
+# Create extended attribute Projectmanagement admin for user
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskProjectmanagementAdmin"
+  CLIName: "opendeskProjectmanagementAdmin"
+  ldapMapping: "opendeskProjectmanagementAdmin"
+  groupName: "Berechtigung: Login/Nutzung"
+  module: ["users/user"]
+  shortDescription: "Projectmanagement Admin"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "FALSE"
+  objectClass: "opendeskProjectmanagementUser"
+---
+# Create extended attribute Projectmanagement for group
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskProjectmanagementEnabledGroup"
+  CLIName: "opendeskProjectmanagementEnabled"
+  ldapMapping: "opendeskProjectmanagementEnabled"
+  groupName: "Gruppe in Komponenten bereitstellen"
+  module: ["groups/group"]
+  shortDescription: "Projectmanagement"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "FALSE"
+  objectClass: "opendeskProjectmanagementGroup"
+---
+# Create extended attribute Knowledgemanagement for user
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskKnowledgemanagementEnabledUser"
+  CLIName: "opendeskKnowledgemanagementEnabled"
+  ldapMapping: "opendeskKnowledgemanagementEnabled"
+  groupName: "Berechtigung: Login/Nutzung"
+  module: ["users/user"]
+  shortDescription: "Knowledgemanagement"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "TRUE"
+  objectClass: "opendeskKnowledgemanagementUser"
+---
+# Create extended attribute Knowledgemanagement for group
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskKnowledgemanagementEnabledGroup"
+  CLIName: "opendeskKnowledgemanagementEnabled"
+  ldapMapping: "opendeskKnowledgemanagementEnabled"
+  groupName: "Gruppe in Komponenten bereitstellen"
+  module: ["groups/group"]
+  shortDescription: "Knowledgemanagement"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "FALSE"
+  objectClass: "opendeskKnowledgemanagementGroup"
+---
+# Create extended attribute Livecollaboration for user
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskLivecollaborationEnabledUser"
+  CLIName: "opendeskLivecollaborationEnabled"
+  ldapMapping: "opendeskLivecollaborationEnabled"
+  groupName: "Berechtigung: Login/Nutzung"
+  module: ["users/user"]
+  shortDescription: "Livecollaboration"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "TRUE"
+  objectClass: "opendeskLivecollaborationUser"
+---
+# Create extended attribute Livecollaboration for group
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskLivecollaborationEnabledGroup"
+  CLIName: "opendeskLivecollaborationEnabled"
+  ldapMapping: "opendeskLivecollaborationEnabled"
+  groupName: "Gruppe in Komponenten bereitstellen"
+  module: ["groups/group"]
+  shortDescription: "Livecollaboration"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "FALSE"
+  objectClass: "opendeskLivecollaborationGroup"
+
+{{ end }}
