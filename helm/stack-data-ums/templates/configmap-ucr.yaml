@@ -109,6 +109,11 @@ data:
     password/hashing/method: SHA-512
     portal/auth-mode: saml
     portal/paths: /univention/portal/, /univention/umc/
+    self-service/backend-server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    self-service/ldap_attributes: jpegPhoto,mail,telephoneNumber,roomNumber,departmentNumber,st,homePhone,mobile,homePostalAddress
+    self-service/udm-rest-server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    self-service/udm_attributes: jpegPhoto,e-mail,phone,roomnumber,departmentNumber,country,homeTelephoneNumber,mobileTelephoneNumber,homePostalAddress
+    self-service/web/enabled: yes
     server/role: domaincontroller_master
     slapd/port: {{ .Values.stackDataContext.ldapPort }}
     ssl/ca/cipher: aes256
@@ -165,6 +170,7 @@ data:
     umc/http/session/timeout: 28800
     umc/http/show_tracebacks: false
     umc/login/content-security-policy/frame-ancestors: 'self'
+    umc/login/links/forgot_your_password/enabled: true
     umc/login/links/how_do_i_login/enabled: true
     umc/login/links/login_without_sso/enabled: true
     umc/login/links/login_without_sso/text/de: Ohne Single Sign-On anmelden
@@ -178,9 +184,55 @@ data:
     umc/saml/schemes: {{ .Values.stackDataContext.umcSamlSchemes }}
     umc/saml/sp-server: {{ .Values.stackDataContext.umcSamlSpFqdn }}
     umc/saml/trusted/sp/primary.example.org: primary.example.org
+    umc/self-service/account-deregistration/blacklist/groups: Administrators,Domain Admins
+    umc/self-service/account-deregistration/email/subject: Account deletion
+    umc/self-service/account-deregistration/enabled: false
+    umc/self-service/account-deregistration/whitelist/groups: Domain Users
+    umc/self-service/account-registration/backend/enabled: false
+    umc/self-service/account-registration/frontend/enabled: false
+    umc/self-service/account-registration/udm_attributes: firstname,lastname,username
+    umc/self-service/account-registration/udm_attributes/required: lastname,username
+    umc/self-service/account-registration/usercontainer: cn=self registered users,{{ .Values.stackDataContext.ldapBase }}
+    umc/self-service/account-registration/usertemplate: cn=selfserviceregistrationtemplate,cn=templates,cn=univention,{{ .Values.stackDataContext.ldapBase }}
+    umc/self-service/account-verification/backend/enabled: false
+    umc/self-service/account-verification/email/subject: Account verification
+    umc/self-service/account-verification/email/token_length: 64
+    umc/self-service/account-verification/frontend/enabled: false
+    umc/self-service/account-verification/next-steps: "Continue to the <a href='/univention/portal'>Univention Portal</a>."
+    umc/self-service/account-verification/next-steps/de: "Weiter zum <a href='/univention/portal'>Univention Portal</a>."
     umc/self-service/allow-authenticated-use: true
     umc/self-service/content-security-policy/frame-ancestors: 'self'
+    umc/self-service/email-change-notification/email/subject: Account recovery email changed
+    umc/self-service/enabled: yes
+    umc/self-service/invitation/enabled: true
+    umc/self-service/passwordchange/frontend/enabled: yes
+    umc/self-service/passwordreset/backend/enabled: true
+    umc/self-service/passwordreset/blacklist/groups: Administrators,Domain Admins
+    umc/self-service/passwordreset/frontend/enabled: yes
+    umc/self-service/passwordreset/email/enabled: yes
+    umc/self-service/passwordreset/email/sender_address: "Password Reset Service <noreply@{{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}>"
+    umc/self-service/passwordreset/email/server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    umc/self-service/passwordreset/email/subject: Password reset
+    umc/self-service/passwordreset/email/token_length: 64
+    umc/self-service/passwordreset/email/webserver_address: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    umc/self-service/passwordreset/external/enabled: no
+    umc/self-service/passwordreset/external/token_length: 64
+    umc/self-service/passwordreset/limit/total/day: 1000
+    umc/self-service/passwordreset/limit/total/hour: 200
+    umc/self-service/passwordreset/limit/total/minute: 120
+    umc/self-service/passwordreset/limit/per_user/day: 120
+    umc/self-service/passwordreset/limit/per_user/hour: 60
+    umc/self-service/passwordreset/limit/per_user/minute: 10
+    umc/self-service/passwordreset/sms/enabled: no
+    umc/self-service/passwordreset/sms/token_length: 12
+    umc/self-service/passwordreset/token_validity_period: 3600
+    umc/self-service/passwordreset/whitelist/groups: Domain Users
+    umc/self-service/profiledata/blacklist/groups: Administrators,Domain Admins
     umc/self-service/profiledata/enabled: true
+    umc/self-service/profiledata/whitelist/groups: Domain Users
+    umc/self-service/protect-account/backend/enabled: true
+    umc/self-service/protect-account/frontend/enabled: yes
+    umc/self-service/service-specific-passwords/backend/enabled: false
     umc/server/autostart: yes
     umc/server/debug/level: 5
     umc/server/processes: 1
@@ -192,6 +244,7 @@ data:
     umc/web/feedback/description: [UMC-Feedback] Traceback
     umc/web/feedback/mail: feedback@univention.de
     umc/web/hooks/univention-management-console-module-passwordchange: passwordchange
+    umc/web/hooks/univention-self-service: passwordreset
     umc/web/hooks/univention-web-js: default_menu_entries
     umc/web/language: de_DE.UTF-8:UTF-8
     umc/web/sso/enabled: true

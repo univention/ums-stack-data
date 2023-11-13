@@ -1,0 +1,262 @@
+{{ with .Values.stackDataContext }}
+
+---
+# Source: ucs/management/univention-self-service/34univention-self-service.inst
+action: "create"
+module: "policies/umc"
+position: "cn=UMC,cn=policies,{{ .ldapBase }}"
+properties:
+  name: "selfservice-umc-servers"
+  ldapFilter: "(|(objectClass=univentionMemberserver)(objectClass=univentionDomainController))"
+{{ if .installUmcPolicies }}
+---
+action: "create"
+module: "policies/umc"
+position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+properties:
+  allow:
+    - "allow=cn=passwordchange-all,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+---
+action: "modify"
+module: "container/cn"
+position: "cn=dc,cn=computers,{{ .ldapBase }}"
+properties:
+  policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+---
+action: "modify"
+module: "policies/umc"
+position: "cn=memberserver,cn=computers,{{ .ldapBase }}"
+properties:
+  policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+{{ end }}
+---
+# Source: ucs/management/univention-self-service/35univention-self-service-passwordreset-umc.inst
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "UniventionPasswordSelfServiceEmail"
+  CLIName: "PasswordRecoveryEmail"
+  module: ["users/user"]
+  syntax: "emailAddress"
+  default: ""
+  ldapMapping: "univentionPasswordSelfServiceEmail"
+  objectClass: "univentionPasswordSelfService"
+  shortDescription: "Password recovery e-mail address"
+  longDescription: "During the password recovery process an e-mail is sent to the specified e-mail address. Password recovery via e-mail is only available for users if configured and enabled by the administrator."
+  translationShortDescription:
+    de_DE: "E-Mail-Adresse zur Passwort-Wiederherstellung"
+    fr_FR: "Adresse e-mail pour la réinitialisation du mot de passe"
+  translationLongDescription:
+    de_DE: "An diese E-Mail-Adresse wird während der Passwort-Wiederherstellung eine Mail verschickt. Der Mail-Versand steht dem Benutzer nur zur Verfügung, wenn dieser vom Administrator eingerichtet und freigeschaltet wurde."
+    fr_FR: "Lors de la réinitialisation du mot de passe, un e-mail est envoyé à l’adresse spécifiée. La réinitialisation du mot de passe par e-mail est disponible pour les utilisateurs et utilisatrices uniquement si elle a été activée et configurée par l’administrateur ou l’administratrice."
+  tabAdvanced: False
+  tabName: "Password recovery"
+  translationTabName:
+    de_DE: "Passwort-Wiederherstellung"
+    fr_FR: "Réinitialisation du mot de passe"
+  multivalue: False
+  valueRequired: False
+  mayChange: True
+  doNotSearch: False
+  deleteObjectClass: False
+  overwriteTab: False
+  fullWidth: True
+---
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "UniventionPasswordSelfServiceMobile"
+  CLIName: "PasswordRecoveryMobile"
+  module: ["users/user"]
+  syntax: "phone"
+  default: ""
+  objectClass: "univentionPasswordSelfService"
+  ldapMapping: "univentionPasswordSelfServiceMobile"
+  shortDescription: "Mobile phone number"
+  translationShortDescription:
+    de_DE: "Mobilfunknummer"
+    fr_FR: "Numéro de téléphone portable"
+  longDescription: "During the password recovery process a SMS is sent to the specified mobile phone number. Password recovery via SMS is only available for users if configured and enabled by the administrator."
+  translationLongDescription:
+    de_DE: "An diese Mobilfunknummer wird während der Passwort-Wiederherstellung eine SMS verschickt. Der SMS-Versand steht dem Benutzer nur zur Verfügung, wenn dieser vom Administrator eingerichtet und freigeschaltet wurde."
+    fr_FR: "Lors de la réinitialisation du mot de passe, un SMS est envoyé au numéro de portable spécifié. La réinitialisation du mot de passe par SMS est disponible pour les utilisateurs et utilisatrices uniquement si elle a été activée et configurée par l’administrateur ou l’administratrice."
+  tabAdvanced: False
+  tabName: "Password recovery"
+  translationTabName:
+    de_DE: "Passwort-Wiederherstellung"
+    fr_FR: "Réinitialisation du mot de passe"
+  multivalue: False
+  valueRequired: False
+  mayChange: True
+  doNotSearch: False
+  deleteObjectClass: False
+  overwriteTab: False
+  fullWidth: True
+---
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "UniventionPasswordRecoveryEmailVerified"
+  CLIName: "PasswordRecoveryEmailVerified"
+  module: ["users/user"]
+  syntax: "TrueFalseUpper"
+  objectClass: "univentionPasswordSelfService"
+  ldapMapping: "univentionPasswordRecoveryEmailVerified"
+  shortDescription: "Email address verified"
+  translationShortDescription:
+    de_DE: "E-Mail-Adresse verifiziert"
+    fr_FR: "Adresse e-mail vérifiée"
+  longDescription: "This attribute indicates whether an email address is verified or not. The value is set to False both by default and in case PasswordRecoveryMail is changed. When an email address is verified the value will be set to True. "
+  translationLongDescription:
+    de_DE: "Dieses Attribut zeigt an, ob eine E-Mail-Adresse bereits verifiziert ist oder nicht. Anfänglich und bei Änderung der PasswordRecoveryMail ist der Wert auf False gesetzt. Wenn es zur Verifikation einer E-Mail-Adresse kommt, wird der Wert auf True gesetzt."
+    fr_FR: "Cet attribut indique si une adresse e-mail a déjà été vérifiée ou non. La valeur est réglée sur False par défaut et lorsque PasswordRecoveryMail est modifié. Lorsque’une adresse e-mail a été vérifiée, la valeur est réglée sur True."
+  tabAdvanced: False
+  tabName: "Password recovery"
+  translationTabName:
+    de_DE: "Passwort-Wiederherstellung"
+    fr_FR: "Réinitialisation du mot de passe"
+  multivalue: False
+  valueRequired: False
+  mayChange: True
+  doNotSearch: False
+  deleteObjectClass: False
+  overwriteTab: False
+  fullWidth: True
+---
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "UniventionRegisteredThroughSelfService"
+  CLIName: "RegisteredThroughSelfService"
+  module: ["users/user"]
+  syntax: "TrueFalseUpper"
+  objectClass: "univentionPasswordSelfService"
+  ldapMapping: "univentionRegisteredThroughSelfService"
+  shortDescription: "Self-registration"
+  translationShortDescription:
+    de_DE: "Selbstregistrierung"
+    fr_FR: "Auto-inscription"
+  longDescription: "This attribute indicates whether a user has self-registered through the Self Service module."
+  translationLongDescription:
+    de_DE: "Dieses Attribut zeigt an, ob sich ein User selbst über das Self-Service-Modul registriert hat."
+    fr_FR: "Cet attribut indique si un utilisateur ou une utilisatrice a utilisé le module de libre-service pour s’inscrire par ses propres moyens."
+  tabAdvanced: False
+  tabName: "Password recovery"
+  translationTabName:
+    de_DE: "Passwort-Wiederherstellung"
+    fr_FR: "Réinitialisation du mot de passe"
+  multivalue: False
+  valueRequired: False
+  mayChange: True
+  doNotSearch: False
+  deleteObjectClass: False
+  overwriteTab: False
+  fullWidth: True
+---
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "UniventionDeregisteredThroughSelfService"
+  CLIName: "DeregisteredThroughSelfService"
+  module: ["users/user"]
+  syntax: "TrueFalseUpper"
+  objectClass: "univentionPasswordSelfService"
+  ldapMapping: "univentionDeregisteredThroughSelfService"
+  shortDescription: "Self-deregistration"
+  translationShortDescription:
+    de_DE: "Selbst-Deregistrierung"
+    fr_FR: "Auto-désinscription"
+  longDescription: "This attribute indicates whether a user has requested to deregister his account."
+  translationLongDescription:
+    de_DE: "Dieses Attribut zeigt an, ob sich ein User selbst über das Self-Service-Modul deregistriert hat."
+    fr_FR: "Cet attribut indique si un utilisateur ou une utilisatrice a demandé sa désinscription."
+  tabAdvanced: False
+  tabName: "Password recovery"
+  translationTabName:
+    de_DE: "Passwort-Wiederherstellung"
+    fr_FR: "Réinitialisation du mot de passe"
+  multivalue: False
+  valueRequired: False
+  mayChange: True
+  doNotSearch: False
+  deleteObjectClass: False
+  overwriteTab: False
+  fullWidth: True
+---
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "UniventionDeregistrationTimestamp"
+  CLIName: "DeregistrationTimestamp"
+  module: ["users/user"]
+  syntax: "string"
+  objectClass: "univentionPasswordSelfService"
+  ldapMapping: "univentionDeregistrationTimestamp"
+  shortDescription: "Deregistration timestamp"
+  translationShortDescription:
+    de_DE: "Deregistrierungs-Timestamp"
+    fr_FR: "Horodatage de la désinscription"
+  longDescription: "Timestamp of the moment the user requested deregistration of his account"
+  translationLongDescription:
+    de_DE: "Zeitstempel des Zeitpunkts, zu dem der Benutzer die Abmeldung seines Kontos beantragt hat."
+    fr_FR: "Horodatage de l’instant auquel l’utilisateur ou l’utilisatrice a demandé sa désinscription."
+  tabAdvanced: False
+  tabName: "Password recovery"
+  translationTabName:
+    de_DE: "Passwort-Wiederherstellung"
+    fr_FR: "Réinitialisation du mot de passe"
+  multivalue: False
+  valueRequired: False
+  mayChange: True
+  doNotSearch: False
+  deleteObjectClass: False
+  overwriteTab: False
+  fullWidth: True
+---
+action: "create"
+module: "settings/usertemplate"
+position: "cn=templates,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "selfserviceregistrationtemplate"
+  displayName: "<firstname> <lastname><:strip>"
+  unixhome: "/home/<username>"
+  primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+  shell: "/bin/bash"
+---
+action: "create"
+module: "container/cn"
+position: "{{ .ldapBase }}"
+properties:
+  name: "self registered users"
+  userPath: True
+---
+action: "create"
+module: "settings/umc_operationset"
+position: "cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "passwordreset-all"
+  description: "Password reset service"
+  flavor: ""
+  hosts: []
+  objectFlag: []
+  operation:
+    - command: "passwordreset/*"
+      option: ""
+{{ if .installUmcPolicies }}
+---
+action: "ensure_list_contains"
+module: "policies/umc"
+position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+properties:
+  allow:
+    - "allow=cn=passwordreset-all,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+{{ end }}
+...
+
+{{ end }}
