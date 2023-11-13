@@ -184,6 +184,7 @@ true
 			<td>object</td>
 			<td><pre lang="json">
 {
+  "adminPassword": null,
   "externalDomainName": "univention-organization.test",
   "externalMailDomain": "univention-organization.test",
   "ldapBase": "dc=univention-organization,dc=intranet",
@@ -225,11 +226,21 @@ true
   ],
   "portaltileGroupUserStandard": [
     "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
-  ]
+  ],
+  "userPassword": null
 }
 </pre>
 </td>
 			<td>Context used for rendering the data files</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.adminPassword</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Password for the default.admin user. This is only evaluated if loadDevData is set to true.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.portalTitleDE</td>
@@ -248,6 +259,15 @@ true
 </pre>
 </td>
 			<td>Portal title (English)</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.userPassword</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Password for the default.user user. This is only evaluated if loadDevData is set to true.</td>
 		</tr>
 		<tr>
 			<td>stackDataSwp.dataConfigMapName</td>

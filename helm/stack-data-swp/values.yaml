@@ -74,6 +74,13 @@ stackDataContext:
   # -- Portal title (English)
   portalTitleEN: "Sovereign Workplace"
 
+  # -- Password for the default.user user.
+  # This is only evaluated if loadDevData is set to true.
+  userPassword: null
+  # -- Password for the default.admin user.
+  # This is only evaluated if loadDevData is set to true.
+  adminPassword: null
+
 
 # -- Container image configuration
 image:

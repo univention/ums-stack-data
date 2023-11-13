@@ -4,10 +4,10 @@ action: "create"
 module: "users/user"
 position: "cn=users,{{ .ldapBase }}"
 properties:
-  username: "test.user"
+  username: "default.user"
   firstname: "test"
   lastname: "user"
-  password: "SWPtester"
+  password: {{ required "Please set a password for the default user" .userPassword | quote }}
   # TODO: Provide this value
   # oxContext: {{ .oxDefaultContext }}
 
@@ -25,10 +25,10 @@ action: "create"
 module: "users/user"
 position: "cn=users,{{ .ldapBase }}"
 properties:
-  username: "test.admin"
+  username: "default.admin"
   firstname: "test"
   lastname: "admin"
   primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
-  password: "SWPtester"
+  password: {{ required "Please set a password for the default user" .adminPassword | quote }}
   mailPrimaryAddress: "test.admin@{{ .externalMailDomain }}"
 {{ end }}
