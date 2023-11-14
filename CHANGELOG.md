@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.25.1...v0.25.2) (2023-11-14)
+
+
+### Bug Fixes
+
+* Ensure default for UCR value "ucs/web/theme" ([a4a0f69](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a4a0f691b12daf1faeea088004f33abd0d8f67e0))
+
 ## [0.25.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.25.0...v0.25.1) (2023-11-11)
 
 
