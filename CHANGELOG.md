@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.26.0...v0.26.1) (2023-11-14)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** ox tab as openDesk tab ([79ab345](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/79ab3456e1fa4e438dbbdd6897732530c793b305))
+
 ## [0.26.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.25.2...v0.26.0) (2023-11-14)
 
 
