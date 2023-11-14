@@ -22,15 +22,12 @@ properties:
   module: [users/user]
   ldapMapping: isOxUser
   objectClass: oxUserObject
-  shortDescription: Activate User in OX (unchecking will delete!)
-  longDescription: Activate User in OX (unchecking will delete!)
+  shortDescription: "Groupware (deactivate will delete user data in groupware)"
   translationShortDescription:
-    de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
-  translationLongDescription:
-    de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
-  tabName: OX App Suite
+    de_DE: "Groupware (Deaktivierung löscht Benutzerdaten in Groupware)"
+  tabName: openDesk
   translationTabName:
-    de_DE: OX App Suite
+    de_DE: openDesk
   overwriteTab:
   valueRequired: False
   CLIName: isOxUser
@@ -43,7 +40,7 @@ properties:
   overwritePosition:
   doNotSearch: False
   hook: oxUserDefaults
-  groupName: Open-Xchange
+  groupName: "Berechtigung: Login/Nutzung"
   groupPosition: 1
 
 ---
