@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.25.2...v0.26.0) (2023-11-14)
+
+
+### Features
+
+* **stack-data-swp:** default user template ([7e82670](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7e82670d580be6fcb999497fcc570098230aebad))
+
 ## [0.25.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.25.1...v0.25.2) (2023-11-14)
 
 
