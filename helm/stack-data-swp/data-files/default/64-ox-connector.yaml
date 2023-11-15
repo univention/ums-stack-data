@@ -22,10 +22,13 @@ properties:
   module: [users/user]
   ldapMapping: isOxUser
   objectClass: oxUserObject
-  shortDescription: "Groupware (deactivate will delete user data in groupware)"
+  shortDescription: Activate User in OX (unchecking will delete!)
+  longDescription: Activate User in OX (unchecking will delete!)
   translationShortDescription:
-    de_DE: "Groupware (Deaktivierung löscht Benutzerdaten in Groupware)"
-  tabName: openDesk
+    de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
+  translationLongDescription:
+    de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
+  tabName: OX App Suite
   translationTabName:
     de_DE: openDesk
   overwriteTab:
@@ -40,7 +43,7 @@ properties:
   overwritePosition:
   doNotSearch: False
   hook: oxUserDefaults
-  groupName: "Berechtigung: Login/Nutzung"
+  groupName: "Open-Xchange"
   groupPosition: 1
 
 ---
@@ -2797,22 +2800,18 @@ properties:
   notEditable: False
 
 
-# Create user template (see openDesk-attributes.yaml)
+# Create user template (see 65-usertemplate.yaml)
 ---
 action: "create"
 module: "settings/usertemplate"
 position: "cn=templates,cn=univention,{{ .ldapBase }}"
 properties:
-  name: "openDesk User"
+  name: "open-xchange groupware account"
   isOxUser: True
-  opendeskFileshareEnabled: True
-  opendeskProjectmanagementEnabled: True
-  opendeskKnowledgemanagementEnabled: True
-  opendeskLivecollaborationEnabled: True
   mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
   e-mail: ["<username>@{{ .externalMailDomain }}"]
   unixhome: "/home/<username>"
-  oxDisplayName: "<firstname> <lastname> (<username>)"
+  oxDisplayName: "<firstname> <lastname>"
   oxAccess: "premium"
   primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
 
