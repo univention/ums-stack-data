@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.26.1...v0.26.2) (2023-11-15)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** enforce order for udm files ([f44d394](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f44d3949c4fbf9fe64c4ff2b10efb07c86be9b49))
+
 ## [0.26.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.26.0...v0.26.1) (2023-11-14)
 
 
