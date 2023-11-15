@@ -70,7 +70,7 @@ properties:
   name: "opendeskProjectmanagementAdmin"
   CLIName: "opendeskProjectmanagementAdmin"
   ldapMapping: "opendeskProjectmanagementAdmin"
-  groupName: "Berechtigung: Login/Nutzung"
+  groupName: "Berechtigung: Fachliche Administration"
   module: ["users/user"]
   shortDescription: "Projectmanagement Admin"
   tabName: "openDesk"

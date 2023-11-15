@@ -1,6 +1,7 @@
 {{ with .Values.stackDataContext }}
 
 ---
+# Make OX Tab be openDesk Tab
 action: "modify"
 module: "settings/extended_attribute"
 position: "cn=isOxUser,cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
@@ -18,6 +19,7 @@ properties:
   groupName: "Berechtigung: Login/Nutzung"
 
 ---
+# Modify ox-connector user template to be openDesk one
 action: "modify"
 module: "settings/usertemplate"
 position: "cn=open-xchange groupware account,cn=templates,cn=univention,{{ .ldapBase }}"
@@ -27,6 +29,7 @@ properties:
   opendeskProjectmanagementEnabled: True
   opendeskKnowledgemanagementEnabled: True
   opendeskLivecollaborationEnabled: True
+  opendeskProjectmanagementAdmin: False
   isOxUser: True
   mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
   e-mail: ["<username>@{{ .externalMailDomain }}"]
@@ -34,5 +37,20 @@ properties:
   oxDisplayName: "<firstname> <lastname> (<username>)"
   oxAccess: "premium"
   primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+
+---
+# Create admin user template
+action: "create"
+module: "settings/usertemplate"
+position: "cn=templates,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "openDesk Admin"
+  isOxUser: False
+  primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+  opendeskFileshareEnabled: False
+  opendeskProjectmanagementEnabled: False
+  opendeskKnowledgemanagementEnabled: False
+  opendeskLivecollaborationEnabled: False
+  opendeskProjectmanagementAdmin: False
 
 {{ end }}

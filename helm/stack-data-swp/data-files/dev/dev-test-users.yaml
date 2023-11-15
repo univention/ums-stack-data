@@ -8,17 +8,13 @@ properties:
   firstname: "test"
   lastname: "user"
   password: {{ required "Please set a password for the default user" .userPassword | quote }}
-  # TODO: Provide this value
-  # oxContext: {{ .oxDefaultContext }}
-
-  # TODO: The following depend on issue
-  # https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/168
-  # isOxUser: "OK"
-  # swpFileshareEnabled: "TRUE"
-  # swpProjectmanagementEnabled: "TRUE"
-  # swpKnowledgemanagementEnabled: "TRUE"
-  # swpLivecollaborationEnabled: "TRUE"
-
+  oxContext: {{ .oxDefaultContext }}
+  isOxUser: True
+  opendeskFileshareEnabled: True
+  opendeskProjectmanagementEnabled: True
+  opendeskKnowledgemanagementEnabled: True
+  opendeskLivecollaborationEnabled: True
+  opendeskProjectmanagementAdmin: False
   mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
 ---
 action: "create"
@@ -30,5 +26,11 @@ properties:
   lastname: "admin"
   primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
   password: {{ required "Please set a password for the default user" .adminPassword | quote }}
+  isOxUser: False
   mailPrimaryAddress: "test.admin@{{ .externalMailDomain }}"
+  opendeskProjectmanagementAdmin: True
+  opendeskFileshareEnabled: False
+  opendeskProjectmanagementEnabled: False
+  opendeskKnowledgemanagementEnabled: False
+  opendeskLivecollaborationEnabled: False
 {{ end }}
