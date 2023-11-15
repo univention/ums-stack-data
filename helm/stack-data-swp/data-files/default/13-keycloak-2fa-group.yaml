@@ -1,0 +1,8 @@
+{{ with .Values.stackDataContext }}
+---
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
+properties:
+  name: "2fa-users"
+{{ end }}
