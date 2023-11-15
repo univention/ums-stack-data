@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.26.2...v0.27.0) (2023-11-15)
+
+
+### Features
+
+* make default user passwords configurable ([c231356](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c231356f404f3e886eb9029c68f3198e7b09861b))
+
 ## [0.26.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.26.1...v0.26.2) (2023-11-15)
 
 
