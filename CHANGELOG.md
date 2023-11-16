@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.27.0...v0.27.1) (2023-11-16)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** default values for extended attributes on user creation ([e5966e5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e5966e500e44134653954d7b083963a972bcceb9))
+
 ## [0.27.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.26.2...v0.27.0) (2023-11-15)
 
 
