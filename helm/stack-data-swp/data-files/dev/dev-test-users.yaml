@@ -15,7 +15,7 @@ properties:
   opendeskKnowledgemanagementEnabled: True
   opendeskLivecollaborationEnabled: True
   opendeskProjectmanagementAdmin: False
-  mailPrimaryAddress: "test.user@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "default.user@{{ .externalMailDomain }}"
 ---
 action: "create"
 module: "users/user"
@@ -27,7 +27,7 @@ properties:
   primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
   password: {{ required "Please set a password for the default user" .adminPassword | quote }}
   isOxUser: False
-  mailPrimaryAddress: "test.admin@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "default.admin@{{ .externalMailDomain }}"
   opendeskProjectmanagementAdmin: True
   opendeskFileshareEnabled: False
   opendeskProjectmanagementEnabled: False
