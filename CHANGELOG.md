@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.29.1...v0.29.2) (2023-11-16)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** oxAccess for default user and template ([9f89cf2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/9f89cf285e193e533ea5cdb75c4e69b4f87e0f88))
+
 ## [0.29.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.29.0...v0.29.1) (2023-11-16)
 
 
