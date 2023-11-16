@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.28.0...v0.29.0) (2023-11-16)
+
+
+### Features
+
+* **stack-data-swp:** include settings for self-service ([ce2ab90](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/ce2ab90a2dee0895ad3c3fe55882a217df6ae20d))
+
 ## [0.28.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.27.1...v0.28.0) (2023-11-16)
 
 
