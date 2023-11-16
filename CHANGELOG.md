@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.29.0...v0.29.1) (2023-11-16)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** `test.user` is now called `default.user` everywhere ([2cddbe9](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2cddbe9e8cfdbab31c2bd9f576a4d63bdcc82eed))
+
 ## [0.29.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.28.0...v0.29.0) (2023-11-16)
 
 
