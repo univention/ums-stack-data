@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.30.1...v0.30.2) (2023-11-16)
+
+
+### Bug Fixes
+
+* Document "extraDataFiles" in the values file of stack-data-swp ([c00fe0b](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c00fe0b8d0f37c4e9e111723d3f75ab04ca368db))
+
 ## [0.30.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.30.0...v0.30.1) (2023-11-16)
 
 
