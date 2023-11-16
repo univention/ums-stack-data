@@ -1,0 +1,18 @@
+---
+{{ include "common.configMap" (dict "top" . "overrides" "stack-data-swp.configMap-umc-server-entrypoint") }}
+
+{{- define "stack-data-swp.configMap-umc-server-entrypoint" }}
+{{- with .top }}
+{{- /*
+  Apply additional modifications to the UMC-gateway container via an entrypoint script.
+*/ -}}
+metadata:
+  name: '{{ include "common.names.fullname" . }}-umc-server-entrypoint'
+data:
+  90-customization.sh: |
+    #!/bin/bash
+    echo "Applying patch to support setting individual attributes to read-only in self-service"
+    sed --in-place --expression="s@'editable': bool(prop.may_change),@'editable': bool(prop.may_change and not ucr.is_true(f'self-service/udm_attributes/{propname}/readonly')),@" /usr/lib/python3/dist-packages/univention/management/console/modules/passwordreset/__init__.py
+{{- end }}
+{{- end }}
+...
