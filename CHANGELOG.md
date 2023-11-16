@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.27.1...v0.28.0) (2023-11-16)
+
+
+### Features
+
+* **stack-data-swp:** create keycloak 2fa group ([6933737](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/6933737f7a0aeaba1fae779b0ae2bcb826cdf2e4))
+
 ## [0.27.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.27.0...v0.27.1) (2023-11-16)
 
 
