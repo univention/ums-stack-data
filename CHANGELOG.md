@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.29.2...v0.30.0) (2023-11-16)
+
+
+### Features
+
+* Configure the available user attributes in self-service ([c69b1fe](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c69b1feb9007c98c6c0780ae40c57f95cc803660))
+
 ## [0.29.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.29.1...v0.29.2) (2023-11-16)
 
 
