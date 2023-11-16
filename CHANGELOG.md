@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.30.2...v0.31.0) (2023-11-16)
+
+
+### Features
+
+* Apply umc-server patch to help with setting self-service attributes readonly ([06031a2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/06031a283f2c4db9f93a3a2dc72fb908302e45ce))
+
 ## [0.30.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.30.1...v0.30.2) (2023-11-16)
 
 
