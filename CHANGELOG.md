@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.30.0...v0.30.1) (2023-11-16)
+
+
+### Bug Fixes
+
+* Avoid renaming in a "modify" call of ox-connector ([6cda60e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/6cda60ea89f7b713c58ec5677e8c432d113003fd))
+
 ## [0.30.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.29.2...v0.30.0) (2023-11-16)
 
 
