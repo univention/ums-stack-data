@@ -35,7 +35,7 @@ properties:
   e-mail: ["<username>@{{ .externalMailDomain }}"]
   unixhome: "/home/<username>"
   oxDisplayName: "<firstname> <lastname> (<username>)"
-  oxAccess: "premium"
+  oxAccess: "groupware"
   primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
 
 ---
@@ -52,5 +52,19 @@ properties:
   opendeskKnowledgemanagementEnabled: False
   opendeskLivecollaborationEnabled: False
   opendeskProjectmanagementAdmin: False
+
+---
+action: "modify"
+module: "settings/extended_attribute"
+position: "cn=oxAccess,cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  default: "groupware"
+
+---
+action: "modify"
+module: "settings/extended_attribute"
+position: "cn=templateOxAccess,cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  default: "groupware"
 
 {{ end }}
