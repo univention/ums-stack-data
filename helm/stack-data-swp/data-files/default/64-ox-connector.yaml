@@ -2806,7 +2806,7 @@ action: "create"
 module: "settings/usertemplate"
 position: "cn=templates,cn=univention,{{ .ldapBase }}"
 properties:
-  name: "open-xchange groupware account"
+  name: "openDesk User"
   isOxUser: True
   mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
   e-mail: ["<username>@{{ .externalMailDomain }}"]

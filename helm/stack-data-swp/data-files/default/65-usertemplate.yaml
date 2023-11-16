@@ -22,7 +22,7 @@ properties:
 # Modify ox-connector user template to be openDesk one
 action: "modify"
 module: "settings/usertemplate"
-position: "cn=open-xchange groupware account,cn=templates,cn=univention,{{ .ldapBase }}"
+position: "cn=openDesk User,cn=templates,cn=univention,{{ .ldapBase }}"
 properties:
   name: "openDesk User"
   opendeskFileshareEnabled: True
