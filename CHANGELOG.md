@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.32.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.31.0...v0.32.0) (2023-11-16)
+
+
+### Features
+
+* **stack-data-swp:** deactivate duplicate password-change entry in portal sidebar ([a37da7c](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a37da7c44e15feff9fd322c4c36d0e1ecc926788))
+
 ## [0.31.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.30.2...v0.31.0) (2023-11-16)
 
 
