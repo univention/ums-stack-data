@@ -50,6 +50,8 @@ stackDataContext:
   portalManagementProjectLinkBase: "https://project.{{ .Values.stackDataContext.externalDomainName }}"
   portalManagementKnowledgeLinkBase: "https://wiki.{{ .Values.stackDataContext.externalDomainName }}"
 
+  portalFqdn: "portal.{{ .Values.stackDataContext.externalDomainName }}"
+
   oxDefaultContext: "10"
 
   portaltileGroupUserStandard:

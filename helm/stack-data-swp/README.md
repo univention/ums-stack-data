@@ -191,6 +191,7 @@ true
   "ldapSearchUsers": [],
   "oxDefaultContext": "10",
   "portalFileshareLinkBase": "https://fs.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalFqdn": "portal.{{ .Values.stackDataContext.externalDomainName }}",
   "portalGroupwareLinkBase": "https://webmail.{{ .Values.stackDataContext.externalDomainName }}",
   "portalManagementKnowledgeLinkBase": "https://wiki.{{ .Values.stackDataContext.externalDomainName }}",
   "portalManagementProjectLinkBase": "https://project.{{ .Values.stackDataContext.externalDomainName }}",

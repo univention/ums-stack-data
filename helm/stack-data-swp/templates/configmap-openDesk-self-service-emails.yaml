@@ -1,0 +1,15 @@
+---
+{{ include "common.configMap" (dict "top" . "overrides" "stack-data-swp.configMap-self-service-emails") }}
+
+{{- define "stack-data-swp.configMap-self-service-emails" }}
+{{- with .top }}
+{{- /*
+  Install self-service passwordreset template into umc-server container.
+*/ -}}
+metadata:
+  name: '{{ include "common.names.fullname" . }}-self-service-emails'
+binaryData:
+  passwordreset_email_body.txt: {{ .Files.Get "data-files/default/self-service-email/passwordreset_email_body.txt" | b64enc | quote }}
+
+{{- end }}
+{{- end }}

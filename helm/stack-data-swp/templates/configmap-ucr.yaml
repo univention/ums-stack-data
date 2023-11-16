@@ -52,6 +52,13 @@ data:
     umc/login/password-complexity-message/en: Password must comply with the following rules:<br><ul><li>Minimum length: 8 characters</li></ul>Note: We are in a non production (dev/test/demo) system.
     umc/module/udm/oxmail/oxcontext/disabled: True
     umc/module/udm/portals/all/disabled: True
+    umc/self-service/account-verification/email/webserver_address: {{ .Values.stackDataContext.portalFqdn }}
+    umc/self-service/content-security-policy/frame-ancestors: 'self'
+    umc/self-service/passwordreset/email/sender_address: Password Reset Service <noreply@{{ .Values.stackDataContext.externalMailDomain }}>
+    umc/self-service/passwordreset/email/text_file: /usr/share/univention-self-service/email_bodies/passwordreset_email_body.txt
+    umc/self-service/passwordreset/email/webserver_address: {{ .Values.stackDataContext.portalFqdn }}
+    umc/self-service/passwordreset/token_validity_period: 172800
+    umc/self-service/profiledata/enabled: true
     umc/web/piwik: false
 {{- end }}
 {{- end }}

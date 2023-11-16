@@ -201,7 +201,7 @@ data:
     umc/self-service/account-verification/next-steps: "Continue to the <a href='/univention/portal'>Univention Portal</a>."
     umc/self-service/account-verification/next-steps/de: "Weiter zum <a href='/univention/portal'>Univention Portal</a>."
     umc/self-service/allow-authenticated-use: true
-    umc/self-service/content-security-policy/frame-ancestors: 'self'
+    umc/self-service/content-security-policy/frame-ancestors: *.{{ .Values.stackDataContext.domainname }}
     umc/self-service/email-change-notification/email/subject: Account recovery email changed
     umc/self-service/enabled: yes
     umc/self-service/invitation/enabled: true
