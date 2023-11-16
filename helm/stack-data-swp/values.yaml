@@ -31,6 +31,11 @@ stackDataSwp:
   # -- Wait for the udm-rest-api to be available
   dependencyUdmApiWait: true
 
+  # -- Allow to configure additional data files.
+  # This has to be a map from the desired filename to the content. The content has
+  # to be a valid YAML stream which the data loader is able to process.
+  extraDataFiles: null
+
 
 # -- Context used for rendering the data files
 stackDataContext:
