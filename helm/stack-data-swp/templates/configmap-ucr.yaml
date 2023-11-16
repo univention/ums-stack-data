@@ -11,6 +11,7 @@ metadata:
 data:
   base.conf: |
     directory/manager/rest/ldap-connection/user-read/start-tls: 0
+    directory/manager/web/modules/users/user/properties/description/syntax: TextArea
     directory/manager/web/modules/users/user/properties/firstname/required: true
     directory/manager/web/modules/users/user/properties/mailPrimaryAddress/required: true
     directory/manager/web/modules/users/user/properties/username/syntax: uid
@@ -24,6 +25,20 @@ data:
     directory/manager/web/modules/wizard/disabled: No
     ldap/pw-bcrypt: true
     password/hashing/bcrypt: true
+    self-service/ldap_attributes: jpegPhoto,description,title,givenName,sn,displayName,initials,univentionBirthday,o,street,postalCode,l
+    self-service/udm_attributes: jpegPhoto,description,title,firstname,lastname,displayName,initials,birthday,organisation,street,postcode,city
+    self-service/udm_attributes/title/readonly: true
+    self-service/udm_attributes/firstname/readonly: true
+    self-service/udm_attributes/lastname/readonly: true
+    self-service/udm_attributes/displayName/readonly: true
+    self-service/udm_attributes/birthday/readonly: true
+    self-service/udm_attributes/organisation/readonly: true
+    self-service/udm_attributes/street/readonly: true
+    self-service/udm_attributes/postcode/readonly: true
+    self-service/udm_attributes/city/readonly: true
+    self-service/udm_attributes/departmentNumber/readonly: true
+    self-service/udm_attributes/employeeType/readonly: true
+    self-service/udm_attributes/employeeNumber/readonly: true
     ucs/web/theme: light
     uldap/start-tls: 0
     umc/cookie-banner/show: true
