@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.32.1...v0.33.0) (2023-11-17)
+
+
+### Features
+
+* **stack-data-swp:** include openDesk customizations for self-service ([40da783](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/40da7833227723f6b2783877e6d0c0988970e57b))
+
 ## [0.32.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.32.0...v0.32.1) (2023-11-17)
 
 
