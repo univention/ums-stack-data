@@ -18,9 +18,9 @@ data:
     apache2/maxclients: 150
     apache2/startsite: univention/
     auth/methods: ldap
-    directory/manager/rest/authorized-groups/dc-backup: cn: DC Backup Hosts,cn: groups,{{ .Values.stackDataContext.ldapBase }}
-    directory/manager/rest/authorized-groups/dc-slaves: cn: DC Slave Hosts,cn: groups,{{ .Values.stackDataContext.ldapBase }}
-    directory/manager/rest/authorized-groups/domain-admins: cn: Domain Admins,cn: groups,{{ .Values.stackDataContext.ldapBase }}
+    directory/manager/rest/authorized-groups/dc-backup: cn=DC Backup Hosts,cn=groups,{{ .Values.stackDataContext.ldapBase }}
+    directory/manager/rest/authorized-groups/dc-slaves: cn=DC Slave Hosts,cn=groups,{{ .Values.stackDataContext.ldapBase }}
+    directory/manager/rest/authorized-groups/domain-admins: cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}
     directory/manager/rest/debug_level: 5
     directory/manager/rest/ldap-connection/user-read/start-tls: 2
     directory/manager/rest/show-tracebacks: false
