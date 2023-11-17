@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.32.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.32.0...v0.32.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* **stack-data:** fix typos in UDM-REST configuration ([730946e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/730946edde32a997755ff4a081ea9b1ee478fb2b))
+
 ## [0.32.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.31.0...v0.32.0) (2023-11-16)
 
 
