@@ -9,7 +9,7 @@
 metadata:
   name: '{{ include "common.names.fullname" . }}-ucr'
 data:
-  base.conf: |
+  base.conf: |-
     directory/manager/rest/ldap-connection/user-read/start-tls: 0
     directory/manager/web/modules/users/user/add/default: cn=openDesk User,cn=templates,cn=univention,{{ .Values.stackDataContext.ldapBase }}
     directory/manager/web/modules/users/user/properties/description/syntax: TextArea
@@ -55,6 +55,10 @@ data:
     umc/self-service/account-verification/email/webserver_address: {{ .Values.stackDataContext.portalFqdn }}
     umc/self-service/content-security-policy/frame-ancestors: 'self'
     umc/self-service/passwordreset/email/sender_address: Password Reset Service <noreply@{{ .Values.stackDataContext.externalMailDomain }}>
+    umc/self-service/passwordreset/email/server: {{ .Values.stackDataContext.smtpHost }}
+    umc/self-service/passwordreset/email/server/port: {{ .Values.stackDataContext.smtpPort }}
+    umc/self-service/passwordreset/email/server/user: {{ .Values.stackDataContext.smtpUser }}
+    umc/self-service/passwordreset/email/server/starttls: {{ .Values.stackDataContext.smtpStartTls }}
     umc/self-service/passwordreset/email/text_file: /usr/share/univention-self-service/email_bodies/passwordreset_email_body.txt
     umc/self-service/passwordreset/email/webserver_address: {{ .Values.stackDataContext.portalFqdn }}
     umc/self-service/passwordreset/token_validity_period: 172800

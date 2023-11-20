@@ -228,6 +228,10 @@ true
   "portaltileGroupUserStandard": [
     "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
   ],
+  "smtpHost": null,
+  "smtpPort": 587,
+  "smtpStartTls": true,
+  "smtpUser": null,
   "userPassword": null
 }
 </pre>
@@ -260,6 +264,42 @@ null
 </pre>
 </td>
 			<td>Portal title (English)</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpHost</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Self-service emails: SMTP host</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpPort</td>
+			<td>int</td>
+			<td><pre lang="json">
+587
+</pre>
+</td>
+			<td>Self-service emails: SMTP port (default: `587`)</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpStartTls</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Self-service emails: SMTP via TLS (default: `true`)</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpUser</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Self-service emails: SMTP username</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.userPassword</td>
