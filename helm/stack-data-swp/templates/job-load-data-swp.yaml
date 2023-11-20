@@ -13,7 +13,9 @@ spec:
         {{- include "common.labels.standard" . | nindent 8 }}
       annotations:
         checksum/config: '{{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}'
-        checksum/config: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
+        checksum/config-data: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
+        checksum/config-hook: '{{ include (print $.Template.BasePath "/configmap-attribute-to-group-mapper.yaml") . | sha256sum }}'
+        checksum/config-schemas: '{{ include (print $.Template.BasePath "/configmap-openDesk-schemas.yaml") . | sha256sum }}'
     spec:
       restartPolicy: "OnFailure"
       {{- with .Values.image.pullSecrets }}
