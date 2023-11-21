@@ -5,6 +5,21 @@ action: create
 module: settings/umc_operationset
 position: "cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
 properties:
+  name: "portal-announcement"
+  description: "Allows administration of portal announcement objects"
+  flavor: "portals/announcement"
+  hosts: []
+  objectFlag: []
+  operation:
+    - command: "udm/*"
+      option: "objectType=portals/announcement"
+    - command: "udm/properties"
+      option: "objectType=groups/group"
+---
+action: create
+module: settings/umc_operationset
+position: "cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+properties:
   name: "ox-functional-accounts"
   description: "Administration for OX functional mailboxes"
   flavor: "oxmail/functional_account"
