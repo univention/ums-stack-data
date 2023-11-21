@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.33.0...v0.34.0) (2023-11-21)
+
+
+### Features
+
+* **stack-data-swp:** allow configuring self-service smtp host ([4b365c4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/4b365c4fa39aed4021aa12a02791b067bad0a3f0))
+
 ## [0.33.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.32.1...v0.33.0) (2023-11-17)
 
 
