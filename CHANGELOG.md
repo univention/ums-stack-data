@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.35.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.34.0...v0.35.0) (2023-11-21)
+
+
+### Features
+
+* **stack-data-swp:** Integrate A2GM UDM Hook into the containerized stack. ([44518f0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/44518f07cbd33db1eebba012813c34d58f673597))
+
 ## [0.34.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.33.0...v0.34.0) (2023-11-21)
 
 
