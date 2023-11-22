@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.36.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.35.0...v0.36.0) (2023-11-22)
+
+
+### Features
+
+* Add ConfigMap to hold the openDesk Announcements customization ([7063dee](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7063dee5b51875b7390abe3c28d91cf4815d6af4))
+* Add UMC policies and operationsets to enable Announcements ([0494b67](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/0494b67413c27cee2fc1c348abd2a0ce8059c25d))
+
 ## [0.35.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.34.0...v0.35.0) (2023-11-21)
 
 
