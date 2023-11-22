@@ -1,91 +1,62 @@
 ---
-
 include:
   - project: "univention/customers/dataport/upx/common-ci"
-    ref: "v0.5.4"
+    ref: "v1.9.7"
     file:
       # TODO: Sphinx docs inherits a stage definition from upstream,
       # has to be included before our default stages to avoid trouble.
       - "jobs/sphinx-docs.yaml"
-      - "defaults/souvap-workflow.yaml"
       - "defaults/stages.yaml"
-      - "templates/kaniko.yaml"
-      - "templates/semantic-release-env.yaml"
+      - "defaults/souvap-workflow.yaml"
       - "templates/souvap.yaml"
-      - "jobs/lint-commit-messages.yaml"
       - "jobs/lint-pre-commit.yaml"
+      - "jobs/lint-commit-messages.yaml"
+      - "jobs/semantic-release-env.yaml"
+      - "jobs/container-build.yaml"
       - "jobs/package-and-publish-helm-charts.yaml"
 
-
-variables:
-  SOUVAP_HELM_PROJECT_ID: 155
-  SOUVAP_REGISTRY_PATH: souvap/tooling/images/univention
-
-
-pre-semantic-release:
-  extends: ".pre-semantic-release"
-
-
-build-data-loader-test-runner:
-  stage: "build"
-  extends: ".kaniko"
-  needs: []
-  variables:
-    CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader-test-runner"
+.build-matrix: &build-matrix
+  - IMAGE_NAME: "data-loader-test-runner"
     KANIKO_BUILD_CONTEXT: "docker/data-loader"
-    KANIKO_ARGS: "--target=test"
+    KANIKO_ARGS: "--target test"
+  - IMAGE_NAME: "data-loader"
+    KANIKO_BUILD_CONTEXT: "docker/data-loader"
+    KANIKO_ARGS: "--target final"
+  - IMAGE_NAME: "joinscript-tools"
+    KANIKO_BUILD_CONTEXT: "docker/joinscript-tools"
 
+.publish-matrix: &publish-matrix
+  - IMAGE_NAME:
+      - "data-loader"
+
+container-build:
+  parallel:
+    matrix: *build-matrix
+
+container-generate-sbom:
+  parallel:
+    matrix: *build-matrix
+
+container-sign:
+  parallel:
+    matrix: *build-matrix
+
+container-security-scan:
+  parallel:
+    matrix: *build-matrix
 
 test-data-loader:
   stage: "test"
-  needs:
-    - job: "build-data-loader-test-runner"
-  image: "$BUILD_IMAGE_TAG"
+  image: "${CI_REGISTRY_IMAGE}/data-loader-test-runner:${RELEASE_VERSION}"
   script:
     - cd docker/data-loader
     - pytest
 
-
-build-data-loader:
-  stage: "build"
-  extends: ".kaniko"
-  needs:
-    - job: "pre-semantic-release"
-      artifacts: true
-  variables:
-    KANIKO_BUILD_CONTEXT: "docker/data-loader"
-    CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/data-loader"
-    KANIKO_ARGS: "--target=final"
-    VERSION: "${RELEASE_VERSION}"
-
-
-build-joinscript-tools:
-  stage: "build"
-  extends: ".kaniko"
-  needs:
-    - job: "pre-semantic-release"
-      artifacts: true
-  variables:
-    KANIKO_BUILD_CONTEXT: "docker/joinscript-tools"
-    CI_REGISTRY_IMAGE: "$CI_REGISTRY_IMAGE/joinscript-tools"
-    VERSION: "${RELEASE_VERSION}"
-
-
-package-helm-charts:
-  needs:
-    - job: "pre-semantic-release"
-      artifacts: true
-
-
-publish-image-souvap-data-loader:
-  needs:
-    - job: build-data-loader
+publish-images:
   extends: .push-image-souvap
-  variables:
-    SOUVAP_IMAGE_NAME: "data-loader"
-
+  parallel:
+    matrix: *publish-matrix
 
 publish-helm-charts-souvap:
   extends: .publish-helm-charts-souvap
-
 ...
