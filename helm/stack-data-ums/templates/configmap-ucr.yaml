@@ -108,7 +108,7 @@ data:
     locale: de_DE.UTF-8:UTF-8 en_US.UTF-8:UTF-8
     password/hashing/method: SHA-512
     portal/auth-mode: saml
-    portal/paths: /univention/portal/, /univention/umc/
+    portal/paths: /univention/portal/, /univention/umc/, /univention/selfservice/
     self-service/backend-server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
     self-service/ldap_attributes: jpegPhoto,mail,telephoneNumber,roomNumber,departmentNumber,st,homePhone,mobile,homePostalAddress
     self-service/udm-rest-server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
