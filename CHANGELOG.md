@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.37.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.36.0...v0.37.0) (2023-11-29)
+
+
+### Features
+
+* Add additionalAnnotations to helm charts ([e92d5c7](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e92d5c7088adcb1af92fd1e5574815f0456ac865))
+
 ## [0.36.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.35.0...v0.36.0) (2023-11-22)
 
 
