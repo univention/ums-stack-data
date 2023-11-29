@@ -110,6 +110,8 @@ image:
   # -- Define image sha256 as an alternative to `tag`
   sha256: null
 
+# -- Additional custom annotations to add to deployed objects.
+additionalAnnotations: {}
 
 ## Global values
 affinity: {}

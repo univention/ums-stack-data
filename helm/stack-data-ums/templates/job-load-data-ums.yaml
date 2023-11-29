@@ -5,6 +5,10 @@ metadata:
   name: {{ include "common.names.fullnameWithRevision" . }}
   labels:
     {{- include "common.labels.standard" . | nindent 4 }}
+  {{- if .Values.additionalAnnotations }}
+  annotations:
+    {{ toYaml .Values.additionalAnnotations | nindent 4 }}
+  {{- end }}
 spec:
   template:
     metadata:
@@ -14,6 +18,9 @@ spec:
       annotations:
         checksum/config: '{{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}'
         checksum/config: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
+        {{- if .Values.additionalAnnotations }}
+        {{ toYaml .Values.additionalAnnotations | nindent 8 }}
+        {{- end }}
     spec:
       restartPolicy: "OnFailure"
       {{- with .Values.image.pullSecrets }}

@@ -52,6 +52,15 @@ helm uninstall stack-data-udm
 	</thead>
 	<tbody>
 		<tr>
+			<td>additionalAnnotations</td>
+			<td>object</td>
+			<td><pre lang="json">
+{}
+</pre>
+</td>
+			<td>Additional custom annotations to add to deployed objects.</td>
+		</tr>
+		<tr>
 			<td>affinity</td>
 			<td>object</td>
 			<td><pre lang="json">

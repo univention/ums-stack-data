@@ -5,6 +5,10 @@ metadata:
   name: {{ include "common.names.fullnameWithRevision" . }}
   labels:
     {{- include "common.labels.standard" . | nindent 4 }}
+  {{- if .Values.additionalAnnotations }}
+  annotations:
+    {{ toYaml .Values.additionalAnnotations | nindent 4 }}
+  {{- end }}
 spec:
   template:
     metadata:
@@ -16,6 +20,9 @@ spec:
         checksum/config-data: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
         checksum/config-hook: '{{ include (print $.Template.BasePath "/configmap-attribute-to-group-mapper.yaml") . | sha256sum }}'
         checksum/config-schemas: '{{ include (print $.Template.BasePath "/configmap-openDesk-schemas.yaml") . | sha256sum }}'
+        {{- if .Values.additionalAnnotations }}
+        {{ toYaml .Values.additionalAnnotations | nindent 8 }}
+        {{- end }}
     spec:
       restartPolicy: "OnFailure"
       {{- with .Values.image.pullSecrets }}
