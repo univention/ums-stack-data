@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.37.0...v0.38.0) (2023-11-29)
+
+
+### Features
+
+* **stack-data-ums:** selfservice portal ([0b39cf6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/0b39cf6460407709d710d3bae9fedc5d6bb4ab46))
+
 ## [0.37.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.36.0...v0.37.0) (2023-11-29)
 
 
