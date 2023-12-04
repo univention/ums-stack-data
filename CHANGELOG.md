@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.0...v0.38.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* trigger re-release ([c43cae4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c43cae4bf2e261b6d1e7e137879e858a9e415aa2))
+
 ## [0.38.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.37.0...v0.38.0) (2023-11-29)
 
 
