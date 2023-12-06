@@ -234,7 +234,6 @@ module: "container/cn"
 position: "{{ .ldapBase }}"
 properties:
   name: "self registered users"
-  userPath: True
 ---
 action: "create"
 module: "settings/umc_operationset"
