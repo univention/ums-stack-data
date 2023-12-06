@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.1...v0.38.2) (2023-12-06)
+
+
+### Bug Fixes
+
+* add required openDesk branding details for Univention Keycloak ([a6b41b0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a6b41b0eaf8073b8b3fb35ebc25fc397f4ac7a07))
+
 ## [0.38.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.0...v0.38.1) (2023-12-04)
 
 
