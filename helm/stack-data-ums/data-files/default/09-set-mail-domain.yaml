@@ -1,6 +1,8 @@
 {{ with .Values.stackDataContext }}
 
 ---
+# TODO: move this back to stack-data-swp after solving
+# https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
 action: create
 module: mail/domain
 position: cn=domain,cn=mail,{{ .ldapBase }}
