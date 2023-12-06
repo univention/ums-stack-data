@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.38.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.2...v0.38.3) (2023-12-06)
+
+
+### Bug Fixes
+
+* **stack-data-ums:** don't add 'self registered users' to the 'default containers' ([46e4c6b](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/46e4c6be0a8e54369a37c012a6dd33b4c53953a9))
+* **stack-data:** resolve circular dependency between ums and swp ([f9ba5d2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f9ba5d25c416a2943bf3a537e965168213324827))
+
 ## [0.38.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.1...v0.38.2) (2023-12-06)
 
 
