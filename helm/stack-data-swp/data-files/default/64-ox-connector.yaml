@@ -79,7 +79,7 @@ properties:
   hook: oxContextRW
   groupName: Open-Xchange
   groupPosition: 1
-  disableUDMWeb: False
+  disableUDMWeb: True
 
 ---
 action: "create"
