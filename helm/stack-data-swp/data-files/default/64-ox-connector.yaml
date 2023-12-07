@@ -2808,6 +2808,7 @@ position: "cn=templates,cn=univention,{{ .ldapBase }}"
 properties:
   name: "openDesk User"
   isOxUser: True
+  oxContext: {{ .oxDefaultContext }}
   mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
   e-mail: ["<username>@{{ .externalMailDomain }}"]
   unixhome: "/home/<username>"
