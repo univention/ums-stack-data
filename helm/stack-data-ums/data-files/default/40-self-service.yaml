@@ -218,16 +218,20 @@ properties:
   deleteObjectClass: False
   overwriteTab: False
   fullWidth: True
----
-action: "create"
-module: "settings/usertemplate"
-position: "cn=templates,cn=univention,{{ .ldapBase }}"
-properties:
-  name: "selfserviceregistrationtemplate"
-  displayName: "<firstname> <lastname><:strip>"
-  unixhome: "/home/<username>"
-  primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
-  shell: "/bin/bash"
+# TODO: This object should be created in `ums` and deleted in `swp`
+# because it's part of the self service joinscript but shall not be part of openDesk
+# Until the data-loader has `delete` functionality, we'll just not create it.
+# https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/358
+# ---
+# action: "create"
+# module: "settings/usertemplate"
+# position: "cn=templates,cn=univention,{{ .ldapBase }}"
+# properties:
+#   name: "selfserviceregistrationtemplate"
+#   displayName: "<firstname> <lastname><:strip>"
+#   unixhome: "/home/<username>"
+#   primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+#   shell: "/bin/bash"
 ---
 action: "create"
 module: "container/cn"
