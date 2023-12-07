@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.3...v0.38.4) (2023-12-07)
+
+
+### Bug Fixes
+
+* Keycloak Login custom.css ([91d41b0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/91d41b090893788486f4972a6cecbeaa1f47b8c2))
+
 ## [0.38.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.2...v0.38.3) (2023-12-06)
 
 
