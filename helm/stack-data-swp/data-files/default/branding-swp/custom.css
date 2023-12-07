@@ -96,7 +96,23 @@
 /* Keycloak Login begin */
 #kc-login {
   color: var(--color-opendesk-white);
+  border: 2px solid;
 }
+
+#kc-login:hover {
+  color: #000000;
+  background-color: #e7dffa;
+  border: 2px solid var(--color-accent);
+}
+
+input#username.pf-c-form-control {
+  background-color: #e7dffa;
+}
+
+input#password.pf-c-form-control {
+  background-color: #e7dffa;
+}
+
 #kc-form-options .checkbox {
   color: var(--font-color-contrast-high) !important;
 }
