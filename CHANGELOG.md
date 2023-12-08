@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.39.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.5...v0.39.0) (2023-12-08)
+
+
+### Features
+
+* **data-loader:** Support object delete ([7fe3e54](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7fe3e54add85b7ab988844b3bd0c0644beca3f8c))
+
+
+### Bug Fixes
+
+* **stack-data-swp:** remove selfservice registration template ([f034b27](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f034b27fbe4e33ce75fe9d103852f2c2fd3ec53f))
+
 ## [0.38.5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.4...v0.38.5) (2023-12-08)
 
 
