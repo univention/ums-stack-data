@@ -1,0 +1,6 @@
+{{ with .Values.stackDataContext }}
+---
+action: "delete_if_exists"
+module: "settings/usertemplate"
+position: "cn=selfserviceregistrationtemplate,cn=templates,cn=univention,{{ .ldapBase }}"
+{{ end }}
