@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.4...v0.38.5) (2023-12-08)
+
+
+### Bug Fixes
+
+* Add oxContext to openDesk user template ([86d24e8](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/86d24e8ba10ffcfa4009ffb8ebdfe48012f818b8))
+
 ## [0.38.4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.3...v0.38.4) (2023-12-07)
 
 
