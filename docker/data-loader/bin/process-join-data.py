@@ -5,10 +5,8 @@ import os
 import sys
 
 import yaml
-from jinja2 import Template, StrictUndefined
-
-from univention.admin.rest.client import UDM, UnprocessableEntity
-
+from jinja2 import StrictUndefined, Template
+from univention.admin.rest.client import UDM, NotFound, UnprocessableEntity
 
 log = logging.getLogger("app")
 
@@ -61,6 +59,9 @@ class App:
                 position=data["position"],
                 properties=data.get("properties"),
             )
+        elif data["action"] == "delete_if_exists":
+            self.delete_udm_object(module=data["module"], position=data["position"])
+
         else:
             raise NotImplementedError(f"Action {data['action']} not supported.")
 
@@ -85,6 +86,14 @@ class App:
         log.debug(f"Updating properties {list(properties.keys())}")
         obj.properties.update(properties)
         obj.save()
+
+    def delete_udm_object(self, module, position):
+        log.info(f"Deleting UDM object {module}, {position}")
+        try:
+            obj = self.udm.obj_by_dn(position)
+            obj.delete()
+        except NotFound:
+            log.info("The object does not exist, not deleting anything.")
 
     def ensure_list_contains(self, module, position, properties, policies):
         log.info(f"Ensuring attribute list contains value {module}, {position}")

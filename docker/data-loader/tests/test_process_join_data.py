@@ -1,7 +1,7 @@
-from unittest import mock
 import importlib.util
 import os
 import os.path
+from unittest import mock
 
 import pytest
 
@@ -169,3 +169,13 @@ def test_update_udm_object_sets_properties(app):
     )
     assert mock_obj.properties["firstname"] == "new_firstname"
     mock_obj.save.assert_called()
+
+
+def test_delete_udm_object(app):
+    mock_obj = app.udm.obj_by_dn()
+    mock_obj.properties = {
+        "firstname": "stub_firstname",
+        "lastname": "stub_lastname",
+    }
+    app.delete_udm_object("users/user", "cn=someuser,dc=base")
+    mock_obj.delete.assert_called()
