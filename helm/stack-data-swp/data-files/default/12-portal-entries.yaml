@@ -245,8 +245,8 @@ properties:
     de_DE: "E-Mails senden und empfangen"
     en_US: "Send and receive emails"
   displayName:
-    de_DE: "Email"
-    en_US: "E-Mail"
+    de_DE: "E-Mail"
+    en_US: "Email"
   target: "tab_groupware"
 ---
 action: "create"
