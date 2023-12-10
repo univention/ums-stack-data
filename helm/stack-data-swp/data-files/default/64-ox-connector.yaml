@@ -79,7 +79,7 @@ properties:
   hook: oxContextRW
   groupName: Open-Xchange
   groupPosition: 1
-  disableUDMWeb: True
+  disableUDMWeb: False
 
 ---
 action: "create"
@@ -2857,99 +2857,127 @@ action: "create"
 module: "oxmail/accessprofile"
 position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
 properties:
-  name: "webmail"
-  displayName: "Webmail"
-  contacts: True
-  webmail: True
-  collectemailaddresses: True
-  multiplemailaccounts: True
-  subscription: True
----
-action: "create"
-module: "oxmail/accessprofile"
-position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
-properties:
-  name: "webmail_drive"
-  displayName: "Webmail, Drive"
-  contacts: True
-  infostore: True
-  webmail: True
-  collectemailaddresses: True
-  multiplemailaccounts: True
-  subscription: True
----
-action: "create"
-module: "oxmail/accessprofile"
-position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
-properties:
-  name: "pim"
-  displayName: "Webmail, PIM"
+  name: "opendesk_standard"
+  displayName: "openDesk Standard"
   calendar: True
+  collectemailaddresses: True
   contacts: True
   delegatetask: True
-  tasks: True
-  webmail: True
-  collectemailaddresses: True
-  multiplemailaccounts: True
-  subscription: True
----
-action: "create"
-module: "oxmail/accessprofile"
-position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
-properties:
-  name: "pim_drive"
-  displayName: "Webmail, PIM, Drive"
-  calendar: True
-  contacts: True
-  delegatetask: True
-  infostore: True
-  tasks: True
-  webmail: True
-  collectemailaddresses: True
-  multiplemailaccounts: True
-  subscription: True
----
-action: "create"
-module: "oxmail/accessprofile"
-position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
-properties:
-  name: "groupware"
-  displayName: "Webmail, PIM, Groupware"
-  calendar: True
-  contacts: True
-  delegatetask: True
+  editgroup: True
+  editpassword: True
   editpublicfolders: True
-  infostore: True
-  readcreatesharedfolders: True
-  tasks: True
-  webmail: True
-  collectemailaddresses: True
-  multiplemailaccounts: True
-  subscription: True
----
-action: "create"
-module: "oxmail/accessprofile"
-position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
-properties:
-  name: premium
-  displayName: "Webmail, PIM, Groupware, WebDAV"
-  calendar: True
-  contacts: True
-  delegatetask: True
-  editpublicfolders: True
+  editresource: True
+  globaladdressbookdisabled: True
   ical: True
-  infostore: True
+  multiplemailaccounts: True
   readcreatesharedfolders: True
+  subscription: True
   tasks: True
   vcard: True
   webdav: True
-  webdavxml: True
   webmail: True
-  collectemailaddresses: True
-  multiplemailaccounts: True
-  subscription: True
-  usm: True
 
+# The following profiles are the OX-Connector's default profiles, they are not
+# needed in openDesk and therefore commented out. Might be of use for other
+# more standard rollouts.
+# ---
+# action: "create"
+# module: "oxmail/accessprofile"
+# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# properties:
+#   name: "webmail"
+#   displayName: "Webmail"
+#   contacts: True
+#   webmail: True
+#   collectemailaddresses: True
+#   multiplemailaccounts: True
+#   subscription: True
+# ---
+# action: "create"
+# module: "oxmail/accessprofile"
+# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# properties:
+#   name: "webmail_drive"
+#   displayName: "Webmail, Drive"
+#   contacts: True
+#   infostore: True
+#   webmail: True
+#   collectemailaddresses: True
+#   multiplemailaccounts: True
+#   subscription: True
+# ---
+# action: "create"
+# module: "oxmail/accessprofile"
+# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# properties:
+#   name: "pim"
+#   displayName: "Webmail, PIM"
+#   calendar: True
+#   contacts: True
+#   delegatetask: True
+#   tasks: True
+#   webmail: True
+#   collectemailaddresses: True
+#   multiplemailaccounts: True
+#   subscription: True
+# ---
+# action: "create"
+# module: "oxmail/accessprofile"
+# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# properties:
+#   name: "pim_drive"
+#   displayName: "Webmail, PIM, Drive"
+#   calendar: True
+#   contacts: True
+#   delegatetask: True
+#   infostore: True
+#   tasks: True
+#   webmail: True
+#   collectemailaddresses: True
+#   multiplemailaccounts: True
+#   subscription: True
+# ---
+# action: "create"
+# module: "oxmail/accessprofile"
+# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# properties:
+#   name: "groupware"
+#   displayName: "Webmail, PIM, Groupware"
+#   calendar: True
+#   contacts: True
+#   delegatetask: True
+#   editpublicfolders: True
+#   infostore: True
+#   readcreatesharedfolders: True
+#   tasks: True
+#   webmail: True
+#   collectemailaddresses: True
+#   multiplemailaccounts: True
+#   subscription: True
+# ---
+# action: "create"
+# module: "oxmail/accessprofile"
+# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# properties:
+#   name: premium
+#   displayName: "Webmail, PIM, Groupware, WebDAV"
+#   calendar: True
+#   contacts: True
+#   delegatetask: True
+#   editpublicfolders: True
+#   ical: True
+#   infostore: True
+#   readcreatesharedfolders: True
+#   tasks: True
+#   vcard: True
+#   webdav: True
+#   webdavxml: True
+#   webmail: True
+#   collectemailaddresses: True
+#   multiplemailaccounts: True
+#   subscription: True
+#   usm: True
+---
 # Create default context
 action: "create"
 module: "oxmail/oxcontext"
