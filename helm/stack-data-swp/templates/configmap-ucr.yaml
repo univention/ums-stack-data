@@ -41,11 +41,7 @@ data:
     self-service/udm_attributes/employeeNumber/readonly: true
     ucs/web/theme: light
     uldap/start-tls: 0
-    umc/cookie-banner/show: true
-    umc/cookie-banner/text/de: Cookie Zustimmung
-    umc/cookie-banner/text/de: Die Nutzung dieses Angebots ist nur möglich, wenn Cookies gespeichert und verarbeitet werden können (essenzielle Cookies). Dafür benötigen wir Ihre Zustimmung. Bitte akzeptieren Sie um fortzufahren oder schließen Sie die Seite.
-    umc/cookie-banner/text/en: Usage of this site is only possible by storing and processing cookie information (essential cookies). We require your consent. Please accept to continue or close the page.
-    umc/cookie-banner/title/en: Cookie Consent
+    umc/cookie-banner/show: false
     umc/http/cookie/samesite: Strict
     umc/http/enforce-secure-cookie: true
     umc/login/password-complexity-message/de: Das Passwort muss den folgenden Anforderungen entsprechen:<br><ul><li>Mindestlänge: 8 Zeichen</li></ul>Anmerkung: Wird befinden uns nicht in einer Produktivumgebung.
