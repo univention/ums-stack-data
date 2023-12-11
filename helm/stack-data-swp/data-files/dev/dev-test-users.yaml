@@ -5,8 +5,8 @@ module: "users/user"
 position: "cn=users,{{ .ldapBase }}"
 properties:
   username: "default.user"
-  firstname: "test"
-  lastname: "user"
+  firstname: "Default"
+  lastname: "User"
   password: {{ required "Please set a password for the default user" .userPassword | quote }}
   oxContext: {{ .oxDefaultContext }}
   oxAccess: "opendesk_standard"
@@ -23,8 +23,8 @@ module: "users/user"
 position: "cn=users,{{ .ldapBase }}"
 properties:
   username: "default.admin"
-  firstname: "test"
-  lastname: "admin"
+  firstname: "Default"
+  lastname: "Admin"
   primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
   password: {{ required "Please set a password for the default user" .adminPassword | quote }}
   isOxUser: False
