@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.1...v0.39.2) (2023-12-11)
+
+
+### Bug Fixes
+
+* Configuration finetuning for openDesk ([96d5ba5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/96d5ba5a3ba885a1ad1258a5d3fc222cb85e44c5))
+
 ## [0.39.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.0...v0.39.1) (2023-12-11)
 
 
