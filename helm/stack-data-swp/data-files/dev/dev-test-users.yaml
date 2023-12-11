@@ -9,7 +9,7 @@ properties:
   lastname: "user"
   password: {{ required "Please set a password for the default user" .userPassword | quote }}
   oxContext: {{ .oxDefaultContext }}
-  oxAccess: "groupware"
+  oxAccess: "opendesk_standard"
   isOxUser: True
   opendeskFileshareEnabled: True
   opendeskProjectmanagementEnabled: True
