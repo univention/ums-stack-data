@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.0...v0.39.1) (2023-12-11)
+
+
+### Bug Fixes
+
+* **ci:** reference common-ci v1.11.x to push sbom and signature to souvap ([6c6d8c2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/6c6d8c21b14c27d2730ff759c81baf8d193293c4))
+
 ## [0.39.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.38.5...v0.39.0) (2023-12-08)
 
 
