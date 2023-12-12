@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.39.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.2...v0.39.3) (2023-12-12)
+
+
+### Bug Fixes
+
+* Set former First and Lastname for default users ([4f81144](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/4f81144bbffc84689c98d8c88f6b017a51fc2ce9))
+* Set proper OX access profile for default user ([fc9fcc3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/fc9fcc347e62521a9d8c1c51286c34418f589451))
+
 ## [0.39.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.1...v0.39.2) (2023-12-11)
 
 
