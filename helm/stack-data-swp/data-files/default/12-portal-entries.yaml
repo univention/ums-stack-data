@@ -383,8 +383,8 @@ properties:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Startet ein leeres Schriftstück"
-    en_US: "Starts a blank text document"
+    de_DE: "Öffnet ein neues, leeres Schriftstück in Dateien"
+    en_US: "Opens a new empty text document in Files"
   displayName:
     de_DE: "Dokument"
     en_US: "Document"
@@ -403,8 +403,8 @@ properties:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Startet ein leeres Tabellen-Dokument"
-    en_US: "Starts a blank sheet as calc document"
+    de_DE: "Öffnet ein neues, leeres Tabellen-Dokument in Dateien"
+    en_US: "Opens a new empty calc document in Files"
   displayName:
     de_DE: "Tabelle"
     en_US: "Sheet"
@@ -423,8 +423,8 @@ properties:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Startet eine leere Präsentation"
-    en_US: "Starts a blank presentation"
+    de_DE: "Öffnet eine neue, leere Präsentation in Dateien"
+    en_US: "Öffnet a new empty presentation in Files"
   displayName:
     de_DE: "Präsentation"
     en_US: "Presentation"
@@ -453,11 +453,11 @@ properties:
 {{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Kollaborative Meetings"
-    en_US: "Collaborative meetings"
+    de_DE: "Chatnachrichten-Austausch mit anderen Mitarbeitenden und kollaborative Meeting mit Whiteboard, Online-Abstimmungen und Breakout-Sessions."
+    en_US: "Chat with your colleagues and setup collaborative meetings with a whiteboards, online voting and breakout sessions."
   displayName:
-    de_DE: "Kollaboration"
-    en_US: "Collaboration"
+    de_DE: "Chat & Zusammenarbeit"
+    en_US: "Chat & Collaboration"
   target: "tab_realtime_collaboration"
 ---
 action: "create"
