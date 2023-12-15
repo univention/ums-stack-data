@@ -143,8 +143,8 @@ properties:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Verwaltung von Funktionspostfächern in der Groupware"
-    en_US: "Manage functional mailboxes for groupware"
+    de_DE: "Verwaltung von Funktionspostfächern"
+    en_US: "Manage functional mailboxes"
   displayName:
     de_DE: "Funktionspostfächer"
     en_US: "Functional mailboxes"
@@ -163,8 +163,8 @@ properties:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Verwaltung von Groupware Kalender Ressourcen"
-    en_US: "Manage calendar resources for groupware"
+    de_DE: "Verwaltung von Kalender Ressourcen"
+    en_US: "Manage calendar resources"
   displayName:
     de_DE: "Ressourcen"
     en_US: "Resources"
@@ -282,7 +282,7 @@ properties:
 {{ toYaml .portaltileGroupGroupware | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Verwalte persönliche Kontakte und durchsuche globales Adressbuch"
+    de_DE: "Persönliche Kontakte und Adressbücher verwalten"
     en_US: "Manage personal contacts and browser global contacts"
   displayName:
     de_DE: "Kontakte"
@@ -383,8 +383,8 @@ properties:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Startet ein leeres Schriftstück"
-    en_US: "Starts a blank text document"
+    de_DE: "Öffnet ein neues, leeres Schriftstück in Dateien"
+    en_US: "Opens a new empty text document in Files"
   displayName:
     de_DE: "Dokument"
     en_US: "Document"
@@ -403,8 +403,8 @@ properties:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Startet ein leeres Tabellen-Dokument"
-    en_US: "Starts a blank sheet as calc document"
+    de_DE: "Öffnet ein neues, leeres Tabellen-Dokument in Dateien"
+    en_US: "Opens a new empty calc document in Files"
   displayName:
     de_DE: "Tabelle"
     en_US: "Sheet"
@@ -423,8 +423,8 @@ properties:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Startet eine leere Präsentation"
-    en_US: "Starts a blank presentation"
+    de_DE: "Öffnet eine neue, leere Präsentation in Dateien"
+    en_US: "Öffnet a new empty presentation in Files"
   displayName:
     de_DE: "Präsentation"
     en_US: "Presentation"
@@ -453,11 +453,11 @@ properties:
 {{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Kollaborative Meetings"
-    en_US: "Collaborative meetings"
+    de_DE: "Chatnachrichten-Austausch mit anderen Mitarbeitenden und kollaborative Meeting mit Whiteboard, Online-Abstimmungen und Breakout-Sessions."
+    en_US: "Chat with your colleagues and setup collaborative meetings with a whiteboards, online voting and breakout sessions."
   displayName:
-    de_DE: "Kollaboration"
-    en_US: "Collaboration"
+    de_DE: "Chat & Zusammenarbeit"
+    en_US: "Chat & Collaboration"
   target: "tab_realtime_collaboration"
 ---
 action: "create"
@@ -473,8 +473,8 @@ properties:
 {{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Sofort Videokonferenz"
-    en_US: "Ad hoc videoconference"
+    de_DE: "Ungeplante Direkt-Videokonferenzen (auch) mit externen Teilnehmern"
+    en_US: "Ad hoc videoconference also with external participants"
   displayName:
     de_DE: "Sofort Videokonferenz"
     en_US: "Ad hoc videoconference"
@@ -502,8 +502,8 @@ properties:
 {{ toYaml .portaltileGroupManagementProject | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Projektverwaltung- und steuerung"
-    en_US: "Manage and control projects"
+    de_DE: "Projektplanung und -steuerung inkl. Boards und Besprechnungsmanagement "
+    en_US: "Manage and control projects including boards and meeting management"
   displayName:
     de_DE: "Projekte"
     en_US: "Projects"

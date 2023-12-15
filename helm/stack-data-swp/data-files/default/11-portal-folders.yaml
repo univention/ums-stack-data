@@ -7,7 +7,7 @@ position: cn=folder,cn=portals,cn=univention,{{ .ldapBase }}
 properties:
   name: "swp.fileshare_directdoc"
   displayName:
-    de_DE: "Erstelle neue Dateien"
-    en_US: "Create new files"
+    de_DE: "Erstelle neu in Dateien"
+    en_US: "create new in Files"
 
 {{ end }}
