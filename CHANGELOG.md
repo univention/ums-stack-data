@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.3...v0.39.4) (2023-12-15)
+
+
+### Bug Fixes
+
+* Correct various opendesk adaptions ([c18213a](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c18213ac18ed05120514377e20ba8adebb830578))
+
 ## [0.39.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.2...v0.39.3) (2023-12-12)
 
 
