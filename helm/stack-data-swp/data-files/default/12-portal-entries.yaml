@@ -143,8 +143,8 @@ properties:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Verwaltung von Funktionspostfächern in der Groupware"
-    en_US: "Manage functional mailboxes for groupware"
+    de_DE: "Verwaltung von Funktionspostfächern"
+    en_US: "Manage functional mailboxes"
   displayName:
     de_DE: "Funktionspostfächer"
     en_US: "Functional mailboxes"
@@ -163,8 +163,8 @@ properties:
 {{ toYaml .portaltileGroupUserAdmin | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Verwaltung von Groupware Kalender Ressourcen"
-    en_US: "Manage calendar resources for groupware"
+    de_DE: "Verwaltung von Kalender Ressourcen"
+    en_US: "Manage calendar resources"
   displayName:
     de_DE: "Ressourcen"
     en_US: "Resources"
@@ -282,7 +282,7 @@ properties:
 {{ toYaml .portaltileGroupGroupware | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Verwalte persönliche Kontakte und durchsuche globales Adressbuch"
+    de_DE: "Persönliche Kontakte und Adressbücher verwalten"
     en_US: "Manage personal contacts and browser global contacts"
   displayName:
     de_DE: "Kontakte"
@@ -473,8 +473,8 @@ properties:
 {{ toYaml .portaltileGroupLiveCollaboration | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Sofort Videokonferenz"
-    en_US: "Ad hoc videoconference"
+    de_DE: "Ungeplante Direkt-Videokonferenzen (auch) mit externen Teilnehmern"
+    en_US: "Ad hoc videoconference also with external participants"
   displayName:
     de_DE: "Sofort Videokonferenz"
     en_US: "Ad hoc videoconference"
@@ -502,8 +502,8 @@ properties:
 {{ toYaml .portaltileGroupManagementProject | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Projektverwaltung- und steuerung"
-    en_US: "Manage and control projects"
+    de_DE: "Projektplanung und -steuerung inkl. Boards und Besprechnungsmanagement "
+    en_US: "Manage and control projects including boards and meeting management"
   displayName:
     de_DE: "Projekte"
     en_US: "Projects"
