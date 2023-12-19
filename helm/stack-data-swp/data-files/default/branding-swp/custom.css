@@ -94,12 +94,12 @@
   }
 
 /* Keycloak user screens begin */
-#kc-login, #kc-logout, #saveTOTPBtn {
+#kc-login, #kc-logout, #saveTOTPBtn, .pf-c-button.btn-lg {
   color: var(--color-opendesk-white);
   border: 2px solid;
 }
 
-#kc-login:hover, #kc-logout:hover, #saveTOTPBtn:hover {
+#kc-login:hover, #kc-logout:hover, #saveTOTPBtn:hover, .pf-c-button.btn-lg:hover {
   color: #000000;
   background-color: #e7dffa;
   border: 2px solid var(--color-accent);
