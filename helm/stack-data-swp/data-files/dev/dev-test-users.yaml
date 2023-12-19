@@ -28,6 +28,8 @@ properties:
   primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
   password: {{ required "Please set a password for the default user" .adminPassword | quote }}
   isOxUser: False
+  guardianRole:
+    - "guardian:builtin:app-admin"
   mailPrimaryAddress: "default.admin@{{ .externalMailDomain }}"
   opendeskProjectmanagementAdmin: True
   opendeskFileshareEnabled: False
