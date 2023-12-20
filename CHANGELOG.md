@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.5...v0.39.6) (2023-12-20)
+
+
+### Bug Fixes
+
+* **customcss:** add styles for buttons on password renewal screen ([6a14d11](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/6a14d11a13a9b55454d030faff44e750e5dd271b))
+
 ## [0.39.5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.4...v0.39.5) (2023-12-18)
 
 
