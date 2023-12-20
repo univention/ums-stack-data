@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.40.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.6...v0.40.0) (2023-12-20)
+
+
+### Features
+
+* **ums:** guardian role extended attribute ([f5f77bd](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f5f77bdc5f7fe9f5517caa452aa8e03105b48fa5)), closes [univention/customers/dataport/team-souvap#342](https://git.knut.univention.de/univention/customers/dataport/team-souvap/issues/342)
+
 ## [0.39.6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.5...v0.39.6) (2023-12-20)
 
 
