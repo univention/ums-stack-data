@@ -10,4 +10,14 @@ properties:
     de_DE: "Erstelle neu in Dateien"
     en_US: "create new in Files"
 
+---
+action: create
+module: portals/folder
+position: cn=folder,cn=portals,cn=univention,{{ .ldapBase }}
+properties:
+  name: "swp.management_project_directlinks"
+  displayName:
+    de_DE: "Schnelle Projektaktivitäten"
+    en_US: "Quick project activities"
+
 {{ end }}

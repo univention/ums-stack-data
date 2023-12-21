@@ -30,5 +30,11 @@ module: "groups/group"
 position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Livecollaboration"
+---
+action: "create"
+module: "groups/group"
+position: "cn=groups,{{ .ldapBase }}"
+properties:
+  name: "Domain Admin Preview"
 
 {{ end }}
