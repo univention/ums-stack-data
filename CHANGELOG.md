@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.40.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.40.0...v0.40.1) (2023-12-21)
+
+
+### Bug Fixes
+
+* **docker:** update ucs-base from 5.0-5 to 5.0-6 ([c958d14](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c958d14081a47d819e2bf6c8dc32b1f13aa1a6b2))
+
 ## [0.40.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.39.6...v0.40.0) (2023-12-20)
 
 
