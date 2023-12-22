@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
 
 """
 Utility script to convert demo user input from csv to be used for initial user import

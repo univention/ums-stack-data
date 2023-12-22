@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
 ARG BASE_IMAGE_TAG=latest
 ARG BASE_IMAGE=gitregistry.knut.univention.de/univention/customers/dataport/upx/container-udm-rest/udm-rest-api-python-client:${BASE_IMAGE_TAG}
 

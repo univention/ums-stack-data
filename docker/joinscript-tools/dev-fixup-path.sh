@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
 # shellcheck shell=bash
 
 # This file has to be sourced to update the path
