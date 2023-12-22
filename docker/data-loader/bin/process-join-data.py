@@ -104,7 +104,8 @@ class App:
             object_exists_message = '"dn" Object exists'
             # TODO: Find a more solid way to check if the object exists
             if object_exists_message in str(exc):
-                self.update_udm_object(module, position, properties)
+                update_position = f"cn={properties.get('name')},{position}"
+                self.update_udm_object(module, update_position, properties)
             else:
                 raise
 
