@@ -59,6 +59,12 @@ class App:
                 position=data["position"],
                 properties=data.get("properties"),
             )
+        elif data["action"] == "create_or_modify":
+            self.upsert_udm_object(
+                module=data["module"],
+                position=data["position"],
+                properties=data.get("properties"),
+            )
         elif data["action"] == "delete_if_exists":
             self.delete_udm_object(module=data["module"], position=data["position"])
 
@@ -86,6 +92,21 @@ class App:
         log.debug(f"Updating properties {list(properties.keys())}")
         obj.properties.update(properties)
         obj.save()
+
+    def upsert_udm_object(self, module, position, properties):
+        log.info(f"Ensuring udm object {module}, {position}, {properties.get('name')}")
+        module_obj = self.udm.get(module)
+        obj = module_obj.new(position=position)
+        obj.properties.update(properties)
+        try:
+            obj.save()
+        except UnprocessableEntity as exc:
+            object_exists_message = '"dn" Object exists'
+            # TODO: Find a more solid way to check if the object exists
+            if object_exists_message in str(exc):
+                self.update_udm_object(module, position, properties)
+            else:
+                raise
 
     def delete_udm_object(self, module, position):
         log.info(f"Deleting UDM object {module}, {position}")
