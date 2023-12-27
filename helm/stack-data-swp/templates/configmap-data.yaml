@@ -57,5 +57,70 @@ data:
 {{- end }}
 {{- end }}
 
+{{- if .Values.stackDataSwp.systemInformation }}
+  systemInformation: |-
+    # Source: local values file
+    ---
+    action: "create_or_modify"
+    module: "portals/entry"
+    position: "cn=entry,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
+    properties:
+      name: "opendesk.sysinfo.release"
+      link:
+        - - "de_DE"
+          - "http://www.zendis.de"
+        - - "en_US"
+          - "http://www.zendis.de"
+      anonymous: false
+      linkTarget: "newwindow"
+      target: ""
+      description:
+        de_DE: "Releaseversion"
+        en_US: "Release version"
+      displayName:
+        de_DE: "{{ .Values.stackDataSwp.systemInformation.releaseVersion }}"
+        en_US: "{{ .Values.stackDataSwp.systemInformation.releaseVersion }}"
+    ---
+    action: "create_or_modify"
+    module: "portals/entry"
+    position: "cn=entry,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
+    properties:
+      name: "opendesk.sysinfo.deploydate"
+      link:
+        - - "de_DE"
+          - "http://www.zendis.de"
+        - - "en_US"
+          - "http://www.zendis.de"
+      anonymous: false
+      linkTarget: "newwindow"
+      target: ""
+      description:
+        de_DE: "Deployment Datum"
+        en_US: "Deployment date"
+      displayName:
+        de_DE: "{{ .Values.stackDataSwp.systemInformation.deployDate }}"
+        en_US: "{{ .Values.stackDataSwp.systemInformation.deployDate }}"
+    ---
+    action: "create"
+    module: "portals/folder"
+    position: "cn=folder,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
+    properties:
+      name: "opendesk.sysinfo"
+      displayName:
+        de_DE: "Systeminformation"
+        en_US: "Systeminformation"
+      entries:
+        - "cn=opendesk.sysinfo.release,cn=entry,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
+        - "cn=opendesk.sysinfo.deploydate,cn=entry,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
+    ---
+    action: "ensure_list_contains"
+    module: "portals/portal"
+    position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
+    properties:
+      menuLinks:
+        - "cn=opendesk.sysinfo,cn=folder,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
+    ...
+{{- end }}
+
 {{- end }}
 {{- end }}

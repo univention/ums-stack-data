@@ -36,6 +36,8 @@ stackDataSwp:
   # to be a valid YAML stream which the data loader is able to process.
   extraDataFiles: null
 
+  # -- Display release version and deploy date in the portal menu
+  systemInformation: null
 
 # -- Context used for rendering the data files
 stackDataContext:

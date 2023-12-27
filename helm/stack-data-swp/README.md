@@ -365,6 +365,15 @@ false
 			<td>Load data which is useful during development (opt-in)</td>
 		</tr>
 		<tr>
+			<td>stackDataSwp.systemInformation</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Display release version and deploy date in the portal menu</td>
+		</tr>
+		<tr>
 			<td>stackDataSwp.udmApiPassword</td>
 			<td>string</td>
 			<td><pre lang="json">
