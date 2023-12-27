@@ -106,6 +106,7 @@ repos:
       args:
         - "--chart-search-root=helm"
         - "--template-files=README.md.gotmpl"
+      always_run: true
 
 # Disable temporarily because gitlab-api can not be accessed.
 # "urllib.error.HTTPError: HTTP Error 401: Unauthorized"
