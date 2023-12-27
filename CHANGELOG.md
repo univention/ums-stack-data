@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.40.1...v0.41.0) (2023-12-27)
+
+
+### Features
+
+* **data-loader:** Add upsert action ([e18e8cc](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e18e8cc40014eace160e18e54b4a8a39ce8cd1ed))
+
 ## [0.40.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.40.0...v0.40.1) (2023-12-21)
 
 
