@@ -69,6 +69,7 @@ data:
     position: "cn=entry,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
     properties:
       name: "opendesk.sysinfo.release"
+      allowedGroups: {{ toJson $.top.Values.stackDataContext.portaltileGroupUserAdmin }}
       link:
         - - "de_DE"
           - "http://www.zendis.de"
@@ -89,6 +90,7 @@ data:
     position: "cn=entry,cn=portals,cn=univention,{{ $.top.Values.stackDataContext.ldapBase }}"
     properties:
       name: "opendesk.sysinfo.deploydate"
+      allowedGroups: {{ toJson $.top.Values.stackDataContext.portaltileGroupUserAdmin }}
       link:
         - - "de_DE"
           - "http://www.zendis.de"
