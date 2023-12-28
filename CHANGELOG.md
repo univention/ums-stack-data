@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.0...v0.41.1) (2023-12-28)
+
+
+### Bug Fixes
+
+* **licensing/ci:** add spdx license headers, add license header checking pre-commit ([b7ab26e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b7ab26ed5a5987c83ad2f498c57add87e80912e9))
+
 ## [0.41.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.40.1...v0.41.0) (2023-12-27)
 
 
