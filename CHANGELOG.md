@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.1...v0.41.2) (2023-12-29)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** Add system info scope ([1872b6b](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/1872b6bab465b6e1387a13154e50c428f3569e74))
+
 ## [0.41.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.0...v0.41.1) (2023-12-28)
 
 
