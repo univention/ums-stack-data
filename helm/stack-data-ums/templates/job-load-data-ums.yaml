@@ -20,7 +20,7 @@ spec:
         {{- include "common.labels.standard" . | nindent 8 }}
       annotations:
         checksum/config: '{{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}'
-        checksum/config: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
+        checksum/config-data: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
         {{- if .Values.additionalAnnotations }}
         {{ toYaml .Values.additionalAnnotations | nindent 8 }}
         {{- end }}
