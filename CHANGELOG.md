@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.3...v0.41.4) (2024-01-04)
+
+
+### Bug Fixes
+
+* Update Nextcloud URLs for new container setup ([d1c03d2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/d1c03d2f4a7f2f1d672498f48b6871ca6034bc24))
+
 ## [0.41.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.2...v0.41.3) (2024-01-04)
 
 
