@@ -15,23 +15,27 @@ module: "groups/group"
 position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Fileshare"
+  opendeskFileshareEnabled: True
 ---
 action: "create"
 module: "groups/group"
 position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Projectmanagement"
+  opendeskProjectmanagementEnabled: True
 ---
 action: "create"
 module: "groups/group"
 position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Knowledgemanagement"
+  opendeskKnowledgemanagementEnabled: True
 ---
 action: "create"
 module: "groups/group"
 position: "cn=groups,{{ .ldapBase }}"
 properties:
   name: "managed-by-attribute-Livecollaboration"
+  opendeskLivecollaborationEnabled: True
 
 {{ end }}
