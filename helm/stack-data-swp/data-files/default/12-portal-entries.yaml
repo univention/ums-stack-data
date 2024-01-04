@@ -331,7 +331,7 @@ properties:
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_files.svg" | b64enc | quote }}
   link:
     - - "en_US"
-      - "{{ .portalFileshareLinkBase }}/apps/files"
+      - "{{ .portalFileshareLinkBase }}/index.php/apps/files"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
@@ -351,7 +351,7 @@ properties:
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_activity.svg" | b64enc | quote }}
   link:
     - - "en_US"
-      - "{{ .portalFileshareLinkBase }}/apps/activity"
+      - "{{ .portalFileshareLinkBase }}/index.php/apps/activity"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
@@ -381,7 +381,7 @@ properties:
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_odt.svg" | b64enc | quote }}
   link:
     - - "en_US"
-      - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odt"
+      - "{{ .portalFileshareLinkBase }}/index.php/apps/integration_swp/office-create/odt"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
@@ -401,7 +401,7 @@ properties:
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_ods.svg" | b64enc | quote }}
   link:
     - - "en_US"
-      - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/ods"
+      - "{{ .portalFileshareLinkBase }}/index.php/apps/integration_swp/office-create/ods"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
@@ -421,7 +421,7 @@ properties:
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_odp.svg" | b64enc | quote }}
   link:
     - - "en_US"
-      - "{{ .portalFileshareLinkBase }}/apps/integration_swp/office-create/odp"
+      - "{{ .portalFileshareLinkBase }}/index.php/apps/integration_swp/office-create/odp"
   allowedGroups:
 {{ toYaml .portaltileGroupFileshare | indent 4 }}
   linkTarget: "newwindow"
