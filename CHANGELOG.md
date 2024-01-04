@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.2...v0.41.3) (2024-01-04)
+
+
+### Bug Fixes
+
+* **stack-data-ums:** Correct the checksum annotations in the Job object ([3d8e146](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/3d8e146dd814dd97f2a3746cc5474cb2c63c92b9))
+
 ## [0.41.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.1...v0.41.2) (2023-12-29)
 
 
