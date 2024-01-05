@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.4...v0.41.5) (2024-01-05)
+
+
+### Bug Fixes
+
+* Configure isOxGroup and oxContext properly ([e73e949](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e73e949bbcd3487083e1407996e8b0d4ce5f5f2e))
+
 ## [0.41.4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.3...v0.41.4) (2024-01-04)
 
 
