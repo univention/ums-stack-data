@@ -27,7 +27,7 @@ action: "modify"
 module: "settings/extended_attribute"
 position: "cn=isOxGroup,cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
 properties:
-  name: "isOxUser"
+  name: "isOxGroup"
   shortDescription: "Groupware"
   translationShortDescription:
     de_DE: "Groupware"
