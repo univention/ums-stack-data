@@ -37,7 +37,7 @@ properties:
   tabName: openDesk
   translationTabName:
     de_DE: openDesk
-  groupName: "Gruppe in Komponente bereitstellen"
+  groupName: "Gruppe in Komponenten bereitstellen"
 
 ---
 # Modify ox-connector user template to be openDesk one
