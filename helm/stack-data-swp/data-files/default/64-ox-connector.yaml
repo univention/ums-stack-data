@@ -2561,37 +2561,37 @@ properties:
   groupName: Optional settings
   groupPosition: 5
 
----
-action: "create"
-module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
-properties:
-  name: "isOxGroup"
-  default: "OK"
-  module: [groups/group]
-  ldapMapping: isOxGroup
-  objectClass: oxGroup
-  shortDescription: Activate Group in OX (unchecking will delete!)
-  longDescription: Activate Group in OX (unchecking will delete!)
-  translationShortDescription:
-    de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
-  translationLongDescription:
-    de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
-  tabName: OX App Suite
-  translationTabName:
-    de_DE: OX App Suite
-  overwriteTab:
-  valueRequired: False
-  CLIName: isOxGroup
-  syntax: OkOrNot
-  tabAdvanced:
-  mayChange: True
-  multivalue: False
-  deleteObjectClass: True
-  tabPosition: 1
-  overwritePosition:
-  doNotSearch: False
-  hook: oxGroupHook
+# ---
+# action: "create"
+# module: "settings/extended_attribute"
+# position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+# properties:
+#   name: "isOxGroup"
+#   default: "OK"
+#   module: [groups/group]
+#   ldapMapping: isOxGroup
+#   objectClass: oxGroup
+#   shortDescription: Activate Group in OX (unchecking will delete!)
+#   longDescription: Activate Group in OX (unchecking will delete!)
+#   translationShortDescription:
+#     de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
+#   translationLongDescription:
+#     de_DE: In Open-Xchange aktivieren (Deaktivieren löscht!)
+#   tabName: OX App Suite
+#   translationTabName:
+#     de_DE: OX App Suite
+#   overwriteTab:
+#   valueRequired: False
+#   CLIName: isOxGroup
+#   syntax: OkOrNot
+#   tabAdvanced:
+#   mayChange: True
+#   multivalue: False
+#   deleteObjectClass: True
+#   tabPosition: 1
+#   overwritePosition:
+#   doNotSearch: False
+#   hook: oxGroupHook
 
 ---
 action: "create"
