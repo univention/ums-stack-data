@@ -4,7 +4,7 @@
 {{ with .Values.stackDataContext }}
 
 ---
-# Make OX Tab be openDesk Tab
+# Move isOxUser setting to openDesk tab
 action: "modify"
 module: "settings/extended_attribute"
 position: "cn=isOxUser,cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
@@ -20,6 +20,24 @@ properties:
   translationTabName:
     de_DE: openDesk
   groupName: "Berechtigung: Login/Nutzung"
+
+---
+# Move isOxGroup setting to openDesk tab
+action: "modify"
+module: "settings/extended_attribute"
+position: "cn=isOxGroup,cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "isOxUser"
+  shortDescription: "Groupware"
+  translationShortDescription:
+    de_DE: "Groupware"
+  longDescription: ""
+  translationLongDescription:
+    de_DE: ""
+  tabName: openDesk
+  translationTabName:
+    de_DE: openDesk
+  groupName: "Gruppe in Komponente bereitstellen"
 
 ---
 # Modify ox-connector user template to be openDesk one
