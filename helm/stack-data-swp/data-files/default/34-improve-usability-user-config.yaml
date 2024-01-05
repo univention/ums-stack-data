@@ -8,8 +8,6 @@ module: users/user
 position: uid=Administrator,cn=users,{{ .ldapBase }}
 properties:
   firstname: "Addison"
-  # TODO: Provide this value, an extension module is required
-  # isOxUser: "OK"
   mailPrimaryAddress: "admin@{{ .externalMailDomain }}"
 ---
 action: ensure_list_contains
