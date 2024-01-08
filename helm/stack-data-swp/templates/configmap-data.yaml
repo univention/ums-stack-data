@@ -71,10 +71,8 @@ data:
       name: "opendesk.sysinfo.release"
       allowedGroups: {{ toJson $.top.Values.stackDataContext.portaltileGroupUserAdmin }}
       link:
-        - - "de_DE"
-          - "http://www.zendis.de"
         - - "en_US"
-          - "http://www.zendis.de"
+          - "https://gitlab.opencode.de/bmi/opendesk/deployment/sovereign-workplace/-/releases"
       anonymous: false
       linkTarget: "newwindow"
       target: ""
@@ -92,10 +90,8 @@ data:
       name: "opendesk.sysinfo.deploydate"
       allowedGroups: {{ toJson $.top.Values.stackDataContext.portaltileGroupUserAdmin }}
       link:
-        - - "de_DE"
-          - "http://www.zendis.de"
         - - "en_US"
-          - "http://www.zendis.de"
+          - "https://gitlab.opencode.de/bmi/opendesk"
       anonymous: false
       linkTarget: "newwindow"
       target: ""
