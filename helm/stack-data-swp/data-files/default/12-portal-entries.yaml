@@ -101,7 +101,7 @@ properties:
     en_US: "Manage user accounts"
   displayName:
     de_DE: "Benutzer"
-    en_US: "User"
+    en_US: "Users"
   target: "tab_admin"
 ---
 action: "create"
@@ -460,7 +460,7 @@ properties:
     en_US: "Chat with your colleagues and setup collaborative meetings with a whiteboards, online voting and breakout sessions."
   displayName:
     de_DE: "Chat & Zusammenarbeit"
-    en_US: "Chat & Collaboration"
+    en_US: "Chat & collaboration"
   target: "tab_realtime_collaboration"
 ---
 action: "create"

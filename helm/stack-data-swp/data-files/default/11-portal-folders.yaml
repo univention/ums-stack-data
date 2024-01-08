@@ -11,6 +11,6 @@ properties:
   name: "swp.fileshare_directdoc"
   displayName:
     de_DE: "Erstelle neu in Dateien"
-    en_US: "create new in Files"
+    en_US: "Create new in Files"
 
 {{ end }}
