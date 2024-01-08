@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.41.6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.5...v0.41.6) (2024-01-08)
+
+
+### Bug Fixes
+
+* System info links ([4374166](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/43741664f8fff1ea39ae2986272047026c714789))
+* Typos in portal entries ([4ab3c62](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/4ab3c6267578ebf97411bd4240e74c1bede3b21f))
+
 ## [0.41.5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.4...v0.41.5) (2024-01-05)
 
 
