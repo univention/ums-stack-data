@@ -55,6 +55,7 @@ properties:
   mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
   e-mail: ["<username>@{{ .externalMailDomain }}"]
   unixhome: "/home/<username>"
+  oxContext: {{ .oxDefaultContext }}
   oxDisplayName: "<firstname> <lastname> (<username>)"
   oxAccess: "opendesk_standard"
   primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
