@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.7](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.6...v0.41.7) (2024-01-10)
+
+
+### Bug Fixes
+
+* Add oxContext to user template as it is removed from UI ([08e9594](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/08e959441ee9a607ddf6d596a67effa8a13435a2))
+
 ## [0.41.6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.5...v0.41.6) (2024-01-08)
 
 
