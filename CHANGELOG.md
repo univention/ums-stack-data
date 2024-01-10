@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.8](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.7...v0.41.8) (2024-01-10)
+
+
+### Bug Fixes
+
+* Reenable oxContext in UMC as there is a bug that invisible items cannot be set by a user template ([16e42c5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/16e42c5dd0b470a6d11e49b0651b20d40f51ba38))
+
 ## [0.41.7](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.6...v0.41.7) (2024-01-10)
 
 
