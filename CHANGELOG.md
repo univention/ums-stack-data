@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.42.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.8...v0.42.0) (2024-01-12)
+
+
+### Features
+
+* **stack-data-swp:** Configure password policies ([170797a](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/170797abc2b13a526c78867cdf85ea01fd324d79))
+
 ## [0.41.8](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.7...v0.41.8) (2024-01-10)
 
 
