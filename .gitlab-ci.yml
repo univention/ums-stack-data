@@ -4,7 +4,7 @@
 ---
 include:
   - project: "univention/customers/dataport/upx/common-ci"
-    ref: "v1.13.0"
+    ref: "v1.16.1"
     file:
       # TODO: Sphinx docs inherits a stage definition from upstream,
       # has to be included before our default stages to avoid trouble.
@@ -16,6 +16,7 @@ include:
       - "jobs/semantic-release-env.yaml"
       - "jobs/container-build-souvap.yaml"
       - "jobs/package-and-publish-helm-charts-souvap.yaml"
+      - "jobs/check-debian-updates.yaml"
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
@@ -50,6 +51,10 @@ container-security-scan:
 test-data-loader:
   stage: "test"
   image: "${CI_REGISTRY_IMAGE}/data-loader-test-runner:${RELEASE_VERSION}"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: "never"
+    - when: "on_success"
   script:
     - cd docker/data-loader
     - pytest
@@ -62,6 +67,9 @@ container-sign-souvap:
   parallel:
     matrix: *publish-matrix
 
-publish-helm-charts-souvap:
-  extends: .publish-helm-charts-souvap
+check-debian-updates:
+  parallel:
+    matrix: *build-matrix
+  variables:
+    TARGET_IMAGE: "${CI_REGISTRY_IMAGE}/${IMAGE_NAME}:latest"
 ...
