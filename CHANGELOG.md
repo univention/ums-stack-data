@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.43.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.42.0...v0.43.0) (2024-01-18)
+
+
+### Features
+
+* **ci:** add debian update check jobs for scheduled pipeline ([84cd0ce](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/84cd0ce1006539099bbee93423701d99c9d0ace7))
+
+
+### Bug Fixes
+
+* **deps:** add renovate.json ([84e67a2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/84e67a28b446b31699e46035456737197eddd0e1))
+
 ## [0.42.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.41.8...v0.42.0) (2024-01-12)
 
 
