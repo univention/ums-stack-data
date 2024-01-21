@@ -13,7 +13,7 @@ properties:
   ldapFilter: "(|(objectClass=univentionMemberserver)(objectClass=univentionDomainController))"
 {{ if .installUmcPolicies }}
 ---
-action: "create"
+action: "ensure_list_contains"
 module: "policies/umc"
 position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
 properties:
