@@ -19,18 +19,22 @@ position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
 properties:
   allow:
     - "allow=cn=passwordchange-all,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
----
-action: "modify"
-module: "container/cn"
-position: "cn=dc,cn=computers,{{ .ldapBase }}"
-properties:
-  policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
----
-action: "modify"
-module: "policies/umc"
-position: "cn=memberserver,cn=computers,{{ .ldapBase }}"
-properties:
-  policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+
+# TODO: Check if we need this in the container stack (if so, add the missing
+# schema aspects), otherwise remove.
+# ---
+# action: "modify"
+# module: "container/cn"
+# position: "cn=dc,cn=computers,{{ .ldapBase }}"
+# properties:
+#   policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+# ---
+# action: "modify"
+# module: "policies/umc"
+# position: "cn=memberserver,cn=computers,{{ .ldapBase }}"
+# properties:
+#   policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+
 {{ end }}
 ---
 # Source: ucs/management/univention-self-service/35univention-self-service-passwordreset-umc.inst
