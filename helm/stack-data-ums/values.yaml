@@ -66,10 +66,11 @@ stackDataContext:
   # Example: `"https://portal.souvap.example.org/univention/saml/metadata"`
   ldapSamlSpUrls: null
 
-  # -- The initial password will be filled with a random value if it is not
-  # provided. The password will be stored in a Kubernetes Secret if a random one
-  # is generated.
+  # -- The initial password of the user "Administrator".
   initialPasswordAdministrator: null
+
+  # -- The initial password of the user "sys-idp-user.
+  initialPasswordSysIdpUser: null
 
   # -- This parameter allows to skip the installation of the default UMC
   # policies if set to "false".

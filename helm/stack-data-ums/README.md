@@ -244,7 +244,16 @@ null
 null
 </pre>
 </td>
-			<td>The initial password will be filled with a random value if it is not provided. The password will be stored in a Kubernetes Secret if a random one is generated.</td>
+			<td>The initial password of the user "Administrator".</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.initialPasswordSysIdpUser</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>The initial password of the user "sys-idp-user.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.installUmcPolicies</td>
