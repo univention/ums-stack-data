@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.43.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.43.0...v0.43.1) (2024-01-22)
+
+
+### Bug Fixes
+
+* Comment out failing operations if "installUmcPolicies" is true ([d17b3a4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/d17b3a420b9cf3e14530947b00a6cd0a78bcb03c))
+* Handling of self-service related policies if "installUmcPolicies" is true ([1f97637](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/1f97637dbcc95a4a83632e1f9e837b5b44120fdc))
+
 ## [0.43.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.42.0...v0.43.0) (2024-01-18)
 
 
