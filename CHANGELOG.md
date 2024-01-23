@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.43.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.43.1...v0.43.2) (2024-01-23)
+
+
+### Bug Fixes
+
+* **stack-data-ums:** Add "initialPasswordSysIdpUser" as required variable ([07ddfdf](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/07ddfdfa282704835f123f5e691be0c53d8c265a))
+
 ## [0.43.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.43.0...v0.43.1) (2024-01-22)
 
 
