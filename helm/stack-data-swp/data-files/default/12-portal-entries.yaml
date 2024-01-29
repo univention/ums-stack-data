@@ -236,6 +236,34 @@ action: "create"
 module: "portals/entry"
 position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
+  name: "swp.admin_guardian"
+  icon: {{ $.Files.Get "data-files/default/portal-icons/admin_guardian.svg" | b64enc | quote }}
+  link:
+    - - "en_US"
+      - "/univention/guardian/management-ui/roles"
+  allowedGroups:
+{{ toYaml .portaltileGroupUserAdminPreview | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Feingranulares Berechtigungsmanagement"
+    en_US: "Fine-grained permission management"
+  displayName:
+    de_DE: "Berechtigungen"
+    en_US: "Permissions"
+  target: "tab_admin"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: "cn=swp.admin_preview,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  entries:
+  - cn=swp.admin_guardian,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+
+---
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
   name: "swp.groupware_mail"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_mail.svg" | b64enc | quote }}
   link:
@@ -371,7 +399,6 @@ properties:
   - "cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
   - "cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
   - "cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
-
 ---
 action: create
 module: portals/entry
@@ -441,7 +468,6 @@ properties:
   - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.fileshare_directdoc_ods,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-
 ---
 action: "create"
 module: "portals/entry"
@@ -490,27 +516,6 @@ properties:
   entries:
   - cn=swp.realtime_collaboration,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
   - cn=swp.realtime_videoconference,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-
----
-action: "create"
-module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-properties:
-  name: "swp.management_project"
-  icon: {{ $.Files.Get "data-files/default/portal-icons/management_project.svg" | b64enc | quote }}
-  link:
-    - - "en_US"
-      - "{{ .portalManagementProjectLinkBase }}/auth/keycloak"
-  allowedGroups:
-{{ toYaml .portaltileGroupManagementProject | indent 4 }}
-  linkTarget: "newwindow"
-  description:
-    de_DE: "Projektplanung und -steuerung inkl. Boards und Besprechnungsmanagement "
-    en_US: "Manage and control projects including boards and meeting management"
-  displayName:
-    de_DE: "Projekte"
-    en_US: "Projects"
-  target: "tab_projectmanagement"
 ---
 action: "create"
 module: "portals/entry"
@@ -532,14 +537,82 @@ properties:
     en_US: "Knowledge"
   target: "tab_knowledgemanagement"
 ---
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "swp.management_project"
+  icon: {{ $.Files.Get "data-files/default/portal-icons/management_project.svg" | b64enc | quote }}
+  link:
+    - - "en_US"
+      - "{{ .portalManagementProjectLinkBase }}/auth/keycloak"
+  allowedGroups:
+{{ toYaml .portaltileGroupManagementProject | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Projektplanung und -steuerung inkl. Boards und Besprechnungsmanagement "
+    en_US: "Manage and control projects including boards and meeting management"
+  displayName:
+    de_DE: "Projekte"
+    en_US: "Projects"
+  target: "tab_projectmanagement"
+---
 action: "ensure_list_contains"
 module: "portals/category"
 position: "cn=swp.management,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
   entries:
-  - cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-
+  - "cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.management_project_directlinks,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
+---
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "swp.management_project_directlinks_meetings"
+  icon: {{ $.Files.Get "data-files/default/portal-icons/management_project_meetings.svg" | b64enc | quote }}
+  link:
+    - - "en_US"
+      - "{{ .portalManagementProjectLinkBase }}/meetings"
+  allowedGroups:
+{{ toYaml .portaltileGroupManagementProject | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Agenda- und Protokollverwaltung für Meetings"
+    en_US: "Manage meeting with agenda and minutes"
+  displayName:
+    de_DE: "Meetings"
+    en_US: "meetings"
+  target: "tab_fileshare"
+---
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "swp.management_project_directlinks_boards"
+  icon: {{ $.Files.Get "data-files/default/portal-icons/management_project_boards.svg" | b64enc | quote }}
+  link:
+    - - "en_US"
+      - "{{ .portalManagementProjectLinkBase }}/boards"
+  allowedGroups:
+{{ toYaml .portaltileGroupManagementProject | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Öffnet eine neue, leere Präsentation in Dateien"
+    en_US: "Öffnet a new empty presentation in Files"
+  displayName:
+    de_DE: "Präsentation"
+    en_US: "Presentation"
+  target: "tab_fileshare"
+---
+action: "ensure_list_contains"
+module: "portals/folder"
+position: "cn=swp.management_project_directlinks,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  entries:
+  - "cn=swp.management_project_directlinks_boards,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - "cn=swp.management_project_directlinks_meetings,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
 ---
 action: "create"
 module: "portals/entry"

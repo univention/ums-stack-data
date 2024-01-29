@@ -75,6 +75,23 @@ action: "create"
 module: "portals/category"
 position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
 properties:
+  name: "swp.admin_preview"
+  displayName:
+    de_DE: "Feature Preview"
+    en_US: "Feature Preview"
+---
+action: "ensure_list_contains"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
+  categories:
+    - "cn=swp.admin_preview,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+
+---
+action: "create"
+module: "portals/category"
+position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+properties:
   name: "swp.groupware"
   displayName:
     de_DE: "Kommunikation & Organisation"

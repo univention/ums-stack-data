@@ -68,13 +68,16 @@ stackDataContext:
   # (default: `true`)
   smtpStartTls: true
 
-  oxDefaultContext: "10"
+  # -- Define the default OX AppSuite Context for users
+  oxDefaultContext: "1"
 
   portaltileGroupUserStandard:
     - "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
   portaltileGroupUserAdmin:
     - "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
     - "cn=Support,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  portaltileGroupUserAdminPreview:
+    - "cn=Domain Admin Preview,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
   portaltileGroupUserAll:
     - "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
     - "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"

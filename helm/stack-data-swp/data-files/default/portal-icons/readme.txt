@@ -1,27 +1,38 @@
-- https://fonts.google.com/icons
-- (Foreground)color is changed - add fill="#004B76"
+- See https://brands.adlerschmidt.de/zendis/opendesk for reference on colors.
+- but we use the Material Design Icons from Google: https://fonts.google.com/icons
+  - fill: no
+  - type: rounded
+  - weight: 400
+  - grade: 0
+  - size: 40
+  - add fill="#5e27dd"
 
-- admin_announcement.svg > https://fonts.google.com/icons?icon.query=campaign&selected=Material+Symbols+Outlined:meeting_room:FILL@0;wght@400;GRAD@0;opsz@48
-- admin_functionalmailbox.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Alocal_post_office%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- admin_group.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- admin_resource.svg > https://fonts.google.com/icons?icon.query=room&selected=Material+Symbols+Outlined:meeting_room:FILL@0;wght@400;GRAD@0;opsz@48
-- admin_context.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Abrowse%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- admin_user.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- anonymous_login.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- dummy.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- fileshare_activity.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Abrowse_activity%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- fileshare_directdoc_odp.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aadd_photo_alternate%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- fileshare_directdoc_ods.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aadd_chart%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- fileshare_directdoc_odt.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Apost_add%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- fileshare_files.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Afolder_open%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- groupware_calendar.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acalendar_month%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- groupware_contacts.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acontact_page%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- groupware_mail.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Amail%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- groupware_tasks.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Achecklist_rtl%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- management_knowledge.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Apsychology_alt%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- management_project.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aview_timeline%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- realtime_collaboration.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aforum%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- realtime_videoconference.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Ainterpreter_mode%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- selfservice_changepassword.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Async_lock%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- selfservice_editprofile.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Abadge%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
-- selfservice_protectaccount.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Amail_lock%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
+> https://fonts.google.com/icons?icon.set=Material+Symbols
+
+- admin_announcement.svg >          https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acampaign%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- admin_functionalmailbox.svg >     https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Alocal_post_office%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- admin_group.svg >                 https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
+- admin_resource.svg >              https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Ameeting_room%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- admin_user.svg >                  https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aperson%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- admin_oxcontext.svg >             https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Abrowse%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- admin_guardian.svg >              https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aswitch_access_2%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4040&icon.style=Rounded
+- anonymous_login.svg >             https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Akey%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- dummy.svg >                       https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- fileshare_activity.svg >          https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Ahistory%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- fileshare_directdoc_odp.svg >     https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aadd_photo_alternate%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- fileshare_directdoc_ods.svg >     https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aadd_chart%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- fileshare_directdoc_odt.svg >     https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Apost_add%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- fileshare_files.svg >             https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Afolder_open%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- groupware_calendar.svg >          https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acalendar_month%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- groupware_contacts.svg >          https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acontact_page%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- groupware_mail.svg >              https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Amail%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- groupware_tasks.svg >             https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Achecklist_rtl%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- management_knowledge.svg >        https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Alightbulb%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048icon.style=Rounded
+- management_project.svg >          https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aview_timeline%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- management_project_boards.svg >   https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Adeveloper_board%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4040&icon.style=Rounded
+- management_project_meetings.svg > https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroups_2%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4040&icon.style=Rounded
+- realtime_collaboration.svg >      https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aforum%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- realtime_videoconference.svg >    https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Ainterpreter_mode%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- selfservice_changepassword.svg >  https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Async_lock%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- selfservice_editprofile.svg >     https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Abadge%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
+- selfservice_protectaccount.svg >  https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Amail_lock%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
