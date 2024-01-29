@@ -11,7 +11,7 @@
 
 - admin_announcement.svg >          https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acampaign%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
 - admin_functionalmailbox.svg >     https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Alocal_post_office%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
-- admin_group.svg >                 https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048
+- admin_group.svg >                 https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Agroup%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
 - admin_resource.svg >              https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Ameeting_room%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
 - admin_user.svg >                  https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aperson%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
 - admin_oxcontext.svg >             https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Abrowse%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048&icon.style=Rounded
