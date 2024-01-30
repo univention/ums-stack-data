@@ -198,7 +198,7 @@ true
   "externalMailDomain": "univention-organization.test",
   "ldapBase": "dc=univention-organization,dc=intranet",
   "ldapSearchUsers": [],
-  "oxDefaultContext": "10",
+  "oxDefaultContext": "1",
   "portalFileshareLinkBase": "https://fs.{{ .Values.stackDataContext.externalDomainName }}",
   "portalFqdn": "portal.{{ .Values.stackDataContext.externalDomainName }}",
   "portalGroupwareLinkBase": "https://webmail.{{ .Values.stackDataContext.externalDomainName }}",
@@ -230,6 +230,9 @@ true
     "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}",
     "cn=Support,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
   ],
+  "portaltileGroupUserAdminPreview": [
+    "cn=Domain Admin Preview,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+  ],
   "portaltileGroupUserAll": [
     "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}",
     "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
@@ -255,6 +258,15 @@ null
 </pre>
 </td>
 			<td>Password for the default.admin user. This is only evaluated if loadDevData is set to true.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.oxDefaultContext</td>
+			<td>string</td>
+			<td><pre lang="json">
+"1"
+</pre>
+</td>
+			<td>Define the default OX AppSuite Context for users</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.portalTitleDE</td>
