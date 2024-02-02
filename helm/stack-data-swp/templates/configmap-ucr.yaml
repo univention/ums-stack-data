@@ -46,7 +46,7 @@ data:
     # will be on top of the default python-cracklib. If sufficient only ms
     # policy complexity will be used and if false only python-cracklib will
     # be used.
-    password/quality/mspolicy: true
+    password/quality/mspolicy: false
     self-service/ldap_attributes: jpegPhoto,description,title,givenName,sn,displayName,initials,univentionBirthday,o,street,postalCode,l
     self-service/udm_attributes: jpegPhoto,description,title,firstname,lastname,displayName,initials,birthday,organisation,street,postcode,city
     self-service/udm_attributes/title/readonly: true
