@@ -35,13 +35,13 @@ data:
     # Sets forbidden chars for setting new passwords
     # password/quality/forbidden/chars:
     # Sets the minimum number of digits in the new password
-    password/quality/credit/digits: 1
+    # password/quality/credit/digits: 1
     # Sets the minimum number of upper case letters
-    password/quality/credit/upper: 0
+    # password/quality/credit/upper: 0
     # Sets the minimum number of chars wich are neither digits nor letters
-    password/quality/credit/other: 0
+    # password/quality/credit/other: 0
     # Sets the minimum number of lower case letters
-    password/quality/credit/lower: 1
+    # password/quality/credit/lower: 1
     # Sets the microsoft policy complexity criteria. If 1,true or yes this
     # will be on top of the default python-cracklib. If sufficient only ms
     # policy complexity will be used and if false only python-cracklib will
@@ -66,8 +66,8 @@ data:
     umc/cookie-banner/show: false
     umc/http/cookie/samesite: Strict
     umc/http/enforce-secure-cookie: true
-    umc/login/password-complexity-message/de: Das Passwort muss den folgenden Anforderungen entsprechen:<br><ul><li>Mindestlänge: 8 Zeichen</li></ul>Anmerkung: Wird befinden uns nicht in einer Produktivumgebung.
-    umc/login/password-complexity-message/en: Password must comply with the following rules:<br><ul><li>Minimum length: 8 characters</li></ul>Note: We are in a non production (dev/test/demo) system.
+    umc/login/password-complexity-message/de: Das Passwort muss den folgenden Anforderungen entsprechen:<br><ul><li>Mindestlänge: 8 Zeichen</li></ul>
+    umc/login/password-complexity-message/en: Password must comply with the following rules:<br><ul><li>Minimum length: 8 characters</li></ul>
     umc/module/udm/oxmail/oxcontext/disabled: True
     umc/module/udm/portals/all/disabled: True
     umc/self-service/account-verification/email/webserver_address: {{ .Values.stackDataContext.portalFqdn }}
