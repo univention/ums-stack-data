@@ -454,7 +454,7 @@ properties:
   linkTarget: "newwindow"
   description:
     de_DE: "Öffnet eine neue, leere Präsentation in Dateien"
-    en_US: "Öffnet a new empty presentation in Files"
+    en_US: "Opens a new empty presentation in Files"
   displayName:
     de_DE: "Präsentation"
     en_US: "Presentation"
@@ -599,11 +599,11 @@ properties:
 {{ toYaml .portaltileGroupManagementProject | indent 4 }}
   linkTarget: "newwindow"
   description:
-    de_DE: "Öffnet eine neue, leere Präsentation in Dateien"
-    en_US: "Öffnet a new empty presentation in Files"
+    de_DE: "Öffnet die Übersicht der Projekt-Boards"
+    en_US: "Opens the project board overview"
   displayName:
-    de_DE: "Präsentation"
-    en_US: "Presentation"
+    de_DE: "Projekt-Boards"
+    en_US: "Project boards"
   target: "tab_fileshare"
 ---
 action: "ensure_list_contains"
