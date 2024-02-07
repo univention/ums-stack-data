@@ -51,6 +51,7 @@ properties:
   opendeskKnowledgemanagementEnabled: True
   opendeskLivecollaborationEnabled: True
   opendeskProjectmanagementAdmin: False
+  opendeskFileshareAdmin: False
   isOxUser: True
   mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
   e-mail: ["<username>@{{ .externalMailDomain }}"]
@@ -74,6 +75,7 @@ properties:
   opendeskKnowledgemanagementEnabled: False
   opendeskLivecollaborationEnabled: False
   opendeskProjectmanagementAdmin: False
+  opendeskFileshareAdmin: False
 
 ---
 action: "modify"

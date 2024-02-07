@@ -19,6 +19,7 @@ properties:
   opendeskKnowledgemanagementEnabled: True
   opendeskLivecollaborationEnabled: True
   opendeskProjectmanagementAdmin: False
+  opendeskFileshareAdmin: False
   mailPrimaryAddress: "default.user@{{ .externalMailDomain }}"
 ---
 action: "create"
@@ -34,7 +35,8 @@ properties:
   guardianRole:
     - "guardian:builtin:app-admin"
   mailPrimaryAddress: "default.admin@{{ .externalMailDomain }}"
-  opendeskProjectmanagementAdmin: True
+  opendeskProjectmanagementAdmin: False
+  opendeskFileshareAdmin: False
   opendeskFileshareEnabled: False
   opendeskProjectmanagementEnabled: False
   opendeskKnowledgemanagementEnabled: False

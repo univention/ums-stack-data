@@ -18,6 +18,7 @@ data:
     {
       "isOxUser": "managed-by-attribute-Groupware",
       "opendeskFileshareEnabled": "managed-by-attribute-Fileshare",
+      "opendeskFileshareAdmin": "managed-by-attribute-FileshareAdmin",
       "opendeskProjectmanagementEnabled": "managed-by-attribute-Projectmanagement",
       "opendeskKnowledgemanagementEnabled": "managed-by-attribute-Knowledgemanagement",
       "opendeskLivecollaborationEnabled": "managed-by-attribute-Livecollaboration"

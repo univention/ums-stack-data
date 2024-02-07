@@ -29,6 +29,24 @@ properties:
   default: "TRUE"
   objectClass: "opendeskFileshareUser"
 ---
+# Create extended attribute Fileshare admin for user
+action: "create"
+module: "settings/extended_attribute"
+position: "cn=opendesk,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+properties:
+  name: "opendeskFileshareAdmin"
+  CLIName: "opendeskFileshareAdmin"
+  ldapMapping: "opendeskFileshareAdmin"
+  groupName: "Berechtigung: Fachliche Administration"
+  module: ["users/user"]
+  shortDescription: "Fileshare Admin"
+  tabName: "openDesk"
+  syntax: "TrueFalseUp"
+  mayChange: True
+  deleteObjectClass: True
+  default: "FALSE"
+  objectClass: "opendeskFileshareUser"
+---
 # Create extended attribute Fileshare for group
 action: "create"
 module: "settings/extended_attribute"
