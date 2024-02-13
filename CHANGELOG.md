@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.44.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.43.2...v0.44.0) (2024-02-13)
+
+
+### Features
+
+* **fileshare:** Add admin flag and group ([d28ec64](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/d28ec64862eb9a6821b1698f634030df56f48716))
+
 ## [0.43.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.43.1...v0.43.2) (2024-01-23)
 
 
