@@ -26,6 +26,7 @@ data:
     directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/default: True
     directory/manager/web/modules/users/user/wizard/property/pwdChangeNextLogin/visible: False
     directory/manager/web/modules/wizard/disabled: No
+    directory/manager/starttls: 0
     ldap/pw-bcrypt: true
     password/hashing/bcrypt: true
     # Sets the minimum password length
@@ -62,7 +63,6 @@ data:
     self-service/udm_attributes/employeeType/readonly: true
     self-service/udm_attributes/employeeNumber/readonly: true
     ucs/web/theme: light
-    uldap/start-tls: 0
     umc/cookie-banner/show: false
     umc/http/cookie/samesite: Strict
     umc/http/enforce-secure-cookie: true

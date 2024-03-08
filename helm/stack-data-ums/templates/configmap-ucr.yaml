@@ -27,6 +27,7 @@ data:
     directory/manager/rest/debug_level: 5
     directory/manager/rest/ldap-connection/user-read/start-tls: 2
     directory/manager/rest/show-tracebacks: false
+    directory/manager/starttls: 2
     directory/manager/templates/alphanum/whitelist: ""
     directory/manager/user/activate_ldap_attribute_mailForwardCopyToSelf: yes
     directory/manager/user_group/uniqueness: true
@@ -152,7 +153,6 @@ data:
     ucs/server/sso/virtualhost: true
     ucs/web/license/requested: true
     ucs/web/theme: dark
-    uldap/start-tls: 2
     umc/http/allowed-session-overtake/ranges: 0.0.0.0/0,::/0
     umc/http/autostart: yes
     umc/http/content-security-policy/connect-src: 'self'
