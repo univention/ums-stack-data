@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.44.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.44.0...v0.44.1) (2024-03-08)
+
+
+### Bug Fixes
+
+* ucr variable name for uldap starttls configuration ([ce77164](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/ce77164e9c9a57ac390befe58ef31797c763191f))
+
 ## [0.44.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.43.2...v0.44.0) (2024-02-13)
 
 
