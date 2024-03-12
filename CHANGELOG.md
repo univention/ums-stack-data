@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.44.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.44.1...v0.44.2) (2024-03-12)
+
+
+### Bug Fixes
+
+* restore upstream ucr compatibility ([9dad395](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/9dad3959d7864c7c6bccb4c9e95264cbcaeca6a6))
+
 ## [0.44.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.44.0...v0.44.1) (2024-03-08)
 
 
