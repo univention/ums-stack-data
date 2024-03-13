@@ -35,6 +35,10 @@ The data import itself is triggered as `Job` objects in the Kubernetes cluster.
     into a Secret object as an alternative option.
 - `process-join-data.py` does not log the object name if the attribute is not
   called `name`, e.g. for users the attribute is called `username`.
+- The configuration of the UMC Self-Service to find Memcached and PostgreSQL has
+  to be provided via the values `stackDataContext.umcMemcachedHostname` and
+  `stackDataContext.umcPostgresqlHostname` currently. These have to be kept in
+  sync with the values used for the `umc-server` Helm chart.
 
 ## Development setup
 
