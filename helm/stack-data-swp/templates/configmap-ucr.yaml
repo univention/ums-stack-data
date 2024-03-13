@@ -14,6 +14,7 @@ metadata:
 data:
   base.conf: |-
     directory/manager/rest/ldap-connection/user-read/start-tls: 0
+    directory/manager/starttls: 0
     directory/manager/web/modules/users/user/add/default: cn=openDesk User,cn=templates,cn=univention,{{ .Values.stackDataContext.ldapBase }}
     directory/manager/web/modules/users/user/properties/description/syntax: TextArea
     directory/manager/web/modules/users/user/properties/firstname/required: true
