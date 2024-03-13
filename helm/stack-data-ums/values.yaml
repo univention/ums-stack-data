@@ -59,6 +59,12 @@ stackDataContext:
   # -- Which address scheme to consider for SAML ACS (string, comma-separated).
   # Example: `"https, http"`
   umcSamlSchemes: "https"
+  # -- Hostname to use for memcached of the selfservice in UMC.
+  # This does set the UCR variable `umc/self-service/memcached/socket`.
+  umcMemcachedHostname: "umc-server-memcached"
+  # -- Hostname to use for postgresql of the selfservice in UMC.
+  # This does set the UCR variable `umc/self-service/postgresql/hostname`.
+  umcPostgresqlHostname: "umc-server-postgresql"
   # -- The FQDN of the identity provider (w/o the protocol specification).
   # Example: `"id.souvap.example.org"`
   idpFqdn: null

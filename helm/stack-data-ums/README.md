@@ -310,6 +310,24 @@ null
 			<td>List of SAML Service Provider URLs which the LDAP server should trust (comma-separated). Example: `"https://portal.souvap.example.org/univention/saml/metadata"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.umcMemcachedHostname</td>
+			<td>string</td>
+			<td><pre lang="json">
+"umc-server-memcached"
+</pre>
+</td>
+			<td>Hostname to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/socket`.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.umcPostgresqlHostname</td>
+			<td>string</td>
+			<td><pre lang="json">
+"umc-server-postgresql"
+</pre>
+</td>
+			<td>Hostname to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/hostname`.</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.umcSamlSchemes</td>
 			<td>string</td>
 			<td><pre lang="json">
