@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.45.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.44.2...v0.45.0) (2024-03-14)
+
+
+### Features
+
+* Add "directory/manager/starttls" into stack-data-swp ([fbb2347](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/fbb2347e82fb76602e1ee314288d58b7dcb5cd8f))
+* Add UCR based configuration for UMC Self-Service ([2b5e203](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2b5e203219e3d478e4957a6519695af1061d1362))
+
 ## [0.44.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.44.1...v0.44.2) (2024-03-12)
 
 
