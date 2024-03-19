@@ -211,7 +211,7 @@ data:
     umc/self-service/enabled: yes
     umc/self-service/invitation/enabled: true
     umc/self-service/memcached/socket: {{ .Values.stackDataContext.umcMemcachedHostname }}
-    umc/self-service/memcached/username: selfservice
+    umc/self-service/memcached/username: {{ .Values.stackDataContext.umcMemcachedUsername }}
     umc/self-service/passwordchange/frontend/enabled: yes
     umc/self-service/passwordreset/backend/enabled: true
     umc/self-service/passwordreset/blacklist/groups: Administrators,Domain Admins
@@ -236,7 +236,7 @@ data:
     umc/self-service/passwordreset/whitelist/groups: Domain Users
     umc/self-service/postgresql/hostname: {{ .Values.stackDataContext.umcPostgresqlHostname }}
     umc/self-service/postgresql/port: 5432
-    umc/self-service/postgresql/username: selfservice
+    umc/self-service/postgresql/username: {{ .Values.stackDataContext.umcPostgresqlUsername }}
     umc/self-service/profiledata/blacklist/groups: Administrators,Domain Admins
     umc/self-service/profiledata/enabled: true
     umc/self-service/profiledata/whitelist/groups: Domain Users

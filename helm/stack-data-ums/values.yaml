@@ -62,9 +62,15 @@ stackDataContext:
   # -- Hostname to use for memcached of the selfservice in UMC.
   # This does set the UCR variable `umc/self-service/memcached/socket`.
   umcMemcachedHostname: "umc-server-memcached"
+  # -- Username to use for memcached of the selfservice in UMC.
+  # This does set the UCR variable `umc/self-service/memcached/username`.
+  umcMemcachedUsername: "selfservice"
   # -- Hostname to use for postgresql of the selfservice in UMC.
   # This does set the UCR variable `umc/self-service/postgresql/hostname`.
   umcPostgresqlHostname: "umc-server-postgresql"
+  # -- Username to use for postgresql of the selfservice in UMC.
+  # This does set the UCR variable `umc/self-service/postgresql/username`.
+  umcPostgresqlUsername: "selfservice"
   # -- The FQDN of the identity provider (w/o the protocol specification).
   # Example: `"id.souvap.example.org"`
   idpFqdn: null

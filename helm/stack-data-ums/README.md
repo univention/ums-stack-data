@@ -319,6 +319,15 @@ null
 			<td>Hostname to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/socket`.</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.umcMemcachedUsername</td>
+			<td>string</td>
+			<td><pre lang="json">
+"selfservice"
+</pre>
+</td>
+			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`.</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.umcPostgresqlHostname</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -326,6 +335,15 @@ null
 </pre>
 </td>
 			<td>Hostname to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/hostname`.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.umcPostgresqlUsername</td>
+			<td>string</td>
+			<td><pre lang="json">
+"selfservice"
+</pre>
+</td>
+			<td>Username to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/username`.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcSamlSchemes</td>
