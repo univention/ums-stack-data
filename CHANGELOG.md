@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.45.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.45.0...v0.45.1) (2024-03-20)
+
+
+### Bug Fixes
+
+* add missing configuration options for umc/self-service ([5ced5e3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/5ced5e3ccb0a6220b9eafd7f694e05a1a6d7cb9f))
+
 ## [0.45.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.44.2...v0.45.0) (2024-03-14)
 
 
