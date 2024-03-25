@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.45.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.45.1...v0.45.2) (2024-03-25)
+
+
+### Bug Fixes
+
+* **ci:** update common-ci from v1.16.2 to v1.24.5 ([3318eca](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/3318eca2e55cd2fd45114713bb53a5d747354f6e))
+
 ## [0.45.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.45.0...v0.45.1) (2024-03-20)
 
 
