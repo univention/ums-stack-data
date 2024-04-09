@@ -1,13 +1,21 @@
-# SPDX-License-Identifier: AGPL-3.0-only
-# SPDX-FileCopyrightText: 2023 Univention GmbH
-
+{{/*
+SPDX-FileCopyrightText: 2024 Univention GmbH
+SPDX-License-Identifier: AGPL-3.0-only
+*/}}
 ---
-{{ include "common.configMap" (dict "top" . "overrides" "stack-data-ums.configMap-ucr") }}
-
-{{- define "stack-data-ums.configMap-ucr" }}
-{{- with .top }}
+kind: "ConfigMap"
+apiVersion: "v1"
 metadata:
-  name: '{{ include "common.names.fullname" . }}-ucr'
+  name: "{{ include "common.names.fullname" . }}-ucr"
+  namespace: {{ include "common.names.namespace" . | quote }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.additionalLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.additionalLabels "context" . ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.additionalAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.additionalAnnotations "context" . ) | nindent 4 }}
+  {{- end }}
 data:
   # TODO: "kerberos/realm" is needed by "ldap_server" currently.
   base.conf: |-
@@ -49,7 +57,7 @@ data:
     directory/reports/templates/pdf/computer1: computers/computer "PDF Document" /etc/univention/directory/reports/default computers.rml
     directory/reports/templates/pdf/group1: groups/group "PDF Document" /etc/univention/directory/reports/default groups.rml
     directory/reports/templates/pdf/user1: users/user "PDF Document" /etc/univention/directory/reports/default users.rml
-    domainname: {{ include "stack-data-ums.ldapDomainName" . }}
+    domainname: {{ include "stack-data-ums.domainName" . }}
     groups/default/domainadmins: Domain Admins
     groups/default/printoperators: Printer-Admins
     hostname: {{ include "stack-data-ums.subDomains.portal" . }}
@@ -186,7 +194,7 @@ data:
     umc/saml/idp-server: {{ include "stack-data-ums.samlMetadataUrl" .}}
     umc/saml/idp-server-internal: {{ include "stack-data-ums.samlMetadataUrlInternal" . }}
     umc/saml/in-memory-identity-cache: false
-    umc/saml/schemes: {{ .Values.stackDataContext.umcSamlSchemes }}
+    umc/saml/schemes: {{ include "stack-data-ums.umcSamlSchemes" . }}
     umc/saml/sp-server: {{ include "stack-data-ums.portalFqdn" . }}
     umc/saml/trusted/sp/primary.example.org: primary.example.org
     umc/self-service/account-deregistration/blacklist/groups: Administrators,Domain Admins
@@ -268,6 +276,4 @@ data:
     version/erratalevel: 0
     version/patchlevel: 5
     version/version: 5.0
-{{- end }}
-{{- end }}
 ...

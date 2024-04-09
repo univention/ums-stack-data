@@ -97,62 +97,6 @@ helm uninstall stack-data-udm
 			<td></td>
 		</tr>
 		<tr>
-			<td>global.connections</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "postgresql": {
-    "host": "",
-    "port": 5432
-  }
-}
-</pre>
-</td>
-			<td>Connection configuration</td>
-		</tr>
-		<tr>
-			<td>global.connections.postgresql</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "host": "",
-  "port": 5432
-}
-</pre>
-</td>
-			<td>Configuration for the PostgreSQL database</td>
-		</tr>
-		<tr>
-			<td>global.ldap</td>
-			<td>object</td>
-			<td><pre lang="json">
-{
-  "baseDn": "",
-  "uri": ""
-}
-</pre>
-</td>
-			<td>Global ldap configuration</td>
-		</tr>
-		<tr>
-			<td>global.ldap.baseDn</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>The LDAP base DN to use when connecting. Example: "dc=univention-organization,dc=intranet"</td>
-		</tr>
-		<tr>
-			<td>global.ldap.uri</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>The LDAP URI to connect to. Example: "ldap://example-ldap-server:389"</td>
-		</tr>
-		<tr>
 			<td>global.nubusDeployment</td>
 			<td>bool</td>
 			<td><pre lang="json">
@@ -441,7 +385,7 @@ null
 			<td>stackDataContext.umcSamlSchemes</td>
 			<td>string</td>
 			<td><pre lang="json">
-"https"
+"http"
 </pre>
 </td>
 			<td>Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`. Example: `"https, http"`</td>

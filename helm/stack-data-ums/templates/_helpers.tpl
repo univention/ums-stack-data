@@ -13,8 +13,6 @@ If the value .Values.global.nubusDeployment equates to true, the defined templat
 {{- $protocol := include "nubusTemplates.ldap.protocol" . -}}
 {{- $serviceName := include "nubusTemplates.ldap.serviceName" . | default (printf "%s-ldap-server" .Release.Name) -}}
 {{- printf "%s://%s" $protocol $serviceName -}}
-{{- else -}}
-{{- required "Either .Values.udmRestApi.ldap.uri or .Values.global.ldap.uri must be set" (coalesce .Values.udmRestApi.ldap.uri .Values.global.ldap.uri) -}}
 {{- end -}}
 {{- end -}}
 
@@ -22,7 +20,7 @@ If the value .Values.global.nubusDeployment equates to true, the defined templat
 {{- if .Values.stackDataContext.umcPostgresqlHostname -}}
 {{- .Values.stackDataContext.umcPostgresqlHostname -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.postgresql.connection.host" . -}}
+{{- (coalesce .Values.nubusUmcServer.postgresql.connection.host .Values.global.postgresql.connection.host) | default (printf "%s-postgresql" .Release.Name)  -}}
 {{- else -}}
 umc-server-postgresql
 {{- end -}}
@@ -32,9 +30,7 @@ umc-server-postgresql
 {{- if .Values.stackDataContext.umcPostgresqlPort -}}
 {{- .Values.stackDataContext.umcPostgresqlPort -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.postgresql.connection.port" . -}}
-{{- else -}}
-5432
+{{- coalesce .Values.nubusUmcServer.postgresql.connection.port .Values.global.postgresql.connection.port | default "5432" -}}
 {{- end -}}
 {{- end -}}
 
@@ -42,7 +38,7 @@ umc-server-postgresql
 {{- if .Values.stackDataContext.umcPostgresqlUsername -}}
 {{- .Values.stackDataContext.umcPostgresqlUsername -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.postgresql.auth.username" . -}}
+{{- .Values.nubusUmcServer.postgresql.auth.username -}}
 {{- else -}}
 selfservice
 {{- end -}}
@@ -52,7 +48,7 @@ selfservice
 {{- if .Values.stackDataContext.umcPostgresqlDatabase -}}
 {{- .Values.stackDataContext.umcPostgresqlDatabase -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.postgresql.auth.database" . -}}
+{{- .Values.nubusUmcServer.postgresql.auth.database -}}
 {{- else -}}
 selfservice
 {{- end -}}
@@ -62,7 +58,7 @@ selfservice
 {{- if .Values.stackDataContext.umcMemcachedHostname -}}
 {{- .Values.stackDataContext.umcMemcachedHostname -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.memcached.connection.host" . -}}
+{{- printf "%s-%s" .Release.Name (coalesce .Values.nubusUmcServer.memcached.nameOverride .Values.nubusUmcServer.memcached.connection.host) -}}
 {{- else -}}
 umc-server-memcached
 {{- end -}}
@@ -72,7 +68,7 @@ umc-server-memcached
 {{- if .Values.stackDataContext.umcMemcachedUsername -}}
 {{- .Values.stackDataContext.umcMemcachedUsername -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.memcached.connection.username" . -}}
+{{- .Values.nubusUmcServer.memcached.auth.username -}}
 {{- else -}}
 selfservice
 {{- end -}}
@@ -82,7 +78,7 @@ selfservice
 {{- if .Values.stackDataContext.ldapHost -}}
 {{- .Values.stackDataContext.ldapHost -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.ldap.connection.host" . -}}
+{{- include "nubusTemplates.ldapServer.ldap.connection.host" . -}}
 {{- else -}}
 ldap-server
 {{- end -}}
@@ -92,7 +88,7 @@ ldap-server
 {{- if .Values.stackDataContext.ldapPort -}}
 {{- .Values.stackDataContext.ldapPort -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.umcServer.ldap.connection.port" . -}}
+{{- include "nubusTemplates.ldapServer.ldap.connection.port" . -}}
 {{- else -}}
 389
 {{- end -}}
@@ -170,7 +166,7 @@ id
 {{- if .Values.stackDataContext.idpFqdn -}}
 {{- .Values.stackDataContext.idpFqdn -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- printf "%s.%s" (include "stack-data-ums.subDomains.keycloak" .) (include "stack-data-ums.subDomains.portal" .) -}}
+{{- printf "%s.%s" (include "stack-data-ums.subDomains.keycloak" .) .Values.global.domain -}}
 {{- end -}}
 {{- end -}}
 
@@ -178,7 +174,7 @@ id
 {{- if .Values.stackDataContext.umcSamlSpFqdn -}}
 {{- .Values.stackDataContext.umcSamlSpFqdn -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- printf "%s.%s" (include "stack-data-ums.subDomains.portal" .) (include "stack-data-ums.subDomains.portal" .) -}}
+{{- printf "%s.%s" (include "stack-data-ums.subDomains.portal" .) .Values.global.domain -}}
 {{- end -}}
 {{- end -}}
 
@@ -186,7 +182,7 @@ id
 {{- if .Values.stackDataContext.ldapSamlSpUrls -}}
 {{- .Values.stackDataContext.ldapSamlSpUrls -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.samlServiceProviders" .  -}}
+{{- include "nubusTemplates.ldapServer.samlServiceProviders" . -}}
 {{- end -}}
 {{- end -}}
 
@@ -211,5 +207,13 @@ id
 {{- .Values.stackDataContext.portalAuthMode -}}
 {{- else if .Values.global.nubusDeployment -}}
 saml
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.umcSamlSchemes" -}}
+{{- if .Values.stackDataContext.umcSamlSchemes -}}
+{{- .Values.stackDataContext.umcSamlSchemes -}}
+{{- else if .Values.global.nubusDeployment -}}
+https
 {{- end -}}
 {{- end -}}
