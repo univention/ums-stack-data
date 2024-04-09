@@ -6,7 +6,7 @@
 ---
 action: create
 module: users/ldap
-position: cn=users,{{ .ldapBase }}
+position: cn=users,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   username: sys-idp-user
   lastname: idp-user

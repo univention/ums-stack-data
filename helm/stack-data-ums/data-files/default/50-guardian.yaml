@@ -6,7 +6,7 @@
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: "cn=custom attributes,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "guardianRole"
   tabName: "Guardian"

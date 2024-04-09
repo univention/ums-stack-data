@@ -8,20 +8,20 @@
 ---
 action: create
 module: container/cn
-position: cn=univention,{{ .ldapBase }}
+position: cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: UMC
 ---
 action: create
 module: container/cn
-position: cn=policies,{{ .ldapBase }}
+position: cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: UMC
   policyPath: true
 ---
 action: create
 module: container/cn
-position: cn=UMC,cn=univention,{{ .ldapBase }}
+position: cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: operations
 
@@ -29,29 +29,29 @@ properties:
 ---
 action: create
 module: policies/umc
-position: cn=UMC,cn=policies,{{ .ldapBase }}
+position: cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: default-umc-all
 ---
 action: ensure_list_contains
 module: groups/group
-position: cn=Domain Admins,cn=groups,{{ .ldapBase }}
+position: cn=Domain Admins,cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}
 policies:
   policies/umc:
-    - "cn=default-umc-all,cn=UMC,cn=policies,{{ .ldapBase }}"
+    - "cn=default-umc-all,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 ---
 action: create
 module: policies/umc
-position: cn=UMC,cn=policies,{{ .ldapBase }}
+position: cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: default-umc-users
 ---
 action: ensure_list_contains
 module: groups/group
-position: cn=Domain Users,cn=groups,{{ .ldapBase }}
+position: cn=Domain Users,cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}
 policies:
   policies/umc:
-    - "cn=default-umc-users,cn=UMC,cn=policies,{{ .ldapBase }}"
+    - "cn=default-umc-users,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 {{ end }}
 
 {{ end }}

@@ -7,7 +7,7 @@
 # See: https://git.knut.univention.de/univention/ucs/-/blob/5.0-3/management/univention-ldap/10univention-ldap-server.inst#L254
 action: "create"
 module: "users/user"
-position: "cn=users,{{ .ldapBase }}"
+position: "cn=users,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   username: "Administrator"
   lastname: "Administrator"
@@ -16,17 +16,17 @@ properties:
   # "mailPrimaryAddress" as required via UCR settings.
   # See: https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
   firstname: "Admin"
-  mailPrimaryAddress: "administrator@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "administrator@{{ include "stack-data-ums.externalMailDomain" $ }}"
 
   password: {{ required "stackDataContext.initialPasswordAdministrator is missing" .initialPasswordAdministrator | quote }}
-  primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+  primaryGroup: "cn=Domain Admins,cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 ---
 # See: https://git.knut.univention.de/univention/ucs/-/blob/5.0-3/management/univention-ldap/10univention-ldap-server.inst#L265
 action: ensure_list_contains
 module: groups/group
-position: cn=Domain Users,cn=groups,{{ .ldapBase }}
+position: cn=Domain Users,cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   users:
-    - "uid=Administrator,cn=users,{{ .ldapBase }}"
+    - "uid=Administrator,cn=users,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 
 {{ end }}

@@ -8,8 +8,8 @@
 # https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
 action: create
 module: mail/domain
-position: cn=domain,cn=mail,{{ .ldapBase }}
+position: cn=domain,cn=mail,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
-  name: {{ .externalMailDomain }}
+  name: {{ include "stack-data-ums.externalMailDomain" $ }}
 
 {{ end }}

@@ -6,43 +6,43 @@
 ---
 action: create
 module: container/cn
-position: cn=univention,{{ .ldapBase }}
+position: cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: portals
 ---
 action: create
 module: container/cn
-position: cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: portal
 ---
 action: create
 module: container/cn
-position: cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: category
 ---
 action: create
 module: container/cn
-position: cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: entry
 ---
 action: create
 module: container/cn
-position: cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: folder
 ---
 action: create
 module: container/cn
-position: cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: config
 ---
 action: create
 module: container/cn
-position: cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}
 properties:
   name: announcement
 

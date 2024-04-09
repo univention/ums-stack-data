@@ -97,6 +97,71 @@ helm uninstall stack-data-udm
 			<td></td>
 		</tr>
 		<tr>
+			<td>global.connections</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "postgresql": {
+    "host": "",
+    "port": 5432
+  }
+}
+</pre>
+</td>
+			<td>Connection configuration</td>
+		</tr>
+		<tr>
+			<td>global.connections.postgresql</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "host": "",
+  "port": 5432
+}
+</pre>
+</td>
+			<td>Configuration for the PostgreSQL database</td>
+		</tr>
+		<tr>
+			<td>global.ldap</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "baseDn": "",
+  "uri": ""
+}
+</pre>
+</td>
+			<td>Global ldap configuration</td>
+		</tr>
+		<tr>
+			<td>global.ldap.baseDn</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>The LDAP base DN to use when connecting. Example: "dc=univention-organization,dc=intranet"</td>
+		</tr>
+		<tr>
+			<td>global.ldap.uri</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>The LDAP URI to connect to. Example: "ldap://example-ldap-server:389"</td>
+		</tr>
+		<tr>
+			<td>global.nubusDeployment</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Indicates wether this chart is part of a Nubus deployment.</td>
+		</tr>
+		<tr>
 			<td>image</td>
 			<td>object</td>
 			<td><pre lang="json">
@@ -187,28 +252,28 @@ true
 			<td>stackDataContext.domainname</td>
 			<td>string</td>
 			<td><pre lang="json">
-"univention-organization.intranet"
+""
 </pre>
 </td>
-			<td>Domain name of the instance. Example: `"example.org"`</td>
+			<td>Domain name of the instance. Chart defaults to `univention-organization.intranet` Example: `"example.org"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.externalMailDomain</td>
 			<td>string</td>
 			<td><pre lang="json">
-"univention-organization.test"
+""
 </pre>
 </td>
-			<td>Interim. The external mail domain in use. Currently required to create the Administrator account.</td>
+			<td>Interim. The external mail domain in use. Currently required to create the Administrator account. Chart defaults to `univention-organization.test`.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.hostname</td>
 			<td>string</td>
 			<td><pre lang="json">
-"portal"
+""
 </pre>
 </td>
-			<td>Host name of the instance. Example: `"souvap"`</td>
+			<td>Host name of the instance. Chart defaults to `portal`. Example: `"souvap"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.idpFqdn</td>
@@ -268,37 +333,37 @@ true
 			<td>stackDataContext.ldapBase</td>
 			<td>string</td>
 			<td><pre lang="json">
-"dc=univention-organization,dc=intranet"
+""
 </pre>
 </td>
-			<td>Base DN of the LDAP directory. Example: `"dc=example,dc=org"`</td>
+			<td>Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`. Example: `"dc=example,dc=org"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.ldapHost</td>
 			<td>string</td>
 			<td><pre lang="json">
-"ldap-server"
+""
 </pre>
 </td>
-			<td>Hostname of the LDAP server. Example: `"ucs-1234.univention.intranet"`</td>
+			<td>Hostname of the LDAP server. Chart defaults to `ldap-server`. Example: `"ucs-1234.univention.intranet"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.ldapHostDn</td>
 			<td>string</td>
 			<td><pre lang="json">
-"cn=admin,dc=univention-organization,dc=intranet"
+""
 </pre>
 </td>
-			<td>DN of the UMS instance. Example: `"cn=ucs-1234,cn=dc,cn=computers,dc=example,dc=org"`</td>
+			<td>DN of the UMS instance. Chart defaults to `cn=admin,dc=univention-organization,dc=intranet`. Example: `"cn=ucs-1234,cn=dc,cn=computers,dc=example,dc=org"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.ldapPort</td>
-			<td>int</td>
+			<td>string</td>
 			<td><pre lang="json">
-389
+""
 </pre>
 </td>
-			<td>Port to connect to the LDAP server. Example: `389`</td>
+			<td>Port to connect to the LDAP server. Chart defaults to `389`. Example: `389`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.ldapSamlSpUrls</td>
@@ -310,40 +375,67 @@ null
 			<td>List of SAML Service Provider URLs which the LDAP server should trust (comma-separated). Example: `"https://portal.souvap.example.org/univention/saml/metadata"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.portalAuthMode</td>
+			<td>string</td>
+			<td><pre lang="json">
+"saml"
+</pre>
+</td>
+			<td>The authentication method to use for the portal. Default is `saml`.</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.umcMemcachedHostname</td>
 			<td>string</td>
 			<td><pre lang="json">
-"umc-server-memcached"
+""
 </pre>
 </td>
-			<td>Hostname to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/socket`.</td>
+			<td>Hostname to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/socket`. Chart default is `umc-server-memcached`.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcMemcachedUsername</td>
 			<td>string</td>
 			<td><pre lang="json">
-"selfservice"
+""
 </pre>
 </td>
-			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`.</td>
+			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`. UCR has no default. Chart default is `selfservice`.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.umcPostgresqlDatabase</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcPostgresqlHostname</td>
 			<td>string</td>
 			<td><pre lang="json">
-"umc-server-postgresql"
+""
 </pre>
 </td>
-			<td>Hostname to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/hostname`.</td>
+			<td>Hostname to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/hostname`. UCR default is `localhost`. Chart default is `umc-server-postgresql`.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.umcPostgresqlPort</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Port to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/port`. UCR default is `5432`. Chart default is `5432`.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcPostgresqlUsername</td>
 			<td>string</td>
 			<td><pre lang="json">
-"selfservice"
+""
 </pre>
 </td>
-			<td>Username to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/username`.</td>
+			<td>Username to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/username`. UCR default is `selfservice`. Chart default is `selfservice`.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcSamlSchemes</td>
@@ -352,7 +444,7 @@ null
 "https"
 </pre>
 </td>
-			<td>Which address scheme to consider for SAML ACS (string, comma-separated). Example: `"https, http"`</td>
+			<td>Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`. Example: `"https, http"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcSamlSpFqdn</td>

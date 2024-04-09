@@ -7,7 +7,7 @@
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "self-service-my-profile"
   icon: {{ $.Files.Get "data-files/default/selfservice-icons/profile.svg" | b64enc | quote }}
@@ -28,20 +28,20 @@ properties:
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: "cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "self-service-profile"
   displayName:
     en_US: "User Profile"
     de_DE: "Benutzerprofil"
   entries:
-    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "self-service-protect-account"
   icon: {{ $.Files.Get "data-files/default/selfservice-icons/protectaccount.svg" | b64enc | quote }}
@@ -62,7 +62,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "self-service-password-forgotten"
   icon: {{ $.Files.Get "data-files/default/selfservice-icons/passwordforgotten.svg" | b64enc | quote }}
@@ -83,22 +83,22 @@ properties:
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: "cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "self-service-password"
   displayName:
     en_US: "Passwords"
     de_DE: "Passwörter"
   entries:
-    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 
 
 ---
 # Create the portal with the categories above
 action: "create"
 module: "portals/portal"
-position: "cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: "cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "self-service"
   defaultLinkTarget: "samewindow"
@@ -107,15 +107,15 @@ properties:
     de_DE: "Self Service"
   showUmc: False
   categories:
-    - "cn=self-service-profile,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
-    - "cn=self-service-password,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - "cn=self-service-profile,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-password,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=self-service,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: "cn=self-service,cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   userLinks:
-    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 {{ end }}

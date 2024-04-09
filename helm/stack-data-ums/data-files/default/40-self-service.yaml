@@ -7,7 +7,7 @@
 # Source: ucs/management/univention-self-service/34univention-self-service.inst
 action: "create"
 module: "policies/umc"
-position: "cn=UMC,cn=policies,{{ .ldapBase }}"
+position: "cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "selfservice-umc-servers"
   ldapFilter: "(|(objectClass=univentionMemberserver)(objectClass=univentionDomainController))"
@@ -15,32 +15,32 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "policies/umc"
-position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   allow:
-    - "allow=cn=passwordchange-all,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+    - "allow=cn=passwordchange-all,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 
 # TODO: Check if we need this in the container stack (if so, add the missing
 # schema aspects), otherwise remove.
 # ---
 # action: "modify"
 # module: "container/cn"
-# position: "cn=dc,cn=computers,{{ .ldapBase }}"
+# position: "cn=dc,cn=computers,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 # properties:
-#   policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+#   policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 # ---
 # action: "modify"
 # module: "policies/umc"
-# position: "cn=memberserver,cn=computers,{{ .ldapBase }}"
+# position: "cn=memberserver,cn=computers,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 # properties:
-#   policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+#   policy-reference: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 
 {{ end }}
 ---
 # Source: ucs/management/univention-self-service/35univention-self-service-passwordreset-umc.inst
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: "cn=custom attributes,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "UniventionPasswordSelfServiceEmail"
   CLIName: "PasswordRecoveryEmail"
@@ -72,7 +72,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: "cn=custom attributes,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "UniventionPasswordSelfServiceMobile"
   CLIName: "PasswordRecoveryMobile"
@@ -104,7 +104,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: "cn=custom attributes,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "UniventionPasswordRecoveryEmailVerified"
   CLIName: "PasswordRecoveryEmailVerified"
@@ -135,7 +135,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: "cn=custom attributes,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "UniventionRegisteredThroughSelfService"
   CLIName: "RegisteredThroughSelfService"
@@ -166,7 +166,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: "cn=custom attributes,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "UniventionDeregisteredThroughSelfService"
   CLIName: "DeregisteredThroughSelfService"
@@ -197,7 +197,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: "cn=custom attributes,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "UniventionDeregistrationTimestamp"
   CLIName: "DeregistrationTimestamp"
@@ -228,23 +228,23 @@ properties:
 ---
 action: "create"
 module: "settings/usertemplate"
-position: "cn=templates,cn=univention,{{ .ldapBase }}"
+position: "cn=templates,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "selfserviceregistrationtemplate"
   displayName: "<firstname> <lastname><:strip>"
   unixhome: "/home/<username>"
-  primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+  primaryGroup: "cn=Domain Users,cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}"
   shell: "/bin/bash"
 ---
 action: "create"
 module: "container/cn"
-position: "{{ .ldapBase }}"
+position: "{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "self registered users"
 ---
 action: "create"
 module: "settings/umc_operationset"
-position: "cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   name: "passwordreset-all"
   description: "Password reset service"
@@ -258,10 +258,10 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "policies/umc"
-position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ .ldapBase }}"
+position: "cn=selfservice-umc-servers,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   allow:
-    - "allow=cn=passwordreset-all,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+    - "allow=cn=passwordreset-all,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 {{ end }}
 ...
 

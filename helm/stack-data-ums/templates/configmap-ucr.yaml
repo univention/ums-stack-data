@@ -21,9 +21,9 @@ data:
     apache2/maxclients: 150
     apache2/startsite: univention/
     auth/methods: ldap
-    directory/manager/rest/authorized-groups/dc-backup: cn=DC Backup Hosts,cn=groups,{{ .Values.stackDataContext.ldapBase }}
-    directory/manager/rest/authorized-groups/dc-slaves: cn=DC Slave Hosts,cn=groups,{{ .Values.stackDataContext.ldapBase }}
-    directory/manager/rest/authorized-groups/domain-admins: cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}
+    directory/manager/rest/authorized-groups/dc-backup: cn=DC Backup Hosts,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}
+    directory/manager/rest/authorized-groups/dc-slaves: cn=DC Slave Hosts,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}
+    directory/manager/rest/authorized-groups/domain-admins: cn=Domain Admins,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}
     directory/manager/rest/debug_level: 5
     directory/manager/rest/ldap-connection/user-read/start-tls: 2
     directory/manager/rest/show-tracebacks: false
@@ -49,10 +49,10 @@ data:
     directory/reports/templates/pdf/computer1: computers/computer "PDF Document" /etc/univention/directory/reports/default computers.rml
     directory/reports/templates/pdf/group1: groups/group "PDF Document" /etc/univention/directory/reports/default groups.rml
     directory/reports/templates/pdf/user1: users/user "PDF Document" /etc/univention/directory/reports/default users.rml
-    domainname: {{ .Values.stackDataContext.domainname }}
+    domainname: {{ include "stack-data-ums.ldapDomainName" . }}
     groups/default/domainadmins: Domain Admins
     groups/default/printoperators: Printer-Admins
-    hostname: {{ .Values.stackDataContext.hostname }}
+    hostname: {{ include "stack-data-ums.subDomains.portal" . }}
     kerberos/realm: stub_value
     ldap/acl/nestedgroups: yes
     ldap/acl/read/anonymous: no
@@ -60,7 +60,7 @@ data:
     ldap/acl/user/password/change: no
     ldap/attributeoptions: entry-,lang-
     ldap/autostart: yes
-    ldap/base: {{ .Values.stackDataContext.ldapBase }}
+    ldap/base: {{ include "stack-data-ums.ldapBaseDn" . }}
     ldap/cachesize: 20000
     ldap/client/retry/count: 10
     ldap/database/bdb/db_config_options: set_flags
@@ -70,7 +70,7 @@ data:
     ldap/database/mdb/maxsize: 4295000000
     ldap/database/type: mdb
     ldap/debug/level: none
-    ldap/hostdn: {{ .Values.stackDataContext.ldapHostDn }}
+    ldap/hostdn: {{ include "stack-data-ums.ldapAdminDn" . }}
     ldap/idlcachesize: 20000
     ldap/idletimeout: 360
     ldap/index/approx: cn,givenName,mail,sn,uid
@@ -81,8 +81,8 @@ data:
     ldap/index/sub: aRecord,associatedDomain,automountInformation,cn,default,description,displayName,employeeNumber,givenName,macAddress,mail,mailAlternativeAddress,mailPrimaryAddress,name,ou,pTRRecord,printerModel,relativeDomainName,sambaSID,sn,uid,univentionInventoryNumber,univentionOperatingSystem,univentionSyntaxDescription,univentionUDMPropertyLongDescription,univentionUDMPropertyShortDescription,zoneName
     ldap/k5pwd: true
     ldap/limits: users time.soft=-1 time.hard=-1
-    ldap/master: {{ .Values.stackDataContext.ldapHost }}
-    ldap/master/port: {{ .Values.stackDataContext.ldapPort }}
+    ldap/master: {{ include "stack-data-ums.ldapHost" . }}
+    ldap/master/port: {{ include "stack-data-ums.ldapPort" . }}
     ldap/maxopenfiles: 8192
     ldap/monitor: false
     ldap/overlay/lastbind: false
@@ -96,9 +96,9 @@ data:
     ldap/ppolicy: false
     ldap/ppolicy/enabled: false
     ldap/pwd_scheme_kinit: true
-    ldap/saml/service-providers: {{ .Values.stackDataContext.ldapSamlSpUrls }}
-    ldap/server/name: {{ .Values.stackDataContext.ldapHost }}
-    ldap/server/port: {{ .Values.stackDataContext.ldapPort }}
+    ldap/saml/service-providers: {{ include "stack-data-ums.samlServiceProviders" . }}
+    ldap/server/name: {{ include "stack-data-ums.ldapHost" . }}
+    ldap/server/port: {{ include "stack-data-ums.ldapPort" . }}
     ldap/server/type: master
     ldap/sizelimit: 400000
     ldap/shadowbind: true
@@ -109,19 +109,19 @@ data:
     ldap/tls/dh/paramfile: /etc/ldap/dh_2048.pem
     ldap/tool-threads: 1
     ldap/translogfile: /var/lib/univention-ldap/listener/listener
-    license/base: {{ .Values.stackDataContext.ldapBase }}
+    license/base: {{ include "stack-data-ums.ldapBaseDn" . }}
     locale/default: de_DE.UTF-8:UTF-8
     locale: de_DE.UTF-8:UTF-8 en_US.UTF-8:UTF-8
     password/hashing/method: SHA-512
-    portal/auth-mode: saml
+    portal/auth-mode: {{ include "stack-data-ums.portalAuthMode" . }}
     portal/paths: /univention/portal/, /univention/umc/, /univention/selfservice/
-    self-service/backend-server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    self-service/backend-server: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
     self-service/ldap_attributes: jpegPhoto,mail,telephoneNumber,roomNumber,departmentNumber,st,homePhone,mobile,homePostalAddress
-    self-service/udm-rest-server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    self-service/udm-rest-server: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
     self-service/udm_attributes: jpegPhoto,e-mail,phone,roomnumber,departmentNumber,country,homeTelephoneNumber,mobileTelephoneNumber,homePostalAddress
     self-service/web/enabled: yes
     server/role: domaincontroller_master
-    slapd/port: {{ .Values.stackDataContext.ldapPort }}
+    slapd/port: {{ include "stack-data-ums.ldapPort" . }}
     ssl/ca/cipher: aes256
     ssl/common: Univention Corporate Server Root CA (ID: XXX)
     ssl/country: DE
@@ -151,7 +151,7 @@ data:
     ucs/server/languages/en_US: English
     ucs/server/robots/disallow: /
     ucs/server/saml-idp-server/primary.example.org: primary.example.org
-    ucs/server/sso/fqdn: {{ .Values.stackDataContext.idpFqdn }}
+    ucs/server/sso/fqdn: {{ include "stack-data-ums.keycloakFqdn" . }}
     ucs/server/sso/virtualhost: true
     ucs/web/license/requested: true
     ucs/web/theme: dark
@@ -162,7 +162,7 @@ data:
     umc/http/content-security-policy/font-src: 'self'
     umc/http/content-security-policy/form-action: 'self'
     umc/http/content-security-policy/frame-ancestors: 'self'
-    umc/http/content-security-policy/frame-src: 'self' {{ if .Values.stackDataContext.idpFqdn }}https://{{ .Values.stackDataContext.idpFqdn }}{{ end }}
+    umc/http/content-security-policy/frame-src: 'self' {{ if include "stack-data-ums.keycloakFqdn" . }}https://{{ include "stack-data-ums.keycloakFqdn" . }}{{ end }}
     umc/http/content-security-policy/img-src: *
     umc/http/content-security-policy/media-src: *
     umc/http/content-security-policy/object-src: 'self'
@@ -183,11 +183,11 @@ data:
     umc/module/debug/level: 5
     umc/module/timeout: 600
     umc/module/udm/users/self/disabled: true
-    umc/saml/idp-server: {{ .Values.stackDataContext.idpSamlMetadataUrl }}
-    umc/saml/idp-server-internal: {{ .Values.stackDataContext.idpSamlMetadataUrlInternal }}
+    umc/saml/idp-server: {{ include "stack-data-ums.samlMetadataUrl" .}}
+    umc/saml/idp-server-internal: {{ include "stack-data-ums.samlMetadataUrlInternal" . }}
     umc/saml/in-memory-identity-cache: false
     umc/saml/schemes: {{ .Values.stackDataContext.umcSamlSchemes }}
-    umc/saml/sp-server: {{ .Values.stackDataContext.umcSamlSpFqdn }}
+    umc/saml/sp-server: {{ include "stack-data-ums.portalFqdn" . }}
     umc/saml/trusted/sp/primary.example.org: primary.example.org
     umc/self-service/account-deregistration/blacklist/groups: Administrators,Domain Admins
     umc/self-service/account-deregistration/email/subject: Account deletion
@@ -197,8 +197,8 @@ data:
     umc/self-service/account-registration/frontend/enabled: false
     umc/self-service/account-registration/udm_attributes: firstname,lastname,username
     umc/self-service/account-registration/udm_attributes/required: lastname,username
-    umc/self-service/account-registration/usercontainer: cn=self registered users,{{ .Values.stackDataContext.ldapBase }}
-    umc/self-service/account-registration/usertemplate: cn=selfserviceregistrationtemplate,cn=templates,cn=univention,{{ .Values.stackDataContext.ldapBase }}
+    umc/self-service/account-registration/usercontainer: cn=self registered users,{{ include "stack-data-ums.ldapBaseDn" . }}
+    umc/self-service/account-registration/usertemplate: cn=selfserviceregistrationtemplate,cn=templates,cn=univention,{{ include "stack-data-ums.ldapBaseDn" . }}
     umc/self-service/account-verification/backend/enabled: false
     umc/self-service/account-verification/email/subject: Account verification
     umc/self-service/account-verification/email/token_length: 64
@@ -206,22 +206,22 @@ data:
     umc/self-service/account-verification/next-steps: "Continue to the <a href='/univention/portal'>Univention Portal</a>."
     umc/self-service/account-verification/next-steps/de: "Weiter zum <a href='/univention/portal'>Univention Portal</a>."
     umc/self-service/allow-authenticated-use: true
-    umc/self-service/content-security-policy/frame-ancestors: *.{{ .Values.stackDataContext.domainname }}
+    umc/self-service/content-security-policy/frame-ancestors: *.{{ include "stack-data-ums.domainName" . }}
     umc/self-service/email-change-notification/email/subject: Account recovery email changed
     umc/self-service/enabled: yes
     umc/self-service/invitation/enabled: true
-    umc/self-service/memcached/socket: {{ .Values.stackDataContext.umcMemcachedHostname }}
-    umc/self-service/memcached/username: {{ .Values.stackDataContext.umcMemcachedUsername }}
+    umc/self-service/memcached/socket: {{ include "stack-data-ums.umcMemcachedHostname" . }}
+    umc/self-service/memcached/username: {{ include "stack-data-ums.umcMemcachedUsername" . }}
     umc/self-service/passwordchange/frontend/enabled: yes
     umc/self-service/passwordreset/backend/enabled: true
     umc/self-service/passwordreset/blacklist/groups: Administrators,Domain Admins
     umc/self-service/passwordreset/frontend/enabled: yes
     umc/self-service/passwordreset/email/enabled: yes
-    umc/self-service/passwordreset/email/sender_address: "Password Reset Service <noreply@{{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}>"
-    umc/self-service/passwordreset/email/server: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    umc/self-service/passwordreset/email/sender_address: "Password Reset Service <noreply@{{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}>"
+    umc/self-service/passwordreset/email/server: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
     umc/self-service/passwordreset/email/subject: Password reset
     umc/self-service/passwordreset/email/token_length: 64
-    umc/self-service/passwordreset/email/webserver_address: {{ .Values.stackDataContext.hostname }}.{{ .Values.stackDataContext.domainname }}
+    umc/self-service/passwordreset/email/webserver_address: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
     umc/self-service/passwordreset/external/enabled: no
     umc/self-service/passwordreset/external/token_length: 64
     umc/self-service/passwordreset/limit/total/day: 1000
@@ -234,9 +234,10 @@ data:
     umc/self-service/passwordreset/sms/token_length: 12
     umc/self-service/passwordreset/token_validity_period: 3600
     umc/self-service/passwordreset/whitelist/groups: Domain Users
-    umc/self-service/postgresql/hostname: {{ .Values.stackDataContext.umcPostgresqlHostname }}
-    umc/self-service/postgresql/port: 5432
-    umc/self-service/postgresql/username: {{ .Values.stackDataContext.umcPostgresqlUsername }}
+    umc/self-service/postgresql/hostname: {{ include "stack-data-ums.umcPostgresqlHostname" . }}
+    umc/self-service/postgresql/port: {{ include "stack-data-ums.umcPostgresqlPort" . }}
+    umc/self-service/postgresql/username: {{ include "stack-data-ums.umcPostgresqlUsername" . }}
+    umc/self-service/postgresql/database: {{ include "stack-data-ums.umcPostgresqlDatabase" . }}
     umc/self-service/profiledata/blacklist/groups: Administrators,Domain Admins
     umc/self-service/profiledata/enabled: true
     umc/self-service/profiledata/whitelist/groups: Domain Users
