@@ -7,7 +7,7 @@
 # Create extended attribute to activate A2GM
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "attribute-to-group-mapper"
   CLIName: "attributeToGroupMapper"

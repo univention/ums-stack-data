@@ -6,61 +6,61 @@
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=login-ucs,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=login-ucs,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=umc-domain,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=umc-domain,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=root-cert,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=root-cert,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=certificate-revocation,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=certificate-revocation,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=univentionforum,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=univentionforum,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=univentionfeedback,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=univentionfeedback,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=univentionblog,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=univentionblog,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=univentionwebsite,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=univentionwebsite,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "modify"
 module: "portals/entry"
-position: "cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.anonymous_login"
   anonymous: true
@@ -78,15 +78,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - "cn=swp.anonymous_login,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - 'cn=swp.anonymous_login,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_user"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_user.svg" | b64enc | quote }}
@@ -106,7 +106,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_group"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_group.svg" | b64enc | quote }}
@@ -126,16 +126,16 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - "cn=swp.admin_user,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-  - "cn=swp.admin_group,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - 'cn=swp.admin_user,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+  - 'cn=swp.admin_group,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_functionalmailbox"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_functionalmailbox.svg" | b64enc | quote }}
@@ -155,7 +155,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_resource"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_resource.svg" | b64enc | quote }}
@@ -175,7 +175,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   activated: false
   name: "swp.admin_context"
@@ -196,17 +196,17 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - "cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-  - "cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-  - "cn=swp.admin_context,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+  - 'cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+  - 'cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+  - 'cn=swp.admin_context,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_announcement"
   icon: {{ $.Files.Get "data-files/default/portal-icons/admin_announcement.svg" | b64enc | quote }}
@@ -226,15 +226,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - cn=swp.admin_announcement,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.admin_announcement,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.groupware_mail"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_mail.svg" | b64enc | quote }}
@@ -254,7 +254,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.groupware_calendar"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_calendar.svg" | b64enc | quote }}
@@ -274,7 +274,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.groupware_contacts"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_contacts.svg" | b64enc | quote }}
@@ -294,7 +294,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.groupware_tasks"
   icon: {{ $.Files.Get "data-files/default/portal-icons/groupware_tasks.svg" | b64enc | quote }}
@@ -314,18 +314,18 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - cn=swp.groupware_mail,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.groupware_calendar,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.groupware_contacts,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.groupware_tasks,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.groupware_mail,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
+  - cn=swp.groupware_calendar,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
+  - cn=swp.groupware_contacts,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
+  - cn=swp.groupware_tasks,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.fileshare_files"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_files.svg" | b64enc | quote }}
@@ -345,7 +345,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.fileshare_activity"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_activity.svg" | b64enc | quote }}
@@ -365,17 +365,17 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - "cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-  - "cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-  - "cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
+  - 'cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+  - 'cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+  - 'cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: create
 module: portals/entry
-position: cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   name: "swp.fileshare_directdoc_odt"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_odt.svg" | b64enc | quote }}
@@ -395,7 +395,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.fileshare_directdoc_ods"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_ods.svg" | b64enc | quote }}
@@ -415,7 +415,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.fileshare_directdoc_odp"
   icon: {{ $.Files.Get "data-files/default/portal-icons/fileshare_directdoc_odp.svg" | b64enc | quote }}
@@ -435,17 +435,17 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/folder"
-position: "cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.fileshare_directdoc_ods,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
+  - cn=swp.fileshare_directdoc_ods,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
+  - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.realtime_collaboration"
   icon: {{ $.Files.Get "data-files/default/portal-icons/realtime_collaboration.svg" | b64enc | quote }}
@@ -465,7 +465,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.realtime_videoconference"
   icon: {{ $.Files.Get "data-files/default/portal-icons/realtime_videoconference.svg" | b64enc | quote }}
@@ -485,16 +485,16 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - cn=swp.realtime_collaboration,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.realtime_videoconference,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.realtime_collaboration,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
+  - cn=swp.realtime_videoconference,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.management_project"
   icon: {{ $.Files.Get "data-files/default/portal-icons/management_project.svg" | b64enc | quote }}
@@ -514,7 +514,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.management_knowledge"
   icon: {{ $.Files.Get "data-files/default/portal-icons/management_knowledge.svg" | b64enc | quote }}
@@ -534,16 +534,16 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/category"
-position: "cn=swp.management,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=swp.management,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   entries:
-  - cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
-  - cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}
+  - cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
+  - cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.selfservice.change_password"
   icon: {{ $.Files.Get "data-files/default/portal-icons/selfservice_changepassword.svg" | b64enc | quote }}
@@ -562,7 +562,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.selfservice.edit_profile"
   icon: {{ $.Files.Get "data-files/default/portal-icons/selfservice_editprofile.svg" | b64enc | quote }}
@@ -581,7 +581,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.selfservice.protect_account"
   icon: {{ $.Files.Get "data-files/default/portal-icons/selfservice_protectaccount.svg" | b64enc | quote }}
@@ -600,17 +600,17 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   userLinks:
-    - "cn=swp.selfservice.change_password,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-    - "cn=swp.selfservice.edit_profile,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-    - "cn=swp.selfservice.protect_account,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.selfservice.change_password,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=swp.selfservice.edit_profile,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=swp.selfservice.protect_account,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.externallinks.privacystatement"
   icon: {{ $.Files.Get "data-files/default/portal-icons/dummy.svg" | b64enc | quote }}
@@ -631,7 +631,7 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.externallinks.legalnotice"
   icon: {{ $.Files.Get "data-files/default/portal-icons/dummy.svg" | b64enc | quote }}
@@ -652,10 +652,10 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   menuLinks:
-    - "cn=swp.externallinks.privacystatement,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
-    - "cn=swp.externallinks.legalnotice,cn=entry,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.externallinks.privacystatement,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=swp.externallinks.legalnotice,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 {{ end }}

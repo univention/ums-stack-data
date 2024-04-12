@@ -11,37 +11,37 @@
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: "cn=managed-by-attribute-Groupware,cn=groups,{{ .ldapBase }}"
+position: 'cn=managed-by-attribute-Groupware,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   users:
-    - "uid=default.user,cn=users,{{ .ldapBase }}"
+    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: "cn=managed-by-attribute-Fileshare,cn=groups,{{ .ldapBase }}"
+position: 'cn=managed-by-attribute-Fileshare,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   users:
-    - "uid=default.user,cn=users,{{ .ldapBase }}"
+    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .ldapBase }}"
+position: 'cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   users:
-    - "uid=default.user,cn=users,{{ .ldapBase }}"
+    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .ldapBase }}"
+position: 'cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   users:
-    - "uid=default.user,cn=users,{{ .ldapBase }}"
+    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .ldapBase }}"
+position: 'cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   users:
-    - "uid=default.user,cn=users,{{ .ldapBase }}"
+    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 {{ end }}

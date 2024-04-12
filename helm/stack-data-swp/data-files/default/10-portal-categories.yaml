@@ -6,7 +6,7 @@
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.anonymous"
   displayName:
@@ -14,15 +14,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_usersgroups"
   displayName:
@@ -31,15 +31,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_groupware"
   displayName:
@@ -48,15 +48,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.admin_portal"
   displayName:
@@ -65,15 +65,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.groupware"
   displayName:
@@ -82,15 +82,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.fileshare"
   displayName:
@@ -99,15 +99,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.management"
   displayName:
@@ -116,15 +116,15 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.management,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.management,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "swp.realtime"
   displayName:
@@ -133,9 +133,9 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   categories:
-    - "cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ .ldapBase }}"
+    - 'cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 {{ end }}

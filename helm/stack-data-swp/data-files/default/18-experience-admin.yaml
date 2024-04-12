@@ -6,7 +6,7 @@
 ---
 action: modify
 module: portals/portal
-position: cn=domain,cn=portal,cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   showUmc: false
 

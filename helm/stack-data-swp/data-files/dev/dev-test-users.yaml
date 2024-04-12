@@ -5,7 +5,7 @@
 ---
 action: "create"
 module: "users/user"
-position: "cn=users,{{ .ldapBase }}"
+position: 'cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   username: "default.user"
   firstname: "Default"
@@ -20,21 +20,21 @@ properties:
   opendeskLivecollaborationEnabled: True
   opendeskProjectmanagementAdmin: False
   opendeskFileshareAdmin: False
-  mailPrimaryAddress: "default.user@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "default.user@{{ include "stack-data-swp.externalMailDomain" $ }}"
 ---
 action: "create"
 module: "users/user"
-position: "cn=users,{{ .ldapBase }}"
+position: 'cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   username: "default.admin"
   firstname: "Default"
   lastname: "Admin"
-  primaryGroup: "cn=Domain Admins,cn=groups,{{ .ldapBase }}"
+  primaryGroup: 'cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
   password: {{ required "Please set a password for the default user" .adminPassword | quote }}
   isOxUser: False
   guardianRole:
     - "guardian:builtin:app-admin"
-  mailPrimaryAddress: "default.admin@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "default.admin@{{ include "stack-data-swp.externalMailDomain" $ }}"
   opendeskProjectmanagementAdmin: False
   opendeskFileshareAdmin: False
   opendeskFileshareEnabled: False

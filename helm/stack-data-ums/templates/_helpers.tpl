@@ -16,6 +16,94 @@ If the value .Values.global.nubusDeployment equates to true, the defined templat
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.ldapHost" -}}
+{{- if .Values.stackDataContext.ldapHost -}}
+{{- .Values.stackDataContext.ldapHost -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.ldap.connection.host" . -}}
+{{- else -}}
+ldap-server
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.ldapPort" -}}
+{{- if .Values.stackDataContext.ldapPort -}}
+{{- .Values.stackDataContext.ldapPort -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.ldap.connection.port" . -}}
+{{- else -}}
+389
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.ldapBaseDn" -}}
+{{- if .Values.stackDataContext.ldapBase -}}
+{{- .Values.stackDataContext.ldapBase -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.ldap.baseDn" . -}}
+{{- else -}}
+dc=univention-organization,dc=intranet
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.samlServiceProviders" -}}
+{{- if .Values.stackDataContext.ldapSamlSpUrls -}}
+{{- .Values.stackDataContext.ldapSamlSpUrls -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.samlServiceProviders" . -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.samlMetadataUrl" -}}
+{{- if .Values.stackDataContext.idpSamlMetadataUrl -}}
+{{- .Values.stackDataContext.idpSamlMetadataUrl -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.samlMetadataUrl" .  -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.samlMetadataUrlInternal" -}}
+{{- if .Values.stackDataContext.idpSamlMetadataUrlInternal -}}
+{{- .Values.stackDataContext.idpSamlMetadataUrlInternal -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.samlMetadataUrlInternal" .  -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.ldapDomainName" -}}
+{{- if .Values.stackDataContext.domainname -}}
+{{- .Values.stackDataContext.domainname -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.ldap.domainName" . -}}
+{{- else -}}
+univention-organization.intranet
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.ldapAdminDn" -}}
+{{- if .Values.stackDataContext.ldapHostDn -}}
+{{- .Values.stackDataContext.ldapHostDn -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.ldap.adminDn" . -}}
+{{- else -}}
+cn=admin,dc=univention-organization,dc=intranet
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.udmApiUrl" -}}
+{{- if .Values.stackDataUms.udmApiUrl -}}
+{{- .Values.stackDataUms.udmApiUrl -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.udmRestApi.uri" . -}}
+{{- else -}}
+http://udm-rest-api/udm/
+{{- end -}}
+{{- end -}}
+
+{{- /*
+These template definitions are only used in this chart and do not relate to templates defined elsewhere.
+*/}}
+
 {{- define "stack-data-ums.umcPostgresqlHostname" -}}
 {{- if .Values.stackDataContext.umcPostgresqlHostname -}}
 {{- .Values.stackDataContext.umcPostgresqlHostname -}}
@@ -74,41 +162,11 @@ selfservice
 {{- end -}}
 {{- end -}}
 
-{{- define "stack-data-ums.ldapHost" -}}
-{{- if .Values.stackDataContext.ldapHost -}}
-{{- .Values.stackDataContext.ldapHost -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.ldap.connection.host" . -}}
-{{- else -}}
-ldap-server
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.ldapPort" -}}
-{{- if .Values.stackDataContext.ldapPort -}}
-{{- .Values.stackDataContext.ldapPort -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.ldap.connection.port" . -}}
-{{- else -}}
-389
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.ldapBaseDn" -}}
-{{- if .Values.stackDataContext.ldapBase -}}
-{{- .Values.stackDataContext.ldapBase -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.ldap.baseDn" . -}}
-{{- else -}}
-dc=univention-organization,dc=intranet
-{{- end -}}
-{{- end -}}
-
 {{- define "stack-data-ums.domainName" -}}
 {{- if .Values.stackDataContext.domainname -}}
 {{- .Values.stackDataContext.domainname -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- required ".Values.global.domain has be be defined" .Values.global.domain -}}
+{{- required ".Values.global.domain has to be defined" .Values.global.domain -}}
 {{- else -}}
 univention-organization.intranet
 {{- end -}}
@@ -118,29 +176,9 @@ univention-organization.intranet
 {{- if .Values.stackDataContext.externalMailDomain -}}
 {{- .Values.stackDataContext.externalMailDomain -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- required ".Values.global.domain has be be defined" .Values.global.domain -}}
+{{- required ".Values.global.domain has to be defined" .Values.global.domain -}}
 {{- else -}}
 univention-organization.test
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.ldapDomainName" -}}
-{{- if .Values.stackDataContext.domainname -}}
-{{- .Values.stackDataContext.domainname -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.ldap.domainName" . -}}
-{{- else -}}
-univention-organization.intranet
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.ldapAdminDn" -}}
-{{- if .Values.stackDataContext.ldapHostDn -}}
-{{- .Values.stackDataContext.ldapHostDn -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.ldap.adminDn" . -}}
-{{- else -}}
-cn=admin,dc=univention-organization,dc=intranet
 {{- end -}}
 {{- end -}}
 
@@ -148,7 +186,7 @@ cn=admin,dc=univention-organization,dc=intranet
 {{- if .Values.stackDataContext.hostname -}}
 {{- .Values.stackDataContext.hostname -}}
 {{- else if .Values.global.nubusDeployment -}}
-{{- required ".Values.global.subDomains.portal has be be defined" .Values.global.subDomains.portal -}}
+{{- required ".Values.global.subDomains.portal has to be defined" .Values.global.subDomains.portal -}}
 {{- else -}}
 portal
 {{- end -}}
@@ -156,7 +194,7 @@ portal
 
 {{- define "stack-data-ums.subDomains.keycloak" -}}
 {{- if and .Values.global.nubusDeployment (not .Values.stackDataContext.idpFqdn) -}}
-{{- required ".Values.global.subDomains.keycloak has be be defined" .Values.global.subDomains.keycloak -}}
+{{- required ".Values.global.subDomains.keycloak has to be defined" .Values.global.subDomains.keycloak -}}
 {{- else -}}
 id
 {{- end -}}
@@ -178,29 +216,6 @@ id
 {{- end -}}
 {{- end -}}
 
-{{- define "stack-data-ums.samlServiceProviders" -}}
-{{- if .Values.stackDataContext.ldapSamlSpUrls -}}
-{{- .Values.stackDataContext.ldapSamlSpUrls -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.samlServiceProviders" . -}}
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.samlMetadataUrl" -}}
-{{- if .Values.stackDataContext.idpSamlMetadataUrl -}}
-{{- .Values.stackDataContext.idpSamlMetadataUrl -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.samlMetadataUrl" .  -}}
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.samlMetadataUrlInternal" -}}
-{{- if .Values.stackDataContext.idpSamlMetadataUrlInternal -}}
-{{- .Values.stackDataContext.idpSamlMetadataUrlInternal -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.samlMetadataUrlInternal" .  -}}
-{{- end -}}
-{{- end -}}
 
 {{- define "stack-data-ums.portalAuthMode" -}}
 {{- if .Values.stackDataContext.portalAuthMode -}}
@@ -215,5 +230,17 @@ saml
 {{- .Values.stackDataContext.umcSamlSchemes -}}
 {{- else if .Values.global.nubusDeployment -}}
 https
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.udmApi.credentialSecret.name" -}}
+{{- if .Values.global.nubusDeployment -}}
+{{- printf "%s-udm-rest-api-credentials" .Release.Name -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.udmApi.credentialSecret.key" -}}
+{{- if .Values.global.nubusDeployment -}}
+machine.secret
 {{- end -}}
 {{- end -}}

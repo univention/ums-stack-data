@@ -6,41 +6,41 @@
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "managed-by-attribute-Groupware"
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "managed-by-attribute-Fileshare"
   opendeskFileshareEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "managed-by-attribute-FileshareAdmin"
   opendeskFileshareEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "managed-by-attribute-Projectmanagement"
   opendeskProjectmanagementEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "managed-by-attribute-Knowledgemanagement"
   opendeskKnowledgemanagementEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "managed-by-attribute-Livecollaboration"
   opendeskLivecollaborationEnabled: True

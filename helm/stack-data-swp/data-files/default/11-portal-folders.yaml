@@ -6,7 +6,7 @@
 ---
 action: create
 module: portals/folder
-position: cn=folder,cn=portals,cn=univention,{{ .ldapBase }}
+position: cn=folder,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   name: "swp.fileshare_directdoc"
   displayName:

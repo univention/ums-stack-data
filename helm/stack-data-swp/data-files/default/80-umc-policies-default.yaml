@@ -6,47 +6,47 @@
 ---
 action: create
 module: policies/umc
-position: cn=UMC,cn=policies,{{ .ldapBase }}
+position: cn=UMC,cn=policies,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   name: default-umc-all
   allow:
-    - "cn=udm-users,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
-    - "cn=udm-syntax,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
-    - "cn=udm-groups,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
-    - "cn=read-udm-usertemplates,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
-    - "cn=ox-functional-accounts,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
-    - "cn=ox-resources,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
-    - "cn=portal-announcement,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
-    - "cn=udm-reports,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+    - 'cn=udm-users,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=udm-syntax,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=udm-groups,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=read-udm-usertemplates,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=ox-functional-accounts,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=ox-resources,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=portal-announcement,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'cn=udm-reports,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
 action: create
 module: policies/umc
-position: cn=UMC,cn=policies,{{ .ldapBase }}
+position: cn=UMC,cn=policies,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   name: support-read-only
   allow:
-    - "cn=read-only-udm-object-for-support,cn=operations,cn=UMC,cn=univention,{{ .ldapBase }}"
+    - 'cn=read-only-udm-object-for-support,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
 action: create
 module: groups/group
-position: cn=groups,{{ .ldapBase }}
+position: cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   name: "Support"
   description: "Support role with just read only access"
 ---
 action: ensure_list_contains
 module: groups/group
-position: cn=Domain Admins,cn=groups,{{ .ldapBase }}
+position: cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}
 policies:
   policies/umc:
-    - "cn=default-umc-all,cn=UMC,cn=policies,{{ .ldapBase }}"
+    - 'cn=default-umc-all,cn=UMC,cn=policies,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
 action: ensure_list_contains
 module: groups/group
-position: cn=Support,cn=groups,{{ .ldapBase }}
+position: cn=Support,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}
 policies:
   policies/umc:
-    - "cn=support-read-only,cn=UMC,cn=policies,{{ .ldapBase }}"
+    - 'cn=support-read-only,cn=UMC,cn=policies,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 
 {{ end }}

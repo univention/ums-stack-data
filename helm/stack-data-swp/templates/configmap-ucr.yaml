@@ -73,7 +73,7 @@ data:
     umc/module/udm/portals/all/disabled: True
     umc/self-service/account-verification/email/webserver_address: {{ .Values.stackDataContext.portalFqdn }}
     umc/self-service/content-security-policy/frame-ancestors: 'self'
-    umc/self-service/passwordreset/email/sender_address: Password Reset Service <noreply@{{ .Values.stackDataContext.externalMailDomain }}>
+    umc/self-service/passwordreset/email/sender_address: Password Reset Service <noreply@{{ include "stack-data-swp.externalMailDomain" . }}>
     umc/self-service/passwordreset/email/server: {{ .Values.stackDataContext.smtpHost }}
     umc/self-service/passwordreset/email/server/port: {{ .Values.stackDataContext.smtpPort }}
     umc/self-service/passwordreset/email/server/user: {{ .Values.stackDataContext.smtpUser }}

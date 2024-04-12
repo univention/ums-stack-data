@@ -1,18 +1,21 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# SPDX-FileCopyrightText: 2023 Univention GmbH
+# SPDX-FileCopyrightText: 2024 Univention GmbH
 
 ---
+global:
+  # -- Indicates wether this chart is part of a Nubus deployment.
+  nubusDeployment: false
 
 stackDataSwp:
 
-  # -- The URL by which the UDM Rest API can be reached
-  udmApiUrl: "http://udm-rest-api/udm/"
+  # -- The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.
+  udmApiUrl: ""
 
   # -- The username to use to connect to the UDM Rest API
   udmApiUser: "cn=admin"
 
   # -- The password to access the UDM Rest API
-  udmApiPassword: null
+  udmApiPassword: ""
 
   # -- The filename which contains the password
   udmApiPasswordFile: "/run/secrets/univention.de/data-loader/udm_secret"
@@ -44,18 +47,27 @@ stackDataSwp:
 
 # -- Context used for rendering the data files
 stackDataContext:
-  ldapBase: "dc=univention-organization,dc=intranet"
+  # -- Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`.
+  # Example: `"dc=example,dc=org"`
+  ldapBase: ""
   ldapSearchUsers: []
-  externalDomainName: "univention-organization.test"
-  externalMailDomain: "univention-organization.test"
-  portalGroupwareLinkBase: "https://webmail.{{ .Values.stackDataContext.externalDomainName }}"
-  portalFileshareLinkBase: "https://fs.{{ .Values.stackDataContext.externalDomainName }}"
-  portalRealtimeCollaborationLinkBase: "https://ucc.{{ .Values.stackDataContext.externalDomainName }}"
-  portalRealtimeVideoconferenceLinkBase: "https://jitsi.{{ .Values.stackDataContext.externalDomainName }}"
-  portalManagementProjectLinkBase: "https://project.{{ .Values.stackDataContext.externalDomainName }}"
-  portalManagementKnowledgeLinkBase: "https://wiki.{{ .Values.stackDataContext.externalDomainName }}"
+  # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
+  # Example: `"example.org"`
+  externalDomainName: ""
+  # TODO: Replace workaround
+  # See: https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
+  # -- Interim. The external mail domain in use. Currently required to create
+  # the Administrator account. Chart defaults to `univention-organization.test`.
+  externalMailDomain: ""
 
-  portalFqdn: "portal.{{ .Values.stackDataContext.externalDomainName }}"
+  portalGroupwareLinkBase: 'https://webmail.{{ include "stack-data-swp.externalDomainName" . }}'
+  portalFileshareLinkBase: 'https://fs.{{ include "stack-data-swp.externalDomainName" . }}'
+  portalRealtimeCollaborationLinkBase: 'https://ucc.{{ include "stack-data-swp.externalDomainName" . }}'
+  portalRealtimeVideoconferenceLinkBase: 'https://jitsi.{{ include "stack-data-swp.externalDomainName" . }}'
+  portalManagementProjectLinkBase: 'https://project.{{ include "stack-data-swp.externalDomainName" . }}'
+  portalManagementKnowledgeLinkBase: 'https://wiki.{{ include "stack-data-swp.externalDomainName" . }}'
+
+  portalFqdn: 'portal.{{ include "stack-data-swp.externalDomainName" . }}'
 
   # -- Self-service emails: SMTP host
   smtpHost: null
@@ -71,25 +83,25 @@ stackDataContext:
   oxDefaultContext: "10"
 
   portaltileGroupUserStandard:
-    - "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=Domain Users,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupUserAdmin:
-    - "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
-    - "cn=Support,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
+    - 'cn=Support,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupUserAll:
-    - "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
-    - "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
+    - 'cn=Domain Users,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupGroupware:
-    - "cn=managed-by-attribute-Groupware,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=managed-by-attribute-Groupware,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupFileshare:
-    - "cn=managed-by-attribute-Fileshare,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=managed-by-attribute-Fileshare,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupManagementProject:
-    - "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupManagementKnowledge:
-    - "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupManagementLearn:
-    - "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=managed-by-attribute-Learnmanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
   portaltileGroupLiveCollaboration:
-    - "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    - 'cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
 
   # -- Portal title (Deutsch)
   portalTitleDE: "Souveräner Arbeitsplatz"

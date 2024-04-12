@@ -42,8 +42,14 @@ spec:
           - configMapRef:
               name: {{ include "common.names.fullname" . }}
         volumeMounts:
+        {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
+          - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+            mountPath: /run/secrets/univention.de/data-loader/udm_secret
+            subPath: {{ include "stack-data-ums.udmApi.credentialSecret.key" . | quote }}
+        {{- else }}
           - name: secrets
             mountPath: /run/secrets/univention.de/data-loader
+        {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       {{ end }}
@@ -57,17 +63,29 @@ spec:
           - configMapRef:
               name: {{ include "common.names.fullname" . }}
         volumeMounts:
-          - name: "secrets"
-            mountPath: "/run/secrets/univention.de/data-loader"
+        {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
+          - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+            mountPath: /run/secrets/univention.de/data-loader/udm_secret
+            subPath: {{ include "stack-data-ums.udmApi.credentialSecret.key" . | quote }}
+        {{- else }}
+          - name: secrets
+            mountPath: /run/secrets/univention.de/data-loader
+        {{- end }}
           - name: "data"
             mountPath: "/join-data"
             readOnly: true
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       volumes:
+      {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
+      - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+        secret:
+          secretName: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+      {{- else }}
       - name: "secrets"
         secret:
           secretName: {{ include "common.names.fullname" . | quote }}
+      {{- end }}
       - name: "data"
         configMap:
           {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}

@@ -102,6 +102,15 @@ helm uninstall stack-data-swp
 			<td></td>
 		</tr>
 		<tr>
+			<td>global.nubusDeployment</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Indicates wether this chart is part of a Nubus deployment.</td>
+		</tr>
+		<tr>
 			<td>image</td>
 			<td>object</td>
 			<td><pre lang="json">
@@ -194,48 +203,48 @@ true
 			<td><pre lang="json">
 {
   "adminPassword": null,
-  "externalDomainName": "univention-organization.test",
-  "externalMailDomain": "univention-organization.test",
-  "ldapBase": "dc=univention-organization,dc=intranet",
+  "externalDomainName": "",
+  "externalMailDomain": "",
+  "ldapBase": "",
   "ldapSearchUsers": [],
   "oxDefaultContext": "10",
-  "portalFileshareLinkBase": "https://fs.{{ .Values.stackDataContext.externalDomainName }}",
-  "portalFqdn": "portal.{{ .Values.stackDataContext.externalDomainName }}",
-  "portalGroupwareLinkBase": "https://webmail.{{ .Values.stackDataContext.externalDomainName }}",
-  "portalManagementKnowledgeLinkBase": "https://wiki.{{ .Values.stackDataContext.externalDomainName }}",
-  "portalManagementProjectLinkBase": "https://project.{{ .Values.stackDataContext.externalDomainName }}",
-  "portalRealtimeCollaborationLinkBase": "https://ucc.{{ .Values.stackDataContext.externalDomainName }}",
-  "portalRealtimeVideoconferenceLinkBase": "https://jitsi.{{ .Values.stackDataContext.externalDomainName }}",
+  "portalFileshareLinkBase": "https://fs.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalFqdn": "portal.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalGroupwareLinkBase": "https://webmail.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalManagementKnowledgeLinkBase": "https://wiki.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalManagementProjectLinkBase": "https://project.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalRealtimeCollaborationLinkBase": "https://ucc.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalRealtimeVideoconferenceLinkBase": "https://jitsi.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalTitleDE": "Souveräner Arbeitsplatz",
   "portalTitleEN": "Sovereign Workplace",
   "portaltileGroupFileshare": [
-    "cn=managed-by-attribute-Fileshare,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=managed-by-attribute-Fileshare,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupGroupware": [
-    "cn=managed-by-attribute-Groupware,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=managed-by-attribute-Groupware,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupLiveCollaboration": [
-    "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupManagementKnowledge": [
-    "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupManagementLearn": [
-    "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupManagementProject": [
-    "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupUserAdmin": [
-    "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}",
-    "cn=Support,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=Domain Admins,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}",
+    "cn=Support,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupUserAll": [
-    "cn=Domain Admins,cn=groups,{{ .Values.stackDataContext.ldapBase }}",
-    "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=Domain Admins,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}",
+    "cn=Domain Users,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "portaltileGroupUserStandard": [
-    "cn=Domain Users,cn=groups,{{ .Values.stackDataContext.ldapBase }}"
+    "cn=Domain Users,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
   "smtpHost": null,
   "smtpPort": 587,
@@ -255,6 +264,33 @@ null
 </pre>
 </td>
 			<td>Password for the default.admin user. This is only evaluated if loadDevData is set to true.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.externalDomainName</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Domain name of the instance. Chart defaults to `univention-organization.intranet` Example: `"example.org"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.externalMailDomain</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Interim. The external mail domain in use. Currently required to create the Administrator account. Chart defaults to `univention-organization.test`.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.ldapBase</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`. Example: `"dc=example,dc=org"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.portalTitleDE</td>
@@ -377,7 +413,7 @@ null
 			<td>stackDataSwp.udmApiPassword</td>
 			<td>string</td>
 			<td><pre lang="json">
-null
+""
 </pre>
 </td>
 			<td>The password to access the UDM Rest API</td>
@@ -395,10 +431,10 @@ null
 			<td>stackDataSwp.udmApiUrl</td>
 			<td>string</td>
 			<td><pre lang="json">
-"http://udm-rest-api/udm/"
+""
 </pre>
 </td>
-			<td>The URL by which the UDM Rest API can be reached</td>
+			<td>The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.</td>
 		</tr>
 		<tr>
 			<td>stackDataSwp.udmApiUser</td>

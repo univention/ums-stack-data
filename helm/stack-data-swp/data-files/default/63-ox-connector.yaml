@@ -7,7 +7,7 @@
 ---
 action: "create"
 module: "container/cn"
-position: "cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "open-xchange"
 
@@ -18,7 +18,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "isOxUser"
   default: "OK"
@@ -52,7 +52,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxContextUser"
   default: ""
@@ -87,7 +87,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxAccess"
   default: "premium"
@@ -121,7 +121,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxDisplayName"
   default: "<firstname> <lastname>"
@@ -155,7 +155,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxLanguage"
   default: ""
@@ -190,7 +190,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTimeZone"
   default: ""
@@ -225,7 +225,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserQuota"
   default: "-1"
@@ -260,7 +260,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxMiddleName"
   default: ""
@@ -296,7 +296,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxSuffix"
   default: ""
@@ -332,7 +332,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxNickName"
   default: ""
@@ -368,7 +368,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxNote"
   default: ""
@@ -404,7 +404,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxMobileBusiness"
   default: ""
@@ -440,7 +440,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxFaxBusiness"
   default: ""
@@ -476,7 +476,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxInstantMessenger1"
   default: ""
@@ -512,7 +512,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTelephoneCompany"
   default: ""
@@ -548,7 +548,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTelephoneIp"
   default: ""
@@ -584,7 +584,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTelephoneCar"
   default: ""
@@ -620,7 +620,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTelephoneTelex"
   default: ""
@@ -656,7 +656,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTelephoneTtydd"
   default: ""
@@ -692,7 +692,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxStateBusiness"
   default: ""
@@ -728,7 +728,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxCountryBusiness"
   default: ""
@@ -764,7 +764,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxPosition"
   default: ""
@@ -800,7 +800,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxDepartment"
   default: ""
@@ -836,7 +836,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxBranches"
   default: ""
@@ -872,7 +872,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxManagerName"
   default: ""
@@ -908,7 +908,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTelephoneAssistant"
   default: ""
@@ -944,7 +944,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTaxId"
   default: ""
@@ -980,7 +980,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxCommercialRegister"
   default: ""
@@ -1016,7 +1016,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxSalesVolume"
   default: ""
@@ -1052,7 +1052,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUrl"
   default: ""
@@ -1088,7 +1088,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxStreetHome"
   default: ""
@@ -1124,7 +1124,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxPostalCodeHome"
   default: ""
@@ -1160,7 +1160,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxCityHome"
   default: ""
@@ -1196,7 +1196,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxStateHome"
   default: ""
@@ -1232,7 +1232,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxCountryHome"
   default: ""
@@ -1268,7 +1268,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxEmail2"
   default: ""
@@ -1304,7 +1304,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxFaxHome"
   default: ""
@@ -1340,7 +1340,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxInstantMessenger2"
   default: ""
@@ -1376,7 +1376,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxAnniversary"
   default: ""
@@ -1412,7 +1412,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxNumOfChildren"
   default: ""
@@ -1448,7 +1448,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxMarialStatus"
   default: ""
@@ -1484,7 +1484,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxSpouseName"
   default: ""
@@ -1520,7 +1520,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxProfession"
   default: ""
@@ -1556,7 +1556,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxStreetOther"
   default: ""
@@ -1592,7 +1592,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxPostalCodeOther"
   default: ""
@@ -1628,7 +1628,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxCityOther"
   default: ""
@@ -1664,7 +1664,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxStateOther"
   default: ""
@@ -1700,7 +1700,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxCountryOther"
   default: ""
@@ -1736,7 +1736,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxTelephoneOther"
   default: ""
@@ -1772,7 +1772,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxFaxOther"
   default: ""
@@ -1808,7 +1808,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxEmail3"
   default: ""
@@ -1844,7 +1844,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield01"
   default: ""
@@ -1880,7 +1880,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield02"
   default: ""
@@ -1916,7 +1916,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield03"
   default: ""
@@ -1952,7 +1952,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield04"
   default: ""
@@ -1988,7 +1988,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield05"
   default: ""
@@ -2024,7 +2024,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield06"
   default: ""
@@ -2060,7 +2060,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield07"
   default: ""
@@ -2096,7 +2096,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield08"
   default: ""
@@ -2132,7 +2132,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield09"
   default: ""
@@ -2168,7 +2168,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield10"
   default: ""
@@ -2204,7 +2204,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield11"
   default: ""
@@ -2240,7 +2240,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield12"
   default: ""
@@ -2276,7 +2276,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield13"
   default: ""
@@ -2312,7 +2312,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield14"
   default: ""
@@ -2348,7 +2348,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield15"
   default: ""
@@ -2384,7 +2384,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield16"
   default: ""
@@ -2420,7 +2420,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield17"
   default: ""
@@ -2456,7 +2456,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield18"
   default: ""
@@ -2492,7 +2492,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield19"
   default: ""
@@ -2528,7 +2528,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxUserfield20"
   default: ""
@@ -2564,7 +2564,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "isOxGroup"
   default: "OK"
@@ -2596,7 +2596,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxContextGroup"
   default: ""
@@ -2633,7 +2633,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "templateOxAccess"
   default: "premium"
@@ -2667,7 +2667,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "templateOxDisplayName"
   default: ""
@@ -2701,7 +2701,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "templateOxLanguage"
   default: ""
@@ -2736,7 +2736,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "templateOxTimeZone"
   default: ""
@@ -2771,7 +2771,7 @@ properties:
 ---
 action: "create"
 module: "settings/extended_attribute"
-position: "cn=open-xchange,cn=custom attributes,cn=univention,{{ .ldapBase }}"
+position: 'cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxContextResource"
   default: "{{ .oxDefaultContext }}"
@@ -2807,41 +2807,41 @@ properties:
 ---
 action: "create"
 module: "settings/usertemplate"
-position: "cn=templates,cn=univention,{{ .ldapBase }}"
+position: 'cn=templates,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "openDesk User"
   isOxUser: True
   oxContext: {{ .oxDefaultContext }}
-  mailPrimaryAddress: "<username>@{{ .externalMailDomain }}"
-  e-mail: ["<username>@{{ .externalMailDomain }}"]
+  mailPrimaryAddress: "<username>@{{ include "stack-data-swp.externalMailDomain" $ }}"
+  e-mail: ["<username>@{{ include "stack-data-swp.externalMailDomain" $ }}"]
   unixhome: "/home/<username>"
   oxDisplayName: "<firstname> <lastname>"
   oxAccess: "premium"
-  primaryGroup: "cn=Domain Users,cn=groups,{{ .ldapBase }}"
+  primaryGroup: 'cn=Domain Users,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 # Create container
 ---
 action: "create"
 module: "container/cn"
-position: "{{ .ldapBase }}"
+position: '{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "open-xchange"
 ---
 action: "create"
 module: "container/cn"
-position: "cn=open-xchange,{{ .ldapBase }}"
+position: 'cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "functional_accounts"
 ---
 action: "create"
 module: "container/cn"
-position: "cn=open-xchange,{{ .ldapBase }}"
+position: 'cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "oxresources"
 ---
 action: "create"
 module: "container/cn"
-position: "cn=open-xchange,{{ .ldapBase }}"
+position: 'cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "accessprofiles"
 
@@ -2851,14 +2851,14 @@ properties:
 ---
 action: "create"
 module: "oxmail/accessprofile"
-position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "none"
   displayName: "Login disabled"
 ---
 action: "create"
 module: "oxmail/accessprofile"
-position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "opendesk_standard"
   displayName: "openDesk Standard"
@@ -2886,7 +2886,7 @@ properties:
 # ---
 # action: "create"
 # module: "oxmail/accessprofile"
-# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 # properties:
 #   name: "webmail"
 #   displayName: "Webmail"
@@ -2898,7 +2898,7 @@ properties:
 # ---
 # action: "create"
 # module: "oxmail/accessprofile"
-# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 # properties:
 #   name: "webmail_drive"
 #   displayName: "Webmail, Drive"
@@ -2911,7 +2911,7 @@ properties:
 # ---
 # action: "create"
 # module: "oxmail/accessprofile"
-# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 # properties:
 #   name: "pim"
 #   displayName: "Webmail, PIM"
@@ -2926,7 +2926,7 @@ properties:
 # ---
 # action: "create"
 # module: "oxmail/accessprofile"
-# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 # properties:
 #   name: "pim_drive"
 #   displayName: "Webmail, PIM, Drive"
@@ -2942,7 +2942,7 @@ properties:
 # ---
 # action: "create"
 # module: "oxmail/accessprofile"
-# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 # properties:
 #   name: "groupware"
 #   displayName: "Webmail, PIM, Groupware"
@@ -2960,7 +2960,7 @@ properties:
 # ---
 # action: "create"
 # module: "oxmail/accessprofile"
-# position: "cn=accessprofiles,cn=open-xchange,{{ .ldapBase }}"
+# position: 'cn=accessprofiles,cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 # properties:
 #   name: premium
 #   displayName: "Webmail, PIM, Groupware, WebDAV"
@@ -2984,7 +2984,7 @@ properties:
 # Create default context
 action: "create"
 module: "oxmail/oxcontext"
-position: "cn=open-xchange,{{ .ldapBase }}"
+position: 'cn=open-xchange,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   contextid: {{ .oxDefaultContext }}
   name: "{{ .oxDefaultContext }}"
@@ -2994,20 +2994,20 @@ properties:
 # Init
 action: "create"
 module: "container/cn"
-position: "cn=univention,{{ .ldapBase }}"
+position: 'cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "UMC"
 ---
 action: "create"
 module: "container/cn"
-position: "cn=policies,{{ .ldapBase }}"
+position: 'cn=policies,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "UMC"
   policyPath: True
 ---
 action: "create"
 module: "container/cn"
-position: "cn=UMC,cn=univention,{{ .ldapBase }}"
+position: 'cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "operations"
 # Create context and resources objects (see umc-policies.yaml)

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# SPDX-FileCopyrightText: 2023 Univention GmbH
+# SPDX-FileCopyrightText: 2024 Univention GmbH
 
 ---
 global:
@@ -8,14 +8,14 @@ global:
 
 stackDataUms:
 
-  # -- The URL by which the UDM Rest API can be reached
-  udmApiUrl: "http://udm-rest-api/udm/"
+  # -- The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.
+  udmApiUrl: ""
 
   # -- The username to use to connect to the UDM Rest API
   udmApiUser: "cn=admin"
 
   # -- The password to access the UDM Rest API
-  udmApiPassword: null
+  udmApiPassword: ""
 
   # -- The filename which contains the password
   udmApiPasswordFile: "/run/secrets/univention.de/data-loader/udm_secret"

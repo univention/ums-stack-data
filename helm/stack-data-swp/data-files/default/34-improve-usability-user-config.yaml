@@ -5,20 +5,20 @@
 ---
 action: modify
 module: users/user
-position: uid=Administrator,cn=users,{{ .ldapBase }}
+position: uid=Administrator,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   firstname: "Addison"
-  mailPrimaryAddress: "admin@{{ .externalMailDomain }}"
+  mailPrimaryAddress: "admin@{{ include "stack-data-swp.externalMailDomain" $ }}"
 ---
 action: ensure_list_contains
 module: users/user
-position: uid=Administrator,cn=users,{{ .ldapBase }}
+position: uid=Administrator,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
   mailAlternativeAddress:
-    - "abuse@{{ .externalMailDomain }}"
-    - "hostmaster@{{ .externalMailDomain }}"
-    - "postmaster@{{ .externalMailDomain }}"
-    - "system-mails@{{ .externalMailDomain }}"
-    - "root@{{ .externalMailDomain }}"
-    - "webmaster@{{ .externalMailDomain }}"
+    - "abuse@{{ include "stack-data-swp.externalMailDomain" $ }}"
+    - "hostmaster@{{ include "stack-data-swp.externalMailDomain" $ }}"
+    - "postmaster@{{ include "stack-data-swp.externalMailDomain" $ }}"
+    - "system-mails@{{ include "stack-data-swp.externalMailDomain" $ }}"
+    - "root@{{ include "stack-data-swp.externalMailDomain" $ }}"
+    - "webmaster@{{ include "stack-data-swp.externalMailDomain" $ }}"
 {{ end }}

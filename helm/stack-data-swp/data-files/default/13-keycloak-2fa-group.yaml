@@ -5,7 +5,7 @@
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "2fa-users"
 {{ end }}

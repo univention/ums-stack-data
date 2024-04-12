@@ -7,7 +7,7 @@
 ---
 action: "create"
 module: "groups/group"
-position: "cn=groups,{{ .ldapBase }}"
+position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 properties:
   name: "LDAPSearch Users"
 
@@ -15,7 +15,7 @@ properties:
 ---
 action: "create"
 module: "users/ldap"
-position: "cn=users,{{ $context.ldapBase }}"
+position: "cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}"
 properties:
   username: {{ .username | quote }}
   lastname: {{ .lastname | default "LDAP-Search-User" | quote }}

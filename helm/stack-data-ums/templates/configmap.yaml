@@ -1,15 +1,21 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# SPDX-FileCopyrightText: 2023 Univention GmbH
+# SPDX-FileCopyrightText: 2024 Univention GmbH
 
 ---
-{{ include "common.configMap" (dict "top" . "overrides" "stack-data-ums.configMap") }}
-
-{{- define "stack-data-ums.configMap" }}
-{{- with .top }}
+kind: "ConfigMap"
+apiVersion: "v1"
+metadata:
+  name: "{{ include "common.names.fullname" . }}"
+  namespace: {{ include "common.names.namespace" . | quote }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.additionalLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.additionalLabels "context" . ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.additionalAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.additionalAnnotations "context" . ) | nindent 4 }}
+  {{- end }}
 data:
-  UDM_API_URL: "{{ .Values.stackDataUms.udmApiUrl }}"
+  UDM_API_URL: {{ include "stack-data-ums.udmApiUrl" . | quote }}
   UDM_API_USER: "{{ .Values.stackDataUms.udmApiUser }}"
   UDM_API_PASSWORD_FILE: "{{ .Values.stackDataUms.udmApiPasswordFile }}"
-{{- end }}
-{{- end }}
-...

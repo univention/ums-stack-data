@@ -421,7 +421,7 @@ false
 			<td>stackDataUms.udmApiPassword</td>
 			<td>string</td>
 			<td><pre lang="json">
-null
+""
 </pre>
 </td>
 			<td>The password to access the UDM Rest API</td>
@@ -439,10 +439,10 @@ null
 			<td>stackDataUms.udmApiUrl</td>
 			<td>string</td>
 			<td><pre lang="json">
-"http://udm-rest-api/udm/"
+""
 </pre>
 </td>
-			<td>The URL by which the UDM Rest API can be reached</td>
+			<td>The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.</td>
 		</tr>
 		<tr>
 			<td>stackDataUms.udmApiUser</td>
