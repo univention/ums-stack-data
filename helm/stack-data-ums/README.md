@@ -385,7 +385,7 @@ null
 			<td>stackDataContext.umcSamlSchemes</td>
 			<td>string</td>
 			<td><pre lang="json">
-"http"
+"https"
 </pre>
 </td>
 			<td>Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`. Example: `"https, http"`</td>
