@@ -8,10 +8,8 @@ ARG BASE_IMAGE=gitregistry.knut.univention.de/univention/customers/dataport/upx/
 # hadolint ignore=DL3006
 FROM ${BASE_IMAGE} as test
 
-RUN apt-get update \
-    && apt-get --assume-yes --verbose-versions --no-install-recommends install \
+RUN apt-get --assume-yes --verbose-versions --no-install-recommends install \
       python3-pip=18.* \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* \
     && pip3 install --no-cache-dir pipenv==2023.6.18
 
 WORKDIR /src
