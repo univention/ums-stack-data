@@ -157,8 +157,6 @@ umc-server-memcached
 {{- .Values.stackDataContext.umcMemcachedUsername -}}
 {{- else if .Values.global.nubusDeployment -}}
 {{- .Values.nubusUmcServer.memcached.auth.username -}}
-{{- else -}}
-selfservice
 {{- end -}}
 {{- end -}}
 

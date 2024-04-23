@@ -343,7 +343,7 @@ null
 ""
 </pre>
 </td>
-			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`. UCR has no default. Chart default is `selfservice`.</td>
+			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`. UCR has no default.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcPostgresqlDatabase</td>
