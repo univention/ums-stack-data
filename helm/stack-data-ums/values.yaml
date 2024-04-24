@@ -38,6 +38,12 @@ stackDataContext:
   # -- Host name of the instance. Chart defaults to `portal`.
   # Example: `"souvap"`
   hostname: ""
+  # -- Hostname of the primary LDAP server. Chart defaults to `ldap-server`.
+  # Example: `"ucs-1234.univention.intranet"`
+  ldapMasterHost: ""
+  # -- Port to connect to the primary LDAP server. Chart defaults to `389`.
+  # Example: `389`
+  ldapMasterPort: ""
   # -- Hostname of the LDAP server. Chart defaults to `ldap-server`.
   # Example: `"ucs-1234.univention.intranet"`
   ldapHost: ""

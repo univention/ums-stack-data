@@ -36,6 +36,26 @@ ldap-server
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.ldapMasterHost" -}}
+{{- if .Values.stackDataContext.ldapMasterHost -}}
+{{- .Values.stackDataContext.ldapMasterHost -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.ldap.connection.host" . -}}
+{{- else -}}
+{{- include "stack-data-ums.ldapHost" . -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.ldapMasterPort" -}}
+{{- if .Values.stackDataContext.ldapMasterPort -}}
+{{- .Values.stackDataContext.ldapMasterPort -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.ldap.connection.port" . -}}
+{{- else -}}
+389
+{{- end -}}
+{{- end -}}
+
 {{- define "stack-data-ums.ldapBaseDn" -}}
 {{- if .Values.stackDataContext.ldapBase -}}
 {{- .Values.stackDataContext.ldapBase -}}

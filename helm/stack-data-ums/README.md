@@ -301,6 +301,24 @@ true
 			<td>DN of the UMS instance. Chart defaults to `cn=admin,dc=univention-organization,dc=intranet`. Example: `"cn=ucs-1234,cn=dc,cn=computers,dc=example,dc=org"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.ldapMasterHost</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Hostname of the primary LDAP server. Chart defaults to `ldap-server`. Example: `"ucs-1234.univention.intranet"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.ldapMasterPort</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Port to connect to the primary LDAP server. Chart defaults to `389`. Example: `389`</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.ldapPort</td>
 			<td>string</td>
 			<td><pre lang="json">
