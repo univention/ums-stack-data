@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.46.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.45.2...v0.46.0) (2024-04-24)
+
+
+### Features
+
+* Avoid calls to "apt-get update" to use packages from the base image ([98a8433](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/98a84333984e2b7455821e60eb26afd506490084))
+* Pin version of base image to "0.10.0" ([abdf650](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/abdf650be84f24b3ef7bd5846ec000f59a09cf3b))
+
 ## [0.45.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.45.1...v0.45.2) (2024-03-25)
 
 
