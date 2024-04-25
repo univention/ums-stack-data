@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.47.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.46.0...v0.47.0) (2024-04-25)
+
+
+### Features
+
+* changes to support separation of primary and secondary ldap configuration ([c7a94f8](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c7a94f8a1f09852d851902d0631049d4b6400386))
+* changes to support the refactored umbrella values in a nubus deployment ([c5eeb0f](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c5eeb0fd46632c0f0f14b14577093c6f64d319f1))
+* changes to support the refactored umbrella values in a nubus deployment (stack-data-swp) ([b229e65](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b229e650e6cf3922c143786c557af63160792cca))
+
+
+### Bug Fixes
+
+* compatibility fixes, cleanup ([9ff38a3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/9ff38a3a036d1182cbee7b04850efe56fc7790f4))
+* drop default value for memcache username (required for opendesk) ([a91b061](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a91b061eebbfedb29588cb5cdf9f1ef208c808a8))
+* set umcSamlSchemes default to https ([b31e6bc](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b31e6bcb04619c6fbfdcf257d22efe48b927e60c))
+
 ## [0.46.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.45.2...v0.46.0) (2024-04-24)
 
 
