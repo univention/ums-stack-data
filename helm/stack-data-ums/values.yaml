@@ -105,8 +105,8 @@ stackDataContext:
 
 # -- Container image configuration
 image:
-  registry: "gitregistry.knut.univention.de"
-  repository: "univention/customers/dataport/upx/stack-data/data-loader"
+  registry: "artifacts.software-univention.de"
+  repository: "nubus/images/data-loader"
   imagePullPolicy: "Always"
   tag: "latest"
 
