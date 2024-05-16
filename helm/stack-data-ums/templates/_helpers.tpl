@@ -18,7 +18,7 @@ If the value .Values.global.nubusDeployment equates to true, the defined templat
 
 {{- define "stack-data-ums.ldapHost" -}}
 {{- if .Values.stackDataContext.ldapHost -}}
-{{- .Values.stackDataContext.ldapHost -}}
+{{- tpl .Values.stackDataContext.ldapHost . -}}
 {{- else if .Values.global.nubusDeployment -}}
 {{- include "nubusTemplates.ldapServer.ldap.connection.host" . -}}
 {{- else -}}
@@ -38,7 +38,7 @@ ldap-server
 
 {{- define "stack-data-ums.ldapMasterHost" -}}
 {{- if .Values.stackDataContext.ldapMasterHost -}}
-{{- .Values.stackDataContext.ldapMasterHost -}}
+{{- tpl .Values.stackDataContext.ldapMasterHost . -}}
 {{- else if .Values.global.nubusDeployment -}}
 {{- include "nubusTemplates.ldapServer.ldap.connection.host" . -}}
 {{- else -}}

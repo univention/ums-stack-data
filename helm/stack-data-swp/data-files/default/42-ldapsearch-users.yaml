@@ -19,7 +19,11 @@ position: "cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}"
 properties:
   username: {{ .username | quote }}
   lastname: {{ .lastname | default "LDAP-Search-User" | quote }}
+  {{- if $.Values.global.nubusDeployment }}
+  password: {{ required "nubusStackDataSwp.stackDataContext.ldapSearchUsers[].password must be defined." (tpl .password $) | quote }}
+  {{- else }}
   password: {{ required "ldapSearchUser.password is missing" .password | quote }}
+  {{- end }}
 
 {{ end }}
 {{ end }}
