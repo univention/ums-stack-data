@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.48.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.47.0...v0.48.0) (2024-05-20)
+
+
+### Features
+
+* further changes to support the refactored umbrella values in a nubus deployment ([626e1f8](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/626e1f82a7178300e57332e36b117626b651b100))
+
 ## [0.47.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.46.0...v0.47.0) (2024-04-25)
 
 
