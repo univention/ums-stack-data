@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.49.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.48.0...v0.49.0) (2024-05-23)
+
+
+### Features
+
+* push to harbor ([2a64a75](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2a64a75e18c8c1b690f53ac08d69d00b14376edb))
+
 ## [0.48.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.47.0...v0.48.0) (2024-05-20)
 
 
