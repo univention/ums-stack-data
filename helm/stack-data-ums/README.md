@@ -111,7 +111,7 @@ false
 			<td><pre lang="json">
 {
   "imagePullPolicy": "Always",
-  "registry": "artifacts.software-univention.de",
+  "registry": "",
   "repository": "nubus-dev/images/data-loader",
   "sha256": null,
   "tag": "latest"
