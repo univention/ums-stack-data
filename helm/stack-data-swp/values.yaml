@@ -119,7 +119,7 @@ stackDataContext:
 
 # -- Container image configuration
 image:
-  registry: ""
+  registry: "artifacts.software-univention.de"
   repository: "nubus-dev/images/data-loader"
   imagePullPolicy: "Always"
   tag: "latest"
