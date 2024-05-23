@@ -1,6 +1,6 @@
 dependencies:
 - name: common
   repository: oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/helm
-  version: 0.3.0
-digest: sha256:12c3df3168985990ebe94059043f0bd586e7a9c6e65cacec32d2baa48f8ab24d
-generated: "2023-08-21T21:45:41.392022+02:00"
+  version: 0.3.1
+digest: sha256:f027ec0186e02f167580d35a8ab7108751beb56c9f45c6ccc7b8f8559e2ba7b5
+generated: "2024-05-22T13:15:22.233830056+02:00"

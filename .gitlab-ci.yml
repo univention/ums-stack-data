@@ -5,18 +5,22 @@
 
 include:
   - project: "univention/customers/dataport/upx/common-ci"
-    ref: "v1.24.5"
+    ref: "v1.30.5"
     file:
       # TODO: Sphinx docs inherits a stage definition from upstream,
       # has to be included before our default stages to avoid trouble.
       - "defaults/stages.yaml"
-      - "defaults/souvap-workflow.yaml"
+      - "defaults/nubus-workflow.yaml"
       - "jobs/lint-pre-commit.yaml"
       - "jobs/lint-commit-messages.yaml"
       - "jobs/semantic-release-env.yaml"
-      - "jobs/container-build-souvap.yaml"
-      - "jobs/package-and-publish-helm-charts-souvap.yaml"
+      - "jobs/container-build-external.yaml"
+      - "jobs/package-and-publish-helm-charts-external.yaml"
       - "jobs/check-debian-updates.yaml"
+
+package-helm-charts:
+  variables:
+    SKIP_UPDATE_HELM_VALUES: "true"
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
@@ -40,14 +44,6 @@ container-generate-sbom:
   parallel:
     matrix: *build-matrix
 
-container-sign:
-  parallel:
-    matrix: *build-matrix
-
-container-security-scan:
-  parallel:
-    matrix: *build-matrix
-
 test-data-loader:
   stage: "test"
   image: "${CI_REGISTRY_IMAGE}/data-loader-test-runner:${RELEASE_VERSION}"
@@ -59,11 +55,11 @@ test-data-loader:
     - cd docker/data-loader
     - pytest
 
-push-image-souvap:
+push-image-external:
   parallel:
     matrix: *publish-matrix
 
-container-sign-souvap:
+container-sign-external:
   parallel:
     matrix: *publish-matrix
 

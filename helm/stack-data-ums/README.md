@@ -111,8 +111,8 @@ false
 			<td><pre lang="json">
 {
   "imagePullPolicy": "Always",
-  "registry": "gitregistry.knut.univention.de",
-  "repository": "univention/customers/dataport/upx/stack-data/data-loader",
+  "registry": "artifacts.software-univention.de",
+  "repository": "nubus-dev/images/data-loader",
   "sha256": null,
   "tag": "latest"
 }
