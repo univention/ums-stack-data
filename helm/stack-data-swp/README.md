@@ -115,7 +115,7 @@ false
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "imagePullPolicy": "Always",
+  "imagePullPolicy": "IfNotPreset",
   "registry": "artifacts.software-univention.de",
   "repository": "nubus-dev/images/data-loader",
   "sha256": null,

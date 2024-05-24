@@ -121,7 +121,7 @@ stackDataContext:
 image:
   registry: "artifacts.software-univention.de"
   repository: "nubus-dev/images/data-loader"
-  imagePullPolicy: "Always"
+  imagePullPolicy: "IfNotPreset"
   tag: "latest"
 
   # -- Define image sha256 as an alternative to `tag`
