@@ -7,8 +7,6 @@ include:
   - project: "univention/customers/dataport/upx/common-ci"
     ref: "v1.30.5"
     file:
-      # TODO: Sphinx docs inherits a stage definition from upstream,
-      # has to be included before our default stages to avoid trouble.
       - "defaults/stages.yaml"
       - "defaults/nubus-workflow.yaml"
       - "jobs/lint-pre-commit.yaml"
@@ -17,10 +15,6 @@ include:
       - "jobs/container-build-external.yaml"
       - "jobs/package-and-publish-helm-charts-external.yaml"
       - "jobs/check-debian-updates.yaml"
-
-package-helm-charts:
-  variables:
-    SKIP_UPDATE_HELM_VALUES: "true"
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
