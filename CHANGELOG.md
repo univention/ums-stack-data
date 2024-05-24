@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.49.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.49.0...v0.49.1) (2024-05-24)
+
+
+### Bug Fixes
+
+* remove SKIP_UPDATE_HELM_VALUES ([5e5c4d4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/5e5c4d4853b4c57ba767eadb4226e721fd0dfe64))
+
 ## [0.49.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.48.0...v0.49.0) (2024-05-23)
 
 
