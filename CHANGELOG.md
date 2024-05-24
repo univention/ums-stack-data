@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.49.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.49.1...v0.49.2) (2024-05-24)
+
+
+### Bug Fixes
+
+* **ci:** use fixed common-ci/helm package to not update dependency waiter tags ([152af55](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/152af55d2e7b7e8f3abf260c430cab4acaea25e4))
+
 ## [0.49.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.49.0...v0.49.1) (2024-05-24)
 
 
