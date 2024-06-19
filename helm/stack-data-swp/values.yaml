@@ -50,6 +50,7 @@ stackDataContext:
   # -- Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`.
   # Example: `"dc=example,dc=org"`
   ldapBase: ""
+  ldapSystemUsers: []
   ldapSearchUsers: []
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
   # Example: `"example.org"`

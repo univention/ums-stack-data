@@ -28,4 +28,22 @@ properties:
   overridePWLength: true
 
 {{ end }}
+
+{{- range .ldapSystemUsers }}
+---
+action: "create"
+module: "users/ldap"
+position: "cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}"
+properties:
+  username: {{ .username | quote }}
+  lastname: {{ .lastname | default "LDAP-System-User" | quote }}
+  {{- if $.Values.global.nubusDeployment }}
+  password: {{ required "nubusStackDataSwp.stackDataContext.ldapSystemUsers[].password must be defined." (tpl .password $) | quote }}
+  {{- else }}
+  password: {{ required "ldapSystemUser.password is missing" .password | quote }}
+  {{- end }}
+  overridePWHistory: true
+  overridePWLength: true
+
+{{ end }}
 {{ end }}

@@ -207,6 +207,7 @@ true
   "externalMailDomain": "",
   "ldapBase": "",
   "ldapSearchUsers": [],
+  "ldapSystemUsers": [],
   "oxDefaultContext": "10",
   "portalFileshareLinkBase": "https://fs.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalFqdn": "portal.{{ include \"stack-data-swp.externalDomainName\" . }}",
