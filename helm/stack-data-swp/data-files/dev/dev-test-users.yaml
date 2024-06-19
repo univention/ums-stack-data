@@ -25,6 +25,8 @@ properties:
   opendeskProjectmanagementAdmin: False
   opendeskFileshareAdmin: False
   mailPrimaryAddress: "default.user@{{ include "stack-data-swp.externalMailDomain" $ }}"
+  overridePWHistory: true
+  overridePWLength: true
 ---
 action: "create"
 module: "users/user"
@@ -49,4 +51,6 @@ properties:
   opendeskProjectmanagementEnabled: False
   opendeskKnowledgemanagementEnabled: False
   opendeskLivecollaborationEnabled: False
+  overridePWHistory: true
+  overridePWLength: true
 {{ end }}

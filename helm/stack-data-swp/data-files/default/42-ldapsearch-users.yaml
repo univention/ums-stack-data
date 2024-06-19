@@ -24,6 +24,8 @@ properties:
   {{- else }}
   password: {{ required "ldapSearchUser.password is missing" .password | quote }}
   {{- end }}
+  overridePWHistory: true
+  overridePWLength: true
 
 {{ end }}
 {{ end }}
