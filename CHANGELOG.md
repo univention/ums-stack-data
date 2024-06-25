@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.51.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.50.0...v0.51.0) (2024-06-25)
+
+
+### Features
+
+* add support for ldapSystemUsers, to allow customer defined ldapSearchUsers that do not override default users created by the nubus umbrella ([8ee7c4e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/8ee7c4eb991aa725b3c6597c7dbb3a4bd8b607b8))
+
 ## [0.50.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.49.2...v0.50.0) (2024-06-25)
 
 
