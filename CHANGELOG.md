@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.50.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.49.2...v0.50.0) (2024-06-25)
+
+
+### Features
+
+* remove complexity check for user creation ([372919a](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/372919aa1679ee8ba1821a547ce09ead893df511))
+
 ## [0.49.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.49.1...v0.49.2) (2024-05-24)
 
 
