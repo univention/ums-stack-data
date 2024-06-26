@@ -184,6 +184,42 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>oxPlugin.image.imagePullPolicy</td>
+			<td>string</td>
+			<td><pre lang="json">
+"IfNotPresent"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>oxPlugin.image.registry</td>
+			<td>string</td>
+			<td><pre lang="json">
+"artifacts.software-univention.de"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>oxPlugin.image.repository</td>
+			<td>string</td>
+			<td><pre lang="json">
+"nubus-dev/images/ox-connector-extensions"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>oxPlugin.image.tag</td>
+			<td>string</td>
+			<td><pre lang="json">
+"latest"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>podAnnotations</td>
 			<td>object</td>
 			<td><pre lang="json">
@@ -202,6 +238,42 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>portalPlugin.image.imagePullPolicy</td>
+			<td>string</td>
+			<td><pre lang="json">
+"IfNotPresent"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>portalPlugin.image.registry</td>
+			<td>string</td>
+			<td><pre lang="json">
+"artifacts.software-univention.de"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>portalPlugin.image.repository</td>
+			<td>string</td>
+			<td><pre lang="json">
+"nubus-dev/images/portal-udm-extensions"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>portalPlugin.image.tag</td>
+			<td>string</td>
+			<td><pre lang="json">
+"latest"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>resources</td>
 			<td>object</td>
 			<td><pre lang="json">
@@ -211,13 +283,80 @@ true
 			<td></td>
 		</tr>
 		<tr>
-			<td>securityContext</td>
-			<td>object</td>
+			<td>securityContext.allowPrivilegeEscalation</td>
+			<td>bool</td>
 			<td><pre lang="json">
-{}
+false
 </pre>
 </td>
-			<td></td>
+			<td>Enable container privileged escalation.</td>
+		</tr>
+		<tr>
+			<td>securityContext.capabilities</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "drop": [
+    "ALL"
+  ]
+}
+</pre>
+</td>
+			<td>Security capabilities for container.</td>
+		</tr>
+		<tr>
+			<td>securityContext.enabled</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Enable security context.</td>
+		</tr>
+		<tr>
+			<td>securityContext.readOnlyRootFilesystem</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Mounts the container's root filesystem as read-only.</td>
+		</tr>
+		<tr>
+			<td>securityContext.runAsGroup</td>
+			<td>int</td>
+			<td><pre lang="json">
+1000
+</pre>
+</td>
+			<td>Process group id.</td>
+		</tr>
+		<tr>
+			<td>securityContext.runAsNonRoot</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Run container as a user.</td>
+		</tr>
+		<tr>
+			<td>securityContext.runAsUser</td>
+			<td>int</td>
+			<td><pre lang="json">
+1000
+</pre>
+</td>
+			<td>Process user id.</td>
+		</tr>
+		<tr>
+			<td>securityContext.seccompProfile.type</td>
+			<td>string</td>
+			<td><pre lang="json">
+"RuntimeDefault"
+</pre>
+</td>
+			<td>Disallow custom Seccomp profile by setting it to RuntimeDefault.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.domainname</td>

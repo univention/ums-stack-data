@@ -37,6 +37,39 @@ spec:
       {{- end }}
       {{ if .Values.stackDataUms.dependencyUdmApiWait }}
       initContainers:
+      - name: "load-internal-plugins"
+        {{- if .Values.securityContext.enabled }}
+        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .Values.image.registry .Values.global.imageRegistry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ coalesce .Values.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        command:
+          - sh
+          - -c
+          - |
+            mkdir /target/udm-data-loader
+            cp -RLv --preserve=all /join-data/* /target/udm-data-loader
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+          - name: data
+            mountPath: /join-data
+        resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
+
+      {{- $systemExtensions := default (list) (coalesce .Values.systemExtensions .Values.global.systemExtensions) -}}
+      {{- $extensions := default (list) (coalesce .Values.extensions .Values.global.extensions) -}}
+      {{- range (concat $systemExtensions $extensions) }}
+      - name: "load-{{ .name }}-extension"
+        {{- if $.Values.securityContext.enabled }}
+        securityContext: {{- omit $.Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .image.registry $.Values.global.imageRegistry }}/{{ .image.repository }}:{{ .image.tag }}"
+        imagePullPolicy: {{ coalesce .image.imagePullPolicy $.Values.global.imagePullPolicy | quote }}
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+        resources: {{- include "common.tplvalues.render" (dict "value" $.Values.initResources "context" $) | nindent 12 }}
+      {{- end }}
       - name: wait-for-udm-rest-api
         command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-udm-rest-api.py"]
         {{- with .Values.image }}
@@ -86,8 +119,9 @@ spec:
           - name: secrets
             mountPath: /run/secrets/univention.de/data-loader
         {{- end }}
-          - name: "data"
+          - name: "plugin-targets"
             mountPath: "/join-data"
+            subPath: udm-data-loader
             readOnly: true
           - name: context-config
             mountPath: /template-context
@@ -111,5 +145,7 @@ spec:
       - name: "context-config"
         secret:
           secretName: "{{ include "common.names.fullname" . }}-context"
+      - name: "plugin-targets"
+        emptyDir: {}
 
 ...
