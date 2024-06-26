@@ -110,9 +110,10 @@ spec:
       {{ end }}
       containers:
       - name: "load-data-ums"
-        command:
-          - sleep
-          - infinity
+        # TODO: Cleanup, this is used only for experimentation
+        # command:
+        #   - sleep
+        #   - infinity
         {{- with .Values.image }}
         image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: "{{ .pullPolicy }}"
