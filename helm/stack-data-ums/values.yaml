@@ -113,6 +113,20 @@ image:
   # -- Define image sha256 as an alternative to `tag`
   sha256: null
 
+oxPlugin:
+  image:
+    registry: "artifacts.software-univention.de"
+    repository: "nubus-dev/images/ox-connector-extensions"
+    imagePullPolicy: "IfNotPresent"
+    tag: "latest"
+
+portalPlugin:
+  image:
+    registry: "artifacts.software-univention.de"
+    repository: "nubus-dev/images/portal-udm-extensions"
+    imagePullPolicy: "IfNotPresent"
+    tag: "latest"
+
 # -- Additional custom annotations to add to deployed objects.
 additionalAnnotations: {}
 

@@ -32,6 +32,44 @@ spec:
       {{- end }}
       {{ if .Values.stackDataUms.dependencyUdmApiWait }}
       initContainers:
+      - name: "load-internal-plugins"
+        {{- if .Values.securityContext.enabled }}
+        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .Values.image.registry .Values.global.imageRegistry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ coalesce .Values.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        command:
+          - sh
+          - -c
+          - |
+            mkdir /target/udm-data-loader
+            cp -RLv --preserve=all /join-data/* /target/udm-data-loader
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+          - name: data
+            mountPath: /join-data
+        resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
+      - name: "load-portal-plugin"
+        {{- if .Values.securityContext.enabled }}
+        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .Values.portalPlugin.image.registry .Values.global.imageRegistry }}/{{ .Values.portalPlugin.image.repository }}:{{ .Values.portalPlugin.image.tag }}"
+        imagePullPolicy: {{ coalesce .Values.portalPlugin.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+        resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
+      - name: "load-ox-plugin"
+        {{- if .Values.securityContext.enabled }}
+        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .Values.oxPlugin.image.registry .Values.global.imageRegistry }}/{{ .Values.oxPlugin.image.repository }}:{{ .Values.oxPlugin.image.tag }}"
+        imagePullPolicy: {{ coalesce .Values.portalPlugin.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+        resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
       - name: wait-for-udm-rest-api
         command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-udm-rest-api.py"]
         {{- with .Values.image }}
@@ -55,6 +93,9 @@ spec:
       {{ end }}
       containers:
       - name: "load-data-ums"
+        command:
+          - sleep
+          - infinity
         {{- with .Values.image }}
         image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: "{{ .pullPolicy }}"
@@ -71,8 +112,9 @@ spec:
           - name: secrets
             mountPath: /run/secrets/univention.de/data-loader
         {{- end }}
-          - name: "data"
+          - name: "plugin-targets"
             mountPath: "/join-data"
+            subPath: udm-data-loader
             readOnly: true
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
@@ -88,7 +130,9 @@ spec:
       {{- end }}
       - name: "data"
         configMap:
-          {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
+         {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
           name: {{ default $defaultConfigMapName .Values.stackDataUms.dataConfigMapName | quote }}
+      - name: "plugin-targets"
+        emptyDir: {}
 
 ...
