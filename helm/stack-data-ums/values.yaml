@@ -127,6 +127,13 @@ portalPlugin:
     imagePullPolicy: "IfNotPresent"
     tag: "latest"
 
+gomplate:
+  image:
+    registry: "docker.io"
+    repository: "hairyhenderson/gomplate"
+    imagePullPolicy: "IfNotPresent"
+    tag: "v4.0.0@sha256:3f5f2457774c29b8c4e1987b914179477352372269ce5ade9c42a935ccc9e447"
+
 # -- Additional custom annotations to add to deployed objects.
 additionalAnnotations: {}
 
