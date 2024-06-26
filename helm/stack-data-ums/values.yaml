@@ -236,7 +236,29 @@ nodeSelector: {}
 podAnnotations: {}
 podSecurityContext: {}
 resources: {}
-securityContext: {}
+
+securityContext:
+  # -- Enable container privileged escalation.
+  allowPrivilegeEscalation: false
+  # -- Security capabilities for container.
+  capabilities:
+    drop:
+      - "ALL"
+  # -- Enable security context.
+  enabled: true
+  # -- Process user id.
+  runAsUser: 1000
+  # -- Process group id.
+  runAsGroup: 1000
+  # Set Seccomp profile.
+  seccompProfile:
+    # -- Disallow custom Seccomp profile by setting it to RuntimeDefault.
+    type: "RuntimeDefault"
+  # -- Mounts the container's root filesystem as read-only.
+  readOnlyRootFilesystem: true
+  # -- Run container as a user.
+  runAsNonRoot: true
+
 tolerations: []
 
 ...
