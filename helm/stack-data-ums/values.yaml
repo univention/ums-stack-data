@@ -127,6 +127,13 @@ portalPlugin:
     imagePullPolicy: "IfNotPresent"
     tag: "latest"
 
+opendeskPlugin:
+  image:
+    registry: "artifacts.software-univention.de"
+    repository: "nubus-dev/images/opendesk-extension"
+    imagePullPolicy: "IfNotPresent"
+    tag: "latest"
+
 gomplate:
   image:
     registry: "docker.io"
