@@ -116,14 +116,14 @@ image:
 oxPlugin:
   image:
     registry: "artifacts.software-univention.de"
-    repository: "nubus-dev/images/ox-connector-extensions"
+    repository: "nubus-dev/images/ox-extension"
     imagePullPolicy: "IfNotPresent"
     tag: "latest"
 
 portalPlugin:
   image:
     registry: "artifacts.software-univention.de"
-    repository: "nubus-dev/images/portal-udm-extensions"
+    repository: "nubus-dev/images/portal-extension"
     imagePullPolicy: "IfNotPresent"
     tag: "latest"
 
