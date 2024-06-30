@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
+---
+action: "modify"
+module: "portals/portal"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  logo: {{ file.Read "./branding-swp/logo_small_border.svg" | base64.Encode | quote }}

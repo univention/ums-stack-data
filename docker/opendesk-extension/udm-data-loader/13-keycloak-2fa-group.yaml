@@ -1,11 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "2fa-users"
-{{ end }}

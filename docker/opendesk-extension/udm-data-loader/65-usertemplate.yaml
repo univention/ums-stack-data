@@ -1,13 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
 ---
 # Move isOxUser setting to openDesk tab
 action: "modify"
 module: "settings/extended_attribute"
-position: 'cn=isOxUser,cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=isOxUser,cn=open-xchange,cn=custom attributes,cn=univention,{{ .context.ldapBaseDn }}'
 properties:
   name: "isOxUser"
   shortDescription: "Groupware (deactivate will delete user data in groupware)"
@@ -25,7 +23,7 @@ properties:
 # Move isOxGroup setting to openDesk tab
 action: "modify"
 module: "settings/extended_attribute"
-position: 'cn=isOxGroup,cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=isOxGroup,cn=open-xchange,cn=custom attributes,cn=univention,{{ .context.ldapBaseDn }}'
 properties:
   name: "isOxGroup"
   shortDescription: "Groupware"
@@ -43,7 +41,7 @@ properties:
 # Modify ox-connector user template to be openDesk one
 action: "modify"
 module: "settings/usertemplate"
-position: 'cn=openDesk User,cn=templates,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=openDesk User,cn=templates,cn=univention,{{ .context.ldapBaseDn }}'
 properties:
   name: "openDesk User"
   opendeskFileshareEnabled: True
@@ -53,23 +51,23 @@ properties:
   opendeskProjectmanagementAdmin: False
   opendeskFileshareAdmin: False
   isOxUser: True
-  mailPrimaryAddress: "<username>@{{ include "stack-data-swp.externalMailDomain" $ }}"
-  e-mail: ["<username>@{{ include "stack-data-swp.externalMailDomain" $ }}"]
+  mailPrimaryAddress: "<username>@{{ .context.externalMailDomain }}"
+  e-mail: ["<username>@{{ .context.externalMailDomain }}"]
   unixhome: "/home/<username>"
-  oxContext: {{ .oxDefaultContext }}
+  oxContext: {{ .context.oxDefaultContext }}
   oxDisplayName: "<firstname> <lastname> (<username>)"
   oxAccess: "opendesk_standard"
-  primaryGroup: 'cn=Domain Users,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+  primaryGroup: 'cn=Domain Users,cn=groups,{{ .context.ldapBaseDn }}'
 
 ---
 # Create admin user template
 action: "create"
 module: "settings/usertemplate"
-position: 'cn=templates,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=templates,cn=univention,{{ .context.ldapBaseDn }}'
 properties:
   name: "openDesk Admin"
   isOxUser: False
-  primaryGroup: 'cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+  primaryGroup: 'cn=Domain Admins,cn=groups,{{ .context.ldapBaseDn }}'
   opendeskFileshareEnabled: False
   opendeskProjectmanagementEnabled: False
   opendeskKnowledgemanagementEnabled: False
@@ -80,15 +78,13 @@ properties:
 ---
 action: "modify"
 module: "settings/extended_attribute"
-position: 'cn=oxAccess,cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=oxAccess,cn=open-xchange,cn=custom attributes,cn=univention,{{ .context.ldapBaseDn }}'
 properties:
   default: "groupware"
 
 ---
 action: "modify"
 module: "settings/extended_attribute"
-position: 'cn=templateOxAccess,cn=open-xchange,cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=templateOxAccess,cn=open-xchange,cn=custom attributes,cn=univention,{{ .context.ldapBaseDn }}'
 properties:
   default: "groupware"
-
-{{ end }}

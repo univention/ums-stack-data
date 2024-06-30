@@ -1,21 +1,18 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-{{- $context := . }}
-
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "LDAPSearch Users"
 
-{{- range .ldapSearchUsers }}
+{{- range .context.ldapSearchUsers }}
 ---
 action: "create"
 module: "users/ldap"
-position: "cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}"
+position: "cn=users,{{ .context.ldapBaseDn }}"
 properties:
   username: {{ .username | quote }}
   lastname: {{ .lastname | default "LDAP-Search-User" | quote }}
@@ -29,11 +26,11 @@ properties:
 
 {{ end }}
 
-{{- range .ldapSystemUsers }}
+{{- range .context.ldapSystemUsers }}
 ---
 action: "create"
 module: "users/ldap"
-position: "cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}"
+position: "cn=users,{{ .context.ldapBaseDn }}"
 properties:
   username: {{ .username | quote }}
   lastname: {{ .lastname | default "LDAP-System-User" | quote }}
@@ -45,5 +42,4 @@ properties:
   overridePWHistory: true
   overridePWLength: true
 
-{{ end }}
 {{ end }}

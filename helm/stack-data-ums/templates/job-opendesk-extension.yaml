@@ -63,8 +63,10 @@ spec:
         args:
           - --input-dir=/target/udm-data-loader
           - --output-dir=/target/udm-data-loader-rendered
+          - --include=*.yaml
           - --context
           - context=/context/context.yaml
+        workingDir: /target/udm-data-loader
         {{- if .Values.securityContext.enabled }}
         securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
         {{- end }}

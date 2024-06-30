@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
+---
+action: modify
+module: users/user
+position: uid=Administrator,cn=users,{{ .context.ldapBaseDn }}
+properties:
+  firstname: "Addison"
+  mailPrimaryAddress: "admin@{{ .context.externalMailDomain }}"
+---
+action: ensure_list_contains
+module: users/user
+position: uid=Administrator,cn=users,{{ .context.ldapBaseDn }}
+properties:
+  mailAlternativeAddress:
+    - "abuse@{{ .context.externalMailDomain }}"
+    - "hostmaster@{{ .context.externalMailDomain }}"
+    - "postmaster@{{ .context.externalMailDomain }}"
+    - "system-mails@{{ .context.externalMailDomain }}"
+    - "root@{{ .context.externalMailDomain }}"
+    - "webmaster@{{ .context.externalMailDomain }}"

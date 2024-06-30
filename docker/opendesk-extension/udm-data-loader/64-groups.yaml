@@ -1,48 +1,44 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "managed-by-attribute-Groupware"
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "managed-by-attribute-Fileshare"
   opendeskFileshareEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "managed-by-attribute-FileshareAdmin"
   opendeskFileshareEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "managed-by-attribute-Projectmanagement"
   opendeskProjectmanagementEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "managed-by-attribute-Knowledgemanagement"
   opendeskKnowledgemanagementEnabled: True
 ---
 action: "create"
 module: "groups/group"
-position: 'cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   name: "managed-by-attribute-Livecollaboration"
   opendeskLivecollaborationEnabled: True
-
-{{ end }}

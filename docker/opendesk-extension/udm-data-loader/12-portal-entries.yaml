@@ -1,0 +1,657 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=login-ucs,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=umc-domain,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=root-cert,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=certificate-revocation,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=univentionforum,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=univentionfeedback,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=univentionblog,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=univentionwebsite,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "modify"
+module: "portals/entry"
+position: 'cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.anonymous_login"
+  anonymous: true
+  icon: {{ file.Read "./portal-icons/anonymous_login.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "/univention/saml/?location=%2Funivention%2Fportal%2F"
+  linkTarget: "samewindow"
+  description:
+    de_DE: "Anmelden"
+    en_US: "Login"
+  displayName:
+    de_DE: "Anmelden"
+    en_US: "Login"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.anonymous,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - 'cn=swp.anonymous_login,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.admin_user"
+  icon: {{ file.Read "./portal-icons/admin_user.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:users/user"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserAdmin | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Benutzerverwaltung"
+    en_US: "Manage user accounts"
+  displayName:
+    de_DE: "Benutzer"
+    en_US: "Users"
+  target: "tab_admin"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.admin_group"
+  icon: {{ file.Read "./portal-icons/admin_group.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:groups/group"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserAdmin | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Gruppenverwaltung"
+    en_US: "Manage groups"
+  displayName:
+    de_DE: "Gruppen"
+    en_US: "Groups"
+  target: "tab_admin"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.admin_usersgroups,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - 'cn=swp.admin_user,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+  - 'cn=swp.admin_group,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.admin_functionalmailbox"
+  icon: {{ file.Read "./portal-icons/admin_functionalmailbox.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxmail/functional_account"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserAdmin | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Verwaltung von Funktionspostfächern"
+    en_US: "Manage functional mailboxes"
+  displayName:
+    de_DE: "Funktionspostfächer"
+    en_US: "Functional mailboxes"
+  target: "tab_admin"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.admin_resource"
+  icon: {{ file.Read "./portal-icons/admin_resource.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxresources/oxresources"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserAdmin | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Verwaltung von Kalender Ressourcen"
+    en_US: "Manage calendar resources"
+  displayName:
+    de_DE: "Ressourcen"
+    en_US: "Resources"
+  target: "tab_admin"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  activated: false
+  name: "swp.admin_context"
+  icon: {{ file.Read "./portal-icons/admin_context.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:oxmail/oxcontext"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserAdmin | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Verwaltung von Groupware-Kontexten"
+    en_US: "Manage contexts for groupware"
+  displayName:
+    de_DE: "OX-Kontext-Objekte"
+    en_US: "OX-Contexts"
+  target: "tab_admin"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.admin_groupware,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - 'cn=swp.admin_functionalmailbox,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+  - 'cn=swp.admin_resource,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+  - 'cn=swp.admin_context,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.admin_announcement"
+  icon: {{ file.Read "./portal-icons/admin_announcement.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:portals/announcement"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserAdmin | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Verwaltung der allgemeinen Portal-Annoucements"
+    en_US: "Manage the portal announcements"
+  displayName:
+    de_DE: "Announcements"
+    en_US: "Announcements"
+  target: "tab_admin"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - cn=swp.admin_announcement,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.groupware_mail"
+  icon: {{ file.Read "./portal-icons/groupware_mail.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalGroupwareLinkBase }}/appsuite/#app=io.ox/mail"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupGroupware | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "E-Mails senden und empfangen"
+    en_US: "Send and receive emails"
+  displayName:
+    de_DE: "E-Mail"
+    en_US: "Email"
+  target: "tab_groupware"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.groupware_calendar"
+  icon: {{ file.Read "./portal-icons/groupware_calendar.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalGroupwareLinkBase }}/appsuite/#app=io.ox/calendar"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupGroupware | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Termine und Meetings verwalten"
+    en_US: "Manage appointments and meetings"
+  displayName:
+    de_DE: "Kalender"
+    en_US: "Calendar"
+  target: "tab_groupware"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.groupware_contacts"
+  icon: {{ file.Read "./portal-icons/groupware_contacts.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalGroupwareLinkBase }}/appsuite/#app=io.ox/contacts"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupGroupware | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Persönliche Kontakte und Adressbücher verwalten"
+    en_US: "Manage personal contacts and browser global contacts"
+  displayName:
+    de_DE: "Kontakte"
+    en_US: "Contacts"
+  target: "tab_groupware"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.groupware_tasks"
+  icon: {{ file.Read "./portal-icons/groupware_tasks.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalGroupwareLinkBase }}/appsuite/#app=io.ox/tasks"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupGroupware | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Aufgabenverwaltung"
+    en_US: "Task management"
+  displayName:
+    de_DE: "Aufgaben"
+    en_US: "Tasks"
+  target: "tab_groupware"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.groupware,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - cn=swp.groupware_mail,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+  - cn=swp.groupware_calendar,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+  - cn=swp.groupware_contacts,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+  - cn=swp.groupware_tasks,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.fileshare_files"
+  icon: {{ file.Read "./portal-icons/fileshare_files.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalFileshareLinkBase }}/index.php/apps/files"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupFileshare | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Dateien verwalten, bearbeiten und teilen"
+    en_US: "Manage, edit and share files"
+  displayName:
+    de_DE: "Dateien"
+    en_US: "Files"
+  target: "tab_fileshare"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.fileshare_activity"
+  icon: {{ file.Read "./portal-icons/fileshare_activity.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalFileshareLinkBase }}/index.php/apps/activity"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupFileshare | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Aktivitätenverlauf der Dateiverwaltung"
+    en_US: "Activity stream for files"
+  displayName:
+    de_DE: "Aktivitäten"
+    en_US: "Activity"
+  target: "tab_fileshare"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.fileshare,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - 'cn=swp.fileshare_files,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+  - 'cn=swp.fileshare_activity,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+  - 'cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+
+---
+action: create
+module: portals/entry
+position: cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+properties:
+  name: "swp.fileshare_directdoc_odt"
+  icon: {{ file.Read "./portal-icons/fileshare_directdoc_odt.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalFileshareLinkBase }}/index.php/apps/integration_swp/office-create/odt"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupFileshare | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Öffnet ein neues, leeres Schriftstück in Dateien"
+    en_US: "Opens a new empty text document in Files"
+  displayName:
+    de_DE: "Dokument"
+    en_US: "Document"
+  target: "tab_fileshare"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.fileshare_directdoc_ods"
+  icon: {{ file.Read "./portal-icons/fileshare_directdoc_ods.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalFileshareLinkBase }}/index.php/apps/integration_swp/office-create/ods"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupFileshare | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Öffnet ein neues, leeres Tabellen-Dokument in Dateien"
+    en_US: "Opens a new empty calc document in Files"
+  displayName:
+    de_DE: "Tabelle"
+    en_US: "Sheet"
+  target: "tab_fileshare"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.fileshare_directdoc_odp"
+  icon: {{ file.Read "./portal-icons/fileshare_directdoc_odp.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalFileshareLinkBase }}/index.php/apps/integration_swp/office-create/odp"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupFileshare | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Öffnet eine neue, leere Präsentation in Dateien"
+    en_US: "Öffnet a new empty presentation in Files"
+  displayName:
+    de_DE: "Präsentation"
+    en_US: "Presentation"
+  target: "tab_fileshare"
+---
+action: "ensure_list_contains"
+module: "portals/folder"
+position: 'cn=swp.fileshare_directdoc,cn=folder,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - cn=swp.fileshare_directdoc_odt,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+  - cn=swp.fileshare_directdoc_ods,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+  - cn=swp.fileshare_directdoc_odp,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.realtime_collaboration"
+  icon: {{ file.Read "./portal-icons/realtime_collaboration.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalRealtimeCollaborationLinkBase }}"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupLiveCollaboration | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Chatnachrichten-Austausch mit anderen Mitarbeitenden und kollaborative Meeting mit Whiteboard, Online-Abstimmungen und Breakout-Sessions."
+    en_US: "Chat with your colleagues and setup collaborative meetings with a whiteboards, online voting and breakout sessions."
+  displayName:
+    de_DE: "Chat & Zusammenarbeit"
+    en_US: "Chat & collaboration"
+  target: "tab_realtime_collaboration"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.realtime_videoconference"
+  icon: {{ file.Read "./portal-icons/realtime_videoconference.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalRealtimeVideoconferenceLinkBase }}"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupLiveCollaboration | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Ungeplante Direkt-Videokonferenzen (auch) mit externen Teilnehmern"
+    en_US: "Ad hoc videoconference also with external participants"
+  displayName:
+    de_DE: "Sofort Videokonferenz"
+    en_US: "Ad hoc videoconference"
+  target: "tab_realtime_videoconference"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.realtime,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - cn=swp.realtime_collaboration,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+  - cn=swp.realtime_videoconference,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.management_project"
+  icon: {{ file.Read "./portal-icons/management_project.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalManagementProjectLinkBase }}/auth/keycloak"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupManagementProject | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Projektplanung und -steuerung inkl. Boards und Besprechnungsmanagement "
+    en_US: "Manage and control projects including boards and meeting management"
+  displayName:
+    de_DE: "Projekte"
+    en_US: "Projects"
+  target: "tab_projectmanagement"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.management_knowledge"
+  icon: {{ file.Read "./portal-icons/management_knowledge.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "{{ .context.portalManagementKnowledgeLinkBase }}"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupManagementKnowledge | indent 4 }}
+  linkTarget: "newwindow"
+  description:
+    de_DE: "Wiki zum Wissensmanagement"
+    en_US: "Wiki for knowledge management"
+  displayName:
+    de_DE: "Wissen"
+    en_US: "Knowledge"
+  target: "tab_knowledgemanagement"
+---
+action: "ensure_list_contains"
+module: "portals/category"
+position: 'cn=swp.management,cn=category,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  entries:
+  - cn=swp.management_project,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+  - cn=swp.management_knowledge,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.selfservice.change_password"
+  icon: {{ file.Read "./portal-icons/selfservice_changepassword.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "#/selfservice/passwordchange"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserAll | indent 4 }}
+  linkTarget: "samewindow"
+  description:
+    de_DE: "Mein Passwort ändern"
+    en_US: "Update my password"
+  displayName:
+    de_DE: "Mein Passwort ändern"
+    en_US: "Update my password"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.selfservice.edit_profile"
+  icon: {{ file.Read "./portal-icons/selfservice_editprofile.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "#/selfservice/profile"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserStandard | indent 4 }}
+  linkTarget: "samewindow"
+  description:
+    de_DE: "Meine Profildaten bearbeiten"
+    en_US: "Manage my profile"
+  displayName:
+    de_DE: "Meine Profildaten bearbeiten"
+    en_US: "Manage my profile"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.selfservice.protect_account"
+  icon: {{ file.Read "./portal-icons/selfservice_protectaccount.svg" | base64.Encode | quote }}
+  link:
+    - - "en_US"
+      - "#/selfservice/protectaccount"
+  allowedGroups:
+{{ toYAML .context.portaltileGroupUserStandard | indent 4 }}
+  linkTarget: "samewindow"
+  description:
+    de_DE: "Meine Passwort-Reset Optionen"
+    en_US: "My password recovery options"
+  displayName:
+    de_DE: "Meine Passwort-Reset Optionen"
+    en_US: "My password recovery options"
+---
+action: "ensure_list_contains"
+module: "portals/portal"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  userLinks:
+    - 'cn=swp.selfservice.change_password,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+    - 'cn=swp.selfservice.edit_profile,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+    - 'cn=swp.selfservice.protect_account,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.externallinks.privacystatement"
+  icon: {{ file.Read "./portal-icons/dummy.svg" | base64.Encode | quote }}
+  link:
+    - - "de_DE"
+      - "http://www.gesetze-im-internet.de/bdsg_2018/"
+    - - "en_US"
+      - "http://www.gesetze-im-internet.de/englisch_bdsg/index.html"
+  anonymous: false
+  linkTarget: "newwindow"
+  target: "ext_privacystatement"
+  description:
+    de_DE: "Datenschutz"
+    en_US: "Privacy statement"
+  displayName:
+    de_DE: "Datenschutz"
+    en_US: "Privacy statement"
+---
+action: "create"
+module: "portals/entry"
+position: 'cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  name: "swp.externallinks.legalnotice"
+  icon: {{ file.Read "./portal-icons/dummy.svg" | base64.Encode | quote }}
+  link:
+    - - "de_DE"
+      - "https://www.bmi.bund.de/DE/service/impressum/impressum_node.html"
+    - - "en_US"
+      - "https://www.bmi.bund.de/DE/service/impressum/impressum_node.html"
+  anonymous: false
+  linkTarget: "newwindow"
+  target: "ext_legalnotice"
+  description:
+    de_DE: "Impressum"
+    en_US: "Legal notice"
+  displayName:
+    de_DE: "Impressum"
+    en_US: "Legal notice"
+---
+action: "ensure_list_contains"
+module: "portals/portal"
+position: 'cn=domain,cn=portal,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+properties:
+  menuLinks:
+    - 'cn=swp.externallinks.privacystatement,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'
+    - 'cn=swp.externallinks.legalnotice,cn=entry,cn=portals,cn=univention,{{ .context.ldapBaseDn }}'

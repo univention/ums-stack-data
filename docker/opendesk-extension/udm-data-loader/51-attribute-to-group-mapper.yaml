@@ -1,13 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
 ---
 # Create extended attribute to activate A2GM
 action: "create"
 module: "settings/extended_attribute"
-position: 'cn=custom attributes,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=custom attributes,cn=univention,{{ .context.ldapBaseDn }}'
 properties:
   name: "attribute-to-group-mapper"
   CLIName: "attributeToGroupMapper"
@@ -23,5 +21,3 @@ properties:
   doNotSearch: True
   deleteObjectClass: True
   disableUDMWeb: True
-
-{{end}}
