@@ -11,15 +11,6 @@ WORKDIR /
 # Structure according to
 # https://git.knut.univention.de/univention/internal/nubus-infocenter/-/blob/main/topics/extensions/extension-image-structure.md?ref_type=heads
 
-# COPY udm/acls /plugins/ldap-acls
-# COPY udm/api /plugins/udm-modules
-# COPY udm/handlers /plugins/udm-handlers/portals
-# COPY udm/icons /plugins/umc-icons
-# COPY udm/schema /plugins/ldap-schema
-# COPY udm/syntax /plugins/udm-syntax.d
-# COPY udm/univention-portal.xml /plugins/umc-modules/
-
-# Spike experiment - udm-data as new plugin type
 COPY udm-data-loader /plugins/udm-data-loader
 
 COPY loader.sh /bin/loader
