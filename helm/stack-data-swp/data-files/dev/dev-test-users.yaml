@@ -42,8 +42,8 @@ properties:
   password: {{ required "Please set a password for the default user" .adminPassword | quote }}
   {{- end }}
   isOxUser: False
-  guardianRole:
-    - "guardian:builtin:app-admin"
+  guardianRoles:
+    - "guardian:builtin:super-admin"
   mailPrimaryAddress: "default.admin@{{ include "stack-data-swp.externalMailDomain" $ }}"
   opendeskProjectmanagementAdmin: False
   opendeskFileshareAdmin: False
