@@ -1,21 +1,16 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
 ---
 action: "create"
 module: "users/user"
-position: 'cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=users,{{ .context.ldapBaseDn }}'
 properties:
   username: "default.user"
   firstname: "Default"
   lastname: "User"
-  {{- if $.Values.global.nubusDeployment }}
-  password: {{ include "nubusTemplates.credentials.ldap.users.idp.password" $ | quote }}
-  {{- else }}
-  password: {{ required "Please set a password for the default user" .userPassword | quote }}
-  {{- end }}
-  oxContext: {{ .oxDefaultContext }}
+  password: {{ .context.userPassword | quote }}
+  oxContext: {{ .context.oxDefaultContext }}
   oxAccess: "opendesk_standard"
   isOxUser: True
   opendeskFileshareEnabled: True
@@ -24,27 +19,23 @@ properties:
   opendeskLivecollaborationEnabled: True
   opendeskProjectmanagementAdmin: False
   opendeskFileshareAdmin: False
-  mailPrimaryAddress: "default.user@{{ include "stack-data-swp.externalMailDomain" $ }}"
+  mailPrimaryAddress: "default.user@{{ .context.externalMailDomain }}"
   overridePWHistory: true
   overridePWLength: true
 ---
 action: "create"
 module: "users/user"
-position: 'cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=users,{{ .context.ldapBaseDn }}'
 properties:
   username: "default.admin"
   firstname: "Default"
   lastname: "Admin"
-  primaryGroup: 'cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
-  {{- if $.Values.global.nubusDeployment }}
-  password: {{ include "nubusTemplates.credentials.ldap.users.admin.password" $ | quote }}
-  {{- else }}
-  password: {{ required "Please set a password for the default user" .adminPassword | quote }}
-  {{- end }}
+  primaryGroup: 'cn=Domain Admins,cn=groups,{{ .context.ldapBaseDn }}'
+  password: {{ .context.adminPassword | quote }}
   isOxUser: False
   guardianRole:
     - "guardian:builtin:app-admin"
-  mailPrimaryAddress: "default.admin@{{ include "stack-data-swp.externalMailDomain" $ }}"
+  mailPrimaryAddress: "default.admin@{{ .context.externalMailDomain }}"
   opendeskProjectmanagementAdmin: False
   opendeskFileshareAdmin: False
   opendeskFileshareEnabled: False
@@ -53,4 +44,3 @@ properties:
   opendeskLivecollaborationEnabled: False
   overridePWHistory: true
   overridePWLength: true
-{{ end }}

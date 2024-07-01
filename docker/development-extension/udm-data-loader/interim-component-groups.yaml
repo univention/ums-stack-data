@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
 # TODO: Remove once the component groups are supported into the container Stack
 #
 # For now this does make all entries visible to all users to simplify testing in
@@ -11,37 +9,35 @@
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: 'cn=managed-by-attribute-Groupware,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=managed-by-attribute-Groupware,cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   users:
-    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'uid=default.user,cn=users,{{ .context.ldapBaseDn }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: 'cn=managed-by-attribute-Fileshare,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=managed-by-attribute-Fileshare,cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   users:
-    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'uid=default.user,cn=users,{{ .context.ldapBaseDn }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: 'cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=managed-by-attribute-Projectmanagement,cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   users:
-    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'uid=default.user,cn=users,{{ .context.ldapBaseDn }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: 'cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   users:
-    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+    - 'uid=default.user,cn=users,{{ .context.ldapBaseDn }}'
 ---
 action: "ensure_list_contains"
 module: "groups/group"
-position: 'cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include "stack-data-swp.ldapBaseDn" $ }}'
+position: 'cn=managed-by-attribute-Livecollaboration,cn=groups,{{ .context.ldapBaseDn }}'
 properties:
   users:
-    - 'uid=default.user,cn=users,{{ include "stack-data-swp.ldapBaseDn" $ }}'
-
-{{ end }}
+    - 'uid=default.user,cn=users,{{ .context.ldapBaseDn }}'

@@ -134,6 +134,14 @@ opendeskPlugin:
     imagePullPolicy: "IfNotPresent"
     tag: "latest"
 
+developmentPlugin:
+  image:
+    registry: "artifacts.software-univention.de"
+    repository: "nubus-dev/images/development-extension"
+    imagePullPolicy: "IfNotPresent"
+    tag: "latest"
+
+
 gomplate:
   image:
     registry: "docker.io"
