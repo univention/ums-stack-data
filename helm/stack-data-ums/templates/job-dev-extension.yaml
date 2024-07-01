@@ -1,0 +1,149 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
+---
+apiVersion: "batch/v1"
+kind: "Job"
+metadata:
+  name: {{ include "common.names.fullnameWithRevision" . }}-dev
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+  {{- if .Values.additionalAnnotations }}
+  annotations:
+    {{ toYaml .Values.additionalAnnotations | nindent 4 }}
+  {{- end }}
+spec:
+  template:
+    metadata:
+      name: {{ include "common.names.name" . }}
+      labels:
+        {{- include "common.labels.standard" . | nindent 8 }}
+      annotations:
+        checksum/config: '{{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}'
+        checksum/config-data: '{{ include (print $.Template.BasePath "/configmap-data.yaml") . | sha256sum }}'
+        {{- if .Values.additionalAnnotations }}
+        {{ toYaml .Values.additionalAnnotations | nindent 8 }}
+        {{- end }}
+    spec:
+      restartPolicy: "OnFailure"
+      {{- with .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{ if .Values.stackDataUms.dependencyUdmApiWait }}
+      initContainers:
+      - name: "prepare-target"
+        {{- if .Values.securityContext.enabled }}
+        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .Values.image.registry .Values.global.imageRegistry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ coalesce .Values.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        command:
+          - sh
+          - -c
+          - |
+            mkdir /target/udm-data-loader
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+          - name: data
+            mountPath: /join-data
+        resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
+      - name: "load-dev-plugin"
+        {{- if .Values.securityContext.enabled }}
+        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .Values.developmentPlugin.image.registry .Values.global.imageRegistry }}/{{ .Values.developmentPlugin.image.repository }}:{{ .Values.developmentPlugin.image.tag }}"
+        imagePullPolicy: {{ coalesce .Values.developmentPlugin.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+        resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
+      - name: "process-templates"
+        args:
+          - --input-dir=/target/udm-data-loader
+          - --output-dir=/target/udm-data-loader-rendered
+          - --include=*.yaml
+          - --context
+          - context=/context/context.yaml
+        {{- if .Values.securityContext.enabled }}
+        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        image: "{{ coalesce .Values.gomplate.image.registry .Values.global.imageRegistry }}/{{ .Values.gomplate.image.repository }}:{{ .Values.gomplate.image.tag }}"
+        imagePullPolicy: {{ coalesce .Values.gomplate.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        volumeMounts:
+          - name: plugin-targets
+            mountPath: /target
+          - name: context
+            mountPath: /context
+        resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
+      - name: wait-for-udm-rest-api
+        command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-udm-rest-api.py"]
+        {{- with .Values.image }}
+        image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
+        imagePullPolicy: "{{ .pullPolicy }}"
+        {{- end }}
+        envFrom:
+          - configMapRef:
+              name: {{ include "common.names.fullname" . }}
+        volumeMounts:
+        {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
+          - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+            mountPath: /run/secrets/univention.de/data-loader/udm_secret
+            subPath: {{ include "stack-data-ums.udmApi.credentialSecret.key" . | quote }}
+        {{- else }}
+          - name: secrets
+            mountPath: /run/secrets/univention.de/data-loader
+        {{- end }}
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+      {{ end }}
+      containers:
+      - name: "udm-load-data"
+        # TODO: Cleanup, this is used only for experimentation
+        # command:
+        #   - sleep
+        #   - infinity
+        {{- with .Values.image }}
+        image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
+        imagePullPolicy: "{{ .pullPolicy }}"
+        {{- end }}
+        envFrom:
+          - configMapRef:
+              name: {{ include "common.names.fullname" . }}
+        volumeMounts:
+        {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
+          - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+            mountPath: /run/secrets/univention.de/data-loader/udm_secret
+            subPath: {{ include "stack-data-ums.udmApi.credentialSecret.key" . | quote }}
+        {{- else }}
+          - name: secrets
+            mountPath: /run/secrets/univention.de/data-loader
+        {{- end }}
+          - name: "plugin-targets"
+            mountPath: "/join-data"
+            subPath: udm-data-loader-rendered
+            readOnly: true
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+      volumes:
+      {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
+      - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+        secret:
+          secretName: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+      {{- else }}
+      - name: "secrets"
+        secret:
+          secretName: {{ include "common.names.fullname" . | quote }}
+      {{- end }}
+      - name: "data"
+        configMap:
+         {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
+          name: {{ default $defaultConfigMapName .Values.stackDataUms.dataConfigMapName | quote }}
+      - name: "plugin-targets"
+        emptyDir: {}
+      - name: "context"
+        secret:
+          secretName: {{ include "common.names.fullname" . }}-context
+
+...
