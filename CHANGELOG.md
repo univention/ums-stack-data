@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.51.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.51.0...v0.51.1) (2024-07-04)
+
+
+### Bug Fixes
+
+* guardian UDM property now in vanilla UDM, fix role value ([54072e3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/54072e3c19f303814176de07353fea20732b6bed))
+* remove LDAP index for App Center attribute ([06f01ee](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/06f01ee368c100300994a0d43cbcc24e92b9e318))
+
 ## [0.51.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.50.0...v0.51.0) (2024-06-25)
 
 
