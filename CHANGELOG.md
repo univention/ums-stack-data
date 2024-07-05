@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.52.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.51.1...v0.52.0) (2024-07-05)
+
+
+### Features
+
+* password reset email customizable now customizable; text moved to openDesk ([605a2f0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/605a2f05b525a197c92a58f6457e842ba9675575))
+
 ## [0.51.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.51.0...v0.51.1) (2024-07-04)
 
 
