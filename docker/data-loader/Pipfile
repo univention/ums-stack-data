@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 pytest = "*"
 pytest-mock = "*"
+jinja2 = "*"
+pyyaml = "*"
 
 [dev-packages]
 pdbpp = "*"
