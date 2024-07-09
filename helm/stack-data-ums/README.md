@@ -346,6 +346,15 @@ null
 			<td>The authentication method to use for the portal. Default is `saml`.</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.umcHtmlTitle</td>
+			<td>string</td>
+			<td><pre lang="json">
+"Nubus Management Console"
+</pre>
+</td>
+			<td>UMC web page title. Chart supports templated values.</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.umcMemcachedHostname</td>
 			<td>string</td>
 			<td><pre lang="json">

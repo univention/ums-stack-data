@@ -269,6 +269,7 @@ data:
     umc/web/sso/enabled: true
     umc/web/sso/newwindow: true
     umc/web/startupdialog: false
+    umc/web/title: {{ tpl .Values.stackDataContext.umcHtmlTitle . }}
     update/available: false
     update/reboot/required: false
     uuid/license: 00000000-0000-0000-0000-000000000000

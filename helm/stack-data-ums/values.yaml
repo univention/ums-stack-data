@@ -62,6 +62,8 @@ stackDataContext:
   # -- SAML Identity Provider metadata URL (as visible from inside the container), optional.
   # Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`
   idpSamlMetadataUrlInternal: ""
+  # -- UMC web page title. Chart supports templated values.
+  umcHtmlTitle: "Nubus Management Console"
   # -- SAML Service Provider hostname (FQDN of the UMC, which is the service provider)
   # Example: `"portal.souvap.example.org"`
   umcSamlSpFqdn: null
