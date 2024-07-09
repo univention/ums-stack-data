@@ -32,12 +32,24 @@ def app(process_join_data):
 @pytest.mark.parametrize(
     "filename,expected",
     [
+        ("my-join-data.yaml", True),
+        ("my-join-data.yaml.j2", True),
+    ],
+)
+def test_is_template_is_by_default_always_true(filename, expected, process_join_data):
+    result = process_join_data.is_template(filename)
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    "filename,expected",
+    [
         ("my-join-data.yaml", False),
         ("my-join-data.yaml.j2", True),
     ],
 )
-def test_is_template(filename, expected, process_join_data):
-    result = process_join_data.is_template(filename)
+def test_is_template_can_be_limited_to_filename_extension(filename, expected, process_join_data):
+    result = process_join_data.is_template(filename, extension="j2")
     assert result == expected
 
 

@@ -149,8 +149,10 @@ class App:
         return needs_save
 
 
-def is_template(filename):
-    return filename.endswith(".j2")
+def is_template(filename, extension=None):
+    if extension:
+        return filename.endswith(f".{extension}")
+    return True
 
 
 def render_template(content, context):
