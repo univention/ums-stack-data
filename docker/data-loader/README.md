@@ -27,3 +27,26 @@ documents to the running `udm-rest-api`.
 
 The `YAML` documents have to be mounted into `/join-data` and will be processed
 from there.
+
+
+## Development
+
+
+### Running the tests
+
+```
+docker compose run --build --rm -it data-loader-test
+```
+
+
+### Updating the Python dependencies
+
+The dependencies are managed via `Pipenv` and can be updated as follows:
+
+```
+docker compose run -it --rm --build data-loader-test \
+    pipenv update
+```
+
+Note that running the command inside of the container ensures that too recent
+dependencies are excluded, those would require a more recent Python interpreter.
