@@ -8,6 +8,7 @@ pytest = "*"
 pytest-mock = "*"
 jinja2 = "*"
 pyyaml = "*"
+typer = "*"
 
 [dev-packages]
 pdbpp = "*"
