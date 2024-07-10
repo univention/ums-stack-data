@@ -5,7 +5,6 @@
 
 import logging
 import os
-import sys
 
 import typer
 import yaml
@@ -19,10 +18,10 @@ cli_app = typer.Typer()
 
 
 @cli_app.command()
-def main():
+def main(input_filename: str):
     udm = _connect_to_udm()
     app = App(udm)
-    app.run()
+    app.run(input_filename)
 
 
 class App:
@@ -32,8 +31,7 @@ class App:
 
         self.udm = udm
 
-    def run(self):
-        input_filename = sys.argv[1]
+    def run(self, input_filename):
         log.info("Processing file %s", input_filename)
 
         with open(input_filename, "r") as input_file:
