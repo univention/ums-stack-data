@@ -7,11 +7,22 @@ import logging
 import os
 import sys
 
+import typer
 import yaml
 from jinja2 import StrictUndefined, Template
 from univention.admin.rest.client import UDM, NotFound, UnprocessableEntity
 
 log = logging.getLogger("app")
+
+
+cli_app = typer.Typer()
+
+
+@cli_app.command()
+def main():
+    udm = _connect_to_udm()
+    app = App(udm)
+    app.run()
 
 
 class App:
@@ -171,6 +182,4 @@ def _connect_to_udm():
 
 
 if __name__ == "__main__":
-    udm = _connect_to_udm()
-    app = App(udm)
-    app.run()
+    cli_app()
