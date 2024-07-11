@@ -5,6 +5,7 @@
 
 import logging
 import os
+from typing import Annotated
 
 import typer
 import yaml
@@ -18,18 +19,22 @@ cli_app = typer.Typer()
 
 
 @cli_app.command()
-def main(input_filename: str):
+def main(
+    input_filename: str,
+    template_extension: Annotated[str, typer.Option(help="Restrict template processing to a specific filename extension")] = None,
+):
     udm = _connect_to_udm()
-    app = App(udm)
+    app = App(udm, template_extension=template_extension)
     app.run(input_filename)
 
 
 class App:
-    def __init__(self, udm):
+    def __init__(self, udm, template_extension=None):
         logging.basicConfig(level=logging.INFO)
         log.setLevel(logging.DEBUG)
 
         self.udm = udm
+        self.template_extension = template_extension
 
     def run(self, input_filename):
         log.info("Processing file %s", input_filename)
@@ -37,7 +42,7 @@ class App:
         with open(input_filename, "r") as input_file:
             content = input_file.read()
 
-        if is_template(input_filename):
+        if is_template(input_filename, extension=self.template_extension):
             log.info("Rendering file as Jinja2 template")
             context = {
                 "ldap_base": self.udm.get_ldap_base(),
