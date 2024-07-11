@@ -26,6 +26,8 @@ stackDataUms:
   # -- Wait for the udm-rest-api to be available
   dependencyUdmApiWait: true
 
+# TODO: This is left in for backwards compatibility. Remove in favor of the
+# secret for stackDataContext.
 stackDataContext:
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
   # Example: `"example.org"`
