@@ -5,7 +5,7 @@
 
 import logging
 import os
-from typing import Annotated
+from typing import Annotated, List, Optional
 
 import typer
 import yaml
@@ -21,11 +21,11 @@ cli_app = typer.Typer()
 @cli_app.command()
 def main(
     input_filename: str,
-    template_context: Annotated[str, typer.Option(help="Load the template context from this YAML file.")] = None,
-    template_extension: Annotated[str, typer.Option(help="Restrict template processing to a specific filename extension")] = None,
+    template_context: Annotated[Optional[List[str]], typer.Option(help="Load the template context from this YAML file.")] = None,
+    template_extension: Annotated[Optional[str], typer.Option(help="Restrict template processing to a specific filename extension")] = None,
 ):
     udm = _connect_to_udm()
-    context = load_context(template_context) if template_context else {}
+    context = load_and_merge_contexts(template_context) if template_context else {}
     app = App(udm, template_context=context, template_extension=template_extension)
     app.run(input_filename)
 
@@ -178,10 +178,22 @@ def render_template(content, context):
     return template.render(context)
 
 
+def load_and_merge_contexts(filenames):
+    contexts = [load_context(filename) for filename in filenames]
+    result = {}
+    for context in contexts:
+        deep_merge(result, context)
+    return result
+
+
 def load_context(filename):
     log.info("Reading context from file %s", filename)
     content = read_from_file(filename)
     return yaml.safe_load(content)
+
+
+def deep_merge(target, source):
+    return target.update(source)
 
 
 def _connect_to_udm():

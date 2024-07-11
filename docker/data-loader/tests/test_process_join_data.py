@@ -44,6 +44,20 @@ def test_render_template_replaces_values(process_join_data):
     assert result == "stub_value"
 
 
+def test_load_and_merge_contexts_uses_deep_merge(process_join_data, mocker):
+    stub_context1 = {"stub_name1": "stub_value1"}
+    stub_context2 = {"stub_name2": "stub_value2"}
+    mocker.patch.object(process_join_data, "load_context", side_effect=[stub_context1, stub_context2])
+    merge_context_mock = mocker.patch.object(process_join_data, "deep_merge")
+
+    process_join_data.load_and_merge_contexts(["stub1.yaml", "stub2.yaml"])
+
+    merge_context_mock.assert_has_calls([
+        mock.call(mock.ANY, stub_context1),
+        mock.call(mock.ANY, stub_context2),
+    ])
+
+
 @pytest.mark.parametrize(
     "file_content",
     [
