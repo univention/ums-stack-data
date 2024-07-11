@@ -35,6 +35,15 @@ def test_app_renders_template_with_context(process_join_data, mocker, stub_data)
     render_template_mock.assert_called_once_with(stub_data, context)
 
 
+def test_render_template_replaces_values(process_join_data):
+    context = {"stub_name": "stub_value"}
+    content = "{{ stub_name }}"
+
+    result = process_join_data.render_template(content, context)
+
+    assert result == "stub_value"
+
+
 @pytest.mark.parametrize(
     "file_content",
     [
