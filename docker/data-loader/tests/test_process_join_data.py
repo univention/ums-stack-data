@@ -4,6 +4,7 @@
 from unittest import mock
 
 import pytest
+import yaml
 
 
 @pytest.fixture
@@ -32,6 +33,24 @@ def test_app_renders_template_with_context(process_join_data, mocker, stub_data)
     app.run("stub-data.yaml")
 
     render_template_mock.assert_called_once_with(stub_data, context)
+
+
+@pytest.mark.parametrize(
+    "file_content",
+    [
+        "stub_name: stub_value",
+        "stub_name2: stub_value2",
+    ],
+)
+def test_load_context_reads_file(process_join_data, mocker, file_content):
+    mock_open = mock.mock_open(read_data=file_content)
+    mocker.patch.object(process_join_data, "open", mock_open)
+
+    result = process_join_data.load_context("stub_context.yaml")
+
+    mock_open.assert_called_once_with("stub_context.yaml", "r")
+    expected_context = yaml.safe_load(file_content)
+    assert result == expected_context
 
 
 @pytest.mark.parametrize(
