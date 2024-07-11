@@ -12,13 +12,14 @@ def app(process_join_data):
     return process_join_data.App(mock_udm)
 
 
-def test_app_uses_template_extension(process_join_data, mocker):
+def test_app_uses_template_extension(process_join_data, mocker, stub_data):
+    mocker.patch.object(process_join_data, "read_from_file", return_value=stub_data)
     is_template_mock = mocker.patch.object(process_join_data, "is_template")
     app = process_join_data.App(mock.Mock(), template_extension=".stub")
 
-    app.run("example-data.yaml")
+    app.run("stub-data.yaml")
 
-    is_template_mock.assert_called_once_with("example-data.yaml", extension=".stub")
+    is_template_mock.assert_called_once_with("stub-data.yaml", extension=".stub")
 
 
 @pytest.mark.parametrize(

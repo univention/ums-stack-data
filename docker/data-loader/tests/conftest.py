@@ -1,6 +1,7 @@
 import importlib.util
 import os
 import os.path
+import textwrap
 
 import pytest
 
@@ -17,3 +18,33 @@ def process_join_data():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+@pytest.fixture
+def stub_data():
+    """
+    One item of data to process.
+    """
+
+    content = textwrap.dedent("""
+        ---
+        action: create
+        module: portals/entry
+        position: cn=entry,cn=portals,cn=univention,dc=univention-organization,dc=intranet
+        properties:
+          allowedGroups:
+            - cn=Domain Users,cn=groups,dc=univention-organization,dc=intranet
+          description:
+            de_DE: Ihr Passwort ändern
+            en_US: Change your password
+          displayName:
+            de_DE: Ihr Passwort ändern
+            en_US: Change your password
+          icon: ''
+          link:
+            - - en_US
+              - '#/selfservice/passwordchange'
+          linkTarget: samewindow
+          name: self-service-password-change
+    """)
+    return content
