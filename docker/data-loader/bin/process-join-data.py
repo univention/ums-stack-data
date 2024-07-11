@@ -29,11 +29,12 @@ def main(
 
 
 class App:
-    def __init__(self, udm, template_extension=None):
+    def __init__(self, udm, template_context=None, template_extension=None):
         logging.basicConfig(level=logging.INFO)
         log.setLevel(logging.DEBUG)
 
         self.udm = udm
+        self.template_context = template_context or {}
         self.template_extension = template_extension
 
     def run(self, input_filename):
@@ -42,10 +43,7 @@ class App:
         content = read_from_file(input_filename)
         if is_template(input_filename, extension=self.template_extension):
             log.info("Rendering file as Jinja2 template")
-            context = {
-                "ldap_base": self.udm.get_ldap_base(),
-            }
-            content = render_template(content, context)
+            content = render_template(content, self.template_context)
 
         actions = list(yaml.safe_load_all(content))
 
