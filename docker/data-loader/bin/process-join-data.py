@@ -39,9 +39,7 @@ class App:
     def run(self, input_filename):
         log.info("Processing file %s", input_filename)
 
-        with open(input_filename, "r") as input_file:
-            content = input_file.read()
-
+        content = read_from_file(input_filename)
         if is_template(input_filename, extension=self.template_extension):
             log.info("Rendering file as Jinja2 template")
             context = {
@@ -161,6 +159,12 @@ class App:
                 else:
                     log.debug(f'Value "{value}" already present in property "{name}".')
         return needs_save
+
+
+def read_from_file(filename):
+    with open(filename, "r") as input_file:
+        content = input_file.read()
+    return content
 
 
 def is_template(filename, extension=None):
