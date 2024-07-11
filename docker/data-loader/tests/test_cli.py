@@ -45,3 +45,20 @@ def test_accepts_template_context_as_option(process_join_data, mocker):
     load_context_mock.assert_called_once_with("context.yaml")
     assert app_mock.call_args.kwargs["template_context"] == stub_context
     assert result.exit_code == 0
+
+
+def test_accepts_multiple_template_context_options(process_join_data, mocker):
+    mocker.patch.object(process_join_data, "_connect_to_udm")
+    app_mock = mocker.patch.object(process_join_data, "App")
+    stub_context = {"stub_name": "stub_value"}
+    stub_context2 = {"stub_name2": "stub_value2"}
+    mocker.patch.object(
+        process_join_data, "load_context", side_effect=[stub_context, stub_context2])
+
+    result = runner.invoke(
+        process_join_data.cli_app,
+        ["example-data.yaml", "--template-context", "context.yaml", "--template-context", "context2.yaml"])
+
+    expected_context = stub_context | stub_context2
+    assert app_mock.call_args.kwargs["template_context"] == expected_context
+    assert result.exit_code == 0
