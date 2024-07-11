@@ -21,10 +21,12 @@ cli_app = typer.Typer()
 @cli_app.command()
 def main(
     input_filename: str,
+    template_context: Annotated[str, typer.Option(help="Load the template context from this YAML file.")] = None,
     template_extension: Annotated[str, typer.Option(help="Restrict template processing to a specific filename extension")] = None,
 ):
     udm = _connect_to_udm()
-    app = App(udm, template_extension=template_extension)
+    context = load_context(template_context) if template_context else {}
+    app = App(udm, template_context=context, template_extension=template_extension)
     app.run(input_filename)
 
 
@@ -174,6 +176,12 @@ def is_template(filename, extension=None):
 def render_template(content, context):
     template = Template(content, undefined=StrictUndefined)
     return template.render(context)
+
+
+def load_context(filename):
+    log.info("Reading context from file %s", filename)
+    content = read_from_file(filename)
+    return yaml.safe_load(content)
 
 
 def _connect_to_udm():
