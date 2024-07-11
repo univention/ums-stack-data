@@ -22,6 +22,18 @@ def test_app_uses_template_extension(process_join_data, mocker, stub_data):
     is_template_mock.assert_called_once_with("stub-data.yaml", extension=".stub")
 
 
+def test_app_renders_template_with_context(process_join_data, mocker, stub_data):
+    mocker.patch.object(process_join_data, "read_from_file", return_value=stub_data)
+    render_template_mock = mocker.patch.object(
+        process_join_data, "render_template", return_value=stub_data)
+    context = {"stub_name": "stub_value"}
+    app = process_join_data.App(mock.Mock(), template_context=context)
+
+    app.run("stub-data.yaml")
+
+    render_template_mock.assert_called_once_with(stub_data, context)
+
+
 @pytest.mark.parametrize(
     "filename,expected",
     [
