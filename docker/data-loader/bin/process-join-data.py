@@ -21,6 +21,10 @@ cli_app = typer.Typer()
 @cli_app.command()
 def main(
     input_filename: str,
+    log_context: Annotated[
+        bool,
+        typer.Option(help="Log the context values. This may log out sensitive data."),
+    ] = False,
     template_context: Annotated[
         Optional[List[str]],
         typer.Option(help="Load the template context from this YAML file."),
@@ -32,17 +36,20 @@ def main(
         ),
     ] = None,
 ):
-    udm = _connect_to_udm()
+    logging.basicConfig(level=logging.INFO)
+    log.setLevel(logging.DEBUG)
+
     context = load_and_merge_contexts(template_context) if template_context else {}
+    if log_context:
+        log.debug("Merged context\n%s", yaml.safe_dump(context))
+
+    udm = _connect_to_udm()
     app = App(udm, template_context=context, template_extension=template_extension)
     app.run(input_filename)
 
 
 class App:
     def __init__(self, udm, template_context=None, template_extension=None):
-        logging.basicConfig(level=logging.INFO)
-        log.setLevel(logging.DEBUG)
-
         self.udm = udm
         self.template_context = template_context or {}
         self.template_extension = template_extension
