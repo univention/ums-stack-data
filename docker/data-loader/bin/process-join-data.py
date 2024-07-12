@@ -201,7 +201,12 @@ def load_context(filename):
 
 
 def deep_merge(target, source):
-    target.update(source)
+    for key, value in source.items():
+        if isinstance(value, dict):
+            sub_target = target.setdefault(key, {})
+            deep_merge(sub_target, value)
+        else:
+            target[key] = value
     return target
 
 
