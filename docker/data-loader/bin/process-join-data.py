@@ -201,7 +201,8 @@ def load_context(filename):
 
 
 def deep_merge(target, source):
-    return target.update(source)
+    target.update(source)
+    return target
 
 
 def _connect_to_udm():
