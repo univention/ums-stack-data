@@ -4,7 +4,6 @@
 
 
 import logging
-import os
 from typing import Annotated, List, Optional
 
 import typer
@@ -21,6 +20,27 @@ cli_app = typer.Typer()
 @cli_app.command()
 def main(
     input_filename: str,
+    udm_api_url: Annotated[
+        str,
+        typer.Option(
+            envvar="UDM_API_URL",
+            help="URL to the UDM Rest API",
+        ),
+    ],
+    udm_api_user: Annotated[
+        str,
+        typer.Option(
+            envvar="UDM_API_USER",
+            help="Username to use when connecting to the UDM Rest API",
+        ),
+    ],
+    udm_api_password_file: Annotated[
+        str,
+        typer.Option(
+            envvar="UDM_API_PASSWORD_FILE",
+            help="File which contains the password to use when connecting to the UDM Rest API",
+        ),
+    ],
     log_context: Annotated[
         bool,
         typer.Option(help="Log the context values. This may log out sensitive data."),
@@ -43,7 +63,7 @@ def main(
     if log_context:
         log.debug("Merged context\n%s", yaml.safe_dump(context))
 
-    udm = _connect_to_udm()
+    udm = _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file)
     app = App(udm, template_context=context, template_extension=template_extension)
     app.run(input_filename)
 
@@ -217,12 +237,9 @@ def deep_merge(target, source):
     return target
 
 
-def _connect_to_udm():
-    udm_api_url = os.environ["UDM_API_URL"]
+def _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file):
     log.info("Connecting to UDM API at URL %s", udm_api_url)
-    udm_api_user = os.environ["UDM_API_USER"]
-    with open(os.environ["UDM_API_PASSWORD_FILE"], "r") as password_file:
-        udm_api_password = password_file.read()
+    udm_api_password = read_from_file(udm_api_password_file)
     udm = UDM.http(udm_api_url, udm_api_user, udm_api_password)
     return udm
 
