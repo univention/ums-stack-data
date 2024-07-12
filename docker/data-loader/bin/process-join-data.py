@@ -21,8 +21,16 @@ cli_app = typer.Typer()
 @cli_app.command()
 def main(
     input_filename: str,
-    template_context: Annotated[Optional[List[str]], typer.Option(help="Load the template context from this YAML file.")] = None,
-    template_extension: Annotated[Optional[str], typer.Option(help="Restrict template processing to a specific filename extension")] = None,
+    template_context: Annotated[
+        Optional[List[str]],
+        typer.Option(help="Load the template context from this YAML file."),
+    ] = None,
+    template_extension: Annotated[
+        Optional[str],
+        typer.Option(
+            help="Restrict template processing to a specific filename extension",
+        ),
+    ] = None,
 ):
     udm = _connect_to_udm()
     context = load_and_merge_contexts(template_context) if template_context else {}

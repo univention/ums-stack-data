@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2024 Univention GmbH
+
 import importlib.util
 import os
 import os.path
@@ -26,7 +29,8 @@ def stub_data():
     One item of data to process.
     """
 
-    content = textwrap.dedent("""
+    content = textwrap.dedent(
+        """
         ---
         action: create
         module: portals/entry
@@ -46,5 +50,6 @@ def stub_data():
               - '#/selfservice/passwordchange'
           linkTarget: samewindow
           name: self-service-password-change
-    """)
+    """,  # noqa: E501
+    )
     return content
