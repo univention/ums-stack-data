@@ -38,7 +38,7 @@ def main(
         str,
         typer.Option(
             envvar="UDM_API_PASSWORD_FILE",
-            help="File which contains the password to use when connecting to the UDM Rest API",
+            help="File containing the password to connect to the UDM Rest API",
         ),
     ],
     log_context: Annotated[
