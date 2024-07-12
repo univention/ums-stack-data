@@ -5,6 +5,7 @@ from unittest import mock
 
 import pytest
 import yaml
+from jinja2.exceptions import UndefinedError
 
 
 @pytest.fixture
@@ -45,6 +46,14 @@ def test_render_template_replaces_values(process_join_data):
     result = process_join_data.render_template(content, context)
 
     assert result == "stub_value"
+
+
+def test_render_template_fails_due_to_missing_variable(process_join_data):
+    context = {}
+    content = "{{ stub_name }}"
+
+    with pytest.raises(UndefinedError):
+        process_join_data.render_template(content, context)
 
 
 def test_load_and_merge_contexts_uses_deep_merge(process_join_data, mocker):
