@@ -38,7 +38,7 @@ container-generate-sbom:
   parallel:
     matrix: *build-matrix
 
-test-data-loader:
+test-data-loader-unittests:
   stage: "test"
   image: "${CI_REGISTRY_IMAGE}/data-loader-test-runner:${RELEASE_VERSION}"
   rules:
@@ -48,6 +48,16 @@ test-data-loader:
   script:
     - cd docker/data-loader
     - pytest
+
+test-data-loader-container:
+  stage: "test"
+  image: "${CI_REGISTRY_IMAGE}/data-loader:${RELEASE_VERSION}"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: "never"
+    - when: "on_success"
+  script:
+    - process-join-data.py --help
 
 push-image-external:
   parallel:
