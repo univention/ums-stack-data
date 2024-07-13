@@ -6,7 +6,7 @@ ARG BASE_IMAGE=gitregistry.knut.univention.de/univention/customers/dataport/upx/
 
 
 # hadolint ignore=DL3006
-FROM ${BASE_IMAGE} as test
+FROM ${BASE_IMAGE} as base
 
 # hadolint ignore=DL3008
 RUN apt-get --assume-yes --verbose-versions --no-install-recommends install \
@@ -17,6 +17,9 @@ WORKDIR /src
 
 COPY Pipfile Pipfile.lock ./
 
+
+FROM base as test
+
 RUN pipenv sync --dev --system \
     && rm -r ~/.cache
 
@@ -26,7 +29,10 @@ CMD ["pytest"]
 
 
 # hadolint ignore=DL3006
-FROM ${BASE_IMAGE} as final
+FROM base as final
+
+RUN pipenv sync --system \
+    && rm -r ~/.cache
 
 COPY bin/* /usr/local/bin/
 
