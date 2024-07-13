@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pytest = "*"
-pytest-mock = "*"
 jinja2 = "*"
 pyyaml = "*"
 typer = "*"
 
 [dev-packages]
 pdbpp = "*"
+pytest = "*"
+pytest-mock = "*"
