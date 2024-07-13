@@ -74,6 +74,10 @@ spec:
           - name: "data"
             mountPath: "/join-data"
             readOnly: true
+          - name: context-config
+            # TODO: where should we mount the context?
+            mountPath: /app/context
+            readOnly: true
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       volumes:
@@ -90,5 +94,8 @@ spec:
         configMap:
           {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
           name: {{ default $defaultConfigMapName .Values.stackDataUms.dataConfigMapName | quote }}
+      - name: "context-config"
+        secret:
+          secretName: "{{ include "common.names.fullname" . }}-context"
 
 ...
