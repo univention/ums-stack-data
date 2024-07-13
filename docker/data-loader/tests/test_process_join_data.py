@@ -1,32 +1,109 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-import importlib.util
-import os
-import os.path
 from unittest import mock
 
 import pytest
-
-
-@pytest.fixture
-def process_join_data():
-    """Provide "process-join-data.py" as a module."""
-    module_name = "process_join_data"
-    module_path = "./bin/process-join-data.py"
-    spec = importlib.util.spec_from_file_location(
-        module_name,
-        os.path.join(module_path),
-    )
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+import yaml
+from jinja2.exceptions import UndefinedError
 
 
 @pytest.fixture
 def app(process_join_data):
     mock_udm = mock.Mock()
     return process_join_data.App(mock_udm)
+
+
+def test_app_uses_template_extension(process_join_data, mocker, stub_data):
+    mocker.patch.object(process_join_data, "read_from_file", return_value=stub_data)
+    is_template_mock = mocker.patch.object(process_join_data, "is_template")
+    app = process_join_data.App(mock.Mock(), template_extension=".stub")
+
+    app.run("stub-data.yaml")
+
+    is_template_mock.assert_called_once_with("stub-data.yaml", extension=".stub")
+
+
+def test_app_renders_template_with_context(process_join_data, mocker, stub_data):
+    mocker.patch.object(process_join_data, "read_from_file", return_value=stub_data)
+    render_template_mock = mocker.patch.object(
+        process_join_data,
+        "render_template",
+        return_value=stub_data,
+    )
+    context = {"stub_name": "stub_value"}
+    app = process_join_data.App(mock.Mock(), template_context=context)
+
+    app.run("stub-data.yaml")
+
+    render_template_mock.assert_called_once_with(stub_data, context)
+
+
+def test_render_template_replaces_values(process_join_data):
+    context = {"stub_name": "stub_value"}
+    content = "{{ stub_name }}"
+
+    result = process_join_data.render_template(content, context)
+
+    assert result == "stub_value"
+
+
+def test_render_template_fails_due_to_missing_variable(process_join_data):
+    context = {}
+    content = "{{ stub_name }}"
+
+    with pytest.raises(UndefinedError):
+        process_join_data.render_template(content, context)
+
+
+def test_load_and_merge_contexts_uses_deep_merge(process_join_data, mocker):
+    stub_context1 = {"stub_name1": "stub_value1"}
+    stub_context2 = {"stub_name2": "stub_value2"}
+    mocker.patch.object(
+        process_join_data,
+        "load_context",
+        side_effect=[stub_context1, stub_context2],
+    )
+    merge_context_mock = mocker.patch.object(process_join_data, "deep_merge")
+
+    process_join_data.load_and_merge_contexts(["stub1.yaml", "stub2.yaml"])
+
+    merge_context_mock.assert_has_calls(
+        [
+            mock.call(mock.ANY, stub_context1),
+            mock.call(mock.ANY, stub_context2),
+        ],
+    )
+
+
+@pytest.mark.parametrize(
+    "file_content",
+    [
+        "stub_name: stub_value",
+        "stub_name2: stub_value2",
+    ],
+)
+def test_load_context_reads_file(process_join_data, mocker, file_content):
+    mock_open = mock.mock_open(read_data=file_content)
+    mocker.patch.object(process_join_data, "open", mock_open)
+
+    result = process_join_data.load_context("stub_context.yaml")
+
+    mock_open.assert_called_once_with("stub_context.yaml", "r")
+    expected_context = yaml.safe_load(file_content)
+    assert result == expected_context
+
+
+@pytest.mark.parametrize(
+    "filename,expected",
+    [
+        ("my-join-data.yaml", True),
+        ("my-join-data.yaml.j2", True),
+    ],
+)
+def test_is_template_is_by_default_always_true(filename, expected, process_join_data):
+    result = process_join_data.is_template(filename)
+    assert result == expected
 
 
 @pytest.mark.parametrize(
@@ -36,8 +113,12 @@ def app(process_join_data):
         ("my-join-data.yaml.j2", True),
     ],
 )
-def test_is_template(filename, expected, process_join_data):
-    result = process_join_data.is_template(filename)
+def test_is_template_can_be_limited_to_filename_extension(
+    filename,
+    expected,
+    process_join_data,
+):
+    result = process_join_data.is_template(filename, extension="j2")
     assert result == expected
 
 

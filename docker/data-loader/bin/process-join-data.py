@@ -4,9 +4,9 @@
 
 
 import logging
-import os
-import sys
+from typing import Annotated, List, Optional
 
+import typer
 import yaml
 from jinja2 import StrictUndefined, Template
 from univention.admin.rest.client import UDM, NotFound, UnprocessableEntity
@@ -14,26 +14,73 @@ from univention.admin.rest.client import UDM, NotFound, UnprocessableEntity
 log = logging.getLogger("app")
 
 
+cli_app = typer.Typer()
+
+
+@cli_app.command()
+def main(
+    input_filename: str,
+    udm_api_url: Annotated[
+        str,
+        typer.Option(
+            envvar="UDM_API_URL",
+            help="URL to the UDM Rest API",
+        ),
+    ],
+    udm_api_user: Annotated[
+        str,
+        typer.Option(
+            envvar="UDM_API_USER",
+            help="Username to use when connecting to the UDM Rest API",
+        ),
+    ],
+    udm_api_password_file: Annotated[
+        str,
+        typer.Option(
+            envvar="UDM_API_PASSWORD_FILE",
+            help="File containing the password to connect to the UDM Rest API",
+        ),
+    ],
+    log_context: Annotated[
+        bool,
+        typer.Option(help="Log the context values. This may log out sensitive data."),
+    ] = False,
+    template_context: Annotated[
+        Optional[List[str]],
+        typer.Option(help="Load the template context from this YAML file."),
+    ] = None,
+    template_extension: Annotated[
+        Optional[str],
+        typer.Option(
+            help="Restrict template processing to a specific filename extension",
+        ),
+    ] = None,
+):
+    logging.basicConfig(level=logging.INFO)
+    log.setLevel(logging.DEBUG)
+
+    context = load_and_merge_contexts(template_context) if template_context else {}
+    if log_context:
+        log.debug("Merged context\n%s", yaml.safe_dump(context))
+
+    udm = _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file)
+    app = App(udm, template_context=context, template_extension=template_extension)
+    app.run(input_filename)
+
+
 class App:
-    def __init__(self, udm):
-        logging.basicConfig(level=logging.INFO)
-        log.setLevel(logging.DEBUG)
-
+    def __init__(self, udm, template_context=None, template_extension=None):
         self.udm = udm
+        self.template_context = template_context or {}
+        self.template_extension = template_extension
 
-    def run(self):
-        input_filename = sys.argv[1]
+    def run(self, input_filename):
         log.info("Processing file %s", input_filename)
 
-        with open(input_filename, "r") as input_file:
-            content = input_file.read()
-
-        if is_template(input_filename):
+        content = read_from_file(input_filename)
+        if is_template(input_filename, extension=self.template_extension):
             log.info("Rendering file as Jinja2 template")
-            context = {
-                "ldap_base": self.udm.get_ldap_base(),
-            }
-            content = render_template(content, context)
+            content = render_template(content, self.template_context)
 
         actions = list(yaml.safe_load_all(content))
 
@@ -149,8 +196,16 @@ class App:
         return needs_save
 
 
-def is_template(filename):
-    return filename.endswith(".j2")
+def read_from_file(filename):
+    with open(filename, "r") as input_file:
+        content = input_file.read()
+    return content
+
+
+def is_template(filename, extension=None):
+    if extension:
+        return filename.endswith(f".{extension}")
+    return True
 
 
 def render_template(content, context):
@@ -158,17 +213,36 @@ def render_template(content, context):
     return template.render(context)
 
 
-def _connect_to_udm():
-    udm_api_url = os.environ["UDM_API_URL"]
+def load_and_merge_contexts(filenames):
+    contexts = [load_context(filename) for filename in filenames]
+    result = {}
+    for context in contexts:
+        deep_merge(result, context)
+    return result
+
+
+def load_context(filename):
+    log.info("Reading context from file %s", filename)
+    content = read_from_file(filename)
+    return yaml.safe_load(content)
+
+
+def deep_merge(target, source):
+    for key, value in source.items():
+        if isinstance(value, dict):
+            sub_target = target.setdefault(key, {})
+            deep_merge(sub_target, value)
+        else:
+            target[key] = value
+    return target
+
+
+def _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file):
     log.info("Connecting to UDM API at URL %s", udm_api_url)
-    udm_api_user = os.environ["UDM_API_USER"]
-    with open(os.environ["UDM_API_PASSWORD_FILE"], "r") as password_file:
-        udm_api_password = password_file.read()
+    udm_api_password = read_from_file(udm_api_password_file)
     udm = UDM.http(udm_api_url, udm_api_user, udm_api_password)
     return udm
 
 
 if __name__ == "__main__":
-    udm = _connect_to_udm()
-    app = App(udm)
-    app.run()
+    cli_app()
