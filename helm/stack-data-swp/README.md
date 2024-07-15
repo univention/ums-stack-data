@@ -214,8 +214,8 @@ true
   "portalGroupwareLinkBase": "https://webmail.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalManagementKnowledgeLinkBase": "https://wiki.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalManagementProjectLinkBase": "https://project.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalRealtimeCollaborationLinkBase": "https://ucc.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalRealtimeVideoconferenceLinkBase": "https://jitsi.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalRealtimeCollaborationLinkBase": "https://chat.{{ include \"stack-data-swp.externalDomainName\" . }}",
+  "portalRealtimeVideoconferenceLinkBase": "https://meet.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalTitleDE": "Souveräner Arbeitsplatz",
   "portalTitleEN": "Sovereign Workplace",
   "portaltileGroupFileshare": [
