@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.52.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.52.0...v0.52.1) (2024-07-16)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** wrong portal title ([08074b3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/08074b3b387ac8fd45e6d3c340f3903f8f73b429))
+* **stack-data-swp:** wrong tile links ([ec2ad42](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/ec2ad42034c52e95038d7521914040537e1bbd91))
+
 ## [0.52.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.51.1...v0.52.0) (2024-07-05)
 
 
