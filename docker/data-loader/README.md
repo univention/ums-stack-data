@@ -24,7 +24,8 @@ The utility script `process-join-data.py` is then used to apply those `YAML`
 documents to the running `udm-rest-api`. The utility script will perform the
 following two steps:
 
-- Load context and replace template variables in the files.
+- Load context and replace template variables in the files. Suggested is to
+  mount the context files into `/template-context`.
 
 - Process the result against the running `udm-rest-api`.
 

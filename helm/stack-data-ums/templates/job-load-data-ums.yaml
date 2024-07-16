@@ -75,8 +75,7 @@ spec:
             mountPath: "/join-data"
             readOnly: true
           - name: context-config
-            # TODO: where should we mount the context?
-            mountPath: /app/context
+            mountPath: /template-context
             readOnly: true
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
