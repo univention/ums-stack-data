@@ -39,5 +39,5 @@ COPY bin/* /usr/local/bin/
 WORKDIR /
 RUN mkdir /join-data
 
-COPY process-all.sh /
-CMD ["/process-all.sh"]
+COPY process-all.sh /usr/local/bin
+ENTRYPOINT ["/usr/local/bin/process-all.sh"]
