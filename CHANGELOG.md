@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.52.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.52.1...v0.52.2) (2024-07-16)
+
+
+### Bug Fixes
+
+* make UCR umc/web/title available as Helm value ([4bbca4e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/4bbca4e6b77a7a7872c10cc7ff92c142b953b7ed))
+
 ## [0.52.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.52.0...v0.52.1) (2024-07-16)
 
 
