@@ -216,8 +216,8 @@ true
   "portalManagementProjectLinkBase": "https://project.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalRealtimeCollaborationLinkBase": "https://chat.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalRealtimeVideoconferenceLinkBase": "https://meet.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalTitleDE": "Souveräner Arbeitsplatz",
-  "portalTitleEN": "Sovereign Workplace",
+  "portalTitleDE": "openDesk Portal",
+  "portalTitleEN": "openDesk Portal",
   "portaltileGroupFileshare": [
     "cn=managed-by-attribute-Fileshare,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
@@ -297,7 +297,7 @@ null
 			<td>stackDataContext.portalTitleDE</td>
 			<td>string</td>
 			<td><pre lang="json">
-"Souveräner Arbeitsplatz"
+"openDesk Portal"
 </pre>
 </td>
 			<td>Portal title (Deutsch)</td>
@@ -306,7 +306,7 @@ null
 			<td>stackDataContext.portalTitleEN</td>
 			<td>string</td>
 			<td><pre lang="json">
-"Sovereign Workplace"
+"openDesk Portal"
 </pre>
 </td>
 			<td>Portal title (English)</td>
