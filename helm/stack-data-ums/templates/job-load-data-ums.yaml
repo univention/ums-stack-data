@@ -59,6 +59,9 @@ spec:
           - process-all.sh
           - --template-context
           - /template-context/context.yaml
+          {{- if .Values.stackDataUms.logContext }}
+          - --log-context
+          {{- end }}
         {{- with .Values.image }}
         image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: "{{ .pullPolicy }}"

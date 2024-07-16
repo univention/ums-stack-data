@@ -23,6 +23,12 @@ stackDataUms:
   # -- Load data which is useful during development (opt-in)
   loadDevData: false
 
+  # -- Enables logging of the template context used to render the template
+  # files.
+  #
+  # Be aware that this may log sensitive information.
+  logContext: false
+
   # -- Wait for the udm-rest-api to be available
   dependencyUdmApiWait: true
 

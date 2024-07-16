@@ -445,6 +445,15 @@ false
 			<td>Load data which is useful during development (opt-in)</td>
 		</tr>
 		<tr>
+			<td>stackDataUms.logContext</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td>Enables logging of the template context used to render the template files.  Be aware that this may log sensitive information.</td>
+		</tr>
+		<tr>
 			<td>stackDataUms.udmApiPassword</td>
 			<td>string</td>
 			<td><pre lang="json">
