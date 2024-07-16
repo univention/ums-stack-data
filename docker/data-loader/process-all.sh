@@ -11,5 +11,5 @@ ls -l /join-data/
 for data_file in $(find /join-data -type f | sort)
 do
     echo
-    process-join-data.py "${data_file}"
+    process-join-data.py "$@" "${data_file}"
 done

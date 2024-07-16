@@ -55,6 +55,10 @@ spec:
       {{ end }}
       containers:
       - name: "load-data-ums"
+        command:
+          - process-all.sh
+          - --template-context
+          - /template-context/context.yaml
         {{- with .Values.image }}
         image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: "{{ .pullPolicy }}"
