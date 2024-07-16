@@ -26,11 +26,20 @@ data:
 {{ tpl ($.top.Files.Get $path) $.top | indent 4 }}
 {{- end }}
 
+{{/* Transitioning to the templating at run-time. "default-v2" contains
+     the already transitioned templates.
+  */}}
+{{- range $path, $_ := $.top.Files.Glob "data-files/default-v2/*.yaml" }}
+  {{ base $path }}: |-
+    # Source: {{ $path }}
+{{ $.top.Files.Get $path | indent 4 }}
+{{- end }}
+
 {{- if .Values.stackDataUms.loadDevData }}
 {{- range $path, $_ := $.top.Files.Glob "data-files/dev/*.yaml" }}
   {{ base $path }}: |-
     # Source: {{ $path }}
-{{ tpl ($.top.Files.Get $path) $.top | indent 4 }}
+{{ $.top.Files.Get $path | indent 4 }}
 {{- end }}
 {{- end }}
 
