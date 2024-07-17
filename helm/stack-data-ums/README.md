@@ -490,6 +490,218 @@ false
 			<td>The username to use to connect to the UDM Rest API</td>
 		</tr>
 		<tr>
+			<td>templateContext</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "domainName": "{{ include \"stack-data-ums.domainName\" . }}",
+  "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
+  "initialPasswordAdministrator": "{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}",
+  "initialPasswordSysIdpUser": "{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}",
+  "installUmcPolicies": "{{ .Values.stackDataContext.installUmcPolicies }}",
+  "keycloakFqdn": "{{ include \"stack-data-ums.keycloakFqdn\" . }}",
+  "ldapAdminDn": "{{ include \"stack-data-ums.ldapAdminDn\" . }}",
+  "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
+  "ldapDomainName": "{{ include \"stack-data-ums.ldapDomainName\" . }}",
+  "ldapHost": "{{ include \"stack-data-ums.ldapHost\" . }}",
+  "ldapMasterHost": "{{ include \"stack-data-ums.ldapMasterHost\" . }}",
+  "ldapMasterPort": "{{ include \"stack-data-ums.ldapMasterPort\" . }}",
+  "ldapPort": "{{ include \"stack-data-ums.ldapPort\" . }}",
+  "ldapUri": "{{ include \"stack-data-ums.ldapUri\" . }}",
+  "portalAuthMode": "{{ include \"stack-data-ums.portalAuthMode\" . }}",
+  "portalFqdn": "{{ include \"stack-data-ums.portalFqdn\" . }}",
+  "samlMetadataUrl": "{{ include \"stack-data-ums.samlMetadataUrl\" . }}",
+  "samlMetadataUrlInternal": "{{ include \"stack-data-ums.samlMetadataUrlInternal\" . }}",
+  "samlServiceProviders": "{{ include \"stack-data-ums.samlServiceProviders\" . }}",
+  "subDomainsKeycloak": "{{ include \"stack-data-ums.subDomains.keycloak\" . }}",
+  "subDomainsPortal": "{{ include \"stack-data-ums.subDomains.portal\" . }}",
+  "udmApiCredentialSecretKey": "{{ include \"stack-data-ums.udmApi.credentialSecret.key\" . }}",
+  "udmApiCredentialSecretName": "{{ include \"stack-data-ums.udmApi.credentialSecret.name\" . }}",
+  "udmApiUrl": "{{ include \"stack-data-ums.udmApiUrl\" . }}",
+  "umcMemcachedHostname": "{{ include \"stack-data-ums.umcMemcachedHostname\" . }}",
+  "umcMemcachedUsername": "{{ include \"stack-data-ums.umcMemcachedUsername\" . }}",
+  "umcPostgresqlDatabase": "{{ include \"stack-data-ums.umcPostgresqlDatabase\" . }}",
+  "umcPostgresqlHostname": "{{ include \"stack-data-ums.umcPostgresqlHostname\" . }}",
+  "umcPostgresqlPort": "{{ include \"stack-data-ums.umcPostgresqlPort\" . }}",
+  "umcPostgresqlUsername": "{{ include \"stack-data-ums.umcPostgresqlUsername\" . }}",
+  "umcSamlSchemes": "{{ include \"stack-data-ums.umcSamlSchemes\" . }}"
+}
+</pre>
+</td>
+			<td>Context used to render the data file templates in the data loader.</td>
+		</tr>
+		<tr>
+			<td>templateContext.domainName</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.domainName\" . }}"
+</pre>
+</td>
+			<td>Domain name of the instance. Chart defaults to `univention-organization.intranet` Example: `"example.org"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.externalMailDomain</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.externalMailDomain\" . }}"
+</pre>
+</td>
+			<td>Interim. The external mail domain in use. Currently required to create the Administrator account. Chart defaults to `univention-organization.test`.</td>
+		</tr>
+		<tr>
+			<td>templateContext.initialPasswordAdministrator</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}"
+</pre>
+</td>
+			<td>The initial password of the user "Administrator".</td>
+		</tr>
+		<tr>
+			<td>templateContext.initialPasswordSysIdpUser</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}"
+</pre>
+</td>
+			<td>The initial password of the user "sys-idp-user.</td>
+		</tr>
+		<tr>
+			<td>templateContext.installUmcPolicies</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ .Values.stackDataContext.installUmcPolicies }}"
+</pre>
+</td>
+			<td>This parameter allows to skip the installation of the default UMC policies if set to "false".</td>
+		</tr>
+		<tr>
+			<td>templateContext.ldapBaseDn</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+</pre>
+</td>
+			<td>Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`. Example: `"dc=example,dc=org"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.ldapHost</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.ldapHost\" . }}"
+</pre>
+</td>
+			<td>Hostname of the LDAP server. Chart defaults to `ldap-server`. Example: `"ucs-1234.univention.intranet"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.ldapMasterHost</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.ldapMasterHost\" . }}"
+</pre>
+</td>
+			<td>Hostname of the primary LDAP server. Chart defaults to `ldap-server`. Example: `"ucs-1234.univention.intranet"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.ldapMasterPort</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.ldapMasterPort\" . }}"
+</pre>
+</td>
+			<td>Port to connect to the primary LDAP server. Chart defaults to `389`. Example: `389`</td>
+		</tr>
+		<tr>
+			<td>templateContext.ldapPort</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.ldapPort\" . }}"
+</pre>
+</td>
+			<td>Port to connect to the LDAP server. Chart defaults to `389`. Example: `389`</td>
+		</tr>
+		<tr>
+			<td>templateContext.portalAuthMode</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.portalAuthMode\" . }}"
+</pre>
+</td>
+			<td>The authentication method to use for the portal. Default is `saml`.</td>
+		</tr>
+		<tr>
+			<td>templateContext.samlMetadataUrl</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.samlMetadataUrl\" . }}"
+</pre>
+</td>
+			<td>SAML Identity Provider metadata URL (as visible from the user/internet). Example: `"https://id.souvap.example.org/realms/ucs/protocol/saml/descriptor"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.samlMetadataUrlInternal</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.samlMetadataUrlInternal\" . }}"
+</pre>
+</td>
+			<td>SAML Identity Provider metadata URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.umcMemcachedHostname</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.umcMemcachedHostname\" . }}"
+</pre>
+</td>
+			<td>Hostname to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/socket`. Chart default is `umc-server-memcached`.</td>
+		</tr>
+		<tr>
+			<td>templateContext.umcMemcachedUsername</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.umcMemcachedUsername\" . }}"
+</pre>
+</td>
+			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`. UCR has no default.</td>
+		</tr>
+		<tr>
+			<td>templateContext.umcPostgresqlHostname</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.umcPostgresqlHostname\" . }}"
+</pre>
+</td>
+			<td>Hostname to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/hostname`. UCR default is `localhost`. Chart default is `umc-server-postgresql`.</td>
+		</tr>
+		<tr>
+			<td>templateContext.umcPostgresqlPort</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.umcPostgresqlPort\" . }}"
+</pre>
+</td>
+			<td>Port to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/port`. UCR default is `5432`. Chart default is `5432`.</td>
+		</tr>
+		<tr>
+			<td>templateContext.umcPostgresqlUsername</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.umcPostgresqlUsername\" . }}"
+</pre>
+</td>
+			<td>Username to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/username`. UCR default is `selfservice`. Chart default is `selfservice`.</td>
+		</tr>
+		<tr>
+			<td>templateContext.umcSamlSchemes</td>
+			<td>string</td>
+			<td><pre lang="json">
+"{{ include \"stack-data-ums.umcSamlSchemes\" . }}"
+</pre>
+</td>
+			<td>Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`. Example: `"https, http"`</td>
+		</tr>
+		<tr>
 			<td>tolerations</td>
 			<td>list</td>
 			<td><pre lang="json">
