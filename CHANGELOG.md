@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.53.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.52.2...v0.53.0) (2024-07-17)
+
+
+### Features
+
+* Add jinja2 and PyYAML as dependencies ([aadf029](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/aadf0296d44b5ddfc17cbb3f1c84758d83b0bf1c))
+* Add support for UDM connection configuration into CLI ([c8a6634](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c8a663457e41b5557b2ed18a9ed86cd47e660b5f))
+* Add typer into the Python environment ([e4edd83](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e4edd83c9035e59e43d4758547b8a2465cac67ae))
+* Allow to configure template extension ([b49852d](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b49852dae96da7cbc0410bfce98e983a8155c804))
+* Allow to enable logging of the merged context ([2e1a648](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2e1a6485941e18016211bc56908165dffb8156ca))
+* Allow to pass a template context into the App object ([33873de](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/33873de36ef9d801053b38b61f1d493f8fee20c7))
+* Implement deep merging of context values ([9fa4727](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/9fa47274fb8369a945477f32cb15381603ca7358))
+* Load template context from file ([8374f44](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/8374f4450c4d3f73b7cd183dae4bea72ae49aecf))
+* Process all files through the template engine by default ([5fd6b2d](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/5fd6b2d149dd3e977986b9780d76c221b7224883))
+* Run app via typer ([62d5c4f](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/62d5c4f4a524448a718233a0b73de686fd326a54))
+* Update Python dependencies ([881e9f6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/881e9f666413124b47b7630b3b5ec7b5e151790d))
+* Use pipenv out of the Debian packages ([fc11ba5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/fc11ba536da5a9ac16bfd3da43ce2633de9b8852))
+
+
+### Bug Fixes
+
+* Accept the filename to process as cli argument ([199917d](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/199917d1da0aaf2b502cbc49b0aa700e06294b7f))
+* Install Python dependencies into final image ([0e68c35](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/0e68c351d0c20cfce3400e59112ffc9b3017dacd))
+* Move pytest dependencies into dev section ([4f697d9](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/4f697d96212442fd539b154c1f08ce07139ebd73))
+* Simple merge of context values ([5c711b7](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/5c711b7c0dfec8d4a1b98ebd1a1085bf5516a836))
+
 ## [0.52.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.52.1...v0.52.2) (2024-07-16)
 
 
