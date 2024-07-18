@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.55.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.54.0...v0.55.0) (2024-07-18)
+
+
+### Features
+
+* Add configuration option "logTemplate" into Helm chart ([88b6f48](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/88b6f48951c6182fa2653a6a4238e08af3d51b2d))
+* Allow to log the rendered template in data-loader ([4f2c45e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/4f2c45e4ca42f66f9b9e6a1d437f1320ebab48fe))
+
+
+### Bug Fixes
+
+* Apply "global.imageRegistry" also in initContainers ([eea7d94](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/eea7d94562319d35fca3d69174233c6b48664036))
+* Correct handling of global.imagePullSecrets ([1ad5286](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/1ad5286cd0fb653ee2888a8505163ccd48511664))
+* Correct handling of image registry ([c1bee3b](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c1bee3ba7aaf3cf506baf1851479f8653f4226e8))
+* Correctly apply "global.imagePullPolicy" ([d0187d3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/d0187d321391ee0d3ffecaf48e3db6970ea5be7b))
+
 ## [0.54.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.53.0...v0.54.0) (2024-07-18)
 
 
