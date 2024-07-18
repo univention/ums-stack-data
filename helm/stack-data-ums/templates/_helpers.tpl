@@ -24,9 +24,7 @@ If the value .Values.global.nubusDeployment equates to true, the defined templat
 
 {{- define "stack-data-ums.ldapUri" -}}
 {{- if .Values.global.nubusDeployment -}}
-{{- $protocol := include "nubusTemplates.ldap.protocol" . -}}
-{{- $serviceName := include "nubusTemplates.ldap.serviceName" . | default (printf "%s-ldap-server" .Release.Name) -}}
-{{- printf "%s://%s" $protocol $serviceName -}}
+{{- include "nubusTemplates.ldapServer.ldap.connection.uri" . -}}
 {{- end -}}
 {{- end -}}
 
