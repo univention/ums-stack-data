@@ -11,15 +11,17 @@ If the value .Values.global.nubusDeployment equates to true, the defined templat
 {{- define "stack-data-ums.initialPasswordAdministrator" -}}
 {{- if .Values.global.nubusDeployment -}}
 {{- include "nubusTemplates.credentials.ldap.users.admin.password" . -}}
-{{- end -}}
+{{- else -}}
 {{- required "stackDataContext.initialPasswordAdministrator is missing" .Values.stackDataContext.initialPasswordAdministrator -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "stack-data-ums.initialPasswordSysIdpUser" -}}
 {{- if .Values.global.nubusDeployment -}}
 {{- include "nubusTemplates.credentials.ldap.users.idp.password" . -}}
-{{- end -}}
+{{- else -}}
 {{- required "stackDataContext.initialPasswordSysIdpUser is missing" .Values.stackDataContext.initialPasswordSysIdpUser -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "stack-data-ums.ldapUri" -}}
