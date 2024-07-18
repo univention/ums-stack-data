@@ -97,6 +97,33 @@ helm uninstall stack-data-udm
 			<td></td>
 		</tr>
 		<tr>
+			<td>global.imagePullPolicy</td>
+			<td>string</td>
+			<td><pre lang="json">
+"IfNotPresent"
+</pre>
+</td>
+			<td>Define an ImagePullPolicy.  Ref.: https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy </td>
+		</tr>
+		<tr>
+			<td>global.imagePullSecrets</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Credentials to fetch images from private registry. Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/  imagePullSecrets:   - "docker-registry"</td>
+		</tr>
+		<tr>
+			<td>global.imageRegistry</td>
+			<td>string</td>
+			<td><pre lang="json">
+"artifacts.software-univention.de"
+</pre>
+</td>
+			<td>Container registry address.</td>
+		</tr>
+		<tr>
 			<td>global.nubusDeployment</td>
 			<td>bool</td>
 			<td><pre lang="json">
@@ -110,8 +137,8 @@ false
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "imagePullPolicy": "IfNotPreset",
-  "registry": "artifacts.software-univention.de",
+  "imagePullPolicy": "",
+  "registry": "",
   "repository": "nubus-dev/images/data-loader",
   "sha256": null,
   "tag": "latest"
