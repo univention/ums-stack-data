@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.54.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.53.0...v0.54.0) (2024-07-18)
+
+
+### Features
+
+* Allow to enable logging of the template context ([0a81508](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/0a815082d6b832aa6fddcc3fb51c0200ccf30780))
+* Define the template context via values ([b5f5d52](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b5f5d5227e3827a07cd9d41f3d4fbe0e84e48eb0))
+* fixup - Mount into "/template-context" ([2af1281](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2af12810ae075549b26e580fb2c455825bcd8c6c))
+* Process templates with context from secret ([163ab9e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/163ab9ecb69180f5ee7977c24a1058edd817fbc0))
+* **stack-data-ums:** context as secret ([acacd97](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/acacd97ca6f0d4352711f76c2e339244fefd9a2b))
+* Support files templated at runtime from "default-v2" folder ([713e719](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/713e7194a8339b5cfe6d3c5a9712c146b8dedd01))
+
+
+### Bug Fixes
+
+* "installUmcPolicies" always has to be present in the template context ([e079aac](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e079aac5dd77c0e4175a62058943d45d5def8b55))
+* Configure "installUmcPolicies" as boolean ([1d5cdc3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/1d5cdc3f382238f58fc947ac99a28dd6ea02ca7b))
+
 ## [0.53.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.52.2...v0.53.0) (2024-07-17)
 
 
