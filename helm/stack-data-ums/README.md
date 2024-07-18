@@ -268,7 +268,7 @@ null
 			<td>stackDataContext.installUmcPolicies</td>
 			<td>bool</td>
 			<td><pre lang="json">
-true
+false
 </pre>
 </td>
 			<td>This parameter allows to skip the installation of the default UMC policies if set to "false".</td>
@@ -498,7 +498,7 @@ false
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
   "initialPasswordAdministrator": "{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}",
   "initialPasswordSysIdpUser": "{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}",
-  "installUmcPolicies": "{{ .Values.stackDataContext.installUmcPolicies }}",
+  "installUmcPolicies": false,
   "keycloakFqdn": "{{ include \"stack-data-ums.keycloakFqdn\" . }}",
   "ldapAdminDn": "{{ include \"stack-data-ums.ldapAdminDn\" . }}",
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
@@ -568,12 +568,12 @@ false
 		</tr>
 		<tr>
 			<td>templateContext.installUmcPolicies</td>
-			<td>string</td>
+			<td>bool</td>
 			<td><pre lang="json">
-"{{ .Values.stackDataContext.installUmcPolicies }}"
+false
 </pre>
 </td>
-			<td>This parameter allows to skip the installation of the default UMC policies if set to "false".</td>
+			<td>This parameter allows to skip the installation of the default UMC policies if set to "false".  TODO: This value should by default be true for a plain Nubus deployment.</td>
 		</tr>
 		<tr>
 			<td>templateContext.ldapBaseDn</td>
