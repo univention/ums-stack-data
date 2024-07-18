@@ -26,9 +26,14 @@ spec:
         {{- end }}
     spec:
       restartPolicy: "OnFailure"
-      {{- with .Values.image.pullSecrets }}
+      {{- if or .Values.pullSecrets .Values.global.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
+        {{- range .Values.global.imagePullSecrets }}
+        - name: "{{ . }}"
+        {{- end }}
+        {{- range .Values.pullSecrets }}
+        - name: "{{ . }}"
+        {{- end }}
       {{- end }}
       {{ if .Values.stackDataUms.dependencyUdmApiWait }}
       initContainers:
