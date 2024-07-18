@@ -6,6 +6,10 @@ global:
   # -- Indicates wether this chart is part of a Nubus deployment.
   nubusDeployment: false
 
+  # -- Container registry address.
+  imageRegistry: "artifacts.software-univention.de"
+
+
 stackDataUms:
 
   # -- The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.
@@ -197,7 +201,7 @@ stackDataContext:
 
 # -- Container image configuration
 image:
-  registry: "artifacts.software-univention.de"
+  registry: ""
   repository: "nubus-dev/images/data-loader"
   imagePullPolicy: "IfNotPreset"
   tag: "latest"
