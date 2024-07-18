@@ -29,6 +29,11 @@ stackDataUms:
   # Be aware that this may log sensitive information.
   logContext: false
 
+  # -- Enables logging of the rendered templates for troubleshooting.
+  #
+  # Be aware that this may log sensitive information.
+  logTemplate: false
+
   # -- Wait for the udm-rest-api to be available
   dependencyUdmApiWait: true
 

@@ -62,6 +62,9 @@ spec:
           {{- if .Values.stackDataUms.logContext }}
           - --log-context
           {{- end }}
+          {{- if .Values.stackDataUms.logTemplate }}
+          - --log-template
+          {{- end }}
         {{- with .Values.image }}
         image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: "{{ .pullPolicy }}"

@@ -152,7 +152,11 @@ def test_allows_to_log_the_context(process_join_data, mocker, caplog):
     assert result.exit_code == 0
 
 
-def test_does_not_log_the_rendered_template_by_default(process_join_data, mocker, caplog):
+def test_does_not_log_the_rendered_template_by_default(
+    process_join_data,
+    mocker,
+    caplog,
+):
     mocker.patch.object(process_join_data, "_connect_to_udm")
     stub_context = {"stub_name": "stub_value"}
     mocker.patch.object(
