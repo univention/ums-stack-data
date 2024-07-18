@@ -134,5 +134,6 @@ def _assert_all_images_use_registry(containers, expected_registry):
 
 def _get_containers_of_job(helm, result):
     manifest = helm.get_resource(result, kind="Job")
+    init_containers = findall(manifest, "spec.template.spec.initContainers")
     containers = findall(manifest, "spec.template.spec.containers")
-    return containers
+    return init_containers + containers

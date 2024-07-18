@@ -40,7 +40,7 @@ spec:
       - name: wait-for-udm-rest-api
         command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-udm-rest-api.py"]
         {{- with .Values.image }}
-        image: "{{ .registry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
+        image: "{{ coalesce .registry $.Values.global.imageRegistry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: "{{ .pullPolicy }}"
         {{- end }}
         envFrom:
