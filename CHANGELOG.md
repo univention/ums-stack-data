@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.55.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.55.0...v0.55.1) (2024-07-18)
+
+
+### Bug Fixes
+
+* Correct template stack-data-ums.ldapUri ([d2871b2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/d2871b27247fb93516f2f413c743717dd70a95fd))
+* Correct templates around initial passwords ([f194c31](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f194c313c48b893d76629c347fecfb9abf268766))
+
 ## [0.55.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.54.0...v0.55.0) (2024-07-18)
 
 
