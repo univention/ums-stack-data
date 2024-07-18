@@ -59,6 +59,13 @@ test-data-loader-container:
   script:
     - process-join-data.py --help
 
+test-chart-unittests:
+  stage: test
+  image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0"
+  script:
+    - helm dep build helm/stack-data-ums
+    - pytest tests
+
 push-image-external:
   parallel:
     matrix: *publish-matrix
