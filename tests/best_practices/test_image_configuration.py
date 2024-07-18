@@ -39,6 +39,35 @@ def test_image_registry_overrides_global_default_registry(helm, chart_path):
     _assert_all_images_use_registry(containers, expected_registry)
 
 
+def test_global_pull_policy_is_used(helm, chart_path):
+    values = safe_load(
+        """
+        global:
+          imagePullPolicy: "stub-global-pull-policy"
+    """,
+    )
+    result = helm.helm_template(chart_path, values)
+    expected_pull_policy = "stub-global-pull-policy"
+    containers = _get_containers_of_job(helm, result)
+    _assert_all_images_use_pull_policy(containers, expected_pull_policy)
+
+
+def test_image_pull_policy_overrides_global_value(helm, chart_path):
+    values = safe_load(
+        """
+        global:
+          imagePullPolicy: "stub-global-pull-policy"
+
+        image:
+          imagePullPolicy: "stub-pull-policy"
+    """,
+    )
+    result = helm.helm_template(chart_path, values)
+    expected_pull_policy = "stub-pull-policy"
+    containers = _get_containers_of_job(helm, result)
+    _assert_all_images_use_pull_policy(containers, expected_pull_policy)
+
+
 def test_image_pull_secrets_can_be_provided(helm, chart_path):
     values = safe_load(
         """
@@ -130,6 +159,15 @@ def _assert_all_images_use_registry(containers, expected_registry):
         assert image.startswith(
             expected_registry + "/",
         ), f'Wrong registry in container "{name}"'
+
+
+def _assert_all_images_use_pull_policy(containers, expected_pull_policy):
+    for container in containers:
+        pull_policy = container["imagePullPolicy"]
+        name = container["name"]
+        assert (
+            pull_policy == expected_pull_policy
+        ), f'Wrong imagePullPolicy in container "{name}"'
 
 
 def _get_containers_of_job(helm, result):

@@ -16,6 +16,12 @@ global:
   #   - "docker-registry"
   imagePullSecrets: []
 
+  # -- Define an ImagePullPolicy.
+  #
+  # Ref.: https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
+  #
+  imagePullPolicy: "IfNotPresent"
+
 
 stackDataUms:
 
@@ -210,7 +216,7 @@ stackDataContext:
 image:
   registry: ""
   repository: "nubus-dev/images/data-loader"
-  imagePullPolicy: "IfNotPreset"
+  imagePullPolicy: ""
   tag: "latest"
 
   # -- Define image sha256 as an alternative to `tag`
