@@ -36,6 +36,16 @@ def test_user_overrides_value(helm, chart_path):
     assert context_data["ldapBaseDn"] == "dc=testsuite,dc=test"
 
 
+def test_install_umc_policies_is_bool_by_default(helm, chart_path):
+    result = helm.helm_template(chart_path)
+    context_secret = helm.get_resource(
+        result,
+        name="release-name-stack-data-ums-context",
+    )
+    context_data = _get_template_context_data(context_secret)
+    assert type(context_data["installUmcPolicies"]) == bool
+
+
 def _get_template_context_data(context_secret):
     context_yaml = context_secret["stringData"]["context.yaml"]
     context_data = safe_load(context_yaml)
