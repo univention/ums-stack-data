@@ -67,6 +67,14 @@ services:
         source: "pre-commit-cache"
         target: "/cache"
 
+  test:
+    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0
+    command: pytest --values helm/stack-data-ums/linter_values.yaml tests
+    profiles:
+      - test
+    volumes:
+      - ".:/app"
+
 secrets:
   ldap_secret:
     file: "secret/ldap.secret"
