@@ -152,6 +152,55 @@ def test_allows_to_log_the_context(process_join_data, mocker, caplog):
     assert result.exit_code == 0
 
 
+def test_does_not_log_the_rendered_template_by_default(process_join_data, mocker, caplog):
+    mocker.patch.object(process_join_data, "_connect_to_udm")
+    stub_context = {"stub_name": "stub_value"}
+    mocker.patch.object(
+        process_join_data,
+        "load_context",
+        return_value=stub_context,
+    )
+
+    with caplog.at_level(logging.DEBUG, logger="app"):
+        result = runner.invoke(
+            process_join_data.cli_app,
+            [
+                "example-data.yaml",
+                "--template-context",
+                "context.yaml",
+            ],
+            env=DEFAULT_ENV,
+        )
+
+    assert "Rendered template" not in caplog.text
+    assert result.exit_code == 0
+
+
+def test_allows_to_log_the_rendered_template(process_join_data, mocker, caplog):
+    mocker.patch.object(process_join_data, "_connect_to_udm")
+    stub_context = {"stub_name": "stub_value"}
+    mocker.patch.object(
+        process_join_data,
+        "load_context",
+        return_value=stub_context,
+    )
+
+    with caplog.at_level(logging.DEBUG, logger="app"):
+        result = runner.invoke(
+            process_join_data.cli_app,
+            [
+                "example-data.yaml",
+                "--log-template",
+                "--template-context",
+                "context.yaml",
+            ],
+            env=DEFAULT_ENV,
+        )
+
+    assert "Rendered template" in caplog.text
+    assert result.exit_code == 0
+
+
 def test_allows_to_configure_the_udm_connection_via_cli(process_join_data, mocker):
     udm_api_url = "stub_udm_api_url"
     udm_api_user = "stub_udm_api_user"

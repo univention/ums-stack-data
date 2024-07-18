@@ -45,6 +45,12 @@ def main(
         bool,
         typer.Option(help="Log the context values. This may log out sensitive data."),
     ] = False,
+    log_template: Annotated[
+        bool,
+        typer.Option(
+            help="Log the rendered template. This may log out sensitive data.",
+        ),
+    ] = False,
     template_context: Annotated[
         Optional[List[str]],
         typer.Option(help="Load the template context from this YAML file."),
@@ -64,12 +70,24 @@ def main(
         log.debug("Merged context\n%s", yaml.safe_dump(context))
 
     udm = _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file)
-    app = App(udm, template_context=context, template_extension=template_extension)
+    app = App(
+        udm,
+        template_context=context,
+        template_extension=template_extension,
+        log_template=log_template,
+    )
     app.run(input_filename)
 
 
 class App:
-    def __init__(self, udm, template_context=None, template_extension=None):
+    def __init__(
+        self,
+        udm,
+        template_context=None,
+        template_extension=None,
+        log_template=False,
+    ):
+        self.log_template = log_template
         self.udm = udm
         self.template_context = template_context or {}
         self.template_extension = template_extension
@@ -81,6 +99,8 @@ class App:
         if is_template(input_filename, extension=self.template_extension):
             log.info("Rendering file as Jinja2 template")
             content = render_template(content, self.template_context)
+            if self.log_template:
+                log.debug("Rendered template:\n%s", content)
 
         actions = list(yaml.safe_load_all(content))
 
