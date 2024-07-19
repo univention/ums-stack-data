@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.56.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.55.1...v0.56.0) (2024-07-19)
+
+
+### Features
+
+* Add init containers to load the data files from extensions ([7e8680d](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7e8680da082f922e7ced425742c091936da30713))
+* Configure security context by default ([5d525d3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/5d525d39f956d4126186fde29f3902e05f888ad5))
+
+
+### Bug Fixes
+
+* Support "containerSecurityContext" in all containers ([51fefc3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/51fefc3fa6d32baa203e19dc0b78eda9f594c002))
+* Support "podSecurityContext" in the Job of stack-data-ums ([313416e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/313416e929d7cfdbd6868adbe3939203e722855f))
+
 ## [0.55.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.55.0...v0.55.1) (2024-07-18)
 
 
