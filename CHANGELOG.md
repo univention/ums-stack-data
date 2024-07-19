@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.57.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.56.0...v0.57.0) (2024-07-19)
+
+
+### Features
+
+* Remove data-loader files of the portal-extension ([7f699fe](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7f699febdfb43df561d0aaefd480545e48f8a076))
+
+
+### Bug Fixes
+
+* Correct extension related configuration in the values of stack-data-ums ([87baa66](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/87baa66c8361447127ec9f3b2bfeabedafb7aa51))
+
 ## [0.56.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.55.1...v0.56.0) (2024-07-19)
 
 
