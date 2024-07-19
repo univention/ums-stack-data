@@ -115,6 +115,29 @@ def test_extension_image_with_global_registry_overwritten(
     assert extension["image"] == "stub-registry/stub-repository:stub-tag"
 
 
+@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+def test_local_configuration_overrides_global_configuration(
+    helm,
+    chart_path,
+    key,
+    stub_extension,
+):
+    stub_global_extension = {
+        **stub_extension,
+        "name": "stub-global",
+    }
+    values = {
+        "global": {
+            key: [stub_global_extension],
+        },
+        key: [stub_extension],
+    }
+    result = helm.helm_template(chart_path, values)
+    extensions = _get_extensions_of_job(helm, result)
+    assert len(extensions) == 1
+    assert extensions[0]["name"] == "load-stub-test-extension"
+
+
 def _get_extensions_of_job(helm, result):
     manifest = helm.get_resource(result, kind="Job")
     init_containers = findall(manifest, "spec.template.spec.initContainers")
