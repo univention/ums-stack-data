@@ -4,6 +4,8 @@
 # Ruff has problems with multiline f-strings
 # ruff: noqa: F541
 
+import copy
+
 import pytest
 from yaml import safe_load
 
@@ -46,6 +48,20 @@ def test_extension_configured(helm, chart_path, key, stub_extension):
 
     extension = extensions[0]
     assert extension["name"] == "load-stub-test-extension"
+
+
+def test_custom_and_system_extensions_are_joined(helm, chart_path, stub_extension):
+    stub_system_extension = copy.deepcopy(stub_extension)
+    stub_system_extension["name"] = "stub-system"
+    values = {
+        "extensions": [stub_extension],
+        "systemExtensions": [stub_system_extension],
+    }
+
+    result = helm.helm_template(chart_path, values)
+    extensions = _get_extensions_of_job(helm, result)
+    extension_names = [e["name"] for e in extensions]
+    assert extension_names == ["load-stub-system-extension", "load-stub-test-extension"]
 
 
 @pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
