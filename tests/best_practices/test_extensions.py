@@ -12,6 +12,14 @@ from yaml import safe_load
 from utils import findall
 
 
+ALL_EXTENSION_KEYS = (
+    "extensions",
+    "systemExtensions",
+    "global.extensions",
+    "global.systemExtensions",
+)
+
+
 @pytest.fixture
 def stub_extension():
     """
@@ -36,11 +44,10 @@ def test_no_extensions_by_default(helm, chart_path):
     assert extensions == []
 
 
-@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+@pytest.mark.parametrize("key", ALL_EXTENSION_KEYS)
 def test_extension_configured(helm, chart_path, key, stub_extension):
-    values = {
-        key: [stub_extension],
-    }
+    values = {}
+    _set_dot_path_value(values, key, [stub_extension])
 
     result = helm.helm_template(chart_path, values)
     extensions = _get_extensions_of_job(helm, result)
@@ -64,40 +71,44 @@ def test_custom_and_system_extensions_are_joined(helm, chart_path, stub_extensio
     assert extension_names == ["load-stub-system-extension", "load-stub-test-extension"]
 
 
-@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+@pytest.mark.parametrize("key", ALL_EXTENSION_KEYS)
 def test_extension_image(helm, chart_path, key, stub_extension):
-    values = {
-        key: [stub_extension],
-    }
+    values = {}
+    _set_dot_path_value(values, key, [stub_extension])
     result = helm.helm_template(chart_path, values)
     extensions = _get_extensions_of_job(helm, result)
     extension = extensions[0]
     assert extension["image"] == "stub-registry/stub-repository:stub-tag"
 
 
-@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+@pytest.mark.parametrize("key", ALL_EXTENSION_KEYS)
 def test_extension_image_with_global_registry(helm, chart_path, key, stub_extension):
     del stub_extension["image"]["registry"]
     values = {
         "global": {
             "imageRegistry": "stub-global-registry",
         },
-        key: [stub_extension],
     }
+    _set_dot_path_value(values, key, [stub_extension])
     result = helm.helm_template(chart_path, values)
     extensions = _get_extensions_of_job(helm, result)
     extension = extensions[0]
     assert extension["image"] == "stub-global-registry/stub-repository:stub-tag"
 
 
-@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
-def test_extension_image_with_global_registry_overwritten(helm, chart_path, key, stub_extension):
+@pytest.mark.parametrize("key", ALL_EXTENSION_KEYS)
+def test_extension_image_with_global_registry_overwritten(
+    helm,
+    chart_path,
+    key,
+    stub_extension,
+):
     values = {
         "global": {
             "imageRegistry": "stub-global-registry",
         },
-        key: [stub_extension],
     }
+    _set_dot_path_value(values, key, [stub_extension])
     result = helm.helm_template(chart_path, values)
     extensions = _get_extensions_of_job(helm, result)
     extension = extensions[0]
@@ -109,3 +120,11 @@ def _get_extensions_of_job(helm, result):
     init_containers = findall(manifest, "spec.template.spec.initContainers")
     extensions = [c for c in init_containers if c["name"].endswith("-extension")]
     return extensions
+
+
+def _set_dot_path_value(target, key, value):
+    scope = target
+    key_path = key.split(".")
+    for fragment in key_path[:-1]:
+        scope = scope.setdefault(fragment, {})
+    scope[key_path[-1]] = value
