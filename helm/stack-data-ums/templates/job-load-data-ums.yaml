@@ -35,6 +35,9 @@ spec:
         - name: "{{ . }}"
         {{- end }}
       {{- end }}
+      {{- if .Values.podSecurityContext.enabled }}
+      securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 8 }}
+      {{- end }}
       {{ if .Values.stackDataUms.dependencyUdmApiWait }}
       initContainers:
       - name: "load-internal-plugins"
