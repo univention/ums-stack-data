@@ -14,7 +14,7 @@ from univention.admin.rest.client import UDM, NotFound, UnprocessableEntity
 log = logging.getLogger("app")
 
 
-cli_app = typer.Typer()
+cli_app = typer.Typer(pretty_exceptions_enable=False)
 
 
 @cli_app.command()
