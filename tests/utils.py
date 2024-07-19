@@ -10,3 +10,10 @@ def findone(data, path):
 
 def findall(data, path):
     return jsonpath.match(path, data).obj
+
+
+def get_containers_of_job(helm, result):
+    manifest = helm.get_resource(result, kind="Job")
+    init_containers = findall(manifest, "spec.template.spec.initContainers")
+    containers = findall(manifest, "spec.template.spec.containers")
+    return init_containers + containers

@@ -6,7 +6,7 @@
 
 from yaml import safe_load
 
-from utils import findall
+from utils import get_containers_of_job
 
 
 def test_pod_security_context_can_be_disabled(helm, chart_path):
@@ -59,7 +59,7 @@ def test_container_security_context_can_be_disabled(helm, chart_path):
     )
     expected_security_context = {}
     result = helm.helm_template(chart_path, values)
-    containers = _get_containers_of_job(helm, result)
+    containers = get_containers_of_job(helm, result)
     _assert_all_have_security_context(containers, expected_security_context)
 
 
@@ -81,7 +81,7 @@ def test_container_security_context_is_applied(helm, chart_path):
     }
 
     result = helm.helm_template(chart_path, values)
-    containers = _get_containers_of_job(helm, result)
+    containers = get_containers_of_job(helm, result)
     _assert_all_have_security_context(containers, expected_security_context)
 
 
@@ -92,10 +92,3 @@ def _assert_all_have_security_context(containers, expected_security_context):
         assert (
             security_context.items() >= expected_security_context.items()
         ), f'Wrong securityContext in container "{name}"'
-
-
-def _get_containers_of_job(helm, result):
-    manifest = helm.get_resource(result, kind="Job")
-    init_containers = findall(manifest, "spec.template.spec.initContainers")
-    containers = findall(manifest, "spec.template.spec.containers")
-    return init_containers + containers
