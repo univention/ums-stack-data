@@ -164,6 +164,15 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>extensions</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Extensions to load. This will override the configuration in `global.extensions`.</td>
+		</tr>
+		<tr>
 			<td>fullnameOverride</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -171,6 +180,15 @@ true
 </pre>
 </td>
 			<td></td>
+		</tr>
+		<tr>
+			<td>global.extensions</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Allows to configure extensions globally.</td>
 		</tr>
 		<tr>
 			<td>global.imagePullPolicy</td>
@@ -207,6 +225,15 @@ false
 </pre>
 </td>
 			<td>Indicates wether this chart is part of a Nubus deployment.</td>
+		</tr>
+		<tr>
+			<td>global.systemExtensions</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Allows to configure system extensions globally.</td>
 		</tr>
 		<tr>
 			<td>image</td>
@@ -260,42 +287,6 @@ true
 			<td></td>
 		</tr>
 		<tr>
-			<td>oxPlugin.image.imagePullPolicy</td>
-			<td>string</td>
-			<td><pre lang="json">
-"IfNotPresent"
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>oxPlugin.image.registry</td>
-			<td>string</td>
-			<td><pre lang="json">
-"artifacts.software-univention.de"
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>oxPlugin.image.repository</td>
-			<td>string</td>
-			<td><pre lang="json">
-"nubus-dev/images/ox-connector-extensions"
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>oxPlugin.image.tag</td>
-			<td>string</td>
-			<td><pre lang="json">
-"latest"
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
 			<td>podAnnotations</td>
 			<td>object</td>
 			<td><pre lang="json">
@@ -309,42 +300,6 @@ true
 			<td>object</td>
 			<td><pre lang="json">
 {}
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>portalPlugin.image.imagePullPolicy</td>
-			<td>string</td>
-			<td><pre lang="json">
-"IfNotPresent"
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>portalPlugin.image.registry</td>
-			<td>string</td>
-			<td><pre lang="json">
-"artifacts.software-univention.de"
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>portalPlugin.image.repository</td>
-			<td>string</td>
-			<td><pre lang="json">
-"nubus-dev/images/portal-udm-extensions"
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>portalPlugin.image.tag</td>
-			<td>string</td>
-			<td><pre lang="json">
-"latest"
 </pre>
 </td>
 			<td></td>
@@ -663,6 +618,15 @@ false
 </pre>
 </td>
 			<td>The username to use to connect to the UDM Rest API</td>
+		</tr>
+		<tr>
+			<td>systemExtensions</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Allows to configure the system extensions to load. This is intended for internal usage, prefer to use `extensions` for user configured extensions. This value will override the configuration in `global.systemExtensions`.</td>
 		</tr>
 		<tr>
 			<td>templateContext</td>
