@@ -20,3 +20,10 @@ docker compose run -it --rm test pytest tests --pdb
 # Have a shell
 docker compose run -it --rm test bash
 ```
+
+
+## Details
+
+- Many tests describe the relevant values fragment in YAML and parse it via
+  `yaml.safe_load`. This shall help to make the example snippets comparable to
+  an existing `values.yaml` for a Helm chart.
