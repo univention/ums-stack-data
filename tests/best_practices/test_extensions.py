@@ -34,9 +34,10 @@ def test_no_extensions_by_default(helm, chart_path):
     assert extensions == []
 
 
-def test_custom_extension_configured(helm, chart_path, stub_extension):
+@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+def test_extension_configured(helm, chart_path, key, stub_extension):
     values = {
-        "extensions": [stub_extension],
+        key: [stub_extension],
     }
 
     result = helm.helm_template(chart_path, values)
@@ -47,9 +48,10 @@ def test_custom_extension_configured(helm, chart_path, stub_extension):
     assert extension["name"] == "load-stub-test-extension"
 
 
-def test_custom_extension_image(helm, chart_path, stub_extension):
+@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+def test_extension_image(helm, chart_path, key, stub_extension):
     values = {
-        "extensions": [stub_extension],
+        key: [stub_extension],
     }
     result = helm.helm_template(chart_path, values)
     extensions = _get_extensions_of_job(helm, result)
@@ -57,13 +59,14 @@ def test_custom_extension_image(helm, chart_path, stub_extension):
     assert extension["image"] == "stub-registry/stub-repository:stub-tag"
 
 
-def test_custom_extension_image_with_global_registry(helm, chart_path, stub_extension):
+@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+def test_extension_image_with_global_registry(helm, chart_path, key, stub_extension):
     del stub_extension["image"]["registry"]
     values = {
         "global": {
             "imageRegistry": "stub-global-registry",
         },
-        "extensions": [stub_extension],
+        key: [stub_extension],
     }
     result = helm.helm_template(chart_path, values)
     extensions = _get_extensions_of_job(helm, result)
@@ -71,12 +74,13 @@ def test_custom_extension_image_with_global_registry(helm, chart_path, stub_exte
     assert extension["image"] == "stub-global-registry/stub-repository:stub-tag"
 
 
-def test_custom_extension_image_with_global_registry_overwritten(helm, chart_path, stub_extension):
+@pytest.mark.parametrize("key", ["extensions", "systemExtensions"])
+def test_extension_image_with_global_registry_overwritten(helm, chart_path, key, stub_extension):
     values = {
         "global": {
             "imageRegistry": "stub-global-registry",
         },
-        "extensions": [stub_extension],
+        key: [stub_extension],
     }
     result = helm.helm_template(chart_path, values)
     extensions = _get_extensions_of_job(helm, result)
