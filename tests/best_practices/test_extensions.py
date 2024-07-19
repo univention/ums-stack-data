@@ -4,15 +4,84 @@
 # Ruff has problems with multiline f-strings
 # ruff: noqa: F541
 
+import pytest
 from yaml import safe_load
 
 from utils import findall
+
+
+@pytest.fixture
+def stub_extension():
+    """
+    Return a stub extension configuration with all values set to stub values.
+    """
+    values = safe_load(
+        """
+        name: "stub-test"
+        image:
+          registry: "stub-registry"
+          repository: "stub-repository"
+          imagePullPolicy: "stub-image-pull-policy"
+          tag: "stub-tag"
+        """,
+    )
+    return values
 
 
 def test_no_extensions_by_default(helm, chart_path):
     result = helm.helm_template(chart_path)
     extensions = _get_extensions_of_job(helm, result)
     assert extensions == []
+
+
+def test_custom_extension_configured(helm, chart_path, stub_extension):
+    values = {
+        "extensions": [stub_extension],
+    }
+
+    result = helm.helm_template(chart_path, values)
+    extensions = _get_extensions_of_job(helm, result)
+    assert len(extensions) == 1
+
+    extension = extensions[0]
+    assert extension["name"] == "load-stub-test-extension"
+
+
+def test_custom_extension_image(helm, chart_path, stub_extension):
+    values = {
+        "extensions": [stub_extension],
+    }
+    result = helm.helm_template(chart_path, values)
+    extensions = _get_extensions_of_job(helm, result)
+    extension = extensions[0]
+    assert extension["image"] == "stub-registry/stub-repository:stub-tag"
+
+
+def test_custom_extension_image_with_global_registry(helm, chart_path, stub_extension):
+    del stub_extension["image"]["registry"]
+    values = {
+        "global": {
+            "imageRegistry": "stub-global-registry",
+        },
+        "extensions": [stub_extension],
+    }
+    result = helm.helm_template(chart_path, values)
+    extensions = _get_extensions_of_job(helm, result)
+    extension = extensions[0]
+    assert extension["image"] == "stub-global-registry/stub-repository:stub-tag"
+
+
+def test_custom_extension_image_with_global_registry_overwritten(helm, chart_path, stub_extension):
+    values = {
+        "global": {
+            "imageRegistry": "stub-global-registry",
+        },
+        "extensions": [stub_extension],
+    }
+    result = helm.helm_template(chart_path, values)
+    extensions = _get_extensions_of_job(helm, result)
+    extension = extensions[0]
+    assert extension["image"] == "stub-registry/stub-repository:stub-tag"
 
 
 def _get_extensions_of_job(helm, result):
