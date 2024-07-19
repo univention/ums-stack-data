@@ -4,8 +4,9 @@
 # Ruff has problems with multiline f-strings
 # ruff: noqa: F541
 
-import pytest
 from yaml import safe_load
+
+from utils import findall
 
 
 def test_pod_security_context_can_be_disabled(helm, chart_path):
@@ -19,12 +20,15 @@ def test_pod_security_context_can_be_disabled(helm, chart_path):
     )
     result = helm.helm_template(chart_path, values)
     manifest = helm.get_resource(result, kind="Job")
-    pod_security_context = manifest["spec"]["template"]["spec"].get("securityContext", {})
+    pod_security_context = manifest["spec"]["template"]["spec"].get(
+        "securityContext",
+        {},
+    )
     expected_security_context = {}
     assert pod_security_context == expected_security_context
 
 
-def test_pod_security_context_can_be_specified(helm, chart_path):
+def test_pod_security_context_is_applied(helm, chart_path):
     values = safe_load(
         """
         podSecurityContext:
@@ -41,3 +45,57 @@ def test_pod_security_context_can_be_specified(helm, chart_path):
         "fsGroupChangePolicy": "Always",
     }
     assert pod_security_context == expected_security_context
+
+
+def test_container_security_context_can_be_disabled(helm, chart_path):
+    values = safe_load(
+        """
+        containerSecurityContext:
+          enabled: false
+          capabilities:
+            drop: []
+          runAsUser: 9876
+        """,
+    )
+    expected_security_context = {}
+    result = helm.helm_template(chart_path, values)
+    containers = _get_containers_of_job(helm, result)
+    _assert_all_have_security_context(containers, expected_security_context)
+
+
+def test_container_security_context_is_applied(helm, chart_path):
+    values = safe_load(
+        """
+        containerSecurityContext:
+          enabled: true
+          capabilities:
+            drop: []
+          runAsUser: 9876
+        """,
+    )
+    expected_security_context = {
+        "capabilities": {
+            "drop": [],
+        },
+        "runAsUser": 9876,
+    }
+
+    result = helm.helm_template(chart_path, values)
+    containers = _get_containers_of_job(helm, result)
+    _assert_all_have_security_context(containers, expected_security_context)
+
+
+def _assert_all_have_security_context(containers, expected_security_context):
+    for container in containers:
+        security_context = container.get("securityContext", {})
+        name = container["name"]
+        assert (
+            security_context.items() >= expected_security_context.items()
+        ), f'Wrong securityContext in container "{name}"'
+
+
+def _get_containers_of_job(helm, result):
+    manifest = helm.get_resource(result, kind="Job")
+    init_containers = findall(manifest, "spec.template.spec.initContainers")
+    containers = findall(manifest, "spec.template.spec.containers")
+    return init_containers + containers

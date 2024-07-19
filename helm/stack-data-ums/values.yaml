@@ -251,7 +251,7 @@ podAnnotations: {}
 podSecurityContext: {}
 resources: {}
 
-securityContext:
+containerSecurityContext:
   # -- Enable container privileged escalation.
   allowPrivilegeEscalation: false
   # -- Security capabilities for container.

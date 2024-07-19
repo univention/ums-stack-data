@@ -41,8 +41,8 @@ spec:
       {{ if .Values.stackDataUms.dependencyUdmApiWait }}
       initContainers:
       - name: "load-internal-plugins"
-        {{- if .Values.securityContext.enabled }}
-        securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- if .Values.containerSecurityContext.enabled }}
+        securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
         {{- end }}
         image: "{{ coalesce .Values.image.registry .Values.global.imageRegistry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ coalesce .Values.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
@@ -63,8 +63,8 @@ spec:
       {{- $extensions := default (list) (coalesce .Values.extensions .Values.global.extensions) -}}
       {{- range (concat $systemExtensions $extensions) }}
       - name: "load-{{ .name }}-extension"
-        {{- if $.Values.securityContext.enabled }}
-        securityContext: {{- omit $.Values.securityContext "enabled" | toYaml | nindent 12 }}
+        {{- if $.Values.containerSecurityContext.enabled }}
+        securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
         {{- end }}
         image: "{{ coalesce .image.registry $.Values.global.imageRegistry }}/{{ .image.repository }}:{{ .image.tag }}"
         imagePullPolicy: {{ coalesce .image.imagePullPolicy $.Values.global.imagePullPolicy | quote }}
@@ -75,6 +75,9 @@ spec:
       {{- end }}
       - name: wait-for-udm-rest-api
         command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-udm-rest-api.py"]
+        {{- if $.Values.containerSecurityContext.enabled }}
+        securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
         {{- with .Values.image }}
         image: "{{ coalesce .registry $.Values.global.imageRegistry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: {{ coalesce .imagePullPolicy $.Values.global.imagePullPolicy | quote }}
@@ -106,6 +109,9 @@ spec:
           {{- if .Values.stackDataUms.logTemplate }}
           - --log-template
           {{- end }}
+        {{- if $.Values.containerSecurityContext.enabled }}
+        securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+        {{- end }}
         {{- with .Values.image }}
         image: "{{ coalesce .registry $.Values.global.imageRegistry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
         imagePullPolicy: {{ coalesce .imagePullPolicy $.Values.global.imagePullPolicy | quote }}
