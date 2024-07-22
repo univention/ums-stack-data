@@ -244,7 +244,7 @@ false
   "registry": "",
   "repository": "nubus-dev/images/data-loader",
   "sha256": null,
-  "tag": "latest"
+  "tag": "0.57.0"
 }
 </pre>
 </td>

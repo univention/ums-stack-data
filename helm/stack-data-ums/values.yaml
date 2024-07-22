@@ -220,7 +220,7 @@ image:
   registry: ""
   repository: "nubus-dev/images/data-loader"
   imagePullPolicy: ""
-  tag: "latest"
+  tag: "0.57.0"
 
   # -- Define image sha256 as an alternative to `tag`
   sha256: null
