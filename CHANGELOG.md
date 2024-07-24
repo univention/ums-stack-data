@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.58.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.57.0...v0.58.0) (2024-07-24)
+
+
+### Features
+
+* remove branding files ([edf24a4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/edf24a4438cf6635dd0fb2fe1db2285d968cc56f))
+
+
+### Bug Fixes
+
+* re-add logo_small_border.svg file ([03f2d83](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/03f2d832125f711be0f9aeecbbac6a502132f64f))
+
 ## [0.57.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.56.0...v0.57.0) (2024-07-19)
 
 
