@@ -136,7 +136,10 @@ class App:
                 properties=data.get("properties"),
             )
         elif data["action"] == "delete_if_exists":
-            self.delete_udm_object(module=data["module"], position=data["position"])
+            self.delete_udm_object(
+                module=data["module"],
+                position=data["position"],
+            )
 
         else:
             raise NotImplementedError(f"Action {data['action']} not supported.")

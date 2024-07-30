@@ -458,6 +458,15 @@ null
 			<td>List of SAML Service Provider URLs which the LDAP server should trust (comma-separated). Example: `"https://portal.souvap.example.org/univention/saml/metadata"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.oxDefaultContext</td>
+			<td>string</td>
+			<td><pre lang="json">
+"10"
+</pre>
+</td>
+			<td>Default value for oxDefaultContext in the data-loader</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.portalAuthMode</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -647,6 +656,7 @@ false
   "ldapMasterPort": "{{ include \"stack-data-ums.ldapMasterPort\" . }}",
   "ldapPort": "{{ include \"stack-data-ums.ldapPort\" . }}",
   "ldapUri": "{{ include \"stack-data-ums.ldapUri\" . }}",
+  "oxDefaultContext": "10",
   "portalAuthMode": "{{ include \"stack-data-ums.portalAuthMode\" . }}",
   "portalFqdn": "{{ include \"stack-data-ums.portalFqdn\" . }}",
   "samlMetadataUrl": "{{ include \"stack-data-ums.samlMetadataUrl\" . }}",
@@ -758,6 +768,15 @@ false
 </pre>
 </td>
 			<td>Port to connect to the LDAP server. Chart defaults to `389`. Example: `389`</td>
+		</tr>
+		<tr>
+			<td>templateContext.oxDefaultContext</td>
+			<td>string</td>
+			<td><pre lang="json">
+"10"
+</pre>
+</td>
+			<td>Default value for oxDefaultContext in the data-loader</td>
 		</tr>
 		<tr>
 			<td>templateContext.portalAuthMode</td>

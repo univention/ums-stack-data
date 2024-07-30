@@ -265,6 +265,14 @@ https
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.oxDefaultContext" -}}
+{{- if .Values.stackDataContext.oxDefaultContext -}}
+{{- .Values.stackDataContext.oxDefaultContext -}}
+{{- else if .Values.global.nubusDeployment -}}
+10
+{{- end -}}
+{{- end -}}
+
 {{- define "stack-data-ums.udmApi.credentialSecret.name" -}}
 {{- if .Values.global.nubusDeployment -}}
 {{- printf "%s-udm-rest-api-credentials" .Release.Name -}}
