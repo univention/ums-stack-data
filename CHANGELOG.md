@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.58.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.58.0...v0.58.1) (2024-07-30)
+
+
+### Bug Fixes
+
+* missing baseDn in user template ([6fa29f4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/6fa29f49cf558a3a911d807d7a3cc039a16cf604))
+
 ## [0.58.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.57.0...v0.58.0) (2024-07-24)
 
 
