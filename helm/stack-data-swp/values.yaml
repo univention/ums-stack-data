@@ -123,7 +123,7 @@ image:
   registry: "artifacts.software-univention.de"
   repository: "nubus-dev/images/data-loader"
   imagePullPolicy: "IfNotPreset"
-  tag: "latest"
+  tag: "0.58.1"
 
   # -- Define image sha256 as an alternative to `tag`
   sha256: null

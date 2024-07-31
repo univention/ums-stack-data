@@ -132,7 +132,8 @@ templateContext:
   # -- Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`.
   # Example: `"https, http"`
   umcSamlSchemes: '{{ include "stack-data-ums.umcSamlSchemes" . }}'
-
+  # -- oxDefaultContext
+  oxDefaultContext: "10"
 
 # TODO: the template processing of the data files is being moved into the
 # run-time of the container "data-loader". "stackDataContext" will be removed
@@ -214,13 +215,15 @@ stackDataContext:
   # -- This parameter allows to skip the installation of the default UMC
   # policies if set to "false".
   installUmcPolicies: false
+  # TODO: Add
+  oxDefaultContext: "10"
 
 # -- Container image configuration
 image:
   registry: ""
   repository: "nubus-dev/images/data-loader"
   imagePullPolicy: ""
-  tag: "latest"
+  tag: "0.58.1"
 
   # -- Define image sha256 as an alternative to `tag`
   sha256: null
