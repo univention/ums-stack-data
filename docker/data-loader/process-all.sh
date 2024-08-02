@@ -13,3 +13,25 @@ do
     echo
     process-join-data.py "$@" "${data_file}"
 done
+
+# FIXME: UDM REST API known issue
+# https://git.knut.univention.de/univention/ucs/-/tree/5.2-0/management/univention-directory-manager-rest?ref_type=heads#known-issues
+# The UDM REST API does not reload the extended_attributes cache after creating an extended_attribute.
+# NOTE: This workaround forces the reload of the cache for the users/user module,
+# and does 20 requests to ensure that we refresh all the round-robin replicas.
+# It would be better to know the number of replicas and do that number of requests,
+# or other approach.
+if [ ! -v UDM_API_USER ]; then
+    echo "Not forcing cache reload for users/user module UDM REST API because UDM_API_USER is unset or empty"
+    exit 0
+fi
+echo "Forcing cache reload for users/user module UDM REST API to reload extended_attributes"
+for _ in seq 1 20;
+do
+    curl \
+        -X GET \
+        -sS \
+        -u "$UDM_API_USER:$(cat "$UDM_API_PASSWORD_FILE")" \
+        -H "Accept: application/json" \
+        "${UDM_API_URL}users/user/add";
+done
