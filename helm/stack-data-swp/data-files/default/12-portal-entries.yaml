@@ -204,26 +204,6 @@ properties:
   - 'cn=swp.admin_context,cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 
 ---
-action: "create"
-module: "portals/entry"
-position: 'cn=entry,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
-properties:
-  name: "swp.admin_announcement"
-  icon: {{ $.Files.Get "data-files/default/portal-icons/admin_announcement.svg" | b64enc | quote }}
-  link:
-    - - "en_US"
-      - "/univention/management/?header=try-hide&overview=false&menu=false#module=udm:portals/announcement"
-  allowedGroups:
-{{ toYaml .portaltileGroupUserAdmin | indent 4 }}
-  linkTarget: "newwindow"
-  description:
-    de_DE: "Verwaltung der allgemeinen Portal-Annoucements"
-    en_US: "Manage the portal announcements"
-  displayName:
-    de_DE: "Announcements"
-    en_US: "Announcements"
-  target: "tab_admin"
----
 action: "ensure_list_contains"
 module: "portals/category"
 position: 'cn=swp.admin_portal,cn=category,cn=portals,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
