@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.60.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.59.2...v0.60.0) (2024-08-05)
+
+
+### Features
+
+* **stack-data-swp:** remove attribute-to-group mapper ([a776328](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a776328b50ba9df1d79367eb85f34cdd1bf16aeb))
+
 ## [0.59.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.59.1...v0.59.2) (2024-08-05)
 
 
