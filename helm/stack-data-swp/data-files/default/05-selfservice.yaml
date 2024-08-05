@@ -1,9 +1,0 @@
-# SPDX-License-Identifier: AGPL-3.0-only
-# SPDX-FileCopyrightText: 2023 Univention GmbH
-
-{{ with .Values.stackDataContext }}
----
-action: "delete_if_exists"
-module: "settings/usertemplate"
-position: 'cn=selfserviceregistrationtemplate,cn=templates,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
-{{ end }}

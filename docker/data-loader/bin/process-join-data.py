@@ -140,7 +140,6 @@ class App:
                 module=data["module"],
                 position=data["position"],
             )
-
         else:
             raise NotImplementedError(f"Action {data['action']} not supported.")
 
