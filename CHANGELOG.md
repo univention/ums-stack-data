@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.59.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.59.0...v0.59.1) (2024-08-05)
+
+
+### Bug Fixes
+
+* **data-loader:** Workaround to refresh the UDM REST API users/user cache ([90c44d1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/90c44d147ab619f4d569fb9e56a2a2e3e638ff4d)), closes [#50253](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/issues/50253)
+
 ## [0.59.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.58.1...v0.59.0) (2024-08-02)
 
 
