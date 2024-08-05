@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.59.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.59.1...v0.59.2) (2024-08-05)
+
+
+### Bug Fixes
+
+* **data-loader:** missing dependency ([27123ab](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/27123ab20b320d8e2c71fd44bd37ff0824c9bea9))
+
 ## [0.59.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.59.0...v0.59.1) (2024-08-05)
 
 
