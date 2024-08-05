@@ -10,8 +10,10 @@ FROM ${BASE_IMAGE} as base
 
 # hadolint ignore=DL3008
 RUN apt-get --assume-yes --verbose-versions --no-install-recommends install \
-      python3-pip \
-      pipenv
+    python3-pip \
+    pipenv \
+    # FIXME: drop once udm-rest-api cache is fixed. See process-all.sh
+    curl
 
 WORKDIR /src
 
