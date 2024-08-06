@@ -4,7 +4,7 @@
 {{ with .Values.stackDataContext }}
 
 ---
-action: create_or_modify
+action: create_or_merge
 module: policies/umc
 position: cn=UMC,cn=policies,{{ include "stack-data-swp.ldapBaseDn" $ }}
 properties:
@@ -14,8 +14,6 @@ properties:
     - 'cn=udm-syntax,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
     - 'cn=udm-groups,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
     - 'cn=read-udm-usertemplates,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
-    - 'cn=ox-functional-accounts,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
-    - 'cn=ox-resources,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
     - 'cn=portal-announcement,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
     - 'cn=udm-reports,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-swp.ldapBaseDn" $ }}'
 ---
