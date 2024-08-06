@@ -464,7 +464,7 @@ null
 "10"
 </pre>
 </td>
-			<td></td>
+			<td>Default value for oxDefaultContext in the data-loader</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.portalAuthMode</td>
@@ -776,7 +776,7 @@ false
 "10"
 </pre>
 </td>
-			<td>oxDefaultContext</td>
+			<td>Default value for oxDefaultContext in the data-loader</td>
 		</tr>
 		<tr>
 			<td>templateContext.portalAuthMode</td>
