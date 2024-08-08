@@ -145,7 +145,6 @@ class App:
             self.delete_udm_object(
                 module=data["module"],
                 position=data["position"],
-                properties=data["properties"],
             )
 
         else:
@@ -216,11 +215,10 @@ class App:
             else:
                 raise
 
-    def delete_udm_object(self, module, position, properties):
-        log.info(f"Deleting UDM object {module}, {position}, {properties.get('name')}")
-        obj_dn = f"cn={properties.get('name')},{position}"
+    def delete_udm_object(self, module, position):
+        log.info(f"Deleting UDM object {module}, {position}")
         try:
-            obj = self.udm.obj_by_dn(obj_dn)
+            obj = self.udm.obj_by_dn(position)
             obj.delete()
         except NotFound:
             log.info("The object does not exist, not deleting anything.")
