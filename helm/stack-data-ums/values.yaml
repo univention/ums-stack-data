@@ -134,6 +134,40 @@ templateContext:
   umcSamlSchemes: '{{ include "stack-data-ums.umcSamlSchemes" . }}'
   # -- Default value for oxDefaultContext in the data-loader
   oxDefaultContext: "10"
+  # -- OPENDESK Extension needs below
+  # -- 12-portal  TODO: Remove defaults from here ?
+  portaltileGroupUserStandard:
+    - 'cn=Domain Users,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupUserAdmin:
+    - 'cn=Domain Admins,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+    - 'cn=Support,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupUserAll:
+    - 'cn=Domain Admins,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+    - 'cn=Domain Users,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupGroupware:
+    - 'cn=managed-by-attribute-Groupware,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupFileshare:
+    - 'cn=managed-by-attribute-Fileshare,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupManagementProject:
+    - 'cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupManagementKnowledge:
+    - 'cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupManagementLearn:
+    - 'cn=managed-by-attribute-Learnmanagement,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  portaltileGroupLiveCollaboration:
+    - 'cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}'
+  # -- Portal title (Deutsch)
+  portalTitleDE: "openDesk Portal"
+  # -- Portal title (English)
+  portalTitleEN: "openDesk Portal"
+  portalGroupwareLinkBase: 'https://webmail.{{ include "stack-data-ums.domainName" . }}'
+  portalFileshareLinkBase: 'https://fs.{{ include "stack-data-ums.domainName" . }}'
+  portalRealtimeCollaborationLinkBase: 'https://chat.{{ include "stack-data-ums.domainName" . }}'
+  portalRealtimeVideoconferenceLinkBase: 'https://meet.{{ include "stack-data-ums.domainName" . }}'
+  portalManagementProjectLinkBase: 'https://project.{{ include "stack-data-ums.domainName" . }}'
+  portalManagementKnowledgeLinkBase: 'https://wiki.{{ include "stack-data-ums.domainName" . }}'
+
+
 
 # TODO: the template processing of the data files is being moved into the
 # run-time of the container "data-loader". "stackDataContext" will be removed

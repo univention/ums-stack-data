@@ -273,6 +273,136 @@ https
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.portaltileGroupUserStandard" -}}
+{{- if .Values.stackDataContext.portaltileGroupUserStandard -}}
+{{- .Values.stackDataContext.portaltileGroupUserStandard -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portaltileGroupUserAdmin" -}}
+{{- if .Values.stackDataContext.portaltileGroupUserAdmin -}}
+{{- .Values.stackDataContext.portaltileGroupUserAdmin -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portaltileGroupUserAll" -}}
+{{- if .Values.stackDataContext.portaltileGroupUserAll -}}
+{{- .Values.stackDataContext.portaltileGroupUserAll -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portaltileGroupGroupware" -}}
+{{- if .Values.stackDataContext.portaltileGroupGroupware -}}
+{{- .Values.stackDataContext.portaltileGroupGroupware -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portaltileGroupFileshare" -}}
+{{- if .Values.stackDataContext.portaltileGroupFileshare -}}
+{{- .Values.stackDataContext.portaltileGroupFileshare -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portaltileGroupManagementProject" -}}
+{{- if .Values.stackDataContext.portaltileGroupManagementProject -}}
+{{- .Values.stackDataContext.portaltileGroupManagementProject -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portaltileGroupManagementKnowledge" -}}
+{{- if .Values.stackDataContext.portaltileGroupManagementKnowledge -}}
+{{- .Values.stackDataContext.portaltileGroupManagementKnowledge -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portaltileGroupManagementLearn" -}}
+{{- if .Values.stackDataContext.portaltileGroupManagementLearn -}}
+{{- .Values.stackDataContext.portaltileGroupManagementLearn -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalTitleDE" -}}
+{{- if .Values.stackDataContext.portalTitleDE -}}
+{{- .Values.stackDataContext.portalTitleDE -}}
+{{- else if .Values.global.nubusDeployment -}}
+openDesk Portal
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalTitleEN" -}}
+{{- if .Values.stackDataContext.portalTitleEN -}}
+{{- .Values.stackDataContext.portalTitleEN -}}
+{{- else if .Values.global.nubusDeployment -}}
+openDesk Portal
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalGroupwareLinkBase" -}}
+{{- if .Values.stackDataContext.portalGroupwareLinkBase -}}
+{{- .Values.stackDataContext.portalGroupwareLinkBase -}}
+{{- else if .Values.global.nubusDeployment -}}
+[]
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalFileshareLinkBase" -}}
+{{- if .Values.stackDataContext.portalFileshareLinkBase -}}
+{{- .Values.stackDataContext.portalFileshareLinkBase -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- printf "https://fs.%s" (include "stack-data-ums.domainName" .) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalRealtimeCollaborationLinkBase" -}}
+{{- if .Values.stackDataContext.portalRealtimeCollaborationLinkBase -}}
+{{- .Values.stackDataContext.portalRealtimeCollaborationLinkBase -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- printf "https://chat.%s" (include "stack-data-ums.domainName" .) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalRealtimeVideoconferenceLinkBase" -}}
+{{- if .Values.stackDataContext.portalRealtimeVideoconferenceLinkBase -}}
+{{- .Values.stackDataContext.portalRealtimeVideoconferenceLinkBase -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- printf "https://meet.%s" (include "stack-data-ums.domainName" .) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalManagementProjectLinkBase" -}}
+{{- if .Values.stackDataContext.portalManagementProjectLinkBase -}}
+{{- .Values.stackDataContext.portalManagementProjectLinkBase -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- printf "https://project.%s" (include "stack-data-ums.domainName" .) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.portalManagementKnowledgeLinkBase" -}}
+{{- if .Values.stackDataContext.portalManagementKnowledgeLinkBase -}}
+{{- .Values.stackDataContext.portalManagementKnowledgeLinkBase -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- printf "https://wiki.%s" (include "stack-data-ums.domainName" .) -}}
+{{- end -}}
+{{- end -}}
+
+
+
 {{- define "stack-data-ums.udmApi.credentialSecret.name" -}}
 {{- if .Values.global.nubusDeployment -}}
 {{- printf "%s-udm-rest-api-credentials" .Release.Name -}}

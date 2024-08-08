@@ -658,7 +658,44 @@ false
   "ldapUri": "{{ include \"stack-data-ums.ldapUri\" . }}",
   "oxDefaultContext": "10",
   "portalAuthMode": "{{ include \"stack-data-ums.portalAuthMode\" . }}",
+  "portalFileshareLinkBase": "https://fs.{{ include \"stack-data-ums.domainName\" . }}",
   "portalFqdn": "{{ include \"stack-data-ums.portalFqdn\" . }}",
+  "portalGroupwareLinkBase": "https://webmail.{{ include \"stack-data-ums.domainName\" . }}",
+  "portalManagementKnowledgeLinkBase": "https://wiki.{{ include \"stack-data-ums.domainName\" . }}",
+  "portalManagementProjectLinkBase": "https://project.{{ include \"stack-data-ums.domainName\" . }}",
+  "portalRealtimeCollaborationLinkBase": "https://chat.{{ include \"stack-data-ums.domainName\" . }}",
+  "portalRealtimeVideoconferenceLinkBase": "https://meet.{{ include \"stack-data-ums.domainName\" . }}",
+  "portalTitleDE": "openDesk Portal",
+  "portalTitleEN": "openDesk Portal",
+  "portaltileGroupFileshare": [
+    "cn=managed-by-attribute-Fileshare,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupGroupware": [
+    "cn=managed-by-attribute-Groupware,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupLiveCollaboration": [
+    "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupManagementKnowledge": [
+    "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupManagementLearn": [
+    "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupManagementProject": [
+    "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupUserAdmin": [
+    "cn=Domain Admins,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}",
+    "cn=Support,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupUserAll": [
+    "cn=Domain Admins,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}",
+    "cn=Domain Users,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
+  "portaltileGroupUserStandard": [
+    "cn=Domain Users,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+  ],
   "samlMetadataUrl": "{{ include \"stack-data-ums.samlMetadataUrl\" . }}",
   "samlMetadataUrlInternal": "{{ include \"stack-data-ums.samlMetadataUrlInternal\" . }}",
   "samlServiceProviders": "{{ include \"stack-data-ums.samlServiceProviders\" . }}",
@@ -786,6 +823,35 @@ false
 </pre>
 </td>
 			<td>The authentication method to use for the portal. Default is `saml`.</td>
+		</tr>
+		<tr>
+			<td>templateContext.portalTitleDE</td>
+			<td>string</td>
+			<td><pre lang="json">
+"openDesk Portal"
+</pre>
+</td>
+			<td>Portal title (Deutsch)</td>
+		</tr>
+		<tr>
+			<td>templateContext.portalTitleEN</td>
+			<td>string</td>
+			<td><pre lang="json">
+"openDesk Portal"
+</pre>
+</td>
+			<td>Portal title (English)</td>
+		</tr>
+		<tr>
+			<td>templateContext.portaltileGroupUserStandard</td>
+			<td>list</td>
+			<td><pre lang="json">
+[
+  "cn=Domain Users,cn=groups,{{ include \"stack-data-ums.ldapBaseDn\" . }}"
+]
+</pre>
+</td>
+			<td>12-portal  TODO: Remove defaults from here ?</td>
 		</tr>
 		<tr>
 			<td>templateContext.samlMetadataUrl</td>
