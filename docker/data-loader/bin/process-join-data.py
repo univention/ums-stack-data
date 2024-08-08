@@ -142,7 +142,11 @@ class App:
                 properties=data.get("properties"),
             )
         elif data["action"] == "delete_if_exists":
-            self.delete_udm_object(module=data["module"], position=data["position"])
+            self.delete_udm_object(
+                module=data["module"],
+                position=data["position"],
+                properties=data["properties"],
+            )
 
         else:
             raise NotImplementedError(f"Action {data['action']} not supported.")
@@ -212,10 +216,11 @@ class App:
             else:
                 raise
 
-    def delete_udm_object(self, module, position):
-        log.info(f"Deleting UDM object {module}, {position}")
+    def delete_udm_object(self, module, position, properties):
+        log.info(f"Deleting UDM object {module}, {position}, {properties.get('name')}")
+        obj_dn = f"cn={properties.get('name')},{position}"
         try:
-            obj = self.udm.obj_by_dn(position)
+            obj = self.udm.obj_by_dn(obj_dn)
             obj.delete()
         except NotFound:
             log.info("The object does not exist, not deleting anything.")
