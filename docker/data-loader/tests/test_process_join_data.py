@@ -261,5 +261,5 @@ def test_delete_udm_object(app):
         "firstname": "stub_firstname",
         "lastname": "stub_lastname",
     }
-    app.delete_udm_object("users/user", "cn=someuser,dc=base")
+    app.delete_udm_object("users/user", "cn=someuser,dc=base", mock_obj.properties)
     mock_obj.delete.assert_called()
