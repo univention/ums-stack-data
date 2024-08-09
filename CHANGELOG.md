@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.60.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.60.0...v0.60.1) (2024-08-09)
+
+
+### Bug Fixes
+
+* **stack-data-swp:** Drop patches ([38b8fc5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/38b8fc5381bd98b4eeb434e2e2a2d6d6f0bd1d96))
+
 ## [0.60.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.59.2...v0.60.0) (2024-08-05)
 
 
