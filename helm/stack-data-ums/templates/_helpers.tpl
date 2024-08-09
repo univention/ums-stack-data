@@ -401,6 +401,30 @@ openDesk Portal
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.ldapSearchUsers" -}}
+{{- $newList := default (list) -}}
+{{- if .Values.stackDataContext.ldapSearchUsers -}}
+{{- range $item := .Values.stackDataContext.ldapSearchUsers -}}
+{{- $newList = append $newList (dict "username" $item.username "lastname" $item.lastname "password" $item.password) -}}
+{{- end -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- $newList := default (list) -}}
+{{- end -}}
+{{ toYaml $newList | nindent 2 }}
+{{- end -}}
+
+
+{{- define "stack-data-ums.ldapSystemUsers" -}}
+{{- $newList := default (list) -}}
+{{- if .Values.stackDataContext.ldapSystemUsers -}}
+{{- range $item := .Values.stackDataContext.ldapSystemUsers -}}
+{{- $newList = append $newList (dict "username" $item.username "lastname" $item.lastname "password" $item.password) -}}
+{{- end -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- $newList := default (list) -}}
+{{- end -}}
+{{ toYaml $newList | nindent 2 }}
+{{- end -}}
 
 
 {{- define "stack-data-ums.udmApi.credentialSecret.name" -}}
