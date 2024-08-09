@@ -166,7 +166,19 @@ templateContext:
   portalRealtimeVideoconferenceLinkBase: 'https://meet.{{ include "stack-data-ums.domainName" . }}'
   portalManagementProjectLinkBase: 'https://project.{{ include "stack-data-ums.domainName" . }}'
   portalManagementKnowledgeLinkBase: 'https://wiki.{{ include "stack-data-ums.domainName" . }}'
-
+  # -- Each user has to have the 3 fields.
+  ldapSystemUsers:
+    - username: "Test_System_User"
+      password: "univention"
+      lastname: "LDAP-Search-User"
+  # -- Each user has to have the 3 fields.
+  ldapSearchUsers:
+    - username: "Test_Search_User"
+      password: "univention"
+      lastname: "LDAP-System-User"
+    - username: "Test_Search_User2"
+      password: "univention"
+      lastname: "LDAP-System-User"
 
 
 # TODO: the template processing of the data files is being moved into the

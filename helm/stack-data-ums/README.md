@@ -655,6 +655,25 @@ false
   "ldapMasterHost": "{{ include \"stack-data-ums.ldapMasterHost\" . }}",
   "ldapMasterPort": "{{ include \"stack-data-ums.ldapMasterPort\" . }}",
   "ldapPort": "{{ include \"stack-data-ums.ldapPort\" . }}",
+  "ldapSearchUsers": [
+    {
+      "lastname": "LDAP-System-User",
+      "password": "univention",
+      "username": "Test_Search_User"
+    },
+    {
+      "lastname": "LDAP-System-User",
+      "password": "univention",
+      "username": "Test_Search_User2"
+    }
+  ],
+  "ldapSystemUsers": [
+    {
+      "lastname": "LDAP-Search-User",
+      "password": "univention",
+      "username": "Test_System_User"
+    }
+  ],
   "ldapUri": "{{ include \"stack-data-ums.ldapUri\" . }}",
   "oxDefaultContext": "10",
   "portalAuthMode": "{{ include \"stack-data-ums.portalAuthMode\" . }}",
@@ -805,6 +824,41 @@ false
 </pre>
 </td>
 			<td>Port to connect to the LDAP server. Chart defaults to `389`. Example: `389`</td>
+		</tr>
+		<tr>
+			<td>templateContext.ldapSearchUsers</td>
+			<td>list</td>
+			<td><pre lang="json">
+[
+  {
+    "lastname": "LDAP-System-User",
+    "password": "univention",
+    "username": "Test_Search_User"
+  },
+  {
+    "lastname": "LDAP-System-User",
+    "password": "univention",
+    "username": "Test_Search_User2"
+  }
+]
+</pre>
+</td>
+			<td>Each user has to have the 3 fields.</td>
+		</tr>
+		<tr>
+			<td>templateContext.ldapSystemUsers</td>
+			<td>list</td>
+			<td><pre lang="json">
+[
+  {
+    "lastname": "LDAP-Search-User",
+    "password": "univention",
+    "username": "Test_System_User"
+  }
+]
+</pre>
+</td>
+			<td>Each user has to have the 3 fields.</td>
 		</tr>
 		<tr>
 			<td>templateContext.oxDefaultContext</td>
