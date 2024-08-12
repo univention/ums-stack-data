@@ -611,6 +611,15 @@ true
 			<td>Wait for the udm-rest-api to be available</td>
 		</tr>
 		<tr>
+			<td>stackDataUms.extraDataFiles</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Allow to configure additional data files. This has to be a map from the desired filename to the content. The content has to be a valid YAML stream which the data loader is able to process.</td>
+		</tr>
+		<tr>
 			<td>stackDataUms.logContext</td>
 			<td>bool</td>
 			<td><pre lang="json">

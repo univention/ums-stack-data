@@ -61,6 +61,11 @@ stackDataUms:
   # -- Wait for the udm-rest-api to be available
   dependencyUdmApiWait: true
 
+  # -- Allow to configure additional data files.
+  # This has to be a map from the desired filename to the content. The content has
+  # to be a valid YAML stream which the data loader is able to process.
+  extraDataFiles: null
+
 # -- Context used to render the data file templates in the data loader.
 templateContext:
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
