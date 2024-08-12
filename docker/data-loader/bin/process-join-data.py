@@ -135,17 +135,10 @@ class App:
                 position=data["position"],
                 properties=data.get("properties"),
             )
-        elif data["action"] == "create_or_merge":
-            self.insert_modify_udm_object(
-                module=data["module"],
-                position=data["position"],
-                properties=data.get("properties"),
-            )
         elif data["action"] == "delete_if_exists":
             self.delete_udm_object(
                 module=data["module"],
                 position=data["position"],
-                properties=data["properties"],
             )
 
         else:
@@ -189,38 +182,10 @@ class App:
             else:
                 raise
 
-    def insert_modify_udm_object(self, module, position, properties):
-        log.info(f"Ensuring udm object {module}, {position}, {properties.get('name')}")
-        obj_dn = f"cn={properties.get('name')},{position}"
-        module_obj = self.udm.get(module)
-        obj = module_obj.new(position=position)
-        obj.properties.update(properties)
+    def delete_udm_object(self, module, position):
+        log.info(f"Deleting UDM object {module}, {position}")
         try:
-            obj.save()
-        except UnprocessableEntity as exc:
-            object_exists_message = '"dn" Object exists'
-            # TODO: Find a more solid way to check if the object exists
-            if object_exists_message in str(exc):
-                original = module_obj.get(obj_dn)
-                tmp_properties = properties.copy()
-                for key, value in properties.items():
-                    if type(value) is list:
-                        tmp_properties[key] = list(
-                            set(value + original.properties[key]),
-                        )
-                log.info(
-                    f"Merge-update udm object {module}, {position},"
-                    f" {properties.get('name')}",
-                )
-                self.update_udm_object(module, obj_dn, tmp_properties)
-            else:
-                raise
-
-    def delete_udm_object(self, module, position, properties):
-        log.info(f"Deleting UDM object {module}, {position}, {properties.get('name')}")
-        obj_dn = f"cn={properties.get('name')},{position}"
-        try:
-            obj = self.udm.obj_by_dn(obj_dn)
+            obj = self.udm.obj_by_dn(position)
             obj.delete()
         except NotFound:
             log.info("The object does not exist, not deleting anything.")
