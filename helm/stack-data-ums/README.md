@@ -182,6 +182,15 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>global.configUcr</td>
+			<td>object</td>
+			<td><pre lang="json">
+{}
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>global.extensions</td>
 			<td>list</td>
 			<td><pre lang="json">

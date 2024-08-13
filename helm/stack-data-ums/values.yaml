@@ -27,6 +27,8 @@ global:
   #
   imagePullPolicy: "IfNotPresent"
 
+  configUcr: {}
+
 
 stackDataUms:
 

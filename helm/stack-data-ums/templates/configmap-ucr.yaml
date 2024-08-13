@@ -17,264 +17,38 @@ metadata:
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.additionalAnnotations "context" . ) | nindent 4 }}
   {{- end }}
 data:
-  # TODO: "kerberos/realm" is needed by "ldap_server" currently.
-  base.conf: |-
-    ad/member: false
-    apache2/autostart: yes
-    apache2/documentroot: /var/www/
-    apache2/force_https/exclude/http_host/localhost: localhost
-    apache2/force_https/exclude/request_uri/mod-status: /server-status
-    apache2/force_https/exclude/request_uri/univention-portal: /univention/get
-    apache2/loglevel: warn
-    apache2/maxclients: 150
-    apache2/startsite: univention/
-    auth/methods: ldap
-    directory/manager/rest/authorized-groups/dc-backup: cn=DC Backup Hosts,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}
-    directory/manager/rest/authorized-groups/dc-slaves: cn=DC Slave Hosts,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}
-    directory/manager/rest/authorized-groups/domain-admins: cn=Domain Admins,cn=groups,{{ include "stack-data-ums.ldapBaseDn" . }}
-    directory/manager/rest/debug_level: 5
-    directory/manager/rest/ldap-connection/user-read/start-tls: 2
-    directory/manager/rest/show-tracebacks: false
-    directory/manager/starttls: 2
-    directory/manager/templates/alphanum/whitelist: ""
-    directory/manager/user/activate_ldap_attribute_mailForwardCopyToSelf: yes
-    directory/manager/user_group/uniqueness: true
-    directory/manager/web/language: de_DE.UTF-8
-    directory/manager/web/modules/autosearch: 1
-    directory/manager/web/modules/computers/computer/add/default: computers/windows
-    directory/manager/web/modules/groups/group/caching/uniqueMember/timeout: 300
-    directory/manager/web/modules/groups/group/checks/circular_dependency: yes
-    directory/manager/web/modules/search/advanced_on_open: false
-    directory/manager/web/modules/users/user/properties/homePostalAddress/syntax: postalAddress
-    directory/manager/web/modules/wizards/disabled: no
-    directory/manager/web/sizelimit: 2000
-    directory/reports/cleanup/age: 43200
-    directory/reports/cleanup/cron: 0 0 * * *
-    directory/reports/logo: /usr/share/univention-directory-reports/univention_logo.png
-    directory/reports/templates/csv/computer1: computers/computer "CSV Report" /etc/univention/directory/reports/default computers.csv
-    directory/reports/templates/csv/group1: groups/group "CSV Report" /etc/univention/directory/reports/default groups.csv
-    directory/reports/templates/csv/user1: users/user "CSV Report" /etc/univention/directory/reports/default users.csv
-    directory/reports/templates/pdf/computer1: computers/computer "PDF Document" /etc/univention/directory/reports/default computers.rml
-    directory/reports/templates/pdf/group1: groups/group "PDF Document" /etc/univention/directory/reports/default groups.rml
-    directory/reports/templates/pdf/user1: users/user "PDF Document" /etc/univention/directory/reports/default users.rml
-    domainname: {{ include "stack-data-ums.domainName" . }}
-    groups/default/domainadmins: Domain Admins
-    groups/default/printoperators: Printer-Admins
-    hostname: {{ include "stack-data-ums.subDomains.portal" . }}
-    kerberos/realm: stub_value
-    ldap/acl/nestedgroups: yes
-    ldap/acl/read/anonymous: no
-    ldap/acl/slavepdc: yes
-    ldap/acl/user/password/change: no
-    ldap/attributeoptions: entry-,lang-
-    ldap/autostart: yes
-    ldap/base: {{ include "stack-data-ums.ldapBaseDn" . }}
-    ldap/cachesize: 20000
-    ldap/client/retry/count: 10
-    ldap/database/bdb/db_config_options: set_flags
-    ldap/database/bdb/set_flags: DB_LOG_AUTOREMOVE
-    ldap/database/internal/checkpoint: 0 1
-    ldap/database/internal/envflags: nosync
-    ldap/database/mdb/maxsize: 4295000000
-    ldap/database/type: mdb
-    ldap/debug/level: none
-    ldap/hostdn: {{ include "stack-data-ums.ldapAdminDn" . }}
-    ldap/idlcachesize: 20000
-    ldap/idletimeout: 360
-    ldap/index/approx: cn,givenName,mail,sn,uid
-    ldap/index/autorebuild: yes
-    ldap/index/eq: aRecord,automountInformation,cNAMERecord,cn,description,dhcpHWAddress,displayName,entryUUID,gidNumber,givenName,homeDirectory,krb5PrincipalName,macAddress,mail,mailAlternativeAddress,mailPrimaryAddress,memberUid,objectClass,ou,pTRRecord,relativeDomainName,sambaAcctFlags,sambaDomainName,sambaGroupType,sambaPrimaryGroupSID,sambaSID,sambaSIDList,secretary,shadowExpire,sn,uid,uidNumber,uniqueMember,univentionCanonicalRecipientRewriteEnabled,univentionDataType,univentionInventoryNumber,univentionLicenseModule,univentionLicenseObject,univentionMailHomeServer,univentionNagiosHostname,univentionObjectFlag,univentionObjectType,univentionPolicyReference,univentionServerRole,univentionService,univentionShareGid,univentionShareSambaName,univentionShareWriteable,univentionUDMOptionModule,univentionUDMPropertyCLIName,univentionUDMPropertyCopyable,univentionUDMPropertyDefault,univentionUDMPropertyDeleteObjectClass,univentionUDMPropertyDoNotSearch,univentionUDMPropertyHook,univentionUDMPropertyLayoutOverwritePosition,univentionUDMPropertyLayoutOverwriteTab,univentionUDMPropertyLayoutPosition,univentionUDMPropertyLayoutTabAdvanced,univentionUDMPropertyLayoutTabName,univentionUDMPropertyLdapMapping,univentionUDMPropertyLongDescription,univentionUDMPropertyModule,univentionUDMPropertyMultivalue,univentionUDMPropertyObjectClass,univentionUDMPropertyOptions,univentionUDMPropertyShortDescription,univentionUDMPropertySyntax,univentionUDMPropertyTranslationLongDescription,univentionUDMPropertyTranslationShortDescription,univentionUDMPropertyTranslationTabName,univentionUDMPropertyValueMayChange,univentionUDMPropertyValueRequired,univentionUDMPropertyVersion,zoneName
-    ldap/index/pres: aRecord,automountInformation,cn,description,dhcpHWAddress,displayName,gidNumber,givenName,homeDirectory,krb5PrincipalName,macAddress,mail,mailAlternativeAddress,mailPrimaryAddress,memberUid,name,objectClass,ou,relativeDomainName,shadowMax,sn,uid,uidNumber,uniqueMember,univentionMailHomeServer,univentionObjectFlag,univentionPolicyReference,univentionUDMPropertyCLIName,univentionUDMPropertyDefault,univentionUDMPropertyDeleteObjectClass,univentionUDMPropertyDoNotSearch,univentionUDMPropertyHook,univentionUDMPropertyLayoutOverwritePosition,univentionUDMPropertyLayoutOverwriteTab,univentionUDMPropertyLayoutPosition,univentionUDMPropertyLayoutTabAdvanced,univentionUDMPropertyLayoutTabName,univentionUDMPropertyLdapMapping,univentionUDMPropertyLongDescription,univentionUDMPropertyModule,univentionUDMPropertyMultivalue,univentionUDMPropertyObjectClass,univentionUDMPropertyOptions,univentionUDMPropertyShortDescription,univentionUDMPropertySyntax,univentionUDMPropertyTranslationLongDescription,univentionUDMPropertyTranslationShortDescription,univentionUDMPropertyTranslationTabName,univentionUDMPropertyValueMayChange,univentionUDMPropertyValueRequired,univentionUDMPropertyVersion,zoneName
-    ldap/index/quickmode: false
-    ldap/index/sub: aRecord,associatedDomain,automountInformation,cn,default,description,displayName,employeeNumber,givenName,macAddress,mail,mailAlternativeAddress,mailPrimaryAddress,name,ou,pTRRecord,printerModel,relativeDomainName,sambaSID,sn,uid,univentionInventoryNumber,univentionOperatingSystem,univentionSyntaxDescription,univentionUDMPropertyLongDescription,univentionUDMPropertyShortDescription,zoneName
-    ldap/k5pwd: true
-    ldap/limits: users time.soft=-1 time.hard=-1
-    ldap/master: {{ include "stack-data-ums.ldapMasterHost" . }}
-    ldap/master/port: {{ include "stack-data-ums.ldapMasterPort" . }}
-    ldap/maxopenfiles: 8192
-    ldap/monitor: false
-    ldap/overlay/lastbind: false
-    ldap/overlay/lastbind/precision: 3600
-    ldap/overlay/memberof: true
-    ldap/overlay/memberof/objectclass: posixGroup
-    ldap/overlay/memberof/member: uniqueMember
-    ldap/overlay/memberof/memberof: memberOf
-    ldap/overlay/memberof/dangling: ignore
-    ldap/policy/cron: 5 * * * *
-    ldap/ppolicy: false
-    ldap/ppolicy/enabled: false
-    ldap/pwd_scheme_kinit: true
-    ldap/saml/service-providers: {{ include "stack-data-ums.samlServiceProviders" . }}
-    ldap/server/name: {{ include "stack-data-ums.ldapHost" . }}
-    ldap/server/port: {{ include "stack-data-ums.ldapPort" . }}
-    ldap/server/type: master
-    ldap/sizelimit: 400000
-    ldap/shadowbind: true
-    ldap/shadowbind/ignorefilter: (|(objectClass=univentionDomainController)(userPassword={KINIT}))
-    ldap/threads: 16
-    ldap/tls/ciphersuite: HIGH:MEDIUM:!aNULL:!MD5:!RC4
-    ldap/tls/minprotocol: 3.1
-    ldap/tls/dh/paramfile: /etc/ldap/dh_2048.pem
-    ldap/tool-threads: 1
-    ldap/translogfile: /var/lib/univention-ldap/listener/listener
-    license/base: {{ include "stack-data-ums.ldapBaseDn" . }}
-    locale/default: de_DE.UTF-8:UTF-8
-    locale: de_DE.UTF-8:UTF-8 en_US.UTF-8:UTF-8
-    password/hashing/method: SHA-512
-    portal/auth-mode: {{ include "stack-data-ums.portalAuthMode" . }}
-    portal/paths: /univention/portal/, /univention/umc/, /univention/selfservice/
-    self-service/backend-server: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
-    self-service/ldap_attributes: jpegPhoto,mail,telephoneNumber,roomNumber,departmentNumber,st,homePhone,mobile,homePostalAddress
-    self-service/udm-rest-server: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
-    self-service/udm_attributes: jpegPhoto,e-mail,phone,roomnumber,departmentNumber,country,homeTelephoneNumber,mobileTelephoneNumber,homePostalAddress
-    self-service/web/enabled: yes
-    server/role: domaincontroller_master
-    slapd/port: {{ include "stack-data-ums.ldapPort" . }}
-    ssl/ca/cipher: aes256
-    ssl/common: Univention Corporate Server Root CA (ID: XXX)
-    ssl/country: DE
-    ssl/crl/interval: 7
-    ssl/crl/validity: 10
-    ssl/default/bits: 2048
-    ssl/default/days: 1825
-    ssl/default/hashfunction: sha256
-    ssl/email: ssl@example.org
-    ssl/host/objectclass: univentionDomainController,univentionMemberServer,univentionClient
-    ssl/locality: DE
-    ssl/organization: DE
-    ssl/organizationalunit: Univention Corporate Server
-    ssl/state: DE
-    ssl/update/expired: yes
-    ssl/validity/check: yes
-    ssl/validity/host: 20523
-    ssl/validity/root: 20523
-    ssl/validity/warning: 30
-    system/setup/showloginmessage: false
-    ucr/backup/enabled: yes
-    ucr/encoding/strict: true
-    ucs/server/languages/de_AT: Deutsch (Österreich)
-    ucs/server/languages/de_CH: Deutsch (Schweiz)
-    ucs/server/languages/de_DE: Deutsch
-    ucs/server/languages/en_GB: English (United Kingdom)
-    ucs/server/languages/en_US: English
-    ucs/server/robots/disallow: /
-    ucs/server/saml-idp-server/primary.example.org: primary.example.org
-    ucs/server/sso/fqdn: {{ include "stack-data-ums.keycloakFqdn" . }}
-    ucs/server/sso/virtualhost: true
-    ucs/web/license/requested: true
-    ucs/web/theme: dark
-    umc/http/allowed-session-overtake/ranges: 0.0.0.0/0,::/0
-    umc/http/autostart: yes
-    umc/http/content-security-policy/connect-src: 'self'
-    umc/http/content-security-policy/default-src: 'unsafe-eval'
-    umc/http/content-security-policy/font-src: 'self'
-    umc/http/content-security-policy/form-action: 'self'
-    umc/http/content-security-policy/frame-ancestors: 'self'
-    umc/http/content-security-policy/frame-src: 'self' {{ if include "stack-data-ums.keycloakFqdn" . }}https://{{ include "stack-data-ums.keycloakFqdn" . }}{{ end }}
-    umc/http/content-security-policy/img-src: *
-    umc/http/content-security-policy/media-src: *
-    umc/http/content-security-policy/object-src: 'self'
-    umc/http/content-security-policy/script-src: 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com/ https://s.ytimg.com/
-    umc/http/content-security-policy/style-src: 'self' 'unsafe-inline'
-    umc/http/interface: 0.0.0.0
-    umc/http/enforce-session-cookie: true
-    umc/http/port: 8090
-    umc/http/response-timeout: 310
-    umc/http/session/timeout: 28800
-    umc/http/show_tracebacks: false
-    umc/login/content-security-policy/frame-ancestors: 'self'
-    umc/login/links/forgot_your_password/enabled: true
-    umc/login/links/how_do_i_login/enabled: true
-    umc/login/links/login_without_sso/enabled: true
-    umc/login/links/login_without_sso/text/de: Ohne Single Sign-On anmelden
-    umc/login/links/login_without_sso/text: Login without Single Sign On
-    umc/module/debug/level: 5
-    umc/module/timeout: 600
-    umc/module/udm/users/self/disabled: true
-    umc/saml/idp-server: {{ include "stack-data-ums.samlMetadataUrl" .}}
-    umc/saml/idp-server-internal: {{ include "stack-data-ums.samlMetadataUrlInternal" . }}
-    umc/saml/in-memory-identity-cache: false
-    umc/saml/schemes: {{ include "stack-data-ums.umcSamlSchemes" . }}
-    umc/saml/sp-server: {{ include "stack-data-ums.portalFqdn" . }}
-    umc/saml/trusted/sp/primary.example.org: primary.example.org
-    umc/self-service/account-deregistration/blacklist/groups: Administrators,Domain Admins
-    umc/self-service/account-deregistration/email/subject: Account deletion
-    umc/self-service/account-deregistration/enabled: false
-    umc/self-service/account-deregistration/whitelist/groups: Domain Users
-    umc/self-service/account-registration/backend/enabled: false
-    umc/self-service/account-registration/frontend/enabled: false
-    umc/self-service/account-registration/udm_attributes: firstname,lastname,username
-    umc/self-service/account-registration/udm_attributes/required: lastname,username
-    umc/self-service/account-registration/usercontainer: cn=self registered users,{{ include "stack-data-ums.ldapBaseDn" . }}
-    umc/self-service/account-registration/usertemplate: cn=selfserviceregistrationtemplate,cn=templates,cn=univention,{{ include "stack-data-ums.ldapBaseDn" . }}
-    umc/self-service/account-verification/backend/enabled: false
-    umc/self-service/account-verification/email/subject: Account verification
-    umc/self-service/account-verification/email/token_length: 64
-    umc/self-service/account-verification/frontend/enabled: false
-    umc/self-service/account-verification/next-steps: "Continue to the <a href='/univention/portal'>Univention Portal</a>."
-    umc/self-service/account-verification/next-steps/de: "Weiter zum <a href='/univention/portal'>Univention Portal</a>."
-    umc/self-service/allow-authenticated-use: true
-    umc/self-service/content-security-policy/frame-ancestors: *.{{ include "stack-data-ums.domainName" . }}
-    umc/self-service/email-change-notification/email/subject: Account recovery email changed
-    umc/self-service/enabled: yes
-    umc/self-service/invitation/enabled: true
-    umc/self-service/memcached/socket: {{ include "stack-data-ums.umcMemcachedHostname" . }}
-    umc/self-service/memcached/username: {{ include "stack-data-ums.umcMemcachedUsername" . }}
-    umc/self-service/passwordchange/frontend/enabled: yes
-    umc/self-service/passwordreset/backend/enabled: true
-    umc/self-service/passwordreset/blacklist/groups: Administrators,Domain Admins
-    umc/self-service/passwordreset/frontend/enabled: yes
-    umc/self-service/passwordreset/email/enabled: yes
-    umc/self-service/passwordreset/email/sender_address: Password Reset Service <noreply@{{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}>
-    umc/self-service/passwordreset/email/server: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
-    umc/self-service/passwordreset/email/subject: Password reset
-    umc/self-service/passwordreset/email/token_length: 64
-    umc/self-service/passwordreset/email/webserver_address: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
-    umc/self-service/passwordreset/external/enabled: no
-    umc/self-service/passwordreset/external/token_length: 64
-    umc/self-service/passwordreset/limit/total/day: 1000
-    umc/self-service/passwordreset/limit/total/hour: 200
-    umc/self-service/passwordreset/limit/total/minute: 120
-    umc/self-service/passwordreset/limit/per_user/day: 120
-    umc/self-service/passwordreset/limit/per_user/hour: 60
-    umc/self-service/passwordreset/limit/per_user/minute: 10
-    umc/self-service/passwordreset/sms/enabled: no
-    umc/self-service/passwordreset/sms/token_length: 12
-    umc/self-service/passwordreset/token_validity_period: 3600
-    umc/self-service/passwordreset/whitelist/groups: Domain Users
-    umc/self-service/postgresql/hostname: {{ include "stack-data-ums.umcPostgresqlHostname" . }}
-    umc/self-service/postgresql/port: {{ include "stack-data-ums.umcPostgresqlPort" . }}
-    umc/self-service/postgresql/username: {{ include "stack-data-ums.umcPostgresqlUsername" . }}
-    umc/self-service/postgresql/database: {{ include "stack-data-ums.umcPostgresqlDatabase" . }}
-    umc/self-service/profiledata/blacklist/groups: Administrators,Domain Admins
-    umc/self-service/profiledata/enabled: true
-    umc/self-service/profiledata/whitelist/groups: Domain Users
-    umc/self-service/protect-account/backend/enabled: true
-    umc/self-service/protect-account/frontend/enabled: yes
-    umc/self-service/service-specific-passwords/backend/enabled: false
-    umc/server/autostart: yes
-    umc/server/debug/level: 5
-    umc/server/processes: 1
-    umc/server/upload/max: 2048
-    umc/server/upload/min_free_space: 51200
-    umc/web/appliance/fast_setup_mode: true
-    umc/web/cache_bust: 1619020256
-    umc/web/favorites/default: welcome,udm:users/user,udm:groups/group,udm:computers/computer,appcenter:appcenter,updater
-    umc/web/feedback/description: [UMC-Feedback] Traceback
-    umc/web/feedback/mail: feedback@univention.de
-    umc/web/hooks/univention-management-console-module-passwordchange: passwordchange
-    umc/web/hooks/univention-self-service: passwordreset
-    umc/web/hooks/univention-web-js: default_menu_entries
-    umc/web/language: de_DE.UTF-8:UTF-8
-    umc/web/sso/enabled: true
-    umc/web/sso/newwindow: true
-    umc/web/startupdialog: false
-    umc/web/title: {{ tpl .Values.stackDataContext.umcHtmlTitle . }}
-    update/available: false
-    update/reboot/required: false
-    uuid/license: 00000000-0000-0000-0000-000000000000
-    uuid/system: 00000000-0000-0000-0000-000000000000
-    version/erratalevel: 0
-    version/patchlevel: 5
-    version/version: 5.0
-...
+  base.conf: |
+    {{- $default := .Files.Get "config/default-base.conf" | fromYaml }}
+    {{- $userConfig := .Values.global.configUcr | default dict }}
+    {{- $merged := merge $default $userConfig }}
+
+    {{- define "isMap" -}}
+      {{- if kindIs "map" . -}}
+        true
+      {{- else -}}
+        false
+      {{- end -}}
+    {{- end -}}
+
+    {{- define "renderConfig" -}}
+    {{- $basePath := .basePath -}}
+    {{- range $key, $value := .dict -}}
+      {{- $currentPath := printf "%s/%s" $basePath $key | trimPrefix "/" -}}
+      {{- if eq (include "isMap" $value) "true" -}}
+        {{- include "renderConfig" (dict "dict" $value "basePath" $currentPath "context" $.context) -}}
+      {{- else -}}
+        {{- if kindIs "string" $value -}}
+          {{- if eq $value "__DELETE_KEY__" -}}
+            {{- /* Skip this key-value pair */ -}}
+          {{- else -}}
+            {{- $renderedValue := include "common.tplvalues.render" (dict "value" $value "context" $.context) -}}
+            {{- printf "%s: %s\n" $currentPath $renderedValue -}}
+          {{- end -}}
+        {{- else -}}
+          {{- printf "%s: %v\n" $currentPath $value -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- end -}}
+
+    {{- include "renderConfig" (dict "dict" $merged "basePath" "" "context" .) | nindent 4 }}
