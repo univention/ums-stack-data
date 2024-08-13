@@ -21,7 +21,6 @@ data:
     {{- $default := .Files.Get "config/default-base.conf" | fromYaml }}
     {{- $userConfig := .Values.global.configUcr | default dict }}
     {{- $merged := merge $default $userConfig }}
-
     {{- define "isMap" -}}
       {{- if kindIs "map" . -}}
         true
@@ -29,7 +28,15 @@ data:
         false
       {{- end -}}
     {{- end -}}
-
+    {{- define "formatValue" -}}
+      {{- if kindIs "float64" . -}}
+        {{- printf "%.0f" . -}}
+      {{- else if kindIs "int64" . -}}
+        {{- printf "%d" . -}}
+      {{- else -}}
+        {{- . -}}
+      {{- end -}}
+    {{- end -}}
     {{- define "renderConfig" -}}
     {{- $basePath := .basePath -}}
     {{- range $key, $value := .dict -}}
@@ -45,10 +52,10 @@ data:
             {{- printf "%s: %s\n" $currentPath $renderedValue -}}
           {{- end -}}
         {{- else -}}
-          {{- printf "%s: %v\n" $currentPath $value -}}
+          {{- $formattedValue := include "formatValue" $value -}}
+          {{- printf "%s: %s\n" $currentPath $formattedValue -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}
     {{- end -}}
-
     {{- include "renderConfig" (dict "dict" $merged "basePath" "" "context" .) | nindent 4 }}
