@@ -132,32 +132,6 @@ templateContext:
   # -- Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`.
   # Example: `"https, http"`
   umcSamlSchemes: '{{ include "stack-data-ums.umcSamlSchemes" . }}'
-  # -- Default value for oxDefaultContext in the data-loader
-#  oxDefaultContext: '{{ include "stack-data-ums.oxDefaultContext" . }}'
-  # -- OPENDESK Extension needs below
-  # -- 12-portal  TODO: Remove defaults from here ?
-#  portaltileGroupUserStandard: '{{ include "stack-data-ums.portaltileGroupUserStandard" . }}'
-#  portaltileGroupUserAdmin: '{{ include "stack-data-ums.portaltileGroupUserAdmin" . }}'
-#  portaltileGroupUserAll: '{{ include "stack-data-ums.portaltileGroupUserAll" . }}'
-#  portaltileGroupGroupware: '{{ include "stack-data-ums.portaltileGroupGroupware" . }}'
-#  portaltileGroupFileshare: '{{ include "stack-data-ums.portaltileGroupFileshare" . }}'
-#  portaltileGroupManagementProject: '{{ include "stack-data-ums.portaltileGroupManagementProject" . }}'
-#  portaltileGroupManagementKnowledge: '{{ include "stack-data-ums.portaltileGroupManagementKnowledge" . }}'
-#  portaltileGroupManagementLearn: '{{ include "stack-data-ums.portaltileGroupManagementLearn" . }}'
-#  portaltileGroupLiveCollaboration: '{{ include "stack-data-ums.portaltileGroupLiveCollaboration" . }}'
-#  # -- Portal title (Deutsch)
-#  portalTitleDE: '{{ include "stack-data-ums.portalTitleDE" . }}'
-#  # -- Portal title (English)
-#  portalTitleEN: '{{ include "stack-data-ums.portalTitleEN" . }}'
-#  portalGroupwareLinkBase: '{{ include "stack-data-ums.portalGroupwareLinkBase" . }}'
-#  portalFileshareLinkBase: '{{ include "stack-data-ums.portalFileshareLinkBase" . }}'
-#  portalRealtimeCollaborationLinkBase: '{{ include "stack-data-ums.portalRealtimeCollaborationLinkBase" . }}'
-#  portalRealtimeVideoconferenceLinkBase: '{{ include "stack-data-ums.portalRealtimeVideoconferenceLinkBase" . }}'
-#  portalManagementProjectLinkBase: '{{ include "stack-data-ums.portalManagementProjectLinkBase" . }}'
-#  portalManagementKnowledgeLinkBase: '{{ include "stack-data-ums.portalManagementKnowledgeLinkBase" . }}'
-#  # -- Each user has to have the 3 fields.
-#  ldapSystemUsers: '{{ include "stack-data-ums.ldapSystemUsers" . }}'
-#  ldapSearchUsers: '{{ include "stack-data-ums.ldapSearchUsers" . }}'
 
 
 
@@ -241,8 +215,6 @@ stackDataContext:
   # -- This parameter allows to skip the installation of the default UMC
   # policies if set to "false".
   installUmcPolicies: false
-  # -- Default value for oxDefaultContext in the data-loader
-#  oxDefaultContext: "10"
 
 # -- Container image configuration
 image:
