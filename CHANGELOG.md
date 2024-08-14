@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.61.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.60.1...v0.61.0) (2024-08-14)
+
+
+### Features
+
+* remove files added to opendesk repo ([5971d3e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/5971d3e57578ebacbe35b8e53eb61dc8229d710e))
+* remove ox-extension from stack-data ([df9a2c2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/df9a2c242f7bcde26dc76d06aba6df0e614ba339))
+
+
+### Bug Fixes
+
+* qa fixes ([fb2f696](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/fb2f69615a032dab9907c599d9240845d1dd422b))
+
 ## [0.60.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.60.0...v0.60.1) (2024-08-09)
 
 
