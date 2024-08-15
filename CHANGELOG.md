@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.61.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.61.0...v0.61.1) (2024-08-15)
+
+
+### Bug Fixes
+
+* Correct self-service sender email address configuration in UCR ([abfabd7](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/abfabd75cc4643f6292bf45753fb173e22f5f176))
+
 ## [0.61.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.60.1...v0.61.0) (2024-08-14)
 
 
