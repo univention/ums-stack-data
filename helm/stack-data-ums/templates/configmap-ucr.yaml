@@ -225,7 +225,7 @@ data:
     umc/self-service/passwordreset/blacklist/groups: Administrators,Domain Admins
     umc/self-service/passwordreset/frontend/enabled: yes
     umc/self-service/passwordreset/email/enabled: yes
-    umc/self-service/passwordreset/email/sender_address: "Password Reset Service <noreply@{{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}>"
+    umc/self-service/passwordreset/email/sender_address: Password Reset Service <noreply@{{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}>
     umc/self-service/passwordreset/email/server: {{ include "stack-data-ums.subDomains.portal" . }}.{{ include "stack-data-ums.domainName" . }}
     umc/self-service/passwordreset/email/subject: Password reset
     umc/self-service/passwordreset/email/token_length: 64
