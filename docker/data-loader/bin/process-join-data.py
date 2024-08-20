@@ -14,7 +14,7 @@ from univention.admin.rest.client import UDM, NotFound, UnprocessableEntity
 log = logging.getLogger("app")
 
 
-cli_app = typer.Typer()
+cli_app = typer.Typer(pretty_exceptions_enable=False)
 
 
 @cli_app.command()
@@ -267,4 +267,4 @@ def _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file):
 
 
 if __name__ == "__main__":
-    cli_app()
+    cli_app(standalone_mode=False)
