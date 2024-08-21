@@ -202,7 +202,6 @@ true
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "adminPassword": null,
   "externalDomainName": "",
   "externalMailDomain": "",
   "ldapBase": "",
@@ -250,21 +249,11 @@ true
   "smtpHost": null,
   "smtpPort": 587,
   "smtpStartTls": true,
-  "smtpUser": null,
-  "userPassword": null
+  "smtpUser": null
 }
 </pre>
 </td>
 			<td>Context used for rendering the data files</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.adminPassword</td>
-			<td>string</td>
-			<td><pre lang="json">
-null
-</pre>
-</td>
-			<td>Password for the default.admin user. This is only evaluated if loadDevData is set to true.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.externalDomainName</td>
@@ -348,15 +337,6 @@ null
 			<td>Self-service emails: SMTP username</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.userPassword</td>
-			<td>string</td>
-			<td><pre lang="json">
-null
-</pre>
-</td>
-			<td>Password for the default.user user. This is only evaluated if loadDevData is set to true.</td>
-		</tr>
-		<tr>
 			<td>stackDataSwp.dataConfigMapName</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -391,15 +371,6 @@ null
 </pre>
 </td>
 			<td>Allow to configure additional data files. This has to be a map from the desired filename to the content. The content has to be a valid YAML stream which the data loader is able to process.</td>
-		</tr>
-		<tr>
-			<td>stackDataSwp.loadDevData</td>
-			<td>bool</td>
-			<td><pre lang="json">
-false
-</pre>
-</td>
-			<td>Load data which is useful during development (opt-in)</td>
 		</tr>
 		<tr>
 			<td>stackDataSwp.systemInformation</td>

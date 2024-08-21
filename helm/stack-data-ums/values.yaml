@@ -44,9 +44,6 @@ stackDataUms:
   # -- The filename which contains the password
   udmApiPasswordFile: "/run/secrets/univention.de/data-loader/udm_secret"
 
-  # -- Load data which is useful during development (opt-in)
-  loadDevData: false
-
   # -- Enables logging of the template context used to render the template
   # files.
   #
@@ -75,9 +72,7 @@ templateContext:
   initialPasswordAdministrator: '{{ include "stack-data-ums.initialPasswordAdministrator" . }}'
   # -- The initial password of the user "sys-idp-user.
   initialPasswordSysIdpUser: '{{ include "stack-data-ums.initialPasswordSysIdpUser" . }}'
-  # -- This parameter allows to skip the installation of the default UMC
-  # policies if set to "false".
-  #
+
   # TODO: This value should by default be true for a plain Nubus deployment.
   installUmcPolicies: false
   keycloakFqdn: '{{ include "stack-data-ums.keycloakFqdn" . }}'
@@ -99,6 +94,8 @@ templateContext:
   # Example: `389`
   ldapPort: '{{ include "stack-data-ums.ldapPort" . }}'
   ldapUri: '{{ include "stack-data-ums.ldapUri" . }}'
+  # -- Load development data, such as test users.
+  loadDevData: true
   # -- The authentication method to use for the portal. Default is `saml`.
   portalAuthMode: '{{ include "stack-data-ums.portalAuthMode" . }}'
   portalFqdn: '{{ include "stack-data-ums.portalFqdn" . }}'

@@ -35,14 +35,6 @@ data:
 {{ $.top.Files.Get $path | indent 4 }}
 {{- end }}
 
-{{- if .Values.stackDataUms.loadDevData }}
-{{- range $path, $_ := $.top.Files.Glob "data-files/dev/*.yaml" }}
-  {{ base $path }}: |-
-    # Source: {{ $path }}
-{{ $.top.Files.Get $path | indent 4 }}
-{{- end }}
-{{- end }}
-
 {{- if .Values.stackDataUms.extraDataFiles }}
 {{- range $filename, $filecontent := .Values.stackDataUms.extraDataFiles }}
   {{ $filename }}: |-

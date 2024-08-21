@@ -31,9 +31,6 @@ stackDataSwp:
   #   password: secretPW
   demoUsers: null
 
-  # -- Load data which is useful during development (opt-in)
-  loadDevData: false
-
   # -- Wait for the udm-rest-api to be available
   dependencyUdmApiWait: true
 
@@ -109,14 +106,6 @@ stackDataContext:
 
   # -- Portal title (English)
   portalTitleEN: "openDesk Portal"
-
-  # -- Password for the default.user user.
-  # This is only evaluated if loadDevData is set to true.
-  userPassword: null
-  # -- Password for the default.admin user.
-  # This is only evaluated if loadDevData is set to true.
-  adminPassword: null
-
 
 # -- Container image configuration
 image:

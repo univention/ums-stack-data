@@ -26,14 +26,6 @@ data:
 {{ tpl ($.top.Files.Get $path) $.top | indent 4 }}
 {{- end }}
 
-{{- if .Values.stackDataSwp.loadDevData }}
-{{- range $path, $_ := $.top.Files.Glob "data-files/dev/*.yaml" }}
-  {{ base $path }}: |-
-    # Source: {{ $path }}
-{{ tpl ($.top.Files.Get $path) $.top | indent 4 }}
-{{- end }}
-{{- end }}
-
 {{- if .Values.stackDataSwp.extraDataFiles }}
 {{- range $filename, $filecontent := .Values.stackDataSwp.extraDataFiles }}
   {{ $filename }}: |-

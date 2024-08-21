@@ -620,15 +620,6 @@ true
 			<td>Wait for the udm-rest-api to be available</td>
 		</tr>
 		<tr>
-			<td>stackDataUms.loadDevData</td>
-			<td>bool</td>
-			<td><pre lang="json">
-false
-</pre>
-</td>
-			<td>Load data which is useful during development (opt-in)</td>
-		</tr>
-		<tr>
 			<td>stackDataUms.logContext</td>
 			<td>bool</td>
 			<td><pre lang="json">
@@ -710,6 +701,7 @@ false
   "ldapMasterPort": "{{ include \"stack-data-ums.ldapMasterPort\" . }}",
   "ldapPort": "{{ include \"stack-data-ums.ldapPort\" . }}",
   "ldapUri": "{{ include \"stack-data-ums.ldapUri\" . }}",
+  "loadDevData": true,
   "portalAuthMode": "{{ include \"stack-data-ums.portalAuthMode\" . }}",
   "portalFqdn": "{{ include \"stack-data-ums.portalFqdn\" . }}",
   "samlMetadataUrl": "{{ include \"stack-data-ums.samlMetadataUrl\" . }}",
@@ -769,15 +761,6 @@ false
 			<td>The initial password of the user "sys-idp-user.</td>
 		</tr>
 		<tr>
-			<td>templateContext.installUmcPolicies</td>
-			<td>bool</td>
-			<td><pre lang="json">
-false
-</pre>
-</td>
-			<td>This parameter allows to skip the installation of the default UMC policies if set to "false".  TODO: This value should by default be true for a plain Nubus deployment.</td>
-		</tr>
-		<tr>
 			<td>templateContext.ldapBaseDn</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -821,6 +804,15 @@ false
 </pre>
 </td>
 			<td>Port to connect to the LDAP server. Chart defaults to `389`. Example: `389`</td>
+		</tr>
+		<tr>
+			<td>templateContext.loadDevData</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Load development data, such as test users.</td>
 		</tr>
 		<tr>
 			<td>templateContext.portalAuthMode</td>
