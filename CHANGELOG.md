@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.62.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.61.1...v0.62.0) (2024-08-21)
+
+
+### Features
+
+* set data loader status flag ([ce5b817](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/ce5b8172cb2cbab5ce0c27b8d4fbbefdd25518cf))
+
+
+### Bug Fixes
+
+* **data-loader:** disable fancy exception formatting by typer / click ([3d9cade](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/3d9cade602aec96700cee7007b0ad4b9f2f2b03d))
+
 ## [0.61.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.61.0...v0.61.1) (2024-08-15)
 
 
