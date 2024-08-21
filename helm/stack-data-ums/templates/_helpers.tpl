@@ -248,7 +248,6 @@ id
 {{- end -}}
 {{- end -}}
 
-
 {{- define "stack-data-ums.portalAuthMode" -}}
 {{- if .Values.stackDataContext.portalAuthMode -}}
 {{- .Values.stackDataContext.portalAuthMode -}}
@@ -275,4 +274,8 @@ https
 {{- if .Values.global.nubusDeployment -}}
 machine.secret
 {{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.readonlyUserPassword" -}}
+{{- printf "{{ readonlyUserPassword }}" -}}
 {{- end -}}

@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2024 Univention GmbH
+
+{{ with .Values.stackDataContext }}
+
+---
+action: create
+module: groups/group
+position: cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}
+properties:
+  name: "LDAPSearch Users"
+
+---
+action: create
+module: users/ldap
+position: cn=users,{{ include "stack-data-ums.ldapBaseDn" $ }}
+properties:
+  username: "readonly"
+  lastname: "LDAP-system-User"
+  password: {{ include "stack-data-ums.readonlyUserPassword" $ }}
+  overridePWHistory: true
+  overridePWLength: true
+{{ end }}
