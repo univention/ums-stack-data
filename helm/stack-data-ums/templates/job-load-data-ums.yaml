@@ -119,6 +119,9 @@ spec:
         envFrom:
           - configMapRef:
               name: {{ include "common.names.fullname" . }}
+        env:
+          - name: SET_STATUS_FLAG
+            value: "true"
         volumeMounts:
         {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
           - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}

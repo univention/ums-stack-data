@@ -37,6 +37,7 @@ RUN pipenv sync --system \
     && rm -r ~/.cache
 
 COPY bin/* /usr/local/bin/
+COPY set-data-loader-status-flag.yaml /
 
 WORKDIR /
 RUN mkdir /join-data

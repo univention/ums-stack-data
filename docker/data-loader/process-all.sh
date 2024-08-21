@@ -23,15 +23,20 @@ done
 # or other approach.
 if [ ! -v UDM_API_USER ]; then
     echo "Not forcing cache reload for users/user module UDM REST API because UDM_API_USER is unset or empty"
-    exit 0
+else
+    echo "Forcing cache reload for users/user module UDM REST API to reload extended_attributes"
+    for _ in seq 1 20;
+    do
+        curl \
+            -X GET \
+            -sS \
+            -u "$UDM_API_USER:$(cat "$UDM_API_PASSWORD_FILE")" \
+            -H "Accept: application/json" \
+            "${UDM_API_URL}users/user/add";
+    done
 fi
-echo "Forcing cache reload for users/user module UDM REST API to reload extended_attributes"
-for _ in seq 1 20;
-do
-    curl \
-        -X GET \
-        -sS \
-        -u "$UDM_API_USER:$(cat "$UDM_API_PASSWORD_FILE")" \
-        -H "Accept: application/json" \
-        "${UDM_API_URL}users/user/add";
-done
+
+if [[ "${SET_STATUS_FLAG:-false}" == true ]]; then
+    echo "Set data loader status flag"
+    process-join-data.py "$@" set-data-loader-status-flag.yaml
+fi
