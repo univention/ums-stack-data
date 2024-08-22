@@ -41,6 +41,7 @@ data:
     {{- $basePath := .basePath -}}
     {{- range $key, $value := .dict -}}
       {{- $currentPath := printf "%s/%s" $basePath $key | trimPrefix "/" -}}
+      {{- $currentPath := trimSuffix "__" $currentPath -}}
       {{- if eq (include "isMap" $value) "true" -}}
         {{- include "renderConfig" (dict "dict" $value "basePath" $currentPath "context" $.context) -}}
       {{- else -}}
