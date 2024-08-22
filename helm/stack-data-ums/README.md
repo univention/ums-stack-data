@@ -688,6 +688,7 @@ false
 			<td><pre lang="json">
 {
   "domainName": "{{ include \"stack-data-ums.domainName\" . }}",
+  "enableDefaultLogin": "false",
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
   "initialPasswordAdministrator": "{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}",
   "initialPasswordSysIdpUser": "{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}",
@@ -732,6 +733,15 @@ false
 </pre>
 </td>
 			<td>Domain name of the instance. Chart defaults to `univention-organization.intranet` Example: `"example.org"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.enableDefaultLogin</td>
+			<td>string</td>
+			<td><pre lang="json">
+"false"
+</pre>
+</td>
+			<td>Enable the default Portal login</td>
 		</tr>
 		<tr>
 			<td>templateContext.externalMailDomain</td>

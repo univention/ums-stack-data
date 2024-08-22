@@ -131,6 +131,8 @@ templateContext:
   # -- Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`.
   # Example: `"https, http"`
   umcSamlSchemes: '{{ include "stack-data-ums.umcSamlSchemes" . }}'
+  # -- Enable the default Portal login
+  enableDefaultLogin: 'false'
 
 
 # TODO: the template processing of the data files is being moved into the
