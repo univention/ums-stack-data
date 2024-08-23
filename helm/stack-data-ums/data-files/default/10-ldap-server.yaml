@@ -18,7 +18,7 @@ properties:
   firstname: "Admin"
   mailPrimaryAddress: "administrator@{{ include "stack-data-ums.externalMailDomain" $ }}"
   {{- if $.Values.global.nubusDeployment }}
-  password: {{ include "nubusTemplates.credentials.ldap.users.admin.password" $ | quote }}
+  password: {{ include "nubusTemplates.credentials.administrator.password" $ | quote }}
   {{- else }}
   password: {{ required "stackDataContext.initialPasswordAdministrator is missing" .initialPasswordAdministrator | quote }}
   {{- end }}
