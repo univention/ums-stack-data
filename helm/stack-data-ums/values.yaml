@@ -216,6 +216,23 @@ stackDataContext:
   # -- This parameter allows to skip the installation of the default UMC
   # policies if set to "false".
   installUmcPolicies: false
+  #
+  # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
+  # Example: `"example.org"`
+  externalDomainName: ""
+
+  portalFqdn: 'portal.{{ include "stack-data-ums.externalDomainName" . }}'
+
+  # -- Self-service emails: SMTP host
+  smtpHost: null
+  # -- Self-service emails: SMTP port
+  # (default: `587`)
+  smtpPort: 587
+  # -- Self-service emails: SMTP username
+  smtpUser: null
+  # -- Self-service emails: SMTP via TLS
+  # (default: `true`)
+  smtpStartTls: true
 
 # -- Container image configuration
 image:

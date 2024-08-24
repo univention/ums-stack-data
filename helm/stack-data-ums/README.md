@@ -332,6 +332,15 @@ true
 			<td>Domain name of the instance. Chart defaults to `univention-organization.intranet` Example: `"example.org"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.externalDomainName</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Domain name of the instance. Chart defaults to `univention-organization.intranet` Example: `"example.org"`</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.externalMailDomain</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -474,6 +483,51 @@ null
 </pre>
 </td>
 			<td>The authentication method to use for the portal. Default is `saml`.</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.portalFqdn</td>
+			<td>string</td>
+			<td><pre lang="json">
+"portal.{{ include \"stack-data-ums.externalDomainName\" . }}"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpHost</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Self-service emails: SMTP host</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpPort</td>
+			<td>int</td>
+			<td><pre lang="json">
+587
+</pre>
+</td>
+			<td>Self-service emails: SMTP port (default: `587`)</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpStartTls</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Self-service emails: SMTP via TLS (default: `true`)</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.smtpUser</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Self-service emails: SMTP username</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcHtmlTitle</td>

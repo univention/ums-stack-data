@@ -276,3 +276,13 @@ https
 machine.secret
 {{- end -}}
 {{- end -}}
+
+{{- define "stack-data-ums.externalDomainName" -}}
+{{- if .Values.stackDataContext.externalDomainName -}}
+{{- .Values.stackDataContext.externalDomainName -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- required ".Values.global.domain has to be defined" .Values.global.domain -}}
+{{- else -}}
+univention-organization.intranet
+{{- end -}}
+{{- end -}}
