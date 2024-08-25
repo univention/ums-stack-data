@@ -497,7 +497,7 @@ null
 			<td>stackDataContext.smtpHost</td>
 			<td>string</td>
 			<td><pre lang="json">
-null
+""
 </pre>
 </td>
 			<td>Self-service emails: SMTP host</td>
@@ -524,7 +524,7 @@ true
 			<td>stackDataContext.smtpUser</td>
 			<td>string</td>
 			<td><pre lang="json">
-null
+""
 </pre>
 </td>
 			<td>Self-service emails: SMTP username</td>

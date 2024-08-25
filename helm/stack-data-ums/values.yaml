@@ -224,12 +224,12 @@ stackDataContext:
   portalFqdn: 'portal.{{ include "stack-data-ums.externalDomainName" . }}'
 
   # -- Self-service emails: SMTP host
-  smtpHost: null
+  smtpHost: ""
   # -- Self-service emails: SMTP port
   # (default: `587`)
   smtpPort: 587
   # -- Self-service emails: SMTP username
-  smtpUser: null
+  smtpUser: ""
   # -- Self-service emails: SMTP via TLS
   # (default: `true`)
   smtpStartTls: true
