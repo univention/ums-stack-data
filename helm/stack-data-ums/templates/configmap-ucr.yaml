@@ -60,3 +60,6 @@ data:
     {{- end -}}
     {{- end -}}
     {{- include "renderConfig" (dict "dict" $merged "basePath" "" "context" .) | nindent 4 }}
+  base-defaults.conf: |
+    # This file is empty on purpose
+    # And needs to have at least two lines
