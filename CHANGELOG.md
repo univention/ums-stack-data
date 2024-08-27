@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.63.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.62.0...v0.63.0) (2024-08-27)
+
+
+### Features
+
+* create user for ldap federation on plain nubus ([ee9a9e7](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/ee9a9e7e5bd48429fd4f74bf36896c9f2848dd1c))
+
+
+### Bug Fixes
+
+* qa fixes ([4c86ef2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/4c86ef2aba54888fc1edbc6e97b688ea91647b2e))
+
 ## [0.62.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.61.1...v0.62.0) (2024-08-21)
 
 
