@@ -20,7 +20,7 @@ data:
   base.conf: |
     {{- $default := .Files.Get "config/default-base.conf" | fromYaml }}
     {{- $userConfig := .Values.global.configUcr | default dict }}
-    {{- $merged := merge $default $userConfig }}
+    {{- $merged := mustMergeOverwrite $default $userConfig }}
     {{- define "isMap" -}}
       {{- if kindIs "map" . -}}
         true
