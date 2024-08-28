@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.64.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.63.0...v0.64.0) (2024-08-28)
+
+
+### Features
+
+* Add empty base-defaults.conf file ([2950473](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/29504735ca5d18b0807c826feb0142f4a94efef7))
+* configure UCR from Helm ([015dd8a](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/015dd8aa3f125d9cbbdc9fdd33203eeff6da1b94))
+* support duplicated keys in configmap ([31c25e7](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/31c25e7f1fb2b0d63df3fc50b138406b60149372))
+
+
+### Bug Fixes
+
+* add missing config ([e0f11c5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e0f11c518b07b98885b5447754b1d97c44468095))
+* add quotation ([6f0dbd1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/6f0dbd18abf5e27c9c22750ffadb8d59e806bb3f))
+* exact match old values ([d01e899](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/d01e8999a74af0334a73bb8c35ed8fa3cc3f9ff5))
+* quotation of CSP ([096e9b4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/096e9b4a24ecb94aebb38fffa988c86300255cb7))
+* quote templates ([85b7ce6](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/85b7ce643591c0359f03fc6cc503ab1ad156f2d6))
+
 ## [0.63.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.62.0...v0.63.0) (2024-08-27)
 
 
