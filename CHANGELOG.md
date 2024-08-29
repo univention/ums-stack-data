@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.64.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.64.0...v0.64.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* **stack-data-ums:** Merge priorities and order for UCR variables ([646128c](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/646128cf632e24d2fa48d38a7d92441e8e17c7dd))
+
 ## [0.64.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.63.0...v0.64.0) (2024-08-28)
 
 
