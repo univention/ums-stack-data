@@ -58,13 +58,6 @@ stackDataContext:
   # the Administrator account. Chart defaults to `univention-organization.test`.
   externalMailDomain: ""
 
-  portalGroupwareLinkBase: 'https://webmail.{{ include "stack-data-swp.externalDomainName" . }}'
-  portalFileshareLinkBase: 'https://fs.{{ include "stack-data-swp.externalDomainName" . }}'
-  portalRealtimeCollaborationLinkBase: 'https://chat.{{ include "stack-data-swp.externalDomainName" . }}'
-  portalRealtimeVideoconferenceLinkBase: 'https://meet.{{ include "stack-data-swp.externalDomainName" . }}'
-  portalManagementProjectLinkBase: 'https://project.{{ include "stack-data-swp.externalDomainName" . }}'
-  portalManagementKnowledgeLinkBase: 'https://wiki.{{ include "stack-data-swp.externalDomainName" . }}'
-
   portalFqdn: 'portal.{{ include "stack-data-swp.externalDomainName" . }}'
 
   # -- Self-service emails: SMTP host
@@ -82,30 +75,6 @@ stackDataContext:
 
   portaltileGroupUserStandard:
     - 'cn=Domain Users,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupUserAdmin:
-    - 'cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-    - 'cn=Support,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupUserAll:
-    - 'cn=Domain Admins,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-    - 'cn=Domain Users,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupGroupware:
-    - 'cn=managed-by-attribute-Groupware,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupFileshare:
-    - 'cn=managed-by-attribute-Fileshare,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupManagementProject:
-    - 'cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupManagementKnowledge:
-    - 'cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupManagementLearn:
-    - 'cn=managed-by-attribute-Learnmanagement,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-  portaltileGroupLiveCollaboration:
-    - 'cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include "stack-data-swp.ldapBaseDn" . }}'
-
-  # -- Portal title (Deutsch)
-  portalTitleDE: "openDesk Portal"
-
-  # -- Portal title (English)
-  portalTitleEN: "openDesk Portal"
 
 # -- Container image configuration
 image:

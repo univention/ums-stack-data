@@ -208,41 +208,7 @@ true
   "ldapSearchUsers": [],
   "ldapSystemUsers": [],
   "oxDefaultContext": "10",
-  "portalFileshareLinkBase": "https://fs.{{ include \"stack-data-swp.externalDomainName\" . }}",
   "portalFqdn": "portal.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalGroupwareLinkBase": "https://webmail.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalManagementKnowledgeLinkBase": "https://wiki.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalManagementProjectLinkBase": "https://project.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalRealtimeCollaborationLinkBase": "https://chat.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalRealtimeVideoconferenceLinkBase": "https://meet.{{ include \"stack-data-swp.externalDomainName\" . }}",
-  "portalTitleDE": "openDesk Portal",
-  "portalTitleEN": "openDesk Portal",
-  "portaltileGroupFileshare": [
-    "cn=managed-by-attribute-Fileshare,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
-  "portaltileGroupGroupware": [
-    "cn=managed-by-attribute-Groupware,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
-  "portaltileGroupLiveCollaboration": [
-    "cn=managed-by-attribute-Livecollaboration,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
-  "portaltileGroupManagementKnowledge": [
-    "cn=managed-by-attribute-Knowledgemanagement,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
-  "portaltileGroupManagementLearn": [
-    "cn=managed-by-attribute-Learnmanagement,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
-  "portaltileGroupManagementProject": [
-    "cn=managed-by-attribute-Projectmanagement,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
-  "portaltileGroupUserAdmin": [
-    "cn=Domain Admins,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}",
-    "cn=Support,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
-  "portaltileGroupUserAll": [
-    "cn=Domain Admins,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}",
-    "cn=Domain Users,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
-  ],
   "portaltileGroupUserStandard": [
     "cn=Domain Users,cn=groups,{{ include \"stack-data-swp.ldapBaseDn\" . }}"
   ],
@@ -281,24 +247,6 @@ true
 </pre>
 </td>
 			<td>Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`. Example: `"dc=example,dc=org"`</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.portalTitleDE</td>
-			<td>string</td>
-			<td><pre lang="json">
-"openDesk Portal"
-</pre>
-</td>
-			<td>Portal title (Deutsch)</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.portalTitleEN</td>
-			<td>string</td>
-			<td><pre lang="json">
-"openDesk Portal"
-</pre>
-</td>
-			<td>Portal title (English)</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.smtpHost</td>
