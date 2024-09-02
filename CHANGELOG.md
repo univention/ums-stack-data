@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.65.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.64.1...v0.65.0) (2024-09-02)
+
+
+### Features
+
+* migrate test users to external extensions ([e5f0b5b](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e5f0b5bbdf083e11041e25c46d79bc53b64b3239))
+
+
+### Bug Fixes
+
+* Administrator has the Guardian admin role ([a064800](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a06480045e19b60513ff497a75f3f8f6846f70c0))
+* Administrator user has its own credentials ([b5708b0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b5708b0398a8299c18f4398a478799914514e254))
+
 ## [0.64.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.64.0...v0.64.1) (2024-08-29)
 
 
