@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.67.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.66.0...v0.67.0) (2024-09-03)
+
+
+### Features
+
+* **stack-data-swp:** remove chart and files ([715e319](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/715e319edbdd148e9b11fd71c00904f436f50cea))
+
 ## [0.66.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.65.0...v0.66.0) (2024-09-03)
 
 
