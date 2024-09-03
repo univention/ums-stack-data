@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.66.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.65.0...v0.66.0) (2024-09-03)
+
+
+### Features
+
+* added value to enable default login in the portal ([574893c](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/574893cdebfefbf143a3c8916ba9117a2abb2cf5))
+
 ## [0.65.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.64.1...v0.65.0) (2024-09-02)
 
 
