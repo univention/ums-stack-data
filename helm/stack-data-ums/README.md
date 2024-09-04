@@ -700,7 +700,6 @@ false
   "enableDefaultLogin": "{{ include \"stack-data-ums.enableDefaultLogin\" . }}",
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
   "initialPasswordAdministrator": "{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}",
-  "initialPasswordSysIdpUser": "{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}",
   "keycloakFqdn": "{{ include \"stack-data-ums.keycloakFqdn\" . }}",
   "ldapAdminDn": "{{ include \"stack-data-ums.ldapAdminDn\" . }}",
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
@@ -768,15 +767,6 @@ false
 </pre>
 </td>
 			<td>The initial password of the user "Administrator".</td>
-		</tr>
-		<tr>
-			<td>templateContext.initialPasswordSysIdpUser</td>
-			<td>string</td>
-			<td><pre lang="json">
-"{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}"
-</pre>
-</td>
-			<td>The initial password of the user "sys-idp-user.</td>
 		</tr>
 		<tr>
 			<td>templateContext.ldapBaseDn</td>

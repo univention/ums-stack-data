@@ -78,8 +78,6 @@ templateContext:
   externalMailDomain: '{{ include "stack-data-ums.externalMailDomain" . }}'
   # -- The initial password of the user "Administrator".
   initialPasswordAdministrator: '{{ include "stack-data-ums.initialPasswordAdministrator" . }}'
-  # -- The initial password of the user "sys-idp-user.
-  initialPasswordSysIdpUser: '{{ include "stack-data-ums.initialPasswordSysIdpUser" . }}'
 
   keycloakFqdn: '{{ include "stack-data-ums.keycloakFqdn" . }}'
   ldapAdminDn: '{{ include "stack-data-ums.ldapAdminDn" . }}'
