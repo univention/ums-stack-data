@@ -235,6 +235,107 @@ def test_ensure_list_contains_skips_existing_policy(app):
     mock_obj.save.assert_not_called()
 
 
+def test_remove_from_list_removes_property(app):
+    mock_obj = app.udm.obj_by_dn()
+    mock_obj.properties = {
+        "users": [
+            "uid=Administrator,cn=users,dc=base",
+            "uid=stub_user,cn=users,dc=base",
+        ],
+    }
+    properties = {
+        "users": [
+            "uid=stub_user,cn=users,dc=base",
+        ],
+    }
+    policies = {}
+
+    app.remove_from_list(
+        "groups/group",
+        "cn=Domain Users,dc=base",
+        properties,
+        policies,
+    )
+    assert "uid=stub_user,cn=users,dc=base" not in mock_obj.properties["users"]
+    mock_obj.save.assert_called()
+
+
+def test_remove_from_list_skips_missing_property(app):
+    mock_obj = app.udm.obj_by_dn()
+    mock_obj.properties = {
+        "users": [
+            "uid=Administrator,cn=users,dc=base",
+        ],
+    }
+    properties = {
+        "users": [
+            "uid=stub_user,cn=users,dc=base",
+        ],
+    }
+    policies = {}
+
+    app.remove_from_list(
+        "groups/group",
+        "cn=Domain Users,dc=base",
+        properties,
+        policies,
+    )
+    assert len(mock_obj.properties["users"]) == 1
+    mock_obj.save.assert_not_called()
+
+
+def test_remove_from_list_removes_policy(app):
+    mock_obj = app.udm.obj_by_dn()
+    mock_obj.policies = {
+        "policies/umc": [
+            "cn=default-umc-users,cn=UMC,cn=policies,dc=base",
+            "cn=stub_policy,cn=UMC,cn=policies,dc=base",
+        ],
+    }
+    properties = {}
+    policies = {
+        "policies/umc": [
+            "cn=stub_policy,cn=UMC,cn=policies,dc=base",
+        ],
+    }
+
+    app.remove_from_list(
+        "groups/group",
+        "cn=Domain Users,dc=base",
+        properties,
+        policies,
+    )
+    assert (
+        "cn=stub_policy,cn=UMC,cn=policies,dc=base"
+        not in mock_obj.policies["policies/umc"]
+    )
+    mock_obj.save.assert_called()
+
+
+def test_remove_from_list_skips_missing_policy(app):
+    mock_obj = app.udm.obj_by_dn()
+    mock_obj.policies = {
+        "policies/umc": [
+            "cn=default-umc-users,cn=UMC,cn=policies,dc=base",
+        ],
+    }
+    properties = {}
+    policies = {
+        "policies/umc": [
+            "cn=stub_policy,cn=UMC,cn=policies,dc=base",
+        ],
+    }
+
+    app.remove_from_list(
+        "groups/group",
+        "cn=Domain Users,dc=base",
+        properties,
+        policies,
+    )
+    assert len(mock_obj.policies["policies/umc"]) == 1
+    mock_obj.save.assert_not_called()
+
+
 def test_update_udm_object_sets_properties(app):
     mock_obj = app.udm.obj_by_dn()
     mock_obj.properties = {

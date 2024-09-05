@@ -217,6 +217,34 @@ class App:
                     log.debug(f'Value "{value}" already present in property "{name}".')
         return needs_save
 
+    def remove_from_list(self, module, position, properties, policies):
+        log.info(f"Removing attribute from list {module}, {position}")
+        obj = self.udm.obj_by_dn(position)
+        needs_save = False
+        needs_save |= self._remove_values_from_dict(properties, obj.properties)
+        needs_save |= self._remove_values_from_dict(policies, obj.policies)
+        if needs_save:
+            log.info(f'Saving object "{obj.dn}".')
+            obj.save()
+        else:
+            log.info(f'No changes made to object "{obj.dn}".')
+
+    def _remove_values_from_dict(self, values, obj_values):
+        needs_save = False
+        for name, values in values.items():
+            log.info(
+                f'Removing values "{values}" from "{name}".',
+            )
+            current_values = obj_values[name]
+            for value in values:
+                if value in current_values:
+                    log.debug(f'Removing value "{value}" from property "{name}".')
+                    current_values.remove(value)
+                    needs_save = True
+                else:
+                    log.debug(f'Value "{value}" not present in property "{name}".')
+        return needs_save
+
 
 def read_from_file(filename):
     with open(filename, "r") as input_file:
