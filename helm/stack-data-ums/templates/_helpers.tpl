@@ -80,6 +80,16 @@ dc=univention-organization,dc=intranet
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.enableDefaultLogin" -}}
+{{- if .Values.stackDataContext.enableDefaultLogin -}}
+{{- .Values.stackDataContext.enableDefaultLogin -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.enablePlainUmcLogin" . -}}
+{{- else -}}
+false
+{{- end -}}
+{{- end -}}
+
 {{- define "stack-data-ums.samlServiceProviders" -}}
 {{- if .Values.stackDataContext.ldapSamlSpUrls -}}
 {{- .Values.stackDataContext.ldapSamlSpUrls -}}

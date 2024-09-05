@@ -679,7 +679,7 @@ false
 			<td><pre lang="json">
 {
   "domainName": "{{ include \"stack-data-ums.domainName\" . }}",
-  "enableDefaultLogin": "false",
+  "enableDefaultLogin": "{{ include \"stack-data-ums.enableDefaultLogin\" . }}",
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
   "initialPasswordAdministrator": "{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}",
   "initialPasswordSysIdpUser": "{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}",
@@ -728,10 +728,10 @@ false
 			<td>templateContext.enableDefaultLogin</td>
 			<td>string</td>
 			<td><pre lang="json">
-"false"
+"{{ include \"stack-data-ums.enableDefaultLogin\" . }}"
 </pre>
 </td>
-			<td>Enable the default Portal login</td>
+			<td>Enable the plain UMC login. Enabling it will show the UMC login tile. This value is also controlled globally, which will cause the ingress to be disabled as well. Enabling it here will show the UMC login tile, but will not enable the ingress path. Example: `false`</td>
 		</tr>
 		<tr>
 			<td>templateContext.externalMailDomain</td>

@@ -129,8 +129,12 @@ templateContext:
   # -- Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`.
   # Example: `"https, http"`
   umcSamlSchemes: '{{ include "stack-data-ums.umcSamlSchemes" . }}'
-  # -- Enable the default Portal login
-  enableDefaultLogin: 'false'
+  # -- Enable the plain UMC login. Enabling it will show the UMC login tile.
+  # This value is also controlled globally, which will cause the ingress to be
+  # disabled as well. Enabling it here will show the UMC login tile, but will
+  # not enable the ingress path.
+  # Example: `false`
+  enableDefaultLogin: '{{ include "stack-data-ums.enableDefaultLogin" . }}'
 
 
 # TODO: the template processing of the data files is being moved into the
