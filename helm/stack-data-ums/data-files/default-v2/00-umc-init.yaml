@@ -23,7 +23,6 @@ position: cn=UMC,cn=univention,{{ ldapBaseDn }}
 properties:
   name: operations
 
-{% if installUmcPolicies %}
 ---
 action: create
 module: policies/umc
@@ -50,4 +49,3 @@ position: cn=Domain Users,cn=groups,{{ ldapBaseDn }}
 policies:
   policies/umc:
     - "cn=default-umc-users,cn=UMC,cn=policies,{{ ldapBaseDn }}"
-{% endif %}

@@ -193,7 +193,6 @@ properties:
     - command: "udm/get"
       option: ""
 
-{{ if .installUmcPolicies }}
 ---
 action: ensure_list_contains
 module: policies/umc
@@ -214,6 +213,5 @@ position: "cn=default-udm-self,cn=UMC,cn=policies,{{ include "stack-data-ums.lda
 properties:
   allow:
     - "cn=udm-self,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-{{ end }}
 
 {{ end }}

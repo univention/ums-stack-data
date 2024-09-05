@@ -105,7 +105,7 @@ properties:
   displayName:
     en_US: "Self Service"
     de_DE: "Self Service"
-  showUmc: False
+  showUmc: true
   categories:
     - "cn=self-service-profile,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
     - "cn=self-service-password,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"

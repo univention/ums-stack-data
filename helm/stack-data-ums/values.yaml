@@ -73,8 +73,6 @@ templateContext:
   # -- The initial password of the user "sys-idp-user.
   initialPasswordSysIdpUser: '{{ include "stack-data-ums.initialPasswordSysIdpUser" . }}'
 
-  # TODO: This value should by default be true for a plain Nubus deployment.
-  installUmcPolicies: false
   keycloakFqdn: '{{ include "stack-data-ums.keycloakFqdn" . }}'
   ldapAdminDn: '{{ include "stack-data-ums.ldapAdminDn" . }}'
   # -- Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`.
@@ -212,10 +210,6 @@ stackDataContext:
   initialPasswordAdministrator: null
   # -- The initial password of the user "sys-idp-user.
   initialPasswordSysIdpUser: null
-  # -- This parameter allows to skip the installation of the default UMC
-  # policies if set to "false".
-  installUmcPolicies: false
-  #
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
   # Example: `"example.org"`
   externalDomainName: ""

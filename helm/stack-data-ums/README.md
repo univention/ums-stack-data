@@ -404,15 +404,6 @@ null
 			<td>The initial password of the user "sys-idp-user.</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.installUmcPolicies</td>
-			<td>bool</td>
-			<td><pre lang="json">
-false
-</pre>
-</td>
-			<td>This parameter allows to skip the installation of the default UMC policies if set to "false".</td>
-		</tr>
-		<tr>
 			<td>stackDataContext.ldapBase</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -692,7 +683,6 @@ false
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
   "initialPasswordAdministrator": "{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}",
   "initialPasswordSysIdpUser": "{{ include \"stack-data-ums.initialPasswordSysIdpUser\" . }}",
-  "installUmcPolicies": false,
   "keycloakFqdn": "{{ include \"stack-data-ums.keycloakFqdn\" . }}",
   "ldapAdminDn": "{{ include \"stack-data-ums.ldapAdminDn\" . }}",
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
