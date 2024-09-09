@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.68.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.67.0...v0.68.0) (2024-09-09)
+
+
+### Features
+
+* add remove_from_list function ([c2503c3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/c2503c3ffcdf18a31cd8a9bbdcb352b5a36376eb))
+* install UMC policies by default and remove flag ([e3a0f63](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e3a0f63529c719b1449bc9e652cf827869979db8))
+
 ## [0.67.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.66.0...v0.67.0) (2024-09-03)
 
 
