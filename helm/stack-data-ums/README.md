@@ -647,6 +647,15 @@ false
 			<td>The filename which contains the password</td>
 		</tr>
 		<tr>
+			<td>stackDataUms.udmApiPort</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>The port on which the UDM Rest API is listening. Chart defaults to `9979`.</td>
+		</tr>
+		<tr>
 			<td>stackDataUms.udmApiUrl</td>
 			<td>string</td>
 			<td><pre lang="json">

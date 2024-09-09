@@ -35,6 +35,9 @@ stackDataUms:
   # -- The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.
   udmApiUrl: ""
 
+  # -- The port on which the UDM Rest API is listening. Chart defaults to `9979`.
+  udmApiPort: ""
+
   # -- The username to use to connect to the UDM Rest API
   udmApiUser: "cn=admin"
 

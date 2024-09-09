@@ -19,3 +19,4 @@ data:
   UDM_API_URL: {{ include "stack-data-ums.udmApiUrl" . | quote }}
   UDM_API_USER: "{{ .Values.stackDataUms.udmApiUser }}"
   UDM_API_PASSWORD_FILE: "{{ .Values.stackDataUms.udmApiPasswordFile }}"
+  UDM_API_PORT: {{ include "stack-data-ums.udmApiPort" . | quote }}

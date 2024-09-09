@@ -144,6 +144,16 @@ http://udm-rest-api/udm/
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.udmApiPort" -}}
+{{- if .Values.stackDataUms.udmApiPort -}}
+{{- .Values.stackDataUms.udmApiPort -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.udmRestApi.port" . -}}
+{{- else -}}
+9979
+{{- end -}}
+{{- end -}}
+
 {{- /*
 These template definitions are only used in this chart and do not relate to templates defined elsewhere.
 */}}
