@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.69.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.0...v0.69.1) (2024-09-10)
+
+
+### Bug Fixes
+
+* **data-loader:** refresh udm-rest-api cache using DNS discovery ([caa3bf3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/caa3bf3769d26870f4ebdc3242ff2a6180287c9c))
+
 ## [0.69.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.68.0...v0.69.0) (2024-09-10)
 
 
