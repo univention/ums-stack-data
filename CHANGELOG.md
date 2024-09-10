@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.69.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.68.0...v0.69.0) (2024-09-10)
+
+
+### Features
+
+* **stack-data-ums:** template UMC login tile ([debea6a](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/debea6a5d3ddff32bb1bf78b2e615fd056416700))
+
 ## [0.68.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.67.0...v0.68.0) (2024-09-09)
 
 
