@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.69.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.1...v0.69.2) (2024-09-11)
+
+
+### Bug Fixes
+
+* default value contains port ([fe09450](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/fe09450203f6a4484b5d9f5dd146477d6b6e9e6a))
+
 ## [0.69.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.0...v0.69.1) (2024-09-10)
 
 
