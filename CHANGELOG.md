@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.69.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.2...v0.69.3) (2024-09-11)
+
+
+### Bug Fixes
+
+* disable showUmc ([878fc23](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/878fc2350fc2cda297ed0e2775449d48e37d373f))
+
 ## [0.69.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.1...v0.69.2) (2024-09-11)
 
 
