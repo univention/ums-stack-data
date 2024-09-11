@@ -140,7 +140,7 @@ cn=admin,dc=univention-organization,dc=intranet
 {{- else if .Values.global.nubusDeployment -}}
 {{- include "nubusTemplates.udmRestApi.uri" . -}}
 {{- else -}}
-http://udm-rest-api/udm/
+http://udm-rest-api:9979/udm/
 {{- end -}}
 {{- end -}}
 
