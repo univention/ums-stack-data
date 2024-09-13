@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.70.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.3...v0.70.0) (2024-09-13)
+
+
+### Features
+
+* update UCS base image to 2024-09-09 ([f655213](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f65521352fe646dff5b5a8cb34ddf8dde660b2ee))
+* upgrade joinscript tools base image to UCS 5.2 ([8c0507b](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/8c0507bcaabdbcd8ffb445eb210a4316ea9b2405))
+
 ## [0.69.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.2...v0.69.3) (2024-09-11)
 
 
