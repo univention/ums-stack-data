@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.70.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.70.0...v0.70.1) (2024-09-16)
+
+
+### Bug Fixes
+
+* Add parameter "extraDataFiles" into values of stack-data-ums ([a4b4662](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a4b4662f2eddb81dd320b36b28759fdf0eac76b6))
+
 ## [0.70.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.69.3...v0.70.0) (2024-09-13)
 
 
