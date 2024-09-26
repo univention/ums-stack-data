@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.71.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.70.1...v0.71.0) (2024-09-26)
+
+
+### Features
+
+* **ci:** enable malware scanning, disable sbom generation ([0a64ff5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/0a64ff50fc80801ade1d7568fa5472ee289c52a2))
+
 ## [0.70.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.70.0...v0.70.1) (2024-09-16)
 
 
