@@ -524,7 +524,7 @@ true
 			<td>stackDataContext.umcHtmlTitle</td>
 			<td>string</td>
 			<td><pre lang="json">
-"Nubus Management Console"
+"Univention Portal"
 </pre>
 </td>
 			<td>UMC web page title. Chart supports templated values.</td>
