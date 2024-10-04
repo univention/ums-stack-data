@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.72.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.71.0...v0.72.0) (2024-10-04)
+
+
+### Features
+
+* default to dark theme ([9e5e748](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/9e5e748932cf4e79d1ab42e36a6da4eac4207b43))
+
+
+### Bug Fixes
+
+* Portal title to UCS default ([84d7def](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/84d7defc230eb48080da31c7020dcc9134eae20f))
+
 ## [0.71.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.70.1...v0.71.0) (2024-09-26)
 
 
