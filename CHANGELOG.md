@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.73.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.72.0...v0.73.0) (2024-10-09)
+
+
+### Features
+
+* change job backoffLimit and restartPolicy ([b0f74ce](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b0f74ceed0d3fa213bd22fe72d74de33ba3f3406))
+
 ## [0.72.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.71.0...v0.72.0) (2024-10-04)
 
 
