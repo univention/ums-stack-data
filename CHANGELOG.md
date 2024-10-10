@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.73.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.73.0...v0.73.1) (2024-10-10)
+
+
+### Bug Fixes
+
+* **stack-data-ums:** remove unused SysIdpUser ([46ce647](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/46ce647073b45bca0f4d562d48378012999c8576))
+
 ## [0.73.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.72.0...v0.73.0) (2024-10-09)
 
 
