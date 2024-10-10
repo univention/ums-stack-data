@@ -239,6 +239,9 @@ stackDataContext:
   # (default: `true`)
   smtpStartTls: true
 
+  # -- Default portal show UMC modules
+  showUmc: true
+
 # -- Container image configuration
 image:
   registry: ""

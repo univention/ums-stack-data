@@ -105,10 +105,19 @@ properties:
   displayName:
     en_US: "Self Service"
     de_DE: "Self Service"
-  showUmc: False
+  showUmc: {{ include "stack-data-ums.showUmc" $ }}
   categories:
     - "cn=self-service-profile,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
     - "cn=self-service-password,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+
+---
+# Change showUmc in the domain portal
+action: "modify"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+properties:
+  showUmc: {{ include "stack-data-ums.showUmc" $ }}
+
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
