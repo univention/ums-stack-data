@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
+{{ with .Values.stackDataContext }}
+
+---
+# Change showUmc in the domain portal
+action: "modify"
+module: "portals/portal"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+properties:
+  showUmc: {{ include "stack-data-ums.showUmc" $ }}
+
+{{ end }}

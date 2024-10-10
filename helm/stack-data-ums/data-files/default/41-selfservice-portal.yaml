@@ -109,6 +109,7 @@ properties:
   categories:
     - "cn=self-service-profile,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
     - "cn=self-service-password,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+
 ---
 action: "ensure_list_contains"
 module: "portals/portal"

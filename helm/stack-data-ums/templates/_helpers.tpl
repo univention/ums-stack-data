@@ -299,3 +299,11 @@ machine.secret
 univention-organization.intranet
 {{- end -}}
 {{- end -}}
+
+{{- define "stack-data-ums.showUmc" -}}
+{{- if .Values.stackDataContext.showUmc -}}
+{{- .Values.stackDataContext.showUmc -}}
+{{- else -}}
+false
+{{- end -}}
+{{- end -}}

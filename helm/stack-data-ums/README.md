@@ -485,6 +485,15 @@ null
 			<td></td>
 		</tr>
 		<tr>
+			<td>stackDataContext.showUmc</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Default portal show UMC modules</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.smtpHost</td>
 			<td>string</td>
 			<td><pre lang="json">
