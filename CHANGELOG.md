@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.74.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.73.1...v0.74.0) (2024-10-14)
+
+
+### Features
+
+* enable showUmc for the portal and configure default modules ([e8c80b4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e8c80b4885184f55965fb2d94656b720ffb54a08))
+
 ## [0.73.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.73.0...v0.73.1) (2024-10-10)
 
 
