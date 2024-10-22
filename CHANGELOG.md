@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.75.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.74.0...v0.75.0) (2024-10-22)
+
+
+### Features
+
+* add Welcome! portal tile ([e040bde](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e040bde049df8db246e751fd021143cabd381be8))
+
+
+### Bug Fixes
+
+* add self service portal entries to domain portal ([2457e69](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2457e698340b1ee9dc2ec63ce88a8c4c3be69d77))
+
 ## [0.74.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.73.1...v0.74.0) (2024-10-14)
 
 
