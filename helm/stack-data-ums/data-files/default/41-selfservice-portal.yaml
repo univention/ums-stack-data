@@ -4,6 +4,29 @@
 {{ with .Values.stackDataContext }}
 
 
+
+---
+action: "create"
+module: "portals/entry"
+position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+properties:
+  name: "self-service-password-change"
+  icon: {{ $.Files.Get "data-files/default/selfservice-icons/passwordchange.svg" | b64enc | quote }}
+  activated: True
+  anonymous: False
+  linkTarget: "samewindow"
+  allowedGroups:
+{{ toYaml .portaltileGroupUserStandard | indent 4 }}
+  displayName:
+    en_US: "Change your password"
+    de_DE: "Ihr Passwort ändern"
+  description:
+    en_US: "Change your password"
+    de_DE: "Ihr Passwort ändern"
+  link:
+    - - "en_US"
+      - "#/selfservice/passwordchange"
+
 ---
 action: "create"
 module: "portals/entry"
@@ -58,7 +81,7 @@ properties:
     de_DE: "Kontozugang schützen"
   link:
     - - "en_US"
-      - '#/selfservice/protectaccount'
+      - "#/selfservice/protectaccount"
 ---
 action: "create"
 module: "portals/entry"
@@ -92,10 +115,9 @@ properties:
   entries:
     - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
     - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-
+    - "cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 
 ---
-# Create the portal with the categories above
 action: "create"
 module: "portals/portal"
 position: "cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
@@ -113,10 +135,11 @@ properties:
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=self-service,cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 properties:
   userLinks:
     - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
     - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
     - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
 {{ end }}
