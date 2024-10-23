@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.76.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.75.0...v0.76.0) (2024-10-23)
+
+
+### Features
+
+* add SAML login tile ([b83cb79](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b83cb7902e3288be6e96e2a23d94ed502af7753c))
+
 ## [0.75.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.74.0...v0.75.0) (2024-10-22)
 
 
