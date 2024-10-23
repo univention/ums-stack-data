@@ -1,15 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
 ---
 # TODO: move this back to stack-data-swp after solving
 # https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
 action: create
 module: mail/domain
-position: cn=domain,cn=mail,{{ include "stack-data-ums.ldapBaseDn" $ }}
+position: cn=domain,cn=mail,{{ ldapBaseDn }}
 properties:
-  name: {{ include "stack-data-ums.externalMailDomain" $ }}
-
-{{ end }}
+  name: {{ externalMailDomain }}

@@ -724,6 +724,7 @@ false
   "samlMetadataUrl": "{{ include \"stack-data-ums.samlMetadataUrl\" . }}",
   "samlMetadataUrlInternal": "{{ include \"stack-data-ums.samlMetadataUrlInternal\" . }}",
   "samlServiceProviders": "{{ include \"stack-data-ums.samlServiceProviders\" . }}",
+  "showUmc": "{{ include \"stack-data-ums.showUmc\" . }}",
   "subDomainsKeycloak": "{{ include \"stack-data-ums.subDomains.keycloak\" . }}",
   "subDomainsPortal": "{{ include \"stack-data-ums.subDomains.portal\" . }}",
   "udmApiCredentialSecretKey": "{{ include \"stack-data-ums.udmApi.credentialSecret.key\" . }}",

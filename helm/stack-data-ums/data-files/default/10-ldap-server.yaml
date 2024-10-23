@@ -1,13 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
 ---
 # See: https://git.knut.univention.de/univention/ucs/-/blob/5.0-3/management/univention-ldap/10univention-ldap-server.inst#L254
 action: "create"
 module: "users/user"
-position: "cn=users,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=users,{{ ldapBaseDn }}"
 properties:
   username: "Administrator"
   lastname: "Administrator"
@@ -16,13 +14,9 @@ properties:
   # "mailPrimaryAddress" as required via UCR settings.
   # See: https://git.knut.univention.de/univention/customers/dataport/team-souvap/-/issues/286
   firstname: "Admin"
-  mailPrimaryAddress: "administrator@{{ include "stack-data-ums.externalMailDomain" $ }}"
-  {{- if $.Values.global.nubusDeployment }}
-  password: {{ include "nubusTemplates.credentials.administrator.password" $ | quote }}
-  {{- else }}
-  password: {{ required "stackDataContext.initialPasswordAdministrator is missing" .initialPasswordAdministrator | quote }}
-  {{- end }}
-  primaryGroup: "cn=Domain Admins,cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+  mailPrimaryAddress: "administrator@{{ externalMailDomain }}"
+  password: "{{ initialPasswordAdministrator }}"
+  primaryGroup: "cn=Domain Admins,cn=groups,{{ ldapBaseDn }}"
   guardianRoles:
     - "guardian:builtin:super-admin"
 
@@ -30,9 +24,7 @@ properties:
 # See: https://git.knut.univention.de/univention/ucs/-/blob/5.0-3/management/univention-ldap/10univention-ldap-server.inst#L265
 action: ensure_list_contains
 module: groups/group
-position: cn=Domain Users,cn=groups,{{ include "stack-data-ums.ldapBaseDn" $ }}
+position: cn=Domain Users,cn=groups,{{ ldapBaseDn }}
 properties:
   users:
-    - "uid=Administrator,cn=users,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-
-{{ end }}
+    - "uid=Administrator,cn=users,{{ ldapBaseDn }}"

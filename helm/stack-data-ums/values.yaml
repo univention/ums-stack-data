@@ -141,6 +141,7 @@ templateContext:
   # not enable the ingress path.
   # Example: `false`
   enableDefaultLogin: '{{ include "stack-data-ums.enableDefaultLogin" . }}'
+  showUmc: '{{ include "stack-data-ums.showUmc" . }}'
 
 
 # TODO: the template processing of the data files is being moved into the

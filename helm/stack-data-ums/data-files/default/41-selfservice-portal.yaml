@@ -1,22 +1,16 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
-
-
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "self-service-password-change"
-  icon: {{ $.Files.Get "data-files/default/selfservice-icons/passwordchange.svg" | b64enc | quote }}
+  icon: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLWtleSI+PHBhdGggZD0iTTIxIDJsLTIgMm0tNy42MSA3LjYxYTUuNSA1LjUgMCAxIDEtNy43NzggNy43NzggNS41IDUuNSAwIDAgMSA3Ljc3Ny03Ljc3N3ptMCAwTDE1LjUgNy41bTAgMGwzIDNMMjIgN2wtMy0zbS0zLjUgMy41TDE5IDQiPjwvcGF0aD48L3N2Zz4K
   activated: True
   anonymous: False
   linkTarget: "samewindow"
-  allowedGroups:
-{{ toYaml .portaltileGroupUserStandard | indent 4 }}
   displayName:
     en_US: "Change your password"
     de_DE: "Ihr Passwort ändern"
@@ -30,15 +24,13 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "self-service-my-profile"
-  icon: {{ $.Files.Get "data-files/default/selfservice-icons/profile.svg" | b64enc | quote }}
+  icon: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTAgMTUwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48ZWxsaXBzZSBjbGFzcz0iYSIgY3g9Ijc0LjQ1NzQzIiBjeT0iNDguOTk1NzkiIHJ4PSIyMS4yNDEwNiIgcnk9IjIxLjUyMjk1Ii8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0xMTAuMDU3MzcsNzguNDEzMjFjLTIuNjc1NjYtNi4zMTE3MS03LjI3NDc4LTExLjEzNDc3LTE1LjAwMTc3LTExLjQzN2EyNy4wMDI1MiwyNy4wMDI1MiwwLDAsMS00MS4xOTYyMi4wMDAxOEMzOC4zMjgxMiw2Ny41ODksMzUuNDUzLDg2LjYwNzczLDM1LjQ1Myw5OS4wOTA3YzAsOS4wNjk3LDUuOTIxMTUsMTQuNTIwOTMsMTQuODAyODYsMTQuNTIwOTNIOTMuMjgzNTdhMjMuNjg3NTUsMjMuNjg3NTUsMCwwLDEsMTYuNzczOC0zNS4xOTg0MloiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTExMy44MzgzOCw4MS4xMDgxNWEyMC43MDk0OCwyMC43MDk0OCwwLDEsMCwyMC43MSwyMC43MDk0OEEyMC43MzI2OCwyMC43MzI2OCwwLDAsMCwxMTMuODM4MzgsODEuMTA4MTVabTAsMzguNDE5YTE3LjcwOTQ4LDE3LjcwOTQ4LDAsMSwxLDE3LjcxLTE3LjcwOTQ3QTE3LjcyOTQsMTcuNzI5NCwwLDAsMSwxMTMuODM4MzgsMTE5LjUyNzFaIi8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0xMTguNzczNDQsOTMuMzM4NDRsLTEwLjQxMzMzLDEwLjQxMzMzLDMuMzYyMTIsMy40NDY5TDEyMi4xNzc5Miw5Ni43NDNhMi40MDczNSwyLjQwNzM1LDAsMCwwLTMuNDA0NDgtMy40MDQ1NFoiLz48cG9seWdvbiBjbGFzcz0iYSIgcG9pbnRzPSIxMDcuMjgzIDEwNC44MjkgMTA2LjAwNyAxMDkuNTEgMTEwLjY0NiAxMDguMjQ0IDEwNy4yOTkgMTA0LjgxMyAxMDcuMjgzIDEwNC44MjkiLz48L3N2Zz4=
   activated: True
   anonymous: False
   linkTarget: "samewindow"
-  allowedGroups:
-{{ toYaml .portaltileGroupUserStandard | indent 4 }}
   displayName:
     en_US: "My Profile"
     de_DE: "Mein Profil"
@@ -51,28 +43,26 @@ properties:
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=category,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "self-service-profile"
   displayName:
     en_US: "User Profile"
     de_DE: "Benutzerprofil"
   entries:
-    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
 
 
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "self-service-protect-account"
-  icon: {{ $.Files.Get "data-files/default/selfservice-icons/protectaccount.svg" | b64enc | quote }}
+  icon: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTAgMTUwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTEwNi4wNTk5Myw3Mi4yMjA3YTcuNjk5LDcuNjk5LDAsMCwwLTcuNTYyMTMtNy41NTUzNmMtLjg4Ny0uMDIxNTQtMS43NzUtLjAwMzE3LTIuNzc3ODMtLjAwMzE3VjYzLjc2NDFjMC0zLjA3NDc3LjAwNTA2LTYuMTQ5Ni0uMDAxLTkuMjI0NDNBMjAuNzEyODksMjAuNzEyODksMCwwLDAsNTQuNjExMiw1MC42Nzc1NWEyOC43OTU0MiwyOC43OTU0MiwwLDAsMC0uMzIzMDYsNC4xMDM1MmMtLjA0NTc3LDMuMjU4MTgtLjAxNDc3LDYuNTE3NDUtLjAxNDc3LDkuODc2NC0uNzcyNTgsMC0xLjQ5MTI3LS4wMDExNi0yLjIwOTkuMDAwMjRhNy43ODI4Miw3Ljc4MjgyLDAsMCwwLTguMTUwMTQsOC4xMjgxOHEtLjAwNywxNy42ODAyLS4wMDEyMywzNS4zNjA0MWMuMDAwMzcsNC4zMjkyMiwyLjIzODIyLDcuMTY3NjYsNi40NDI0NSw4LjE4NDIxYS43MTc2MS43MTc2MSwwLDAsMSwuMTk1MTMuMTI2MjhoNDguODk0Yy41MDYxLS4xNTk4NSwxLjAxODc0LS4zMDE3LDEuNTE3MjEtLjQ4MjU1YTcuNjM5ODMsNy42Mzk4MywwLDAsMCw1LjEwMzQ2LTcuMDk4NjlRMTA2LjEwNzYzLDkwLjU0ODE2LDEwNi4wNTk5Myw3Mi4yMjA3Wk02MS4xOTQ3LDYyLjQ4ODFjLjAwMDEyLTIuNjY5NzQtLjAxMTE3LTUuMzM5Ni4wMDI3NC04LjAwOTM0YTEzLjc5MjQxLDEzLjc5MjQxLDAsMCwxLDI3LjM3NC0yLjU5LDM0LjkyNzg0LDM0LjkyNzg0LDAsMCwxLC4yMTgzOCw0Ljc1NjljLjAzMjQxLDIuNjM3NDUuMDA4ODUsNS4yNzU1Ny4wMDg4NSw3Ljk2OEg2MS4xOTQ2NEM2MS4xOTQ2NCw2My44NzcyLDYxLjE5NDY0LDYzLjE4MjYyLDYxLjE5NDcsNjIuNDg4MVpNODkuMDI5OSw5Ni4zNzlhNS4wMTI4Miw1LjAxMjgyLDAsMCwxLTQuNTk2LDMuNTMyMjJxLS4yNDU4MS4wMTg4Ny0uNDgzNTIuMDE4OGE1LjEzMTUyLDUuMTMxNTIsMCwwLDEtNC40MTQ1NS0yLjQ0NjIzLDcuMzQxNjMsNy4zNDE2MywwLDAsMS00LjUwNjgzLDEuNTMwNTgsNy40MzgxOCw3LjQzODE4LDAsMSwxLDMuODE5NjQtMTMuODAxMDgsMS44ODE2NCwxLjg4MTY0LDAsMCwxLDEuNjk2NTktMS4wODAzOSwxLjkzMTUzLDEuOTMxNTMsMCwwLDEsLjE5NDk1LjAwOTg5LDEuODk0ODMsMS44OTQ4MywwLDAsMSwxLjY5MjYzLDEuODkyN3EuMDA2NTksMS41NTY0OS4wMDI4NiwzLjExM2wtLjAwMDU0LDEuMzcwNzNMODIuNDM0LDkxLjcxNzE2Yy0uMDAxNTIuOTc3NDgtLjAwMzExLDEuOTU1LjAwNiwyLjkzMjI1YTEuNTQxNzIsMS41NDE3MiwwLDAsMCwxLjA0MDgzLDEuNDIzMSwxLjY1NTQ3LDEuNjU1NDcsMCwwLDAsLjU1MjMxLjA5NjE5LDEuNDgzNTIsMS40ODM1MiwwLDAsMCwxLjE2NS0uNTUyMzcsMS42MTI0OCwxLjYxMjQ4LDAsMCwwLC4yODIyOS0uNTEzMjQsMTAuNzc2MTEsMTAuNzc2MTEsMCwwLDAtMS45Mjg1My0xMC41MjI3MSwxMC41NjIwOSwxMC41NjIwOSwwLDAsMC04LjU3OTQtNC4wNjc1cS0uMjU0NywwLS41MTI5NC4wMDk1OGExMS4wNjQyOCwxMS4wNjQyOCwwLDAsMC0xLjQyMDUzLDIxLjkzODQ4LDExLjUyMjE5LDExLjUyMjE5LDAsMCwwLDIuMDIyNy4xODMyOSwxMS4wMTcyNywxMS4wMTcyNywwLDAsMCw1LjU0NTU5LTEuNTMxLDIuMjI2LDIuMjI2LDAsMCwxLDEuMTAyNTQtLjMwOTU3LDEuODIxMjQsMS44MjEyNCwwLDAsMSwxLjYwODI4Ljk1ODYyLDEuODcsMS44NywwLDAsMS0uNzMxLDIuNTY2NTMsMTQuMjU1MzQsMTQuMjU1MzQsMCwwLDEtNC4zMTM0MSwxLjcyNjEzLDE1LjMxODg2LDE1LjMxODg2LDAsMCwxLTMuMjQ2MjIuMzUxLDE0Ljg0MjY4LDE0Ljg0MjY4LDAsMCwxLTE0LjU0MzQ2LTExLjc0LDE0Ljg2NDU5LDE0Ljg2NDU5LDAsMCwxLDExLjI5MDI5LTE3LjY3NTksMTQuODI2NzIsMTQuODI2NzIsMCwwLDEsMTcuODAyMTgsMTEuNzc3QTE0LjMyNTUsMTQuMzI1NSwwLDAsMSw4OS4wMjk5LDk2LjM3OVoiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTc1LjAxOTUzLDg3LjkxMDc3YTMuNjYzNzYsMy42NjM3NiwwLDEsMC0uMDIyMjgsNy4zMjc0NWwuMDA0ODguMjQ5NTcuMDA0ODgtLjAwMDQ5di0uMjQ5MDhhMy42NzM0OSwzLjY3MzQ5LDAsMCwwLDMuNjUyMjMtMy42NDkxN0EzLjY2NTgzLDMuNjY1ODMsMCwwLDAsNzUuMDE5NTMsODcuOTEwNzdaIi8+PC9zdmc+
   activated: True
   anonymous: False
   linkTarget: "samewindow"
-  allowedGroups:
-{{ toYaml .portaltileGroupUserStandard | indent 4 }}
   displayName:
     en_US: "Protect your account"
     de_DE: "Kontozugang schützen"
@@ -85,15 +75,13 @@ properties:
 ---
 action: "create"
 module: "portals/entry"
-position: "cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "self-service-password-forgotten"
-  icon: {{ $.Files.Get "data-files/default/selfservice-icons/passwordforgotten.svg" | b64enc | quote }}
+  icon: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTAgMTUwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iYSIgZD0iTTExOS4yMjg5MSw3NC40OTg1NWgtNy4xNDAyQTQxLjcxNjg4LDQxLjcxNjg4LDAsMCwwLDcyLjc4NzMyLDMzLjQwODM0YTMuMDI1NDksMy4wMjU0OSwwLDAsMC0uNTQ2NjktLjA3OTY1Yy0uMzEwMTktLjAxMzc5LS42MTIxMy4wMTI2NC0uOTIxLjAwNTc0LS4zMDc2MS0uMDA2NzgtLjYwNjkzLS4wNDYwOC0uOTE2MDctLjA0NjA4LS40Mjk0NSwwLS44NTIwNS4wNDY4MS0xLjI3OTc5LjA1OTg3LS42Mzc1MS4wMTkwNS0xLjI3MjU4LjA0MTA4LTEuOTAzMDcuMDg4ODctLjcxNzcyLjA1NDQ0LTEuNDI4LjE0MDI2LTIuMTM4NjguMjMxMTQtLjYyNC4wOC0xLjI0NzkyLjE1NTQ2LTEuODYzNTguMjYzMDYtLjc0Mjg2LjEyOTIxLTEuNDc0MTguMjk3MTItMi4yMDY3My40NjU4OC0uNTUxMTUuMTI3NzUtMS4xMDUyOC4yNDMtMS42NDgxOS4zOTI1OC0uODM1NTcuMjI4NzYtMS42NTQxOC41MDQ3Ni0yLjQ3MjQxLjc4NDc5LS40MTMzMy4xNDIzNC0uODMzNjIuMjY2NDgtMS4yNDExNS40MjEyNy0uOTkwNzMuMzc0NDUtMS45NTg1Ni44MDI5MS0yLjkxODE1LDEuMjUyNDQtLjIxNjYyLjEwMTgtLjQ0MS4xODc4Ni0uNjU1NjQuMjkzMzNhNDEuNjg2ODIsNDEuNjg2ODIsMCwwLDAtMTAuMDQxNjMsNi44Nzg2Yy0uMDUxODguMDQ4LS4wNzEuMTE0MzItLjExODc3LjE2NTFBNDEuNTY2LDQxLjU2NiwwLDAsMCwyOC43MzAxOSw3My4xNjI4NmMtLjAyMDM5LjQ2NC4wMTE4NC45MjEuMDA2NTMsMS4zODMxOGEyLjk5OTUyLDIuOTk5NTIsMCwwLDAtLjA0NTg0LjQ1NGMwLC4zNTE5My4wNDQxMy42OTI4MS4wNTI4NiwxLjA0MjcyLjAxODkyLjc5OC4wNTY4OCwxLjU5MTI1LjEyMDYsMi4zODE3OC4wNDY4Mi41NzI1MS4xMDU4NCwxLjE0LjE3NTY2LDEuNzA1ODdxLjE1NDE5LDEuMjY0LjM4NCwyLjUwOWMuMDkxMy40OTEuMTg5MzMuOTc4LjI5Nzg1LDEuNDYyODlxLjI5NTgsMS4zMzE5MS42NzkzMiwyLjYzNmMuMTIwNzMuNDEwNjQuMjQ0ODcuODE4NDguMzc3ODEsMS4yMjM4MnEuNDQ2NCwxLjM2NjYuOTg4NywyLjY5NjE2Yy4xNDMuMzUxNjkuMjg4MDkuNzAxLjQ0MDM3LDEuMDQ3ODVxLjU4ODc4LDEuMzQzLDEuMjc0NiwyLjY0MTg1Yy4xNzMyOC4zMjk0Ny4zNDkxMi42NTYuNTMxLjk4MDE2cS43MDQ1OCwxLjI1NTc0LDEuNDk4NTMsMi40NjQxOC4zMzEzNC41MDU0Ni42NzYxNS45OTk2OS43OTM0LDEuMTM2MjcsMS42NjUsMi4yMjVjLjI3NTM5LjM0Mzc1LjU1NjM5LjY4MDI5Ljg0MjIyLDEuMDE1MDcuMzE5NzYuMzc0NDUuNjA3MTguNzY5MjkuOTQxMjgsMS4xMzQyOGEzLjAyNjE2LDMuMDI2MTYsMCwwLDAsLjQ1NjM2LjQwMzA4LDQxLjYxNTc5LDQxLjYxNTc5LDAsMCwwLDU5LjgwNDQ1LjkyNTU5LDMuMDIwODksMy4wMjA4OSwwLDEsMC00LjI3MjIyLTQuMjcyMTVBMzUuNjEzMzEsMzUuNjEzMzEsMCwwLDEsNDMuMjg0Miw5OC4xMTEyOWMtLjI0MTg4LS4yODM1MS0uNDgwMjgtLjU2OTEtLjcxMjQ2LS44NTg3MXEtLjc0NjE2LS45MzExOC0xLjQzMDQ4LTEuOTExNzQtLjI5MjIzLS40MTktLjU3MTQxLS44NDQ3OS0uNjc4MjMtMS4wMzQyNy0xLjI4Njg3LTIuMTE1NzhjLS4xNTQ0OC0uMjc1NTItLjMwMzgzLS41NTMxLS40NTA2Mi0uODMyMTZxLS41ODQtMS4xMDk5LTEuMDkxOTItMi4yNjM0MmMtLjEyOTctLjI5NTc4LS4yNTM4NC0uNTkzNjMtLjM3NTMtLjg5Mjc3cS0uNDYxNy0xLjEzNDc5LS44NDYtMi4zMDcxOS0uMTcwMzgtLjUyMTg1LS4zMjM4NS0xLjA0OTA3LS4zMjUzOC0xLjEwNzUxLS41Nzg1LTIuMjQ0NTctLjE0MDM0LS42MzExNS0uMjU4LTEuMjY3ODhjLS4xMzAwNy0uNzAwMjUtLjIzNjI3LTEuNDA4MzItLjMyNDc3LTIuMTIyMDctLjA2MDYxLS40OTUxOC0uMTEzMzQtLjk5MTU4LS4xNTMzMi0xLjQ5MS0uMDUzNTktLjY1OC0uMDgzNjgtMS4zMjIzOC0uMTAwNzctMS45ODk4Ni0uMDIwMi0uODI4NS0uMDQ4MjItMS42NTYwNy0uMDExMjMtMi40OTE4OUEzNS43MjEyLDM1LjcyMTIsMCwwLDEsNTcuOTAxODIsNDEuNjA3Yy4xNjYtLjA2MjA3LjMzNjQ5LS4xMTEyLjUwMzQyLS4xNzA4NC44NzUzLS4zMTQ0NSwxLjc2MzEyLS42MDE1LDIuNjY3NDItLjg0Nzc3LjMzMy0uMDkwMDkuNjcxODEtLjE1OTU1LDEuMDA3NjktLjIzOTkzLjc1MDYxLS4xODEwOSwxLjUwNi0uMzQ4NjQsMi4yNzMyNS0uNDgxMi40NDE1OS0uMDc1NTcuODg3OTQtLjEyOTIyLDEuMzMzMzEtLjE4ODE4LjY4MTgzLS4wOTEyNCwxLjM2NjQtLjE3MjI0LDIuMDU4OS0uMjI0MTIuNDk3ODctLjAzNjg2Ljk5OS0uMDUzODMsMS41LS4wNzAwNy42NDc4OS0uMDIxMTcsMS4yOTgzNC0uMDI4MzgsMS45NTM2OC0uMDE0MTZhMzUuNjc4MywzNS42NzgzLDAsMCwxLDM0Ljg0Njg2LDM1LjEyNzg3SDk4Ljk1NzU0Yy0yLjIxNTUxLDAtMi43NDY0NiwxLjI4MTgtMS4xNzk4MSwyLjg0ODM5bDguNDY3MTEsOC40NjcxYTQuMDQwMDgsNC4wNDAwOCwwLDAsMCw1LjY5Njg0LDBsOC40NjcxNi04LjQ2NzFDMTIxLjk3NTM3LDc1Ljc4MDM1LDEyMS40NDQ1NCw3NC40OTg1NSwxMTkuMjI4OTEsNzQuNDk4NTVaIi8+PHBhdGggY2xhc3M9ImEiIGQ9Ik01Ny4wMjQ2Miw3My4wMjMyN3EtLjAwMyw3LjY4OTMzLS4wMDA1NSwxNS4zNzg3M0EzLjM3NDkyLDMuMzc0OTIsMCwwLDAsNTkuODI2LDkxLjk2MTM4YS4zMTI3Ni4zMTI3NiwwLDAsMSwuMDg0ODQuMDU0OTNIODEuMTc1NTZjLjIyMDA5LS4wNjk1MS40NDMwNi0uMTMxMjIuNjU5ODUtLjIwOTgzQTMuMzIyNzcsMy4zMjI3NywwLDAsMCw4NC4wNTUsODguNzE5MTNxLjAxODg1LTcuOTcwODUtLjAwMi0xNS45NDE3MWEzLjM0ODQ1LDMuMzQ4NDUsMCwwLDAtMy4yODg4OC0zLjI4NTk1Yy0uMzg1NzQtLjAwOTM0LS43NzE5MS0uMDAxMzQtMS4yMDgxMi0uMDAxMzR2LS4zOTA1NmMwLTEuMzM3MjguMDAyMjUtMi42NzQ1Ni0uMDAwMzctNC4wMTE4NEE5LjAwODM2LDkuMDA4MzYsMCwwLDAsNjEuNjc3MjcsNjMuNDA4YTEyLjUyODU3LDEyLjUyODU3LDAsMCwwLS4xNDA1LDEuNzg0NzNjLS4wMTk5LDEuNDE3LS4wMDY0MSwyLjgzNDUzLS4wMDY0MSw0LjI5NTM1LS4zMzYsMC0uNjQ4NTYtLjAwMDQ5LS45NjExMi4wMDAxMkEzLjM4NDksMy4zODQ5LDAsMCwwLDU3LjAyNDYyLDczLjAyMzI3Wk03MS4wMjkxNCw4Ny41MjM4OGExLjM4MzQ4LDEuMzgzNDgsMCwwLDEtLjk0OTIyLjM2NTI0LDEuNDM5MzEsMS40MzkzMSwwLDAsMS0uOTcyNjYtLjM2MDM1LDEuMjY2NzEsMS4yNjY3MSwwLDAsMS0uNDE1LTEuMDA4NzksMS4zMDA2NiwxLjMwMDY2LDAsMCwxLC40MDEzNy0uOTY3NzgsMS4zNjA0MiwxLjM2MDQyLDAsMCwxLC45ODYzMy0uMzkyNThBMS4zNDA4NCwxLjM0MDg0LDAsMCwxLDcxLjQ0MDI3LDg2LjUyLDEuMjc1NDgsMS4yNzU0OCwwLDAsMSw3MS4wMjkxNCw4Ny41MjM4OFptMy40MDkxOC04LjQ1MjYzQTQuMTYzNjIsNC4xNjM2MiwwLDAsMSw3My42OTAyNyw4MC4wOHEtLjQzMzU5LjQyNDgtMS41NTY2NCwxLjQyODcxYTYuMTM4MjUsNi4xMzgyNSwwLDAsMC0uNDk3MDcuNDk3NTUsMi4wMzQ0NSwyLjAzNDQ1LDAsMCwwLS4yNzkzLjM5MjA5LDEuOTI0NTMsMS45MjQ1MywwLDAsMC0uMTQwNjIuMzU2Yy0uMDM0MTguMTE4NjUtLjA4NC4zMjc2NC0uMTUxMzcuNjI1NDlhMS4wMTU1NCwxLjAxNTU0LDAsMCwxLTEuMDg1OTQuOTQ5MjIsMS4xMTE3MiwxLjExMTcyLDAsMCwxLS43OTg4Mi0uMzEwMDYsMS4yMjA0OCwxLjIyMDQ4LDAsMCwxLS4zMjQyMi0uOTIyMzYsMy4yMzYxMywzLjIzNjEzLDAsMCwxLC44NjcxOC0yLjMxNCwxNC40Njg2NSwxNC40Njg2NSwwLDAsMSwxLjA1OTU3LTEuMDA4M2MuMzg4NjgtLjM0MDgyLjY3MDktLjU5ODE0Ljg0Mzc1LS43NzE0OGEyLjYyMTksMi42MjE5LDAsMCwwLC40Mzg0OC0uNTc5NTksMS40MDcxLDEuNDA3MSwwLDAsMCwuMTc3NzQtLjY5Mzg1LDEuNjExMDcsMS42MTEwNywwLDAsMC0uNTQzLTEuMjMxOTMsMS45ODIyMSwxLjk4MjIxLDAsMCwwLTEuNDAxMzctLjUwMjQ1LDEuOTM4LDEuOTM4LDAsMCwwLTEuNDc4NTIuNTA2ODQsNC4wNDk0NSw0LjA0OTQ1LDAsMCwwLS44MDM3MSwxLjQ5MjE5cS0uMzA5MDgsMS4wMzItMS4xNzY3NSwxLjAzMTc0YTEuMTU4MywxLjE1ODMsMCwwLDEtLjg2MzI5LS4zNjA4NCwxLjEwMjIxLDEuMTAyMjEsMCwwLDEtLjM1MTU2LS43ODAyOCwzLjMwMzc4LDMuMzAzNzgsMCwwLDEsLjU1NzYyLTEuNzU3MzIsNC4yODY0Myw0LjI4NjQzLDAsMCwxLDEuNjI0LTEuNDc0MTIsNS4xMTg4Niw1LjExODg2LDAsMCwxLDIuNDkyMTktLjU4NCw1LjMxOTA5LDUuMzE5MDksMCwwLDEsMi4zMzY5MS40ODgyOEEzLjc5MDIxLDMuNzkwMjEsMCwwLDEsNzQuMjAxLDc1Ljg4NTdhMy4yNTg2MSwzLjI1ODYxLDAsMCwxLC41NTI3NCwxLjgyNTY4QTIuODIxODIsMi44MjE4MiwwLDAsMSw3NC40MzgzMiw3OS4wNzEyNVpNNjQuNTQwNTUsNjguNTQ0NTdjLjAwMDA2LTEuMTYxMTMtLjAwNDg4LTIuMzIyMjYuMDAxMTYtMy40ODMzM2E1Ljk5ODU0LDUuOTk4NTQsMCwwLDEsMTEuOTA1NC0xLjEyNjQ3LDE1LjE5MjQ0LDE1LjE5MjQ0LDAsMCwxLC4wOTUsMi4wNjg4NWMuMDE0MSwxLjE0Ny4wMDM4NCwyLjI5NDQzLjAwMzg0LDMuNDY1MzlINjQuNTQwNTVaIi8+PC9zdmc+
   activated: True
   anonymous: True
   linkTarget: "samewindow"
-  allowedGroups:
-{{ toYaml .portaltileGroupUserStandard | indent 4 }}
   displayName:
     en_US: "Password forgotten"
     de_DE: "Passwort vergessen"
@@ -106,21 +94,21 @@ properties:
 ---
 action: "create"
 module: "portals/category"
-position: "cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=category,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "self-service-password"
   displayName:
     en_US: "Passwords"
     de_DE: "Passwörter"
   entries:
-    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
+    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
+    - "cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
 
 ---
 action: "create"
 module: "portals/portal"
-position: "cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=portal,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "self-service"
   defaultLinkTarget: "samewindow"
@@ -129,17 +117,16 @@ properties:
     de_DE: "Self Service"
   showUmc: False
   categories:
-    - "cn=self-service-profile,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=self-service-password,cn=category,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=self-service-profile,cn=category,cn=portals,cn=univention,{{ ldapBaseDn }}"
+    - "cn=self-service-password,cn=category,cn=portals,cn=univention,{{ ldapBaseDn }}"
 
 ---
 action: "ensure_list_contains"
 module: "portals/portal"
-position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=domain,cn=portal,cn=portals,cn=univention,{{ ldapBaseDn }}"
 properties:
   userLinks:
-    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-{{ end }}
+    - "cn=self-service-protect-account,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
+    - "cn=self-service-password-forgotten,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
+    - "cn=self-service-password-change,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
+    - "cn=self-service-my-profile,cn=entry,cn=portals,cn=univention,{{ ldapBaseDn }}"
