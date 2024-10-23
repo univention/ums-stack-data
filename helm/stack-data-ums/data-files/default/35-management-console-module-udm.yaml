@@ -1,13 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-{{ with .Values.stackDataContext }}
-
 # Source: https://git.knut.univention.de/univention/ucs/-/blob/5.0-4/management/univention-management-console-module-udm/35univention-management-console-module-udm.inst
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-all"
   description: "UDM - All operations"
@@ -20,7 +18,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-users"
   description: "UDM - Users"
@@ -47,7 +45,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-groups"
   description: "UDM - Groups"
@@ -80,7 +78,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-policies"
   description: "UDM - Policies"
@@ -101,7 +99,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-navigation"
   description: "UDM - Navigation"
@@ -130,7 +128,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-portal"
   description: "UDM - Portal settings"
@@ -153,7 +151,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-new-portal"
   description: "UDM - Portal"
@@ -176,7 +174,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-syntax"
   description: "UDM - Syntax"
@@ -191,7 +189,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-validate"
   description: "UDM - Validate"
@@ -204,7 +202,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-reports"
   description: "UDM - Reports"
@@ -221,7 +219,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-usertemplates"
   description: "UDM - Apply User Templates"
@@ -235,7 +233,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-blocklists"
   description: "UDM - Blocklists"
@@ -250,7 +248,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-contacts"
   description: "UDM - Contacts"
@@ -289,7 +287,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-printers"
   description: "UDM - Printers"
@@ -310,7 +308,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-dhcp"
   description: "UDM - DHCP"
@@ -329,7 +327,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-dns"
   description: "UDM - DNS"
@@ -348,7 +346,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-mail"
   description: "UDM - Mail"
@@ -367,7 +365,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-network"
   description: "UDM - Network"
@@ -384,7 +382,7 @@ properties:
 ---
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-shares"
   description: "UDM - Shares"
@@ -407,7 +405,7 @@ properties:
 
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-computers"
   description: "UDM - Computers"
@@ -435,7 +433,7 @@ properties:
 
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "welcome-all"
   description: "Welcome"
@@ -450,7 +448,7 @@ properties:
 
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-license"
   flavor: "license-import"
@@ -465,7 +463,7 @@ properties:
 
 action: create
 module: settings/umc_operationset
-position: "cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
   name: "udm-request-license"
   flavor: ""
@@ -479,43 +477,41 @@ properties:
 ---
 action: ensure_list_contains
 module: policies/umc
-position: "cn=default-umc-all,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=default-umc-all,cn=UMC,cn=policies,{{ ldapBaseDn }}"
 properties:
   allow:
-    - "cn=welcome-all,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-contacts,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-groups,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-users,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-computers,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-printers,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-blocklists,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-dhcp,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-dns,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-navigation,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-mail,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-network,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-policies,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-shares,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-portal,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-new-portal,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-syntax,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-license,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-request-license,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-validate,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-reports,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-    - "cn=udm-usertemplates,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+    - "cn=welcome-all,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-contacts,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-groups,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-users,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-computers,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-printers,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-blocklists,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-dhcp,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-dns,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-navigation,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-mail,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-network,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-policies,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-shares,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-portal,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-new-portal,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-syntax,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-license,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-request-license,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-validate,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-reports,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-usertemplates,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 ---
 action: create
 module: policies/umc
-position: cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}
+position: cn=UMC,cn=policies,{{ ldapBaseDn }}
 properties:
   name: default-udm-self
 ---
 action: ensure_list_contains
 module: policies/umc
-position: "cn=default-udm-self,cn=UMC,cn=policies,{{ include "stack-data-ums.ldapBaseDn" $ }}"
+position: "cn=default-udm-self,cn=UMC,cn=policies,{{ ldapBaseDn }}"
 properties:
   allow:
-    - "cn=udm-self,cn=operations,cn=UMC,cn=univention,{{ include "stack-data-ums.ldapBaseDn" $ }}"
-
-{{ end }}
+    - "cn=udm-self,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
