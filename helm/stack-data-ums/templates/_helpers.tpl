@@ -107,16 +107,6 @@ false
 {{- end -}}
 {{- end -}}
 
-{{- define "stack-data-ums.ldapDomainName" -}}
-{{- if .Values.stackDataContext.domainname -}}
-{{- .Values.stackDataContext.domainname -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.ldap.domainName" . -}}
-{{- else -}}
-univention-organization.intranet
-{{- end -}}
-{{- end -}}
-
 {{- define "stack-data-ums.ldapAdminDn" -}}
 {{- if .Values.stackDataContext.ldapHostDn -}}
 {{- .Values.stackDataContext.ldapHostDn -}}
