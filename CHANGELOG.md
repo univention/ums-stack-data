@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.77.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.76.0...v0.77.0) (2024-10-25)
+
+
+### Features
+
+* change UCR values for Nubus ([23681c0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/23681c07190248558be52736fa13dbb2052db511))
+
 ## [0.76.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.75.0...v0.76.0) (2024-10-23)
 
 
