@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.78.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.77.0...v0.78.0) (2024-10-26)
+
+
+### Features
+
+* migrate helm templates to jinja2 ([f6f5a34](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f6f5a34bd939c9510846f907ccf9d110a86752d7))
+
+
+### Bug Fixes
+
+* remove unused values from templateContext ([cc6b302](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/cc6b302dcf7bd302a19dec3ecfa74218e7d65057))
+
 ## [0.77.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.76.0...v0.77.0) (2024-10-25)
 
 
