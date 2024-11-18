@@ -110,6 +110,15 @@ true
 			<td>Enable security context.</td>
 		</tr>
 		<tr>
+			<td>containerSecurityContext.privileged</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>containerSecurityContext.readOnlyRootFilesystem</td>
 			<td>bool</td>
 			<td><pre lang="json">
@@ -318,6 +327,51 @@ true
 			<td>object</td>
 			<td><pre lang="json">
 {}
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>serviceAccount.annotations</td>
+			<td>object</td>
+			<td><pre lang="json">
+{}
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>serviceAccount.automountServiceAccountToken</td>
+			<td>bool</td>
+			<td><pre lang="json">
+false
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>serviceAccount.create</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>serviceAccount.labels</td>
+			<td>object</td>
+			<td><pre lang="json">
+{}
+</pre>
+</td>
+			<td>Additional custom labels for the ServiceAccount.</td>
+		</tr>
+		<tr>
+			<td>serviceAccount.name</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
 </pre>
 </td>
 			<td></td>
