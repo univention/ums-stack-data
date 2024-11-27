@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.79.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.78.0...v0.79.0) (2024-11-27)
+
+
+### Features
+
+* upgrade kyverno pre-commit hook ([25f03f1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/25f03f16aca1be01b3682f2b4340ef862f2e91ed))
+
+
+### Bug Fixes
+
+* kyverno lint ([96f83f8](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/96f83f83e6d884d9f6a2b0f426904849db8c6e2e))
+* lint, add a systemExtension to the linter_values.yaml file ([333268e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/333268e240192de39da8adf5abfde29c39a49721))
+* move some values to kyverno to not break tests ([5467d4e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/5467d4e63857f3dd8ad10ef1275d2a746c8efeea))
+
 ## [0.78.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.77.0...v0.78.0) (2024-10-26)
 
 
