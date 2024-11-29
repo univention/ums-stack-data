@@ -28,3 +28,10 @@ position: cn=Domain Users,cn=groups,{{ ldapBaseDn }}
 properties:
   users:
     - "uid=Administrator,cn=users,{{ ldapBaseDn }}"
+---
+action: ensure_list_contains
+module: groups/group
+position: cn=Domain Admins,cn=groups,{{ ldapBaseDn }}
+properties:
+  users:
+    - "uid=Administrator,cn=users,{{ ldapBaseDn }}"
