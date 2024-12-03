@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.80.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.79.0...v0.80.0) (2024-12-03)
+
+
+### Features
+
+* implement PM feedback users module ([dd7db58](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/dd7db58bdb0dac251d46907162a4be0a8f2e6eff))
+
 ## [0.79.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.78.0...v0.79.0) (2024-11-27)
 
 
