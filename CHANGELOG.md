@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.80.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.80.0...v0.80.1) (2024-12-04)
+
+
+### Bug Fixes
+
+* Administrator in the Domain Admins group ([56b02c1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/56b02c1c3a57d0c5801788d71dcfc0d03926c670))
+
 ## [0.80.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.79.0...v0.80.0) (2024-12-03)
 
 
