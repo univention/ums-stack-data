@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
+{{- if .Values.dataLoader.enabled }}
 ---
 apiVersion: "batch/v1"
 kind: "Job"
@@ -165,3 +166,4 @@ spec:
         emptyDir: {}
 
 ...
+{{- end }}

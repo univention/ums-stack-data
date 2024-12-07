@@ -30,6 +30,11 @@ global:
   configUcr: {}
 
 
+dataLoader:
+  # -- Allows to disable the data loader Job.
+  enabled: true
+
+
 stackDataUms:
 
   # -- The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.
