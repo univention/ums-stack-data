@@ -86,3 +86,9 @@ results:
     kind: "Job"
     rule: "require-empty-seLinuxOptions"
     result: "pass"
+  - resources:
+      - "release-name-stack-data-ums-1"
+    policy: "require-requests-limits"
+    kind: "Job"
+    rule: "validate-resources"
+    result: "pass"
