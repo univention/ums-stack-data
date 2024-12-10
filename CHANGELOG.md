@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.80.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.80.1...v0.80.2) (2024-12-10)
+
+
+### Bug Fixes
+
+* kyverno lint for stack-data-ums ([a957997](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/a957997f484cf440f62e06b85f6cc34243641ba8))
+
 ## [0.80.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.80.0...v0.80.1) (2024-12-04)
 
 
