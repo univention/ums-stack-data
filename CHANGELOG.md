@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.81.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.80.2...v0.81.0) (2024-12-11)
+
+
+### Features
+
+* Allow to disable the data loader job ([394403e](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/394403e7a6d89b1a36fe9d37620742adf0ea6d3c))
+
 ## [0.80.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.80.1...v0.80.2) (2024-12-10)
 
 
