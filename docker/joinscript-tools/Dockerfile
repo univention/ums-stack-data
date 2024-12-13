@@ -1,16 +1,16 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023 Univention GmbH
 
-ARG UCS_BASE_IMAGE=gitregistry.knut.univention.de/univention/components/ucs-base-image/ucs-base-507
-ARG UCS_BASE_IMAGE_TAG=0.13.1-post-main-build-2024-09-09
+ARG UCS_BASE_IMAGE=gitregistry.knut.univention.de/univention/components/ucs-base-image/ucs-base-520
+ARG UCS_BASE_IMAGE_TAG=0.14.0-build-2024-12-12
 
 FROM ${UCS_BASE_IMAGE}:${UCS_BASE_IMAGE_TAG}
 
 RUN apt-get update \
     && apt-get --assume-yes --verbose-versions --no-install-recommends install \
-      python3-univention-directory-manager-rest-client=10.* \
-      python3-yaml=3.* \
-      univention-config=15.* \
+      python3-univention-directory-manager-rest-client \
+      python3-yaml \
+      univention-config \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 COPY bin/* /usr/local/bin/

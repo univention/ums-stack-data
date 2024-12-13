@@ -94,6 +94,8 @@ repos:
     hooks:
       # "Lint Dockerfiles"
       - id: "hadolint-system"
+        args:
+          - "--ignore=DL3008"
 
   # "Helm chart linter"
   - repo: "https://github.com/gruntwork-io/pre-commit"
