@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.82.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.81.0...v0.82.0) (2024-12-20)
+
+
+### Features
+
+* upgrade UCS base image to 2024-12-12 ([af10919](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/af10919e54ae0a22112bacce5aca28c038978975))
+
 ## [0.81.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.80.2...v0.81.0) (2024-12-11)
 
 
