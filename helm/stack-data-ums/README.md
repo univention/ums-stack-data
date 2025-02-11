@@ -254,6 +254,24 @@ false
 			<td>Indicates wether this chart is part of a Nubus deployment.</td>
 		</tr>
 		<tr>
+			<td>global.postgresql.connection.host</td>
+			<td>string</td>
+			<td><pre lang="json">
+"nil"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>global.postgresql.connection.port</td>
+			<td>string</td>
+			<td><pre lang="json">
+"nil"
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>global.systemExtensions</td>
 			<td>list</td>
 			<td><pre lang="json">
@@ -312,6 +330,60 @@ true
 </pre>
 </td>
 			<td></td>
+		</tr>
+		<tr>
+			<td>nubusUmcServer.memcached.auth.username</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`. UCR has no default.</td>
+		</tr>
+		<tr>
+			<td>nubusUmcServer.memcached.connection.host</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Hostname to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/socket`.</td>
+		</tr>
+		<tr>
+			<td>nubusUmcServer.postgresql.auth.database</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>nubusUmcServer.postgresql.auth.username</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Username to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/username`. UCR default is `selfservice`.</td>
+		</tr>
+		<tr>
+			<td>nubusUmcServer.postgresql.connection.host</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Hostname to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/hostname`. UCR default is `localhost`.</td>
+		</tr>
+		<tr>
+			<td>nubusUmcServer.postgresql.connection.port</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Port to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/port`. UCR default is `5432`.</td>
 		</tr>
 		<tr>
 			<td>podAnnotations</td>
@@ -600,60 +672,6 @@ true
 </pre>
 </td>
 			<td>UMC web page title. Chart supports templated values.</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.umcMemcachedHostname</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>Hostname to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/socket`. Chart default is `umc-server-memcached`.</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.umcMemcachedUsername</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>Username to use for memcached of the selfservice in UMC. This does set the UCR variable `umc/self-service/memcached/username`. UCR has no default.</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.umcPostgresqlDatabase</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>stackDataContext.umcPostgresqlHostname</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>Hostname to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/hostname`. UCR default is `localhost`. Chart default is `umc-server-postgresql`.</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.umcPostgresqlPort</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>Port to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/port`. UCR default is `5432`. Chart default is `5432`.</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.umcPostgresqlUsername</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>Username to use for postgresql of the selfservice in UMC. This does set the UCR variable `umc/self-service/postgresql/username`. UCR default is `selfservice`. Chart default is `selfservice`.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcSamlSchemes</td>

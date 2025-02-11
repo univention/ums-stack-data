@@ -141,62 +141,6 @@ http://udm-rest-api:9979/udm/
 These template definitions are only used in this chart and do not relate to templates defined elsewhere.
 */}}
 
-{{- define "stack-data-ums.umcPostgresqlHostname" -}}
-{{- if .Values.stackDataContext.umcPostgresqlHostname -}}
-{{- .Values.stackDataContext.umcPostgresqlHostname -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- (coalesce .Values.nubusUmcServer.postgresql.connection.host .Values.global.postgresql.connection.host) | default (printf "%s-postgresql" .Release.Name)  -}}
-{{- else -}}
-umc-server-postgresql
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.umcPostgresqlPort" -}}
-{{- if .Values.stackDataContext.umcPostgresqlPort -}}
-{{- .Values.stackDataContext.umcPostgresqlPort -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- coalesce .Values.nubusUmcServer.postgresql.connection.port .Values.global.postgresql.connection.port | default "5432" -}}
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.umcPostgresqlUsername" -}}
-{{- if .Values.stackDataContext.umcPostgresqlUsername -}}
-{{- .Values.stackDataContext.umcPostgresqlUsername -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- .Values.nubusUmcServer.postgresql.auth.username -}}
-{{- else -}}
-selfservice
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.umcPostgresqlDatabase" -}}
-{{- if .Values.stackDataContext.umcPostgresqlDatabase -}}
-{{- .Values.stackDataContext.umcPostgresqlDatabase -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- .Values.nubusUmcServer.postgresql.auth.database -}}
-{{- else -}}
-selfservice
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.umcMemcachedHostname" -}}
-{{- if .Values.stackDataContext.umcMemcachedHostname -}}
-{{- .Values.stackDataContext.umcMemcachedHostname -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- printf "%s-%s" .Release.Name (coalesce .Values.nubusUmcServer.memcached.nameOverride .Values.nubusUmcServer.memcached.connection.host) -}}
-{{- else -}}
-umc-server-memcached
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.umcMemcachedUsername" -}}
-{{- if .Values.stackDataContext.umcMemcachedUsername -}}
-{{- .Values.stackDataContext.umcMemcachedUsername -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- .Values.nubusUmcServer.memcached.auth.username -}}
-{{- end -}}
-{{- end -}}
-
 {{- define "stack-data-ums.domainName" -}}
 {{- if .Values.stackDataContext.domainname -}}
 {{- .Values.stackDataContext.domainname -}}
