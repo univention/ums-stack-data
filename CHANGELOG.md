@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.83.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.82.1...v0.83.0) (2025-02-13)
+
+
+### Features
+
+* remove injected configuration from nubusStackDataUms ([1709f55](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/1709f55e148fd5e21b668813949c66f18d173737))
+
 ## [0.82.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.82.0...v0.82.1) (2025-02-10)
 
 
