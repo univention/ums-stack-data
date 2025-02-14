@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.83.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.83.0...v0.83.1) (2025-02-14)
+
+
+### Bug Fixes
+
+* Enable OX Contexts module ([0d42c5d](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/0d42c5daf6002e5c7bf9c4d06d6e3923d8a8700c))
+
 ## [0.83.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.82.1...v0.83.0) (2025-02-13)
 
 
