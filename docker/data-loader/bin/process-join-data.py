@@ -178,18 +178,49 @@ class App:
         obj.properties.update(properties)
         obj.save()
 
+    def _get_dn_identifier_part(self, module, properties):
+        """
+        Get the DN identifier part based on the module type and properties.
+        For users, it's uid=username, for groups it's cn=name
+        """
+        if module == "users/user":
+            if "username" not in properties:
+                raise KeyError("username")
+            return f"uid={properties['username']}"
+        elif module == "groups/group":
+            if "name" not in properties:
+                raise KeyError("name")
+            return f"cn={properties['name']}"
+        else:
+            # For backward compatibility, default to using 'name' property with cn
+            if "name" not in properties:
+                raise KeyError("name")
+            return f"cn={properties['name']}"
+
     def upsert_udm_object(self, module, position, properties):
-        log.info(f"Ensuring udm object {module}, {position}, {properties.get('name')}")
+        """
+        Create a new UDM object or update it if it already exists.
+        Handles both users/user and groups/group modules appropriately.
+        """
+        log.info(f"Ensuring udm object {module}, {position}")
+
+        # Check for required identifier before proceeding
+        try:
+            dn_part = self._get_dn_identifier_part(module, properties)
+        except KeyError as e:
+            # Re-raise the KeyError to maintain the expected error behavior
+            raise KeyError(str(e))
+
         module_obj = self.udm.get(module)
         obj = module_obj.new(position=position)
         obj.properties.update(properties)
+
         try:
             obj.save()
         except UnprocessableEntity as exc:
             object_exists_message = '"dn" Object exists'
-            # TODO: Find a more solid way to check if the object exists
             if object_exists_message in str(exc):
-                update_position = f"cn={properties.get('name')},{position}"
+                update_position = f"{dn_part},{position}"
                 self.update_udm_object(module, update_position, properties)
             else:
                 raise

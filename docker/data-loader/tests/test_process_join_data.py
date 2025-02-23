@@ -408,30 +408,44 @@ def test_modify_if_exists_when_object_does_not_exist(app):
     # Save should not be called since the object doesn't exist
 
 
-def test_create_or_modify_when_object_exists(app):
+@pytest.mark.parametrize(
+    "module,properties,expected_dn_part",
+    [
+        (
+            "users/user",
+            {"username": "testuser", "firstname": "John", "lastname": "Doe"},
+            "uid=testuser",
+        ),
+        (
+            "groups/group",
+            {"name": "testgroup", "description": "Test Group"},
+            "cn=testgroup",
+        ),
+    ],
+)
+def test_create_or_modify_when_object_exists(app, module, properties, expected_dn_part):
     # Setup the mocks
     mock_module = mock.Mock()
     app.udm.get.return_value = mock_module
     mock_obj = mock.Mock()
     mock_module.new.return_value = mock_obj
 
-    # Make save raise UnprocessableEntity
+    # Make save raise UnprocessableEntity to simulate existing object
     mock_obj.save.side_effect = UnprocessableEntity(
         code=422,
         message='"dn" Object exists',
     )
 
-    properties = {"name": "testuser", "firstname": "John", "lastname": "Doe"}
-    position = "cn=users,dc=example,dc=com"
+    position = "dc=example,dc=com"
 
     # Create a mock for update_udm_object
     with mock.patch.object(app, "update_udm_object") as mock_update:
-        app.upsert_udm_object("users/user", position, properties)
+        app.upsert_udm_object(module, position, properties)
 
         # Verify the update_udm_object was called with correct parameters
-        expected_position = f"cn={properties['name']},{position}"
+        expected_position = f"{expected_dn_part},{position}"
         mock_update.assert_called_once_with(
-            "users/user",
+            module,
             expected_position,
             properties,
         )
@@ -441,16 +455,56 @@ def test_create_or_modify_when_object_exists(app):
     mock_obj.save.assert_called_once()
 
 
-def test_create_or_modify_when_object_does_not_exist(app):
+@pytest.mark.parametrize(
+    "module,properties",
+    [
+        (
+            "users/user",
+            {"username": "testuser", "firstname": "John", "lastname": "Doe"},
+        ),
+        (
+            "groups/group",
+            {"name": "testgroup", "description": "Test Group"},
+        ),
+    ],
+)
+def test_create_or_modify_when_object_does_not_exist(app, module, properties):
+    # Setup mocks
     mock_module = mock.Mock()
     app.udm.get.return_value = mock_module
     mock_obj = mock.Mock()
     mock_module.new.return_value = mock_obj
 
-    properties = {"name": "testuser", "firstname": "John", "lastname": "Doe"}
+    position = "dc=example,dc=com"
 
-    app.upsert_udm_object("users/user", "cn=users,dc=example,dc=com", properties)
+    # Call the function
+    app.upsert_udm_object(module, position, properties)
 
-    mock_module.new.assert_called_once()
+    # Verify the expected calls
+    mock_module.new.assert_called_once_with(position=position)
     mock_obj.properties.update.assert_called_once_with(properties)
     mock_obj.save.assert_called_once()
+
+
+@pytest.mark.parametrize(
+    "module,properties",
+    [
+        (
+            "users/user",
+            {"firstname": "John", "lastname": "Doe"},  # Missing username
+        ),
+        (
+            "groups/group",
+            {"description": "Test Group"},  # Missing name
+        ),
+    ],
+)
+def test_create_or_modify_fails_with_missing_identifier(app, module, properties):
+    mock_module = mock.Mock()
+    app.udm.get.return_value = mock_module
+
+    with pytest.raises(KeyError) as exc_info:
+        app.upsert_udm_object(module, "dc=example,dc=com", properties)
+
+    expected_key = "username" if module == "users/user" else "name"
+    assert str(exc_info.value) == f"\"'{expected_key}'\""
