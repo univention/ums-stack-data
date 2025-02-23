@@ -6,6 +6,7 @@ from unittest import mock
 import pytest
 import yaml
 from jinja2.exceptions import UndefinedError
+from univention.admin.rest.client import NotFound, UnprocessableEntity
 
 
 @pytest.fixture
@@ -235,6 +236,26 @@ def test_ensure_list_contains_skips_existing_policy(app):
     mock_obj.save.assert_not_called()
 
 
+def test_ensure_list_does_not_contain(app):
+    mock_obj = app.udm.obj_by_dn()
+    mock_obj.properties = {"users": ["user1", "user2", "user3"]}
+    mock_obj.policies = {"policy": ["policy1", "policy2"]}
+
+    properties = {"users": ["user2"]}
+    policies = {"policy": ["policy1"]}
+
+    app.ensure_list_does_not_contain(
+        "groups/group",
+        "cn=testgroup,dc=example,dc=com",
+        properties,
+        policies,
+    )
+
+    assert mock_obj.properties["users"] == ["user1", "user3"]
+    assert mock_obj.policies["policy"] == ["policy2"]
+    mock_obj.save.assert_called_once()
+
+
 def test_remove_from_list_removes_property(app):
     mock_obj = app.udm.obj_by_dn()
     mock_obj.properties = {
@@ -364,3 +385,72 @@ def test_delete_udm_object(app):
     }
     app.delete_udm_object("users/user", "cn=someuser,dc=base")
     mock_obj.delete.assert_called()
+
+
+def test_modify_if_exists_when_object_exists(app):
+    mock_obj = app.udm.obj_by_dn()
+
+    properties = {"firstname": "John", "lastname": "Doe"}
+    app.modify_if_exists("users/user", "uid=johndoe,dc=example,dc=com", properties)
+
+    mock_obj.properties.update.assert_called_once_with(properties)
+    mock_obj.save.assert_called_once()
+
+
+def test_modify_if_exists_when_object_does_not_exist(app):
+    # Create a proper NotFound exception with required arguments
+    app.udm.obj_by_dn.side_effect = NotFound(code=404, message="Object not found")
+
+    properties = {"firstname": "John", "lastname": "Doe"}
+    app.modify_if_exists("users/user", "uid=johndoe,dc=example,dc=com", properties)
+
+    app.udm.obj_by_dn.assert_called_once()
+    # Save should not be called since the object doesn't exist
+
+
+def test_create_or_modify_when_object_exists(app):
+    # Setup the mocks
+    mock_module = mock.Mock()
+    app.udm.get.return_value = mock_module
+    mock_obj = mock.Mock()
+    mock_module.new.return_value = mock_obj
+
+    # Make save raise UnprocessableEntity
+    mock_obj.save.side_effect = UnprocessableEntity(
+        code=422,
+        message='"dn" Object exists',
+    )
+
+    properties = {"name": "testuser", "firstname": "John", "lastname": "Doe"}
+    position = "cn=users,dc=example,dc=com"
+
+    # Create a mock for update_udm_object
+    with mock.patch.object(app, "update_udm_object") as mock_update:
+        app.upsert_udm_object("users/user", position, properties)
+
+        # Verify the update_udm_object was called with correct parameters
+        expected_position = f"cn={properties['name']},{position}"
+        mock_update.assert_called_once_with(
+            "users/user",
+            expected_position,
+            properties,
+        )
+
+    # Verify other expected calls
+    mock_module.new.assert_called_once()
+    mock_obj.save.assert_called_once()
+
+
+def test_create_or_modify_when_object_does_not_exist(app):
+    mock_module = mock.Mock()
+    app.udm.get.return_value = mock_module
+    mock_obj = mock.Mock()
+    mock_module.new.return_value = mock_obj
+
+    properties = {"name": "testuser", "firstname": "John", "lastname": "Doe"}
+
+    app.upsert_udm_object("users/user", "cn=users,dc=example,dc=com", properties)
+
+    mock_module.new.assert_called_once()
+    mock_obj.properties.update.assert_called_once_with(properties)
+    mock_obj.save.assert_called_once()

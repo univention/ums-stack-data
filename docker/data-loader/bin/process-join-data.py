@@ -123,8 +123,21 @@ class App:
                 properties=data.get("properties", {}),
                 policies=data.get("policies", {}),
             )
+        elif data["action"] == "ensure_list_does_not_contain":
+            self.ensure_list_does_not_contain(
+                module=data["module"],
+                position=data["position"],
+                properties=data.get("properties", {}),
+                policies=data.get("policies", {}),
+            )
         elif data["action"] == "modify":
             self.update_udm_object(
+                module=data["module"],
+                position=data["position"],
+                properties=data.get("properties"),
+            )
+        elif data["action"] == "modify_if_exists":
+            self.modify_if_exists(
                 module=data["module"],
                 position=data["position"],
                 properties=data.get("properties"),
@@ -181,6 +194,16 @@ class App:
             else:
                 raise
 
+    def modify_if_exists(self, module, position, properties):
+        log.info(f"Modifying UDM object if exists: {module}, {position}")
+        try:
+            obj = self.udm.obj_by_dn(position)
+            log.debug(f"Updating properties {list(properties.keys())}")
+            obj.properties.update(properties)
+            obj.save()
+        except NotFound:
+            log.info(f"Object not found: {position}. No changes made.")
+
     def delete_udm_object(self, module, position):
         log.info(f"Deleting UDM object {module}, {position}")
         try:
@@ -229,14 +252,24 @@ class App:
         else:
             log.info(f'No changes made to object "{obj.dn}".')
 
+    def ensure_list_does_not_contain(self, module, position, properties, policies):
+        log.info(f"Ensuring attribute list does not contain value {module}, {position}")
+        obj = self.udm.obj_by_dn(position)
+        needs_save = False
+        needs_save |= self._remove_values_from_dict(properties, obj.properties)
+        needs_save |= self._remove_values_from_dict(policies, obj.policies)
+        if needs_save:
+            log.info(f'Saving object "{obj.dn}".')
+            obj.save()
+        else:
+            log.info(f'No changes made to object "{obj.dn}".')
+
     def _remove_values_from_dict(self, values, obj_values):
         needs_save = False
-        for name, values in values.items():
-            log.info(
-                f'Removing values "{values}" from "{name}".',
-            )
+        for name, values_list in values.items():
+            log.info(f'Removing values "{values_list}" from "{name}".')
             current_values = obj_values[name]
-            for value in values:
+            for value in values_list:
                 if value in current_values:
                     log.debug(f'Removing value "{value}" from property "{name}".')
                     current_values.remove(value)
