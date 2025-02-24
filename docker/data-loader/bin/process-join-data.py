@@ -257,31 +257,19 @@ class App:
 
     def _ensure_values_in_dict(self, values, obj_values):
         needs_save = False
-        for name, values in values.items():
+        for name, value_list in values.items():
             log.info(
-                f'Ensuring values "{values}" in "{name}".',
+                f'Ensuring values "{value_list}" in "{name}".',
             )
             current_values = obj_values[name]
-            for value in values:
-                if value not in current_values:
-                    log.debug(f'Adding value "{value}" into property "{name}".')
-                    current_values.append(value)
-                    needs_save = True
-                else:
+            for value in value_list:
+                if value in current_values:
                     log.debug(f'Value "{value}" already present in property "{name}".')
+                    continue
+                log.debug(f'Adding value "{value}" into property "{name}".')
+                current_values.append(value)
+                needs_save = True
         return needs_save
-
-    def remove_from_list(self, module, position, properties, policies):
-        log.info(f"Removing attribute from list {module}, {position}")
-        obj = self.udm.obj_by_dn(position)
-        needs_save = False
-        needs_save |= self._remove_values_from_dict(properties, obj.properties)
-        needs_save |= self._remove_values_from_dict(policies, obj.policies)
-        if needs_save:
-            log.info(f'Saving object "{obj.dn}".')
-            obj.save()
-        else:
-            log.info(f'No changes made to object "{obj.dn}".')
 
     def ensure_list_does_not_contain(self, module, position, properties, policies):
         log.info(f"Ensuring attribute list does not contain value {module}, {position}")
@@ -298,15 +286,15 @@ class App:
     def _remove_values_from_dict(self, values, obj_values):
         needs_save = False
         for name, values_list in values.items():
-            log.info(f'Removing values "{values_list}" from "{name}".')
+            log.info(f'Removing values "{values_list}" from "{name}" property.')
             current_values = obj_values[name]
             for value in values_list:
-                if value in current_values:
-                    log.debug(f'Removing value "{value}" from property "{name}".')
-                    current_values.remove(value)
-                    needs_save = True
-                else:
+                if value not in current_values:
                     log.debug(f'Value "{value}" not present in property "{name}".')
+                    continue
+                log.debug(f'Removing value "{value}" from property "{name}".')
+                current_values.remove(value)
+                needs_save = True
         return needs_save
 
 

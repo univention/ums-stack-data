@@ -256,7 +256,8 @@ def test_ensure_list_does_not_contain(app):
     mock_obj.save.assert_called_once()
 
 
-def test_remove_from_list_removes_property(app):
+# def ensure_list_does_not_contain(self, module, position, properties, policies):
+def test_ensure_list_does_not_contain_removes_property(app):
     mock_obj = app.udm.obj_by_dn()
     mock_obj.properties = {
         "users": [
@@ -271,7 +272,7 @@ def test_remove_from_list_removes_property(app):
     }
     policies = {}
 
-    app.remove_from_list(
+    app.ensure_list_does_not_contain(
         "groups/group",
         "cn=Domain Users,dc=base",
         properties,
@@ -281,7 +282,7 @@ def test_remove_from_list_removes_property(app):
     mock_obj.save.assert_called()
 
 
-def test_remove_from_list_skips_missing_property(app):
+def test_ensure_list_does_not_contain_skips_missing_property(app):
     mock_obj = app.udm.obj_by_dn()
     mock_obj.properties = {
         "users": [
@@ -295,7 +296,7 @@ def test_remove_from_list_skips_missing_property(app):
     }
     policies = {}
 
-    app.remove_from_list(
+    app.ensure_list_does_not_contain(
         "groups/group",
         "cn=Domain Users,dc=base",
         properties,
@@ -305,7 +306,7 @@ def test_remove_from_list_skips_missing_property(app):
     mock_obj.save.assert_not_called()
 
 
-def test_remove_from_list_removes_policy(app):
+def test_ensure_list_does_not_contain_removes_policy(app):
     mock_obj = app.udm.obj_by_dn()
     mock_obj.policies = {
         "policies/umc": [
@@ -320,7 +321,7 @@ def test_remove_from_list_removes_policy(app):
         ],
     }
 
-    app.remove_from_list(
+    app.ensure_list_does_not_contain(
         "groups/group",
         "cn=Domain Users,dc=base",
         properties,
@@ -333,7 +334,7 @@ def test_remove_from_list_removes_policy(app):
     mock_obj.save.assert_called()
 
 
-def test_remove_from_list_skips_missing_policy(app):
+def test_ensure_list_does_not_contain_skips_missing_policy(app):
     mock_obj = app.udm.obj_by_dn()
     mock_obj.policies = {
         "policies/umc": [
@@ -347,7 +348,7 @@ def test_remove_from_list_skips_missing_policy(app):
         ],
     }
 
-    app.remove_from_list(
+    app.ensure_list_does_not_contain(
         "groups/group",
         "cn=Domain Users,dc=base",
         properties,
