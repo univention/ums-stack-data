@@ -26,11 +26,11 @@ def test_accepts_filename_as_argument(process_join_data, mocker):
 
     result = runner.invoke(
         process_join_data.cli_app,
-        ["example-data.yaml"],
+        ["examples/example-data.yaml"],
         env=DEFAULT_ENV,
     )
 
-    run_mock.assert_called_once_with("example-data.yaml")
+    run_mock.assert_called_once_with("examples/example-data.yaml")
     assert result.exit_code == 0
 
 
@@ -40,7 +40,7 @@ def test_accepts_template_extension_as_option(process_join_data, mocker):
 
     result = runner.invoke(
         process_join_data.cli_app,
-        ["example-data.yaml", "--template-extension", ".j2"],
+        ["examples/example-data.yaml", "--template-extension", ".j2"],
         env=DEFAULT_ENV,
     )
 
@@ -60,7 +60,7 @@ def test_accepts_template_context_as_option(process_join_data, mocker):
 
     result = runner.invoke(
         process_join_data.cli_app,
-        ["example-data.yaml", "--template-context", "context.yaml"],
+        ["examples/example-data.yaml", "--template-context", "context.yaml"],
         env=DEFAULT_ENV,
     )
 
@@ -83,7 +83,7 @@ def test_accepts_multiple_template_context_options(process_join_data, mocker):
     result = runner.invoke(
         process_join_data.cli_app,
         [
-            "example-data.yaml",
+            "examples/example-data.yaml",
             "--template-context",
             "context.yaml",
             "--template-context",
@@ -111,7 +111,7 @@ def test_does_not_log_context_by_default(process_join_data, mocker, caplog):
         result = runner.invoke(
             process_join_data.cli_app,
             [
-                "example-data.yaml",
+                "examples/example-data.yaml",
                 "--template-context",
                 "context.yaml",
                 "--template-context",
@@ -138,7 +138,7 @@ def test_allows_to_log_the_context(process_join_data, mocker, caplog):
         result = runner.invoke(
             process_join_data.cli_app,
             [
-                "example-data.yaml",
+                "examples/example-data.yaml",
                 "--log-context",
                 "--template-context",
                 "context.yaml",
@@ -169,7 +169,7 @@ def test_does_not_log_the_rendered_template_by_default(
         result = runner.invoke(
             process_join_data.cli_app,
             [
-                "example-data.yaml",
+                "examples/example-data.yaml",
                 "--template-context",
                 "context.yaml",
             ],
@@ -193,7 +193,7 @@ def test_allows_to_log_the_rendered_template(process_join_data, mocker, caplog):
         result = runner.invoke(
             process_join_data.cli_app,
             [
-                "example-data.yaml",
+                "examples/example-data.yaml",
                 "--log-template",
                 "--template-context",
                 "context.yaml",
@@ -221,7 +221,7 @@ def test_allows_to_configure_the_udm_connection_via_cli(process_join_data, mocke
     result = runner.invoke(
         process_join_data.cli_app,
         [
-            "example-data.yaml",
+            "examples/example-data.yaml",
             "--udm-api-url",
             udm_api_url,
             "--udm-api-user",
@@ -260,7 +260,7 @@ def test_configures_udm_connection_based_on_environment_variables(
 
     result = runner.invoke(
         process_join_data.cli_app,
-        ["example-data.yaml"],
+        ["examples/example-data.yaml"],
         catch_exceptions=False,
         env=env,
     )
