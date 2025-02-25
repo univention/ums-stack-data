@@ -48,12 +48,13 @@ This container is a component of Nubus for initial bootstrapping of the
 directory and for further updates from extensions and customization. It plugs
 into the extension concept of Nubus.
 
+
 ## Approach
 
 The idea is, that every extension does provide its needs as a series of `YAML`
 documents which describe which operations have to be carried out.
 
-The utility script `process-join-data.py` is then used to apply those `YAML`
+The python executable `process-join-data` is then used to apply those `YAML`
 documents to the running `udm-rest-api`. The utility script will perform the
 following two steps:
 
@@ -68,12 +69,15 @@ from there.
 The files are sorted based on the filename. A number based prefix shall be used
 to avoid clashes due to implicit dependencies.
 
+
 ## Development
 
 ### Running the tests
+
 ```
 docker compose run --build --rm -it data-loader-test
 ```
+
 
 ### Interacting with the script
 
@@ -95,3 +99,13 @@ docker compose run -it --rm --build data-loader-test \
 
 Note that running the command inside of the container ensures that too recent
 dependencies are excluded, those would require a more recent Python interpreter.
+
+### Local development
+
+Install `uv`: `pip install uv`
+Create a virtualenv and install the project into it: `uv sync`
+Activate the virtualenv `source .venv/bin/activate`
+
+Run the tests: `pytest -v`
+
+Run the data-loader: `data-loader`
