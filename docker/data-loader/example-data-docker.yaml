@@ -1,0 +1,142 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2023 Univention GmbH
+
+# Does not rely on UDM extensions and can thus be run in a bare docker-compose setup
+
+# Setup
+---
+action: create
+module: mail/domain
+position: cn=domain,cn=mail,{{ ldapBaseDn }}
+properties:
+  name: "{{ externalMailDomain }}"
+---
+action: "create"
+module: "users/user"
+position: "cn=users,{{ ldapBaseDn }}"
+properties:
+  username: "testuser"
+  lastname: "testuser"
+  firstname: "testname"
+  mailPrimaryAddress: "testuser@{{ externalMailDomain }}"
+  password: "initialPasswordTestuser"
+---
+action: create
+module: groups/group
+position: cn=groups,{{ ldapBaseDn }}
+properties:
+  name: testgroup
+  users:
+    - uid=testuser,cn=groups,{{ ldapBaseDn }}
+    # You can easily add a non-existant user to a group.
+    - "uid=fake user,cn=users,{{ ldapBaseDn }}"
+---
+
+# Test that create or modify works on users
+action: "create_or_modify"
+module: "users/user"
+position: "cn=users,{{ ldapBaseDn }}"
+properties:
+  username: "testuser"
+  lastname: "real last name"
+---
+# Test create or modify for list objects
+action: "create_or_modify"
+module: "users/user"
+position: "cn=users,{{ ldapBaseDn }}"
+properties:
+  username: "testuser"
+  lastname: "real last name"
+  mobileTelephoneNumber:
+    - "1"
+    - "2"
+    - "3"
+---
+# Test modify if exists with existing user
+action: modify_if_exists
+module: "users/user"
+position: "uid=testuser,cn=users,{{ ldapBaseDn }}"
+properties:
+  birthday: "1970-01-01"
+---
+# Test modify if exists with existing group
+action: modify_if_exists
+module: groups/group
+position: cn=testgroup,cn=groups,{{ ldapBaseDn }}
+properties:
+  name: testgroup
+  users:
+    - "uid=testuser,cn=users,{{ ldapBaseDn }}"
+    - "uid=Administrator,cn=users,{{ ldapBaseDn }}"
+---
+# Test modify if exists with non existing user
+action: modify_if_exists
+module: "users/user"
+position: "uid=ghost-user,cn=users,{{ ldapBaseDn }}"
+properties:
+  birthday: "1970-01-01"
+---
+# Test modify if exists with non existing group
+action: modify_if_exists
+module: groups/group
+position: cn=ghost-group,cn=groups,{{ ldapBaseDn }}
+properties:
+  name: testgroup
+  users:
+    - "uid=Administrator,cn=users,{{ ldapBaseDn }}"
+---
+
+# Activate this breakpoint to validate that the test setup was successful and that modify_if_exists worked
+# action: breakpoint action
+# ---
+
+
+# Test ensure list does not contain with user and existing attribute
+action: "ensure_list_does_not_contain"
+module: "users/user"
+position: "uid=testuser,cn=users,{{ ldapBaseDn }}"
+properties:
+  mobileTelephoneNumber:
+    - "2"
+---
+# Test ensure list does not contain with group and existing attribute
+action: ensure_list_does_not_contain
+module: groups/group
+position: cn=testgroup,cn=groups,{{ ldapBaseDn }}
+properties:
+  users:
+   - "uid=testuser,cn=users,{{ ldapBaseDn }}"
+---
+# Test ensure list does not contain with user and non existing attribute
+action: "ensure_list_does_not_contain"
+module: "users/user"
+position: "uid=testuser,cn=users,{{ ldapBaseDn }}"
+properties:
+  mobileTelephoneNumber:
+    - "55"
+---
+# Test ensure list does not contain with user and non existing attribute
+action: ensure_list_does_not_contain
+module: groups/group
+position: cn=testgroup,cn=groups,{{ ldapBaseDn }}
+properties:
+  users:
+   - "uid=another-ghost-user,cn=users,{{ ldapBaseDn }}"
+---
+
+# Activate this breakpoint to validate that the values were successfully removed.
+# action: breakpoint action
+# ---
+
+# Teardown
+action: delete_if_exists
+module: "users/user"
+position: "uid=testuser,cn=users,{{ ldapBaseDn }}"
+---
+action: delete_if_exists
+module: mail/domain
+position: cn={{ externalMailDomain }},cn=domain,cn=mail,{{ ldapBaseDn }}
+---
+action: delete_if_exists
+module: groups/group
+position: cn=testgroup,cn=groups,{{ ldapBaseDn }}
