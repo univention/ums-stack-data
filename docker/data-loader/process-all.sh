@@ -11,7 +11,7 @@ ls -l /join-data/
 for data_file in $(find /join-data -type f | sort)
 do
     echo
-    process-join-data.py "$@" "${data_file}"
+    process-join-data "$@" "${data_file}"
 done
 
 if [ ! -v UDM_API_USER ]; then

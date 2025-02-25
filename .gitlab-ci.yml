@@ -18,11 +18,13 @@ include:
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
-    KANIKO_BUILD_CONTEXT: "docker/data-loader"
+    DOCKERFILE_PATH: "docker/data-loader/Dockerfile"
     KANIKO_ARGS: "--target test"
+    KANIKO_BUILD_CONTEXT: "${CI_PROJECT_DIR}"
   - IMAGE_NAME: "data-loader"
-    KANIKO_BUILD_CONTEXT: "docker/data-loader"
+    DOCKERFILE_PATH: "docker/data-loader/Dockerfile"
     KANIKO_ARGS: "--target final"
+    KANIKO_BUILD_CONTEXT: "${CI_PROJECT_DIR}"
   - IMAGE_NAME: "joinscript-tools"
     KANIKO_BUILD_CONTEXT: "docker/joinscript-tools"
 
@@ -46,7 +48,6 @@ test-data-loader-unittests:
       when: "never"
     - when: "on_success"
   script:
-    - cd docker/data-loader
     - pytest
 
 test-data-loader-container:
@@ -57,14 +58,16 @@ test-data-loader-container:
       when: "never"
     - when: "on_success"
   script:
-    - process-join-data.py --help
+    - process-join-data --help
 
 test-chart-unittests:
   stage: test
   image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0"
   script:
     - helm dep build helm/stack-data-ums
-    - pytest tests
+    # Workaround to disable pytest-cov
+    - "echo [pytest] > pytest.ini"
+    - pytest tests/helm_unit
 
 push-image-external:
   parallel:

@@ -4,3 +4,6 @@
 # kyverno test files
 helm/**/.kyverno/kyverno-test.yaml
 helm/**/.kyverno/manifest.yaml
+
+**/.coverage
+secret/
