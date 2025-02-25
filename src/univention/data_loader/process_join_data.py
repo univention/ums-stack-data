@@ -346,5 +346,9 @@ def _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file):
     return udm
 
 
-if __name__ == "__main__":
+def run():
     cli_app(standalone_mode=False)
+
+
+if __name__ == "__main__":
+    run()

@@ -52,9 +52,13 @@ class App:
             self.reload_pod_cache(pod_ip)
 
 
-if __name__ == "__main__":
+def run():
     if not os.environ.get("UDM_API_USER"):
         log.info("Not refreshing udm-rest-api caches because UDM_API_USER is not set")
         sys.exit()
     app = App()
     app.run()
+
+
+if __name__ == "__main__":
+    run()

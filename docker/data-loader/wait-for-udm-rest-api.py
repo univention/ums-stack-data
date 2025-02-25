@@ -5,11 +5,10 @@
 
 import logging
 import os
-import time
 import sys
+import time
 
 from univention.admin.rest.client import UDM
-
 
 log = logging.getLogger("app")
 
