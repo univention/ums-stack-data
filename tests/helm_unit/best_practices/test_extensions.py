@@ -11,7 +11,6 @@ from yaml import safe_load
 
 from ..utils import findall
 
-
 ALL_EXTENSION_KEYS = (
     "extensions",
     "systemExtensions",

@@ -27,12 +27,15 @@ services:
   data-loader-test:
     profiles:
       - "test"
+    working_dir: /app
     build:
       dockerfile: "./docker/data-loader/Dockerfile"
       target: "test"
     platform: "linux/amd64"
     volumes:
-      - "./:/src/"
+      - "./src/:/app/src/"
+      - "./tests/:/app/tests/"
+      - "./examples/:/app/examples"
 
   joinscript-tools:
     profiles:
@@ -71,7 +74,7 @@ services:
 
   test:
     image: gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0
-    command: pytest --values helm/stack-data-ums/linter_values.yaml tests
+    command: "pytest --values helm/stack-data-ums/linter_values.yaml tests/helm_unit"
     profiles:
       - test
     volumes:

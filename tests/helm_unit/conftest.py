@@ -6,10 +6,6 @@ import os.path
 import pytest
 
 
-def pytest_addoption(parser):
-    parser.addoption("--chart-path", help="Path of the Helm chart to test")
-
-
 @pytest.fixture
 def helm_values(request):
     """
@@ -28,6 +24,6 @@ def chart_path(pytestconfig):
     if not chart_path:
         tests_path = os.path.dirname(os.path.abspath(__file__))
         chart_path = os.path.normpath(
-            os.path.join(tests_path, "../helm/stack-data-ums"),
+            os.path.join(tests_path, "../../helm/stack-data-ums"),
         )
     return chart_path

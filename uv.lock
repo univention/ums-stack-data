@@ -226,10 +226,8 @@ dev = [
     { name = "pdbpp" },
     { name = "pytest" },
     { name = "pytest-cov" },
-    { name = "pytest-helm" },
     { name = "pytest-mock" },
     { name = "python-jsonpath" },
-    { name = "pyyaml" },
 ]
 
 [package.metadata]
@@ -246,10 +244,8 @@ dev = [
     { name = "pdbpp" },
     { name = "pytest" },
     { name = "pytest-cov", specifier = ">=5.0,<6.0" },
-    { name = "pytest-helm", git = "https://git.knut.univention.de/univention/customers/dataport/upx/tooling/pytest_helm.git?rev=7e576e8d0179c465102010ae49d0a22d3d46d4d3" },
     { name = "pytest-mock" },
     { name = "python-jsonpath" },
-    { name = "pyyaml" },
 ]
 
 [[package]]
@@ -331,14 +327,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/74/67/00efc8d11b630c56f15f4ad9c7f9223f1e5ec275aaae3fa9118c6a223ad2/pytest-cov-5.0.0.tar.gz", hash = "sha256:5837b58e9f6ebd335b0f8060eecce69b662415b16dc503883a02f45dfeb14857", size = 63042 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/78/3a/af5b4fa5961d9a1e6237b530eb87dd04aea6eb83da09d2a4073d81b54ccf/pytest_cov-5.0.0-py3-none-any.whl", hash = "sha256:4f0764a1219df53214206bf1feea4633c3b558a2925c8b59f144f682861ce652", size = 21990 },
-]
-
-[[package]]
-name = "pytest-helm"
-version = "0.1.0"
-source = { git = "https://git.knut.univention.de/univention/customers/dataport/upx/tooling/pytest_helm.git?rev=7e576e8d0179c465102010ae49d0a22d3d46d4d3#7e576e8d0179c465102010ae49d0a22d3d46d4d3" }
-dependencies = [
-    { name = "pytest" },
 ]
 
 [[package]]
