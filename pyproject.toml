@@ -25,13 +25,14 @@ dev = [
     "pytest-mock",
     "pytest",
     # additional Helm unittest dependencies
-    "pytest-helm",
-    "pyyaml",
+    # TODO: Currently fails the test container build because of git dependency
+    # "pytest-helm",
+    # "pyyaml",
     # "setuptools",
 ]
 
 [project.scripts]
-dispatcher = "univention.provisioning.dispatcher.main:run"
+process-join-data = "univention.provisioning.dispatcher.main:run"
 
 [tool.uv.sources]
 pytest-helm = { git = "https://git.knut.univention.de/univention/customers/dataport/upx/tooling/pytest_helm.git", rev = "7e576e8d0179c465102010ae49d0a22d3d46d4d3" }
@@ -44,14 +45,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
-# TODO: Decide if this is wanted.
 # exclude helm unittests tests by default
-# testpaths = [
-# ]
-addopts = [
-    "--import-mode=importlib",
-    "--cov=src/",
-    "--cov-report=term-missing",
+testpaths = [
+  "tests/unit"
 ]
 log_cli = 0  # activate on the CLI with: "-o log_cli=true"
 log_cli_level = "DEBUG"

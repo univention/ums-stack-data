@@ -71,7 +71,7 @@ services:
 
   test:
     image: gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0
-    command: pytest --values helm/stack-data-ums/linter_values.yaml tests
+    command: [pytest --values helm/stack-data-ums/linter_values.yaml tests/helm_unit"]
     profiles:
       - test
     volumes:

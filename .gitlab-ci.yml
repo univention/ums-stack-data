@@ -48,7 +48,7 @@ test-data-loader-unittests:
       when: "never"
     - when: "on_success"
   script:
-    - pytest
+    - pytest --cov=src/ --cov-report=term-missing
 
 test-data-loader-container:
   stage: "test"
@@ -65,8 +65,6 @@ test-chart-unittests:
   image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0"
   script:
     - helm dep build helm/stack-data-ums
-    # Workaround to disable pytest-cov
-    - "echo [pytest] > pytest.ini"
     - pytest tests/helm_unit
 
 push-image-external:
