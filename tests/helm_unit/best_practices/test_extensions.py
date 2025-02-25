@@ -9,7 +9,7 @@ import copy
 import pytest
 from yaml import safe_load
 
-from utils import findall
+from ..utils import findall
 
 
 ALL_EXTENSION_KEYS = (

@@ -6,7 +6,7 @@
 
 from yaml import safe_load
 
-from utils import get_containers_of_job
+from ..utils import get_containers_of_job
 
 
 def test_pod_security_context_can_be_disabled(helm, chart_path):

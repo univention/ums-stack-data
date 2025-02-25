@@ -7,7 +7,7 @@
 import pytest
 from yaml import safe_load
 
-from utils import findone, get_containers_of_job
+from ..utils import findone, get_containers_of_job
 
 
 def test_global_registry_is_used_as_default(helm, chart_path):
