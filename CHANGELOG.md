@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.84.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.83.1...v0.84.0) (2025-02-26)
+
+
+### Features
+
+* Create the group "Domain Service Users" ([34808b1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/34808b12d1d16095833483962b8426a42b6f82eb))
+* Give UDM Access to the group "Domain Service Users" ([f34f954](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f34f9546d5dc202ae2afb48ad773c2fde01a7bc4))
+
 ## [0.83.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.83.0...v0.83.1) (2025-02-14)
 
 
