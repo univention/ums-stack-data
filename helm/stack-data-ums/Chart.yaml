@@ -15,8 +15,8 @@ icon: "https://www.univention.com/wp-content/themes/univention/assets/images/uni
 version: "0.1.0"
 
 dependencies:
-  - name: "common"
-    repository: "oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/helm"
-    version: "^0.3.0"
+  - name: "nubus-common"
+    version: "^0.8.x"
+    repository: "oci://artifacts.software-univention.de/nubus/charts"
 
 ...

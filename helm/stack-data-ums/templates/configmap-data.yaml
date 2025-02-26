@@ -3,27 +3,32 @@
 
 {{ if not .Values.stackDataUms.dataConfigMapName }}
 ---
-{{ include "common.configMap" (dict "top" . "overrides" "stack-data-ums.configMap-data") }}
-...
-{{ end }}
-
-{{- define "stack-data-ums.configMap-data" }}
 {{- /* Simulates one level of recursion
 
        This applies templating to the values of "stackDataContext" and then
-       injects the result back into "$.top.Values" so that the values can be
+       injects the result back into ".Values" so that the values can be
        used as if Helm would apply templating to the values file.
 */ -}}
-{{- $_ := set $.top.Values "stackDataContext" (fromYaml (tpl (toYaml $.top.Values.stackDataContext) $.top)) }}
+{{- $_ := set .Values "stackDataContext" (fromYaml (tpl (toYaml .Values.stackDataContext) .)) }}
 
-{{- with .top }}
+kind: "ConfigMap"
+apiVersion: "v1"
 metadata:
   name: '{{ include "common.names.fullname" . }}-data'
+  namespace: {{ include "common.names.namespace" . | quote }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+    {{- if .Values.additionalLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.additionalLabels "context" . ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.additionalAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.additionalAnnotations "context" . ) | nindent 4 }}
+  {{- end }}
 data:
-{{- range $path, $_ := $.top.Files.Glob "data-files/default/*.yaml" }}
+{{- range $path, $_ := $.Files.Glob "data-files/default/*.yaml" }}
   {{ base $path }}: |-
     # Source: {{ $path }}
-{{ $.top.Files.Get $path | indent 4 }}
+{{ $.Files.Get $path | indent 4 }}
 {{- end }}
 
 {{- if .Values.stackDataUms.extraDataFiles }}
@@ -33,5 +38,4 @@ data:
 {{- end }}
 {{- end }}
 
-{{- end }}
 {{- end }}

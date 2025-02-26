@@ -39,7 +39,7 @@ helm uninstall stack-data-udm
 
 | Repository | Name | Version |
 |------------|------|---------|
-| oci://gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/helm | common | ^0.3.0 |
+| oci://artifacts.software-univention.de/nubus/charts | nubus-common | ^0.8.x |
 
 ## Values
 

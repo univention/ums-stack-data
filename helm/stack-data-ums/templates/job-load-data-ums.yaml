@@ -6,7 +6,7 @@
 apiVersion: "batch/v1"
 kind: "Job"
 metadata:
-  name: {{ include "common.names.fullnameWithRevision" . }}
+  name: {{ include "nubus-common.names.fullnameWithRevision" . }}
   labels:
     {{- include "common.labels.standard" . | nindent 4 }}
   {{- if .Values.additionalAnnotations }}
