@@ -53,3 +53,12 @@ log_cli = 0  # activate on the CLI with: "-o log_cli=true"
 log_cli_level = "DEBUG"
 log_cli_format = "%(asctime)s %(levelname)-5s [%(module)s.%(funcName)s:%(lineno)d] %(message)s"
 log_cli_date_format = "%Y-%m-%d %H:%M:%S:%f"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+extend-select = ["I"]  # activate isort
+
+[tool.ruff.isort]
+known-first-party = ["univention"]
