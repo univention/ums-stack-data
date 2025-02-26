@@ -400,7 +400,11 @@ def test_modify_if_exists_when_object_exists(app):
 
 def test_modify_if_exists_when_object_does_not_exist(app):
     # Create a proper NotFound exception with required arguments
-    app.udm.obj_by_dn.side_effect = NotFound(code=404, message="Object not found")
+    app.udm.obj_by_dn.side_effect = NotFound(
+        code=404,
+        message="Object not found",
+        response=mock.Mock(),
+    )
 
     properties = {"firstname": "John", "lastname": "Doe"}
     app.modify_if_exists("users/user", "uid=johndoe,dc=example,dc=com", properties)
@@ -435,6 +439,7 @@ def test_create_or_modify_when_object_exists(app, module, properties, expected_d
     mock_obj.save.side_effect = UnprocessableEntity(
         code=422,
         message='"dn" Object exists',
+        response=mock.Mock(),
     )
 
     position = "dc=example,dc=com"
