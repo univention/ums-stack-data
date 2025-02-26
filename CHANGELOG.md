@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.86.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.85.0...v0.86.0) (2025-02-26)
+
+
+### Features
+
+* add new data loader actions ([98b86b4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/98b86b4c3838d45c636a1679aa55b6f1403f91f1))
+* support groups in create_or_modify ([7805d08](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7805d084a759a95c013e25196e5122287cf482a2))
+
 ## [0.85.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.84.0...v0.85.0) (2025-02-26)
 
 
