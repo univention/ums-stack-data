@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.85.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.84.0...v0.85.0) (2025-02-26)
+
+
+### Features
+
+* Bump ucs-base-image to use released apt sources ([f277af9](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f277af9f93cd1599d2eff23a5bab1a78c83e1836))
+
 ## [0.84.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.83.1...v0.84.0) (2025-02-26)
 
 
