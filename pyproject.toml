@@ -32,7 +32,7 @@ dev = [
 ]
 
 [project.scripts]
-process-join-data = "univention.data_loader.process_join_data:run"
+process-join-data = "univention.data_loader.cli:run"
 
 [tool.uv.sources]
 pytest-helm = { git = "https://git.knut.univention.de/univention/customers/dataport/upx/tooling/pytest_helm.git", rev = "7e576e8d0179c465102010ae49d0a22d3d46d4d3" }
