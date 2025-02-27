@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.87.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.86.0...v0.87.0) (2025-02-27)
+
+
+### Features
+
+* Replace "common" with "nubus-common" ([1227241](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/1227241ff2a05d1b2582f6113ef72dfe01c0b24d))
+* The the password for svc-portal-server managed ([f2b1312](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/f2b131236d818f4dc52e2cc988553a4d311b6796))
+
 ## [0.86.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.85.0...v0.86.0) (2025-02-26)
 
 
