@@ -63,7 +63,7 @@ def upsert_udm_object(udm: UDM, module: str, position: str, properties, policies
         if object_exists_message not in str(exc):
             raise
         update_position = f"{dn_part},{position}"
-        update_udm_object(udm, module, update_position, properties)
+        update_udm_object(udm, module, update_position, properties, {})
 
 
 def update_udm_object(

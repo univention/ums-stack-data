@@ -23,5 +23,5 @@ fi
 
 if [[ "${SET_STATUS_FLAG:-false}" == true ]]; then
     echo "Set data loader status flag"
-    process-join-data.py "$@" set-data-loader-status-flag.yaml
+    process-join-data "$@" set-data-loader-status-flag.yaml
 fi

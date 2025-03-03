@@ -33,8 +33,7 @@ RUN --mount=type=cache,target=/root/.cache \
 # copy source code
 COPY ./src /app/src
 
-RUN --mount=type=cache,target=/root/.cache \
-  uv sync --locked --no-dev --no-editable
+RUN uv sync --locked --no-dev --no-editable
 
 ###############################################
 # Stage 2: final image
@@ -57,7 +56,6 @@ COPY docker/data-loader/set-data-loader-status-flag.yaml /
 
 COPY --from=build --chown=${USER}:${USER} /app/requirements.txt /app/requirements.txt
 COPY --from=build --chown=${USER}:${USER} /app/.venv /app/.venv
-COPY --from=build --chown=${USER}:${USER} /app/src /app/src
 
 USER ${USER}
 

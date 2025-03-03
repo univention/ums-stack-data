@@ -489,6 +489,7 @@ def test_create_or_modify_when_object_exists(module, properties, expected_dn_par
             module,
             expected_position,
             properties,
+            {},
         )
 
     # Verify other expected calls
