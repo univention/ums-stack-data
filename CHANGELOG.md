@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.88.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.87.0...v0.88.0) (2025-03-04)
+
+
+### Features
+
+* migrate project from pipfile to uv and update the container build ([2363b49](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/2363b49ecae88d1f38ef7f769fdaacd5ec01c0b4))
+
+
+### Bug Fixes
+
+* Don't cache the project source and introduce outdated sources and fix e2e test findings ([93b2825](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/93b2825f56e65b50fd05d50c5793ee37d1bb94a0))
+* make data-loader unittests run again ([8d5977c](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/8d5977c7b6c5b6c68b18890ed609d26c67e97e92))
+* make helm unittests run again in docker compose ([7693b65](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7693b65079fe9c0c1512b37ca75070a8b0fdad14))
+* make stack-data helm unittests run again ([535a17b](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/535a17b482ab5cebf4c978a26b34c5672ef875c1))
+
 ## [0.87.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.86.0...v0.87.0) (2025-02-27)
 
 
