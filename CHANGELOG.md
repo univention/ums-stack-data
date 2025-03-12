@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.89.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.88.0...v0.89.0) (2025-03-12)
+
+
+### Features
+
+* removed two unused user groups from config that are obsolete since we are no longer using vms ([b4003a8](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b4003a87379dd2626b434559e0f62afecf22af67))
+
 ## [0.88.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.87.0...v0.88.0) (2025-03-04)
 
 
