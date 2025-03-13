@@ -62,7 +62,7 @@ test-data-loader-container:
 
 test-chart-unittests:
   stage: test
-  image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0"
+  image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.8.0@sha256:94526f55d9aa7c7d7f58ff0fb68878c188cf7662cbad6611d2010dc33def71fd"
   script:
     - helm dep build helm/stack-data-ums
     - pytest tests/helm_unit
