@@ -11,7 +11,7 @@ ARG UCS_BASE_IMAGE=gitregistry.knut.univention.de/univention/components/ucs-base
 FROM ${UCS_BASE_IMAGE}:${UCS_BASE_IMAGE_TAG} AS build
 SHELL ["/bin/bash", "-uxo", "pipefail", "-c"]
 
-COPY --from=ghcr.io/astral-sh/uv:0.6.3@sha256:8257f3d17fd04794feaf89d83b4ccca3b2eaa5501de9399fa53929843c0a5b55 /uv /usr/local/bin/uv
+COPY --from=ghcr.io/astral-sh/uv:0.6.9@sha256:cbc016e49b55190e17bfd0b89a1fdc1a54e0a54a8f737dfacc72eca9ad078338 /uv /usr/local/bin/uv
 
 ENV UV_LINK_MODE=copy \
     UV_COMPILE_BYTECODE=1 \
