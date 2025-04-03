@@ -73,7 +73,7 @@ services:
         target: "/cache"
 
   test:
-    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.7.0
+    image: gitregistry.knut.univention.de/univention/customers/dataport/upx/common-helm/testrunner:0.11.2@sha256:de9b5a48303780376c10946f124f6b31fda661e4cc8da1fa9fe5eca2a26c32fe
     command: "pytest --values helm/stack-data-ums/linter_values.yaml tests/helm_unit"
     profiles:
       - test
