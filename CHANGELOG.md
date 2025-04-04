@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.89.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.0...v0.89.1) (2025-04-04)
+
+
+### Bug Fixes
+
+* Set default log level for apache2 to "info" ([205f132](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/205f13211fdf68f49661c0bccbb0fa30e768c7f8))
+* Set default log level for UMC to "2" ([add40e5](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/add40e570e722462f6029f4bbedaca186c2c8fef))
+
 ## [0.89.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.88.0...v0.89.0) (2025-03-12)
 
 
