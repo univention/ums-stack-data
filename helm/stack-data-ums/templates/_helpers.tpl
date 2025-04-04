@@ -107,6 +107,22 @@ false
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.oidcIssuerUrl" -}}
+{{- if .Values.stackDataContext.oidcIssuerUrl -}}
+{{- .Values.stackDataContext.oidcIssuerUrl -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.oidcIssuerUrl" .  -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.oidcIssuerUrlInternal" -}}
+{{- if .Values.stackDataContext.oidcIssuerUrlInternal -}}
+{{- .Values.stackDataContext.oidcIssuerUrlInternal -}}
+{{- else if .Values.global.nubusDeployment -}}
+{{- include "nubusTemplates.ldapServer.oidcIssuerUrlInternal" .  -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "stack-data-ums.ldapAdminDn" -}}
 {{- if .Values.stackDataContext.ldapHostDn -}}
 {{- .Values.stackDataContext.ldapHostDn -}}
