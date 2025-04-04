@@ -521,6 +521,24 @@ null
 			<td>The FQDN of the identity provider (w/o the protocol specification). Example: `"id.souvap.example.org"`</td>
 		</tr>
 		<tr>
+			<td>stackDataContext.idpOidcIssuerUrl</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>OIDC Identity Provider issuer URL (as visible from the user/internet). Example: `"https://id.souvap.example.org/realms/ucs"`</td>
+		</tr>
+		<tr>
+			<td>stackDataContext.idpOidcIssuerUrlInternal</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>OIDC Identity Provider issuer URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs"`</td>
+		</tr>
+		<tr>
 			<td>stackDataContext.idpSamlMetadataUrl</td>
 			<td>string</td>
 			<td><pre lang="json">

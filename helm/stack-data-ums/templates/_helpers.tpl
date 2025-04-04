@@ -98,6 +98,37 @@ false
 {{- end -}}
 {{- end -}}
 
+{{- define "stack-data-ums.oidcIssuerUrl" -}}
+{{- if .Values.stackDataContext.idpOidcIssuerUrl -}}
+{{- .Values.stackDataContext.idpOidcIssuerUrl -}}
+{{- else if .Values.global.nubusDeployment -}}
+    {{- $protocol := "https" -}}
+    {{- $keycloakService := (include "stack-data-ums.keycloakFqdn" .) -}}
+    {{- $nubusKeycloakDefaultRealm := "nubus" -}}
+    {{- if and .Values.global.keycloak .Values.global.keycloak.realm -}}
+        {{- printf "%s://%s/realms/%s" $protocol $keycloakService .Values.global.keycloak.realm -}}
+    {{- else if .Values.global.nubusDeployment -}}
+        {{- printf "%s://%s/realms/%s" $protocol $keycloakService $nubusKeycloakDefaultRealm -}}
+    {{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "stack-data-ums.oidcIssuerUrlInternal" -}}
+{{- if .Values.stackDataContext.idpOidcIssuerUrlInternal -}}
+{{- .Values.stackDataContext.idpOidcIssuerUrlInternal -}}
+{{- else if .Values.global.nubusDeployment -}}
+    {{- $protocol := "http" -}}
+    {{- $keycloakService := printf "%s-keycloak" .Release.Name -}}
+    {{- $keycloakServicePort := "8080" -}}
+    {{- $nubusKeycloakDefaultRealm := "nubus" -}}
+    {{- if and .Values.global.keycloak .Values.global.keycloak.realm -}}
+        {{- printf "%s://%s:%s/realms/%s" $protocol $keycloakService $keycloakServicePort .Values.global.keycloak.realm -}}
+    {{- else if .Values.global.nubusDeployment -}}
+        {{- printf "%s://%s:%s/realms/%s" $protocol $keycloakService $keycloakServicePort $nubusKeycloakDefaultRealm -}}
+    {{- end -}}
+{{- end -}}
+{{- end -}}
+
 {{- define "stack-data-ums.ldapAdminDn" -}}
 {{- if .Values.stackDataContext.ldapHostDn -}}
 {{- .Values.stackDataContext.ldapHostDn -}}

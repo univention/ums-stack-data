@@ -153,6 +153,12 @@ stackDataContext:
   # -- SAML Identity Provider metadata URL (as visible from inside the container), optional.
   # Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`
   idpSamlMetadataUrlInternal: ""
+  # -- OIDC Identity Provider issuer URL (as visible from the user/internet).
+  # Example: `"https://id.souvap.example.org/realms/ucs"`
+  idpOidcIssuerUrl: null
+  # -- OIDC Identity Provider issuer URL (as visible from inside the container), optional.
+  # Example: `"http://keycloak:8080/realms/ucs"`
+  idpOidcIssuerUrlInternal: ""
   # -- UMC web page title. Chart supports templated values.
   umcHtmlTitle: "Univention Portal"
   # -- SAML Service Provider hostname (FQDN of the UMC, which is the service provider)
