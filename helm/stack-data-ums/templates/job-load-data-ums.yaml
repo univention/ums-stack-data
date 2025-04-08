@@ -55,7 +55,7 @@ spec:
           - sh
           - -c
           - |
-            mkdir /target/udm-data-loader
+            mkdir -p /target/udm-data-loader
             cp -RLv --preserve=all /join-data/* /target/udm-data-loader
         volumeMounts:
           - name: plugin-targets
