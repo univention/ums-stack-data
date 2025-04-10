@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.89.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.1...v0.89.2) (2025-04-10)
+
+
+### Bug Fixes
+
+* make copy calls in container init more robust ([0da5b87](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/0da5b8707b3eb55ec0f240bfecfe78a8b87d911e)), closes [univention/dev/internal/team-nubus#1079](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1079)
+
 ## [0.89.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.0...v0.89.1) (2025-04-04)
 
 
