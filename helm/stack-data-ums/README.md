@@ -70,6 +70,15 @@ helm uninstall stack-data-udm
 			<td></td>
 		</tr>
 		<tr>
+			<td>blocklistsContainer.enabled</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Creates cn=blocklists,cn=internal if true</td>
+		</tr>
+		<tr>
 			<td>configMapUcr</td>
 			<td>string</td>
 			<td><pre lang="json">

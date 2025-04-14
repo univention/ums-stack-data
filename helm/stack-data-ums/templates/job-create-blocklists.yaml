@@ -1,0 +1,66 @@
+{{/*
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2025 Univention GmbH
+*/}}
+
+{{- if .Values.blocklistsContainer.enabled }}
+---
+apiVersion: "batch/v1"
+kind: "Job"
+metadata:
+  name: {{ include "nubus-common.names.fullnameWithRevision" . | quote }}
+  labels:
+    {{- include "common.labels.standard" . | nindent 4 }}
+  {{- if .Values.additionalAnnotations }}
+  annotations:
+    {{ toYaml .Values.additionalAnnotations | nindent 4 }}
+  {{- end }}
+spec:
+  backoffLimit: 6
+  template:
+    metadata:
+      name: {{ include "common.names.name" . | quote }}
+      labels:
+        {{- include "common.labels.standard" . | nindent 8 }}
+      annotations:
+        {{- if .Values.additionalAnnotations }}
+        {{ toYaml .Values.additionalAnnotations | nindent 8 }}
+        {{- end }}
+    spec:
+      restartPolicy: "Never"
+      {{- if or .Values.pullSecrets .Values.global.imagePullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.global.imagePullSecrets }}
+        - name: "{{ . }}"
+        {{- end }}
+        {{- range .Values.pullSecrets }}
+        - name: "{{ . }}"
+        {{- end }}
+      {{- end }}
+      {{- if .Values.podSecurityContext.enabled }}
+      securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 8 }}
+      {{- end }}
+      {{- if .Values.serviceAccount.create }}
+      serviceAccountName: {{ include "common.names.fullname" . }}
+      {{- end }}
+      initContainers:
+        - name: "blocklist-ldap-init"
+          {{- if .Values.containerSecurityContext.enabled }}
+          securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+          {{- end }}
+          image: "{{ coalesce .Values.image.registry .Values.global.imageRegistry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ coalesce .Values.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+          command:
+            - sh
+            - -c
+            - |
+              echo "dn: cn=blocklists,cn=internal
+              cn: blocklists
+              objectClass: organizationalRole
+              objectClass: univentionObject
+              univentionObjectType: container/cn
+              " | slapadd -b cn=internal -f /etc/ldap/slapd.conf
+              exit 0
+          resources: {{- include "common.tplvalues.render" (dict "value" .Values.initResources "context" .) | nindent 12 }}
+...
+{{- end }}

@@ -22,7 +22,6 @@ module: container/cn
 position: cn=UMC,cn=univention,{{ ldapBaseDn }}
 properties:
   name: operations
-
 ---
 action: create
 module: policies/umc

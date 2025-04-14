@@ -34,11 +34,13 @@ global:
       host: nil
       port: nil
 
-
 dataLoader:
   # -- Allows to disable the data loader Job.
   enabled: true
 
+blocklistsContainer:
+  # -- Creates cn=blocklists,cn=internal if true
+  enabled: true
 
 stackDataUms:
 
