@@ -36,7 +36,7 @@ global:
 
   udm:
     connection:
-      # -- Global default for the URL via which the UDM Rest API can be reached.
+      # -- Global default for the URL via which the UDM REST API can be reached.
       # See "udm.connection.url".
       url: null
 
@@ -48,7 +48,7 @@ dataLoader:
 
 stackDataUms:
 
-  # -- The internal port on which the UDM Rest API is listening in the Kubernetes Pod.
+  # -- The internal port on which the UDM REST API is listening in the Kubernetes Pod.
   # Chart defaults to `9979`.
   udmApiPort: ""
 
@@ -73,7 +73,7 @@ stackDataUms:
 
 udm:
   connection:
-    # -- The URL by which the UDM Rest API can be reached.
+    # -- The URL by which the UDM REST API can be reached.
     # Default `http://udm-rest-api/udm/`.
     url: null
   auth:
