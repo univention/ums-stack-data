@@ -16,8 +16,8 @@ helm upgrade --install stack-data-udm oci://gitregistry.knut.univention.de/unive
 
 The chart does install Kubernetes Jobs to load the initial data of the UMS Stack.
 
-It depends on a functional UDM Rest API being available and configured. The UDM
-Rest API is used to load the data.
+It depends on a functional UDM REST API being available and configured. The UDM
+REST API is used to load the data.
 
 ## Installing
 
@@ -287,7 +287,7 @@ null
 null
 </pre>
 </td>
-			<td>Global default for the URL via which the UDM Rest API can be reached. See "udm.connection.url".</td>
+			<td>Global default for the URL via which the UDM REST API can be reached. See "udm.connection.url".</td>
 		</tr>
 		<tr>
 			<td>image</td>
@@ -752,7 +752,7 @@ false
 ""
 </pre>
 </td>
-			<td>The internal port on which the UDM Rest API is listening in the Kubernetes Pod. Chart defaults to `9979`.</td>
+			<td>The internal port on which the UDM REST API is listening in the Kubernetes Pod. Chart defaults to `9979`.</td>
 		</tr>
 		<tr>
 			<td>systemExtensions</td>
@@ -887,7 +887,7 @@ null
 null
 </pre>
 </td>
-			<td>The URL by which the UDM Rest API can be reached. Default `http://udm-rest-api/udm/`.</td>
+			<td>The URL by which the UDM REST API can be reached. Default `http://udm-rest-api/udm/`.</td>
 		</tr>
 	</tbody>
 </table>
