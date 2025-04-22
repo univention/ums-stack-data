@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.89.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.2...v0.89.3) (2025-04-22)
+
+
+### Bug Fixes
+
+* **self-service:** add "c" to allowed list of LDAP attributes to be changed in default profile view ([569b797](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/569b7973acd6c9155e45e7b9b96b519ae1c685c1)), closes [#57397](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/issues/57397)
+
 ## [0.89.2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.1...v0.89.2) (2025-04-10)
 
 
