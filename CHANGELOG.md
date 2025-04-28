@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.89.4](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.3...v0.89.4) (2025-04-28)
+
+
+### Bug Fixes
+
+* Added index for univetionObjectIdentifier ([09545bc](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/09545bc66cc84561999ad4fbfb8edf9ea6d60cf1)), closes [univention/dev/internal/team-nubus#1019](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1019)
+* **docker:** Bump ucs-base-image ([d56abcd](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/d56abcdd34ac810542240e1baa7db15f2d95d3a3)), closes [univention/dev/internal/team-nubus#1019](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1019)
+
 ## [0.89.3](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.2...v0.89.3) (2025-04-22)
 
 
