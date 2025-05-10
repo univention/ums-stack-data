@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.90.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.90.0...v0.90.1) (2025-05-10)
+
+
+### Bug Fixes
+
+* move addlicense pre-commit hook ([19b2c74](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/19b2c748a723be394cc9bffc889b80de654d2f48))
+* update common-ci to main ([b0fd095](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b0fd095a13d3ea715d2e630cac7808648b664308))
+
 ## [0.90.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.89.4...v0.90.0) (2025-04-29)
 
 
