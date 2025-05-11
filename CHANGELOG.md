@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.91.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.90.1...v0.91.0) (2025-05-11)
+
+
+### Features
+
+* move and upgrade ucs-base-image to 0.17.3-build-2025-05-11 ([b70e57a](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/b70e57a5e25145ceec9ce6972e5fcf91cd0da7dc))
+
 ## [0.90.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.90.0...v0.90.1) (2025-05-10)
 
 
