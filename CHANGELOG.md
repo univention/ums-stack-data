@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.91.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.91.0...v0.91.1) (2025-05-14)
+
+
+### Bug Fixes
+
+* remove reports generation ([e8c0677](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/e8c0677dd412bee070ee56d4d607bdbe87723284))
+
 ## [0.91.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.90.1...v0.91.0) (2025-05-11)
 
 
