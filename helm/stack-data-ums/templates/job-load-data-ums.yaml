@@ -91,10 +91,10 @@ spec:
           - configMapRef:
               name: {{ include "common.names.fullname" . }}
         volumeMounts:
-        {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
-          - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+        {{- if .Values.udm.auth.existingSecret.name }}
+          - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
-            subPath: {{ include "stack-data-ums.udmApi.credentialSecret.key" . | quote }}
+            subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password") | quote }}
         {{- else }}
           - name: secrets
             mountPath: /run/secrets/univention.de/data-loader
@@ -128,10 +128,10 @@ spec:
           - name: SET_STATUS_FLAG
             value: "true"
         volumeMounts:
-        {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
-          - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+        {{- if .Values.udm.auth.existingSecret.name }}
+          - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
-            subPath: {{ include "stack-data-ums.udmApi.credentialSecret.key" . | quote }}
+            subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password") | quote }}
         {{- else }}
           - name: secrets
             mountPath: /run/secrets/univention.de/data-loader
@@ -146,10 +146,10 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       volumes:
-      {{- if and (include "stack-data-ums.udmApi.credentialSecret.name" . ) (include "stack-data-ums.udmApi.credentialSecret.key" . ) }}
-      - name: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+      {{- if .Values.udm.auth.existingSecret.name }}
+      - name: secret-udm
         secret:
-          secretName: {{ include "stack-data-ums.udmApi.credentialSecret.name" . | quote }}
+          secretName: {{ tpl .Values.udm.auth.existingSecret.name . | quote }}
       {{- else }}
       - name: "secrets"
         secret:

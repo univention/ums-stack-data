@@ -862,6 +862,24 @@ true
 </td>
 			<td></td>
 		</tr>
+		<tr>
+			<td>udm.auth.existingSecret.keyMapping.password</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>udm.auth.existingSecret.name</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td></td>
+		</tr>
 	</tbody>
 </table>
 

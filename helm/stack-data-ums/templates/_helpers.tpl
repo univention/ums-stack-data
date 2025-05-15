@@ -212,18 +212,6 @@ https
 {{- end -}}
 {{- end -}}
 
-{{- define "stack-data-ums.udmApi.credentialSecret.name" -}}
-{{- if .Values.global.nubusDeployment -}}
-{{- printf "%s-udm-rest-api-credentials" .Release.Name -}}
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.udmApi.credentialSecret.key" -}}
-{{- if .Values.global.nubusDeployment -}}
-machine.secret
-{{- end -}}
-{{- end -}}
-
 {{- define "stack-data-ums.externalDomainName" -}}
 {{- if .Values.stackDataContext.externalDomainName -}}
 {{- .Values.stackDataContext.externalDomainName -}}

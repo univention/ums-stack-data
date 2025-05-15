@@ -76,6 +76,13 @@ stackDataUms:
   # to be a valid YAML stream which the data loader is able to process.
   extraDataFiles: null
 
+udm:
+  auth:
+    existingSecret:
+      name: null
+      keyMapping:
+        password: null
+
 # -- Context used to render the data file templates in the data loader.
 templateContext:
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
