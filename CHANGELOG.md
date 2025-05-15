@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.92.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.91.1...v0.92.0) (2025-05-15)
+
+
+### Features
+
+* enable blocklist feature by default ([3416b31](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/3416b3156afd884cf103c1931c4d3994b55a721b))
+
 ## [0.91.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.91.0...v0.91.1) (2025-05-14)
 
 
