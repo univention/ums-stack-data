@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.93.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.92.0...v0.93.0) (2025-05-16)
+
+
+### Features
+
+* Adjust configuration of existing Secret for the udm client ([7c826f2](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/7c826f2fa054a5f3ad863dcce09918f190539b2a))
+
 ## [0.92.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.91.1...v0.92.0) (2025-05-15)
 
 
