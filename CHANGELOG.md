@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.93.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.93.0...v0.93.1) (2025-05-19)
+
+
+### Bug Fixes
+
+* Activate the UDM univentionObjectIdentifier autogeneration via UCR ([01ec2bb](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/01ec2bbbf55b41ceec4d959a302fd208f0fff7f7)), closes [univention/dev/internal/team-nubus#1143](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1143)
+
 ## [0.93.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.92.0...v0.93.0) (2025-05-16)
 
 
