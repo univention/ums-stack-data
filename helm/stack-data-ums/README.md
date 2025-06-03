@@ -332,6 +332,15 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>nubusUmcServer.host</td>
+			<td>string</td>
+			<td><pre lang="json">
+""
+</pre>
+</td>
+			<td>Hostname of the UMC server used to disable self-service rate-limiting for requests from inside the cluster This does set the UCR variable `umc/self-service/rate-limit/trusted-hosts`</td>
+		</tr>
+		<tr>
 			<td>nubusUmcServer.memcached.auth.username</td>
 			<td>string</td>
 			<td><pre lang="json">

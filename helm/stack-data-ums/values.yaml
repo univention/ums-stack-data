@@ -191,6 +191,9 @@ stackDataContext:
   showUmc: true
 
 nubusUmcServer:
+  # -- Hostname of the UMC server used to disable self-service rate-limiting for requests from inside the cluster
+  # This does set the UCR variable `umc/self-service/rate-limit/trusted-hosts`
+  host: ''
   memcached:
     connection:
       # -- Hostname to use for memcached of the selfservice in UMC.
