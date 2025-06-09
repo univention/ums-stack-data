@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.94.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.93.1...v0.94.0) (2025-06-09)
+
+
+### Features
+
+* configure UCRV to disable self-service rate limit ([279d333](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/commit/279d3338579d1ce3defd009a0fe5b11d626dbc38)), closes [univention/dev/internal/team-nubus#1220](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1220)
+
 ## [0.93.1](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.93.0...v0.93.1) (2025-05-19)
 
 
