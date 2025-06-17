@@ -83,14 +83,9 @@ spec:
           - configMapRef:
               name: {{ include "common.names.fullname" . }}
         volumeMounts:
-        {{- if .Values.udm.auth.existingSecret.name }}
           - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
             subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password") | quote }}
-        {{- else }}
-          - name: secrets
-            mountPath: /run/secrets/univention.de/data-loader
-        {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       {{ end }}
@@ -120,14 +115,9 @@ spec:
           - name: SET_STATUS_FLAG
             value: "true"
         volumeMounts:
-        {{- if .Values.udm.auth.existingSecret.name }}
           - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
             subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password") | quote }}
-        {{- else }}
-          - name: secrets
-            mountPath: /run/secrets/univention.de/data-loader
-        {{- end }}
           - name: "plugin-targets"
             mountPath: "/join-data"
             subPath: udm-data-loader
@@ -138,15 +128,10 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       volumes:
-      {{- if .Values.udm.auth.existingSecret.name }}
       - name: secret-udm
         secret:
-          secretName: {{ tpl .Values.udm.auth.existingSecret.name . | quote }}
-      {{- else }}
-      - name: "secrets"
-        secret:
-          secretName: {{ include "common.names.fullname" . | quote }}
-      {{- end }}
+          defaultMode: 0400
+          secretName: {{ include "nubus-common.secrets.name" (dict "existingSecret" .Values.udm.auth.existingSecret "defaultNameSuffix" "udm" "context" .) | quote }}
       - name: "data"
         configMap:
           {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
@@ -156,6 +141,4 @@ spec:
           secretName: "{{ include "common.names.fullname" . }}-context"
       - name: "plugin-targets"
         emptyDir: {}
-
-...
 {{- end }}

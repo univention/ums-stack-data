@@ -6,7 +6,6 @@
 stackDataContext:
   initialPasswordAdministrator: "stub_password"
 
-stackDataUms:
-  udmApiPassword: "stub_password"
-
-...
+udm:
+  auth:
+    password: "linter-udm-password"

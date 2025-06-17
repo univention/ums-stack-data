@@ -48,9 +48,6 @@ stackDataUms:
   # -- The port on which the UDM Rest API is listening. Chart defaults to `9979`.
   udmApiPort: ""
 
-  # -- The username to use to connect to the UDM Rest API
-  udmApiUser: "cn=admin"
-
   # -- The password to access the UDM Rest API
   udmApiPassword: ""
 
@@ -78,6 +75,7 @@ stackDataUms:
 
 udm:
   auth:
+    username: "cn=admin"
     existingSecret:
       name: null
       keyMapping:

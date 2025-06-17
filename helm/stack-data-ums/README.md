@@ -221,7 +221,7 @@ true
 			<td>global.imagePullPolicy</td>
 			<td>string</td>
 			<td><pre lang="json">
-"IfNotPresent"
+null
 </pre>
 </td>
 			<td>Define an ImagePullPolicy.  Ref.: https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy </td>
@@ -773,15 +773,6 @@ false
 			<td>The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.</td>
 		</tr>
 		<tr>
-			<td>stackDataUms.udmApiUser</td>
-			<td>string</td>
-			<td><pre lang="json">
-"cn=admin"
-</pre>
-</td>
-			<td>The username to use to connect to the UDM Rest API</td>
-		</tr>
-		<tr>
 			<td>systemExtensions</td>
 			<td>list</td>
 			<td><pre lang="json">
@@ -885,6 +876,15 @@ null
 			<td>string</td>
 			<td><pre lang="json">
 null
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>udm.auth.username</td>
+			<td>string</td>
+			<td><pre lang="json">
+"cn=admin"
 </pre>
 </td>
 			<td></td>
