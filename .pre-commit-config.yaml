@@ -125,6 +125,7 @@ repos:
     hooks:
       - id: "addlicense"
         name: "Check or add license headers to files"
+        exclude: '\.config/copier-answers\..*\.yaml'
 
 # Disable temporarily because gitlab-api can not be accessed.
 # "urllib.error.HTTPError: HTTP Error 401: Unauthorized"
