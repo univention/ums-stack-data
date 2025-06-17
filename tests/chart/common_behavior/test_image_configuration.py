@@ -126,7 +126,7 @@ def test_all_image_values_are_configured(chart):
     )
     result = chart.helm_template(values)
 
-    expected_image = "stub-registry.example/stub-fragment/" "stub-repository:stub-tag@sha256:stub-digest"
+    expected_image = "stub-registry.example/stub-fragment/stub-repository:stub-tag@sha256:stub-digest"
     job = result.get_resource(kind="Job")
     containers = get_containers(job)
     for container in containers:
