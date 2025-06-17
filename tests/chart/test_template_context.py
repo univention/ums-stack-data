@@ -9,7 +9,7 @@ def test_user_adds_value(chart):
         """
         templateContext:
           stubName: "stub-value"
-        """
+        """,
     )
     result = chart.helm_template(values)
     context_secret = result.get_resource(name="release-name-stack-data-ums-context")
@@ -22,7 +22,7 @@ def test_user_overrides_value(chart):
         """
         templateContext:
           ldapBaseDn: "dc=testsuite,dc=test"
-        """
+        """,
     )
     result = chart.helm_template(values)
     context_secret = result.get_resource(name="release-name-stack-data-ums-context")

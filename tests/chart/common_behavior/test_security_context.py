@@ -4,9 +4,7 @@
 # Ruff has problems with multiline f-strings
 # ruff: noqa: F541
 
-from pytest_helm.utils import load_yaml
-
-from ..utils import get_containers_of_job
+from pytest_helm.utils import get_containers, load_yaml
 
 
 def test_pod_security_context_can_be_disabled(chart):
@@ -21,7 +19,8 @@ def test_pod_security_context_can_be_disabled(chart):
     result = chart.helm_template(values)
     manifest = result.get_resource(kind="Job")
     pod_security_context = manifest.findone(
-        "spec.template.spec.securityContext", default={}
+        "spec.template.spec.securityContext",
+        default={},
     )
     expected_security_context = {}
     assert pod_security_context == expected_security_context
@@ -58,8 +57,7 @@ def test_container_security_context_can_be_disabled(chart):
     )
     expected_security_context = {}
     result = chart.helm_template(values)
-    containers = get_containers_of_job(result)
-    _assert_all_have_security_context(containers, expected_security_context)
+    _assert_all_have_security_context(result, expected_security_context)
 
 
 def test_container_security_context_is_applied(chart):
@@ -80,11 +78,12 @@ def test_container_security_context_is_applied(chart):
     }
 
     result = chart.helm_template(values)
-    containers = get_containers_of_job(result)
-    _assert_all_have_security_context(containers, expected_security_context)
+    _assert_all_have_security_context(result, expected_security_context)
 
 
-def _assert_all_have_security_context(containers, expected_security_context):
+def _assert_all_have_security_context(result, expected_security_context):
+    job = result.get_resource(kind="Job")
+    containers = get_containers(job)
     for container in containers:
         security_context = container.get("securityContext", {})
         name = container["name"]
