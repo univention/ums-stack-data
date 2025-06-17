@@ -4,13 +4,13 @@
 # Ruff has problems with multiline f-strings
 # ruff: noqa: F541
 
-from yaml import safe_load
+from pytest_helm.utils import load_yaml
 
 from ..utils import get_containers_of_job
 
 
 def test_pod_security_context_can_be_disabled(helm, chart_path):
-    values = safe_load(
+    values = load_yaml(
         """
         podSecurityContext:
           enabled: false
@@ -29,7 +29,7 @@ def test_pod_security_context_can_be_disabled(helm, chart_path):
 
 
 def test_pod_security_context_is_applied(helm, chart_path):
-    values = safe_load(
+    values = load_yaml(
         """
         podSecurityContext:
           enabled: true
@@ -48,7 +48,7 @@ def test_pod_security_context_is_applied(helm, chart_path):
 
 
 def test_container_security_context_can_be_disabled(helm, chart_path):
-    values = safe_load(
+    values = load_yaml(
         """
         containerSecurityContext:
           enabled: false
@@ -64,7 +64,7 @@ def test_container_security_context_can_be_disabled(helm, chart_path):
 
 
 def test_container_security_context_is_applied(helm, chart_path):
-    values = safe_load(
+    values = load_yaml(
         """
         containerSecurityContext:
           enabled: true
