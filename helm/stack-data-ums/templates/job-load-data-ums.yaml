@@ -28,15 +28,7 @@ spec:
         {{- end }}
     spec:
       restartPolicy: Never
-      {{- if or .Values.pullSecrets .Values.global.imagePullSecrets }}
-      imagePullSecrets:
-        {{- range .Values.global.imagePullSecrets }}
-        - name: "{{ . }}"
-        {{- end }}
-        {{- range .Values.pullSecrets }}
-        - name: "{{ . }}"
-        {{- end }}
-      {{- end }}
+      {{- include "nubus-common.images.renderPullSecrets" . | nindent 6 }}
       {{- if .Values.podSecurityContext.enabled }}
       securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 8 }}
       {{- end }}
@@ -50,7 +42,7 @@ spec:
         securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
         {{- end }}
         image: "{{ coalesce .Values.image.registry .Values.global.imageRegistry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: {{ coalesce .Values.image.imagePullPolicy .Values.global.imagePullPolicy | quote }}
+        imagePullPolicy: {{ coalesce .Values.image.pullPolicy .Values.global.imagePullPolicy | quote }}
         command:
           - sh
           - -c
@@ -72,7 +64,7 @@ spec:
         securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
         {{- end }}
         image: "{{ coalesce .image.registry $.Values.global.imageRegistry }}/{{ .image.repository }}:{{ .image.tag }}"
-        imagePullPolicy: {{ coalesce .image.imagePullPolicy $.Values.global.imagePullPolicy | quote }}
+        imagePullPolicy: {{ coalesce .image.pullPolicy $.Values.global.imagePullPolicy | quote }}
         volumeMounts:
           - name: plugin-targets
             mountPath: /target
@@ -85,7 +77,7 @@ spec:
         {{- end }}
         {{- with .Values.image }}
         image: "{{ coalesce .registry $.Values.global.imageRegistry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
-        imagePullPolicy: {{ coalesce .imagePullPolicy $.Values.global.imagePullPolicy | quote }}
+        imagePullPolicy: {{ coalesce .pullPolicy $.Values.global.imagePullPolicy | quote }}
         {{- end }}
         envFrom:
           - configMapRef:
@@ -119,7 +111,7 @@ spec:
         {{- end }}
         {{- with .Values.image }}
         image: "{{ coalesce .registry $.Values.global.imageRegistry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
-        imagePullPolicy: {{ coalesce .imagePullPolicy $.Values.global.imagePullPolicy | quote }}
+        imagePullPolicy: {{ coalesce .pullPolicy $.Values.global.imagePullPolicy | quote }}
         {{- end }}
         envFrom:
           - configMapRef:

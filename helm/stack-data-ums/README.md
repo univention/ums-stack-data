@@ -285,7 +285,7 @@ false
 			<td>object</td>
 			<td><pre lang="json">
 {
-  "imagePullPolicy": "",
+  "pullPolicy": "",
   "registry": "",
   "repository": "nubus-dev/images/data-loader",
   "sha256": null,
