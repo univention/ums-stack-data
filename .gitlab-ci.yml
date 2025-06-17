@@ -62,10 +62,11 @@ test-data-loader-container:
 
 test-chart-unittests:
   stage: test
-  image: "gitregistry.knut.univention.de/univention/dev/nubus-for-k8s/common-helm/testrunner:0.12.1"
+  needs: []
+  image: "gitregistry.knut.univention.de/univention/dev/nubus-for-k8s/common-helm/testrunner:0.20.0-pre-jbornhold-secrets-refactoring-tweaks-5"
   script:
     - helm dep build helm/stack-data-ums
-    - pytest tests/helm_unit
+    - pytest tests/chart
 
 push-image-external:
   parallel:
