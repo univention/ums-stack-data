@@ -117,16 +117,6 @@ cn=admin,dc=univention-organization,dc=intranet
 {{- end -}}
 {{- end -}}
 
-{{- define "stack-data-ums.udmApiUrl" -}}
-{{- if .Values.stackDataUms.udmApiUrl -}}
-{{- .Values.stackDataUms.udmApiUrl -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.udmRestApi.uri" . -}}
-{{- else -}}
-http://udm-rest-api:9979/udm/
-{{- end -}}
-{{- end -}}
-
 {{- define "stack-data-ums.udmApiPort" -}}
 {{- if .Values.stackDataUms.udmApiPort -}}
 {{- .Values.stackDataUms.udmApiPort -}}
