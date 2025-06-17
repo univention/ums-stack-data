@@ -58,7 +58,8 @@ log_cli_date_format = "%Y-%m-%d %H:%M:%S:%f"
 target-version = "py311"
 line-length = 120
 
+[tool.ruff.lint]
 extend-select = ["I"]  # activate isort
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["univention"]
