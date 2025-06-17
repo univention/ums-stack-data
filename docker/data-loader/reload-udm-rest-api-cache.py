@@ -28,10 +28,8 @@ class App:
         return password
 
     def discover_pods_ips(self):
-        return [
-            ip.address
-            for ip in dns.resolver.resolve(self.udm_api_url.hostname, "A", search=True)
-        ]
+        udm_api_ips = dns.resolver.resolve(self.udm_api_url.hostname, "A", search=True)
+        return [ip.address for ip in udm_api_ips]
 
     def reload_pod_cache(self, ip):
         log.info("Refreshing cache for %s", ip)
