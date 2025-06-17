@@ -7,7 +7,7 @@
 import pytest
 from pytest_helm.utils import load_yaml
 
-from ..utils import findone, get_containers_of_job
+from ..utils import get_containers_of_job
 
 
 def test_global_registry_is_used_as_default(chart):
@@ -84,7 +84,7 @@ def test_image_pull_secrets_can_be_provided(chart):
         {"name": "stub-secret-a"},
         {"name": "stub-secret-b"},
     ]
-    image_pull_secrets = findone(manifest, "spec.template.spec.imagePullSecrets")
+    image_pull_secrets = manifest.findone("spec.template.spec.imagePullSecrets")
     assert image_pull_secrets == expected_secrets
 
 

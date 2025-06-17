@@ -9,8 +9,6 @@ import copy
 import pytest
 from pytest_helm.utils import load_yaml
 
-from ..utils import findall
-
 ALL_EXTENSION_KEYS = (
     "extensions",
     "systemExtensions",
@@ -64,7 +62,7 @@ def test_custom_and_system_extensions_are_joined(chart, stub_extension):
         "systemExtensions": [stub_system_extension],
     }
 
-    result =  chart.helm_template(values)
+    result = chart.helm_template(values)
     extensions = _get_extensions_of_job(result)
     extension_names = [e["name"] for e in extensions]
     assert extension_names == ["load-stub-system-extension", "load-stub-test-extension"]
@@ -74,7 +72,7 @@ def test_custom_and_system_extensions_are_joined(chart, stub_extension):
 def test_extension_image(chart, key, stub_extension):
     values = {}
     _set_dot_path_value(values, key, [stub_extension])
-    result =  chart.helm_template(values)
+    result = chart.helm_template(values)
     extensions = _get_extensions_of_job(result)
     extension = extensions[0]
     assert extension["image"] == "stub-registry/stub-repository:stub-tag"
@@ -89,7 +87,7 @@ def test_extension_image_with_global_registry(chart, key, stub_extension):
         },
     }
     _set_dot_path_value(values, key, [stub_extension])
-    result =  chart.helm_template(values)
+    result = chart.helm_template(values)
     extensions = _get_extensions_of_job(result)
     extension = extensions[0]
     assert extension["image"] == "stub-global-registry/stub-repository:stub-tag"
@@ -107,7 +105,7 @@ def test_extension_image_with_global_registry_overwritten(
         },
     }
     _set_dot_path_value(values, key, [stub_extension])
-    result =  chart.helm_template(values)
+    result = chart.helm_template(values)
     extensions = _get_extensions_of_job(result)
     extension = extensions[0]
     assert extension["image"] == "stub-registry/stub-repository:stub-tag"
@@ -129,7 +127,7 @@ def test_local_configuration_overrides_global_configuration(
         },
         key: [stub_extension],
     }
-    result =  chart.helm_template(values)
+    result = chart.helm_template(values)
     extensions = _get_extensions_of_job(result)
     assert len(extensions) == 1
     assert extensions[0]["name"] == "load-stub-test-extension"
@@ -137,7 +135,7 @@ def test_local_configuration_overrides_global_configuration(
 
 def _get_extensions_of_job(result):
     manifest = result.get_resource(kind="Job")
-    init_containers = findall(manifest, "spec.template.spec.initContainers")
+    init_containers = manifest.findone("spec.template.spec.initContainers")
     extensions = [c for c in init_containers if c["name"].endswith("-extension")]
     return extensions
 
