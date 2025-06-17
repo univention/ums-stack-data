@@ -7,7 +7,7 @@
 import copy
 
 import pytest
-from yaml import safe_load
+from pytest_helm.utils import load_yaml
 
 from ..utils import findall
 
@@ -24,7 +24,7 @@ def stub_extension():
     """
     Return a stub extension configuration with all values set to stub values.
     """
-    values = safe_load(
+    values = load_yaml(
         """
         name: "stub-test"
         image:
