@@ -95,7 +95,9 @@ templateContext:
   # the Administrator account. Chart defaults to `univention-organization.test`.
   externalMailDomain: '{{ include "stack-data-ums.externalMailDomain" . }}'
   # -- The initial password of the user "Administrator".
-  initialPasswordAdministrator: '{{ include "stack-data-ums.initialPasswordAdministrator" . }}'
+  #
+  # A random password will be generated if unset.
+  initialPasswordAdministrator: null
   # -- Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`.
   # Example: `"dc=example,dc=org"`
   ldapBaseDn: '{{ include "stack-data-ums.ldapBaseDn" . }}'
@@ -167,8 +169,6 @@ stackDataContext:
   ldapSamlSpUrls: null
   # -- The authentication method to use for the portal. Default is `saml`.
   portalAuthMode: "saml"
-  # -- The initial password of the user "Administrator".
-  initialPasswordAdministrator: null
   # -- The initial password of the user "sys-idp-user.
   initialPasswordSysIdpUser: null
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
