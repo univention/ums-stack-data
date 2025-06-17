@@ -4,34 +4,28 @@
 from pytest_helm.utils import load_yaml
 
 
-def test_user_adds_value(helm, chart_path):
+def test_user_adds_value(chart):
     values = load_yaml(
         """
         templateContext:
           stubName: "stub-value"
-        """,
+        """
     )
-    result = helm.helm_template(chart_path, values)
-    context_secret = helm.get_resource(
-        result,
-        name="release-name-stack-data-ums-context",
-    )
+    result = chart.helm_template(values)
+    context_secret = result.get_resource(name="release-name-stack-data-ums-context")
     context_data = _get_template_context_data(context_secret)
     assert context_data["stubName"] == "stub-value"
 
 
-def test_user_overrides_value(helm, chart_path):
+def test_user_overrides_value(chart):
     values = load_yaml(
         """
         templateContext:
           ldapBaseDn: "dc=testsuite,dc=test"
-        """,
+        """
     )
-    result = helm.helm_template(chart_path, values)
-    context_secret = helm.get_resource(
-        result,
-        name="release-name-stack-data-ums-context",
-    )
+    result = chart.helm_template(values)
+    context_secret = result.get_resource(name="release-name-stack-data-ums-context")
     context_data = _get_template_context_data(context_secret)
     assert context_data["ldapBaseDn"] == "dc=testsuite,dc=test"
 

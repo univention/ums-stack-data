@@ -9,7 +9,7 @@ from pytest_helm.utils import load_yaml
 from ..utils import get_containers_of_job
 
 
-def test_pod_security_context_can_be_disabled(helm, chart_path):
+def test_pod_security_context_can_be_disabled(chart):
     values = load_yaml(
         """
         podSecurityContext:
@@ -18,17 +18,16 @@ def test_pod_security_context_can_be_disabled(helm, chart_path):
           fsGroupChangePolicy: "Always"
         """,
     )
-    result = helm.helm_template(chart_path, values)
-    manifest = helm.get_resource(result, kind="Job")
-    pod_security_context = manifest["spec"]["template"]["spec"].get(
-        "securityContext",
-        {},
+    result = chart.helm_template(values)
+    manifest = result.get_resource(kind="Job")
+    pod_security_context = manifest.findone(
+        "spec.template.spec.securityContext", default={}
     )
     expected_security_context = {}
     assert pod_security_context == expected_security_context
 
 
-def test_pod_security_context_is_applied(helm, chart_path):
+def test_pod_security_context_is_applied(chart):
     values = load_yaml(
         """
         podSecurityContext:
@@ -37,9 +36,9 @@ def test_pod_security_context_is_applied(helm, chart_path):
           fsGroupChangePolicy: "Always"
         """,
     )
-    result = helm.helm_template(chart_path, values)
-    manifest = helm.get_resource(result, kind="Job")
-    pod_security_context = manifest["spec"]["template"]["spec"]["securityContext"]
+    result = chart.helm_template(values)
+    manifest = result.get_resource(kind="Job")
+    pod_security_context = manifest.findone("spec.template.spec.securityContext")
     expected_security_context = {
         "fsGroup": 1000,
         "fsGroupChangePolicy": "Always",
@@ -47,7 +46,7 @@ def test_pod_security_context_is_applied(helm, chart_path):
     assert pod_security_context == expected_security_context
 
 
-def test_container_security_context_can_be_disabled(helm, chart_path):
+def test_container_security_context_can_be_disabled(chart):
     values = load_yaml(
         """
         containerSecurityContext:
@@ -58,12 +57,12 @@ def test_container_security_context_can_be_disabled(helm, chart_path):
         """,
     )
     expected_security_context = {}
-    result = helm.helm_template(chart_path, values)
-    containers = get_containers_of_job(helm, result)
+    result = chart.helm_template(values)
+    containers = get_containers_of_job(result)
     _assert_all_have_security_context(containers, expected_security_context)
 
 
-def test_container_security_context_is_applied(helm, chart_path):
+def test_container_security_context_is_applied(chart):
     values = load_yaml(
         """
         containerSecurityContext:
@@ -80,8 +79,8 @@ def test_container_security_context_is_applied(helm, chart_path):
         "runAsUser": 9876,
     }
 
-    result = helm.helm_template(chart_path, values)
-    containers = get_containers_of_job(helm, result)
+    result = chart.helm_template(values)
+    containers = get_containers_of_job(result)
     _assert_all_have_security_context(containers, expected_security_context)
 
 
