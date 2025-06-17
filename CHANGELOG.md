@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.94.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.0...v0.94.1) (2025-06-17)
+
+
+### Bug Fixes
+
+* Update ucs-base-image ([b6dca46](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/b6dca46f4e2cc4fac586d620e4773d9bc9fe3dbf)), closes [univention/dev/internal/team-nubus#0](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/0)
+
 ## [0.94.0](https://git.knut.univention.de/univention/customers/dataport/upx/stack-data/compare/v0.93.1...v0.94.0) (2025-06-09)
 
 
