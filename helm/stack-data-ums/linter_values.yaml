@@ -7,5 +7,7 @@ stackDataContext:
   initialPasswordAdministrator: "stub_password"
 
 udm:
+  connection:
+    url: "http://udm-rest-api:9979/udm"
   auth:
     password: "linter-udm-password"

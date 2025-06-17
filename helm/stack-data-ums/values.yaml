@@ -31,8 +31,14 @@ global:
 
   postgresql:
     connection:
-      host: nil
-      port: nil
+      host: null
+      port: null
+
+  udm:
+    connection:
+      # -- Global default for the URL via which the UDM Rest API can be reached.
+      # See "udm.connection.url".
+      url: null
 
 
 dataLoader:
@@ -42,14 +48,9 @@ dataLoader:
 
 stackDataUms:
 
-  # -- The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.
-  udmApiUrl: ""
-
-  # -- The port on which the UDM Rest API is listening. Chart defaults to `9979`.
+  # -- The internal port on which the UDM Rest API is listening in the Kubernetes Pod.
+  # Chart defaults to `9979`.
   udmApiPort: ""
-
-  # -- The password to access the UDM Rest API
-  udmApiPassword: ""
 
   # -- The filename which contains the password
   udmApiPasswordFile: "/run/secrets/univention.de/data-loader/udm_secret"
@@ -74,8 +75,13 @@ stackDataUms:
   extraDataFiles: null
 
 udm:
+  connection:
+    # -- The URL by which the UDM Rest API can be reached.
+    # Default `http://udm-rest-api/udm/`.
+    url: null
   auth:
     username: "cn=admin"
+    password: null
     existingSecret:
       name: null
       keyMapping:

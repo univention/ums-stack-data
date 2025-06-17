@@ -14,7 +14,11 @@ metadata:
     "context" . )
     | nindent 2 }}
 data:
-  UDM_API_URL: {{ include "stack-data-ums.udmApiUrl" . | quote }}
+  UDM_API_URL: {{ tpl
+    ( required
+      "The UDM Rest API connection has to be configured, see udm.connection.url."
+      ( coalesce .Values.udm.connection.url ((.Values.global.udm).connection).url )
+    ) . | quote }}
   UDM_API_USER: {{ tpl
     ( required
       "A UDM username has to be supplied, see parameter udm.auth.username"

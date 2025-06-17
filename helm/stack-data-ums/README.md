@@ -257,7 +257,7 @@ false
 			<td>global.postgresql.connection.host</td>
 			<td>string</td>
 			<td><pre lang="json">
-"nil"
+null
 </pre>
 </td>
 			<td></td>
@@ -266,7 +266,7 @@ false
 			<td>global.postgresql.connection.port</td>
 			<td>string</td>
 			<td><pre lang="json">
-"nil"
+null
 </pre>
 </td>
 			<td></td>
@@ -279,6 +279,15 @@ false
 </pre>
 </td>
 			<td>Allows to configure system extensions globally.</td>
+		</tr>
+		<tr>
+			<td>global.udm.connection.url</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Global default for the URL via which the UDM Rest API can be reached. See "udm.connection.url".</td>
 		</tr>
 		<tr>
 			<td>image</td>
@@ -737,15 +746,6 @@ false
 			<td>Enables logging of the rendered templates for troubleshooting.  Be aware that this may log sensitive information.</td>
 		</tr>
 		<tr>
-			<td>stackDataUms.udmApiPassword</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>The password to access the UDM Rest API</td>
-		</tr>
-		<tr>
 			<td>stackDataUms.udmApiPasswordFile</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -761,16 +761,7 @@ false
 ""
 </pre>
 </td>
-			<td>The port on which the UDM Rest API is listening. Chart defaults to `9979`.</td>
-		</tr>
-		<tr>
-			<td>stackDataUms.udmApiUrl</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>The URL by which the UDM Rest API can be reached. Chart defaults to `http://udm-rest-api/udm/`. Nubus defaults to `http://$RELEASE_NAME-udm-rest-api/udm/`.</td>
+			<td>The internal port on which the UDM Rest API is listening in the Kubernetes Pod. Chart defaults to `9979`.</td>
 		</tr>
 		<tr>
 			<td>systemExtensions</td>
@@ -881,6 +872,15 @@ null
 			<td></td>
 		</tr>
 		<tr>
+			<td>udm.auth.password</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>udm.auth.username</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -888,6 +888,15 @@ null
 </pre>
 </td>
 			<td></td>
+		</tr>
+		<tr>
+			<td>udm.connection.url</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>The URL by which the UDM Rest API can be reached. Default `http://udm-rest-api/udm/`.</td>
 		</tr>
 	</tbody>
 </table>
