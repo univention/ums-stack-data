@@ -206,10 +206,7 @@ def test_ensure_list_contains_adds_policy():
         properties,
         policies,
     )
-    assert (
-        "cn=default-umc-users,cn=UMC,cn=policies,dc=base"
-        in mock_obj.policies["policies/umc"]
-    )
+    assert "cn=default-umc-users,cn=UMC,cn=policies,dc=base" in mock_obj.policies["policies/umc"]
     mock_obj.save.assert_called()
 
 
@@ -339,10 +336,7 @@ def test_ensure_list_does_not_contain_removes_policy():
         properties,
         policies,
     )
-    assert (
-        "cn=stub_policy,cn=UMC,cn=policies,dc=base"
-        not in mock_obj.policies["policies/umc"]
-    )
+    assert "cn=stub_policy,cn=UMC,cn=policies,dc=base" not in mock_obj.policies["policies/umc"]
     mock_obj.save.assert_called()
 
 

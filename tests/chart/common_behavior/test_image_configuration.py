@@ -5,9 +5,7 @@
 # ruff: noqa: F541
 
 import pytest
-from pytest_helm.utils import load_yaml
-
-from ..utils import get_containers_of_job
+from pytest_helm.utils import get_containers, load_yaml
 
 
 def test_global_registry_is_used_as_default(chart):
@@ -19,8 +17,7 @@ def test_global_registry_is_used_as_default(chart):
     )
     result = chart.helm_template(values)
     expected_registry = "stub-global-registry"
-    containers = get_containers_of_job(result)
-    _assert_all_images_use_registry(containers, expected_registry)
+    _assert_all_images_use_registry(result, expected_registry)
 
 
 def test_image_registry_overrides_global_default_registry(chart):
@@ -35,8 +32,7 @@ def test_image_registry_overrides_global_default_registry(chart):
     )
     result = chart.helm_template(values)
     expected_registry = "stub-registry"
-    containers = get_containers_of_job(result)
-    _assert_all_images_use_registry(containers, expected_registry)
+    _assert_all_images_use_registry(result, expected_registry)
 
 
 def test_global_pull_policy_is_used(chart):
@@ -48,8 +44,7 @@ def test_global_pull_policy_is_used(chart):
     )
     result = chart.helm_template(values)
     expected_pull_policy = "stub-global-pull-policy"
-    containers = get_containers_of_job(result)
-    _assert_all_images_use_pull_policy(containers, expected_pull_policy)
+    _assert_all_images_use_pull_policy(result, expected_pull_policy)
 
 
 def test_image_pull_policy_overrides_global_value(chart):
@@ -64,8 +59,7 @@ def test_image_pull_policy_overrides_global_value(chart):
     )
     result = chart.helm_template(values)
     expected_pull_policy = "stub-pull-policy"
-    containers = get_containers_of_job(result)
-    _assert_all_images_use_pull_policy(containers, expected_pull_policy)
+    _assert_all_images_use_pull_policy(result, expected_pull_policy)
 
 
 def test_image_pull_secrets_can_be_provided(chart):
@@ -98,8 +92,7 @@ def test_image_repository_can_be_configured(chart):
     result = chart.helm_template(values)
 
     expected_repository = "stub-fragment/stub-image"
-    containers = get_containers_of_job(result)
-    _assert_all_images_contain(containers, expected_repository)
+    _assert_all_images_contain(result, expected_repository)
 
 
 @pytest.mark.parametrize(
@@ -119,8 +112,7 @@ def test_image_tag_can_be_configured(image_tag, chart):
     result = chart.helm_template(values)
 
     expected_tag = image_tag
-    containers = get_containers_of_job(result)
-    _assert_all_images_contain(containers, expected_tag)
+    _assert_all_images_contain(result, expected_tag)
 
 
 def test_all_image_values_are_configured(chart):
@@ -134,25 +126,27 @@ def test_all_image_values_are_configured(chart):
     )
     result = chart.helm_template(values)
 
-    expected_image = (
-        "stub-registry.example/stub-fragment/"
-        "stub-repository:stub-tag@sha256:stub-digest"
-    )
-    containers = get_containers_of_job(result)
+    expected_image = "stub-registry.example/stub-fragment/" "stub-repository:stub-tag@sha256:stub-digest"
+    job = result.get_resource(kind="Job")
+    containers = get_containers(job)
     for container in containers:
         name = container["name"]
         image = container["image"]
         assert expected_image == image, f'Wrong image in container "{name}"'
 
 
-def _assert_all_images_contain(containers, expected_value):
+def _assert_all_images_contain(result, expected_value):
+    job = result.get_resource(kind="Job")
+    containers = get_containers(job)
     for container in containers:
         name = container["name"]
         image = container["image"]
         assert expected_value in image, f'Wrong image value in container "{name}"'
 
 
-def _assert_all_images_use_registry(containers, expected_registry):
+def _assert_all_images_use_registry(result, expected_registry):
+    job = result.get_resource(kind="Job")
+    containers = get_containers(job)
     for container in containers:
         image = container["image"]
         name = container["name"]
@@ -161,10 +155,10 @@ def _assert_all_images_use_registry(containers, expected_registry):
         ), f'Wrong registry in container "{name}"'
 
 
-def _assert_all_images_use_pull_policy(containers, expected_pull_policy):
+def _assert_all_images_use_pull_policy(result, expected_pull_policy):
+    job = result.get_resource(kind="Job")
+    containers = get_containers(job)
     for container in containers:
         pull_policy = container["imagePullPolicy"]
         name = container["name"]
-        assert (
-            pull_policy == expected_pull_policy
-        ), f'Wrong imagePullPolicy in container "{name}"'
+        assert pull_policy == expected_pull_policy, f'Wrong imagePullPolicy in container "{name}"'
