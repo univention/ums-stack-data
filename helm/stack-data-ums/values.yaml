@@ -52,9 +52,6 @@ stackDataUms:
   # Chart defaults to `9979`.
   udmApiPort: ""
 
-  # -- The filename which contains the password
-  udmApiPasswordFile: "/run/secrets/univention.de/data-loader/udm_secret"
-
   # -- Enables logging of the template context used to render the template
   # files.
   #
