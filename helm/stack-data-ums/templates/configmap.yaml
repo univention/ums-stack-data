@@ -24,5 +24,5 @@ data:
       "A UDM username has to be supplied, see parameter udm.auth.username"
       .Values.udm.auth.username
     ) . | quote }}
-  UDM_API_PASSWORD_FILE: "{{ .Values.stackDataUms.udmApiPasswordFile }}"
+  UDM_API_PASSWORD_FILE: "/run/secrets/univention.de/data-loader/udm_secret"
   UDM_API_PORT: {{ include "stack-data-ums.udmApiPort" . | quote }}
