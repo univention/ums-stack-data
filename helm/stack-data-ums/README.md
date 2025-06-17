@@ -539,15 +539,6 @@ null
 			<td>SAML Identity Provider metadata URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.initialPasswordAdministrator</td>
-			<td>string</td>
-			<td><pre lang="json">
-null
-</pre>
-</td>
-			<td>The initial password of the user "Administrator".</td>
-		</tr>
-		<tr>
 			<td>stackDataContext.initialPasswordSysIdpUser</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -746,15 +737,6 @@ false
 			<td>Enables logging of the rendered templates for troubleshooting.  Be aware that this may log sensitive information.</td>
 		</tr>
 		<tr>
-			<td>stackDataUms.udmApiPasswordFile</td>
-			<td>string</td>
-			<td><pre lang="json">
-"/run/secrets/univention.de/data-loader/udm_secret"
-</pre>
-</td>
-			<td>The filename which contains the password</td>
-		</tr>
-		<tr>
 			<td>stackDataUms.udmApiPort</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -780,7 +762,7 @@ false
   "domainName": "{{ include \"stack-data-ums.domainName\" . }}",
   "enableDefaultLogin": "{{ include \"stack-data-ums.enableDefaultLogin\" . }}",
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
-  "initialPasswordAdministrator": "{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}",
+  "initialPasswordAdministrator": null,
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
   "loadDevData": true,
   "showUmc": "{{ include \"stack-data-ums.showUmc\" . }}",
@@ -821,10 +803,10 @@ false
 			<td>templateContext.initialPasswordAdministrator</td>
 			<td>string</td>
 			<td><pre lang="json">
-"{{ include \"stack-data-ums.initialPasswordAdministrator\" . }}"
+null
 </pre>
 </td>
-			<td>The initial password of the user "Administrator".</td>
+			<td>The initial password of the user "Administrator".  A random password will be generated if unset.</td>
 		</tr>
 		<tr>
 			<td>templateContext.ldapBaseDn</td>

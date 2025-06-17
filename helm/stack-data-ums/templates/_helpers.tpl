@@ -8,15 +8,6 @@ These template definitions relate to the use of this Helm chart as a sub-chart o
 Templates defined in other Helm sub-charts are imported to be used to configure this chart.
 If the value .Values.global.nubusDeployment equates to true, the defined templates are imported.
 */}}
-{{- define "stack-data-ums.initialPasswordAdministrator" -}}
-{{- if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.credentials.administrator.password" . -}}
-{{- else -}}
-{{- required "stackDataContext.initialPasswordAdministrator is missing" .Values.stackDataContext.initialPasswordAdministrator -}}
-{{- end -}}
-{{- end -}}
-
-
 {{- define "stack-data-ums.ldapUri" -}}
 {{- if .Values.global.nubusDeployment -}}
 {{- include "nubusTemplates.ldapServer.ldap.connection.uri" . -}}
