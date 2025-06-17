@@ -128,17 +128,17 @@ spec:
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       volumes:
-      - name: secret-udm
-        secret:
-          defaultMode: 0400
-          secretName: {{ include "nubus-common.secrets.name" (dict "existingSecret" .Values.udm.auth.existingSecret "defaultNameSuffix" "udm" "context" .) | quote }}
-      - name: "data"
-        configMap:
-          {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
-          name: {{ default $defaultConfigMapName .Values.stackDataUms.dataConfigMapName | quote }}
-      - name: "context-config"
-        secret:
-          secretName: "{{ include "common.names.fullname" . }}-context"
-      - name: "plugin-targets"
-        emptyDir: {}
+        - name: secret-udm
+          secret:
+            defaultMode: 0400
+            secretName: {{ include "nubus-common.secrets.name" (dict "existingSecret" .Values.udm.auth.existingSecret "defaultNameSuffix" "udm" "context" .) | quote }}
+        - name: "data"
+          configMap:
+            {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}
+            name: {{ default $defaultConfigMapName .Values.stackDataUms.dataConfigMapName | quote }}
+        - name: "context-config"
+          secret:
+            secretName: "{{ include "common.names.fullname" . }}-context"
+        - name: "plugin-targets"
+          emptyDir: {}
 {{- end }}
