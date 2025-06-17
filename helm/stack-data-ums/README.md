@@ -539,15 +539,6 @@ null
 			<td>SAML Identity Provider metadata URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.initialPasswordSysIdpUser</td>
-			<td>string</td>
-			<td><pre lang="json">
-null
-</pre>
-</td>
-			<td>The initial password of the user "sys-idp-user.</td>
-		</tr>
-		<tr>
 			<td>stackDataContext.ldapBase</td>
 			<td>string</td>
 			<td><pre lang="json">

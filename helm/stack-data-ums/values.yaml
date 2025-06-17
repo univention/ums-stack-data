@@ -169,8 +169,6 @@ stackDataContext:
   ldapSamlSpUrls: null
   # -- The authentication method to use for the portal. Default is `saml`.
   portalAuthMode: "saml"
-  # -- The initial password of the user "sys-idp-user.
-  initialPasswordSysIdpUser: null
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
   # Example: `"example.org"`
   externalDomainName: ""
