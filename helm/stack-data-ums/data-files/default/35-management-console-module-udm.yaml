@@ -130,6 +130,19 @@ action: create
 module: settings/umc_operationset
 position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
 properties:
+  name: "udm-navigation-full-access"
+  description: "UDM - Navigation (full access)"
+  flavor: "navigation"
+  hosts: []
+  objectFlag: []
+  operation:
+    - command: "udm/*"
+      option: ""
+---
+action: create
+module: settings/umc_operationset
+position: "cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+properties:
   name: "udm-portal"
   description: "UDM - Portal settings"
   flavor: "settings/portal_all"
@@ -489,7 +502,7 @@ properties:
     - "cn=udm-blocklists,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
     - "cn=udm-dhcp,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
     - "cn=udm-dns,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
-    - "cn=udm-navigation,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+    - "cn=udm-navigation-full-access,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
     - "cn=udm-mail,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
     - "cn=udm-network,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
     - "cn=udm-policies,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
