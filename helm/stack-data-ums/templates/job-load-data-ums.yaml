@@ -95,7 +95,7 @@ spec:
           {{- toYaml .Values.resources | nindent 10 }}
       {{ end }}
       containers:
-      - name: "load-data-ums"
+      - name: "main"
         command:
           - process-all.sh
           - --template-context
