@@ -755,7 +755,6 @@ false
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
   "initialPasswordAdministrator": null,
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
-  "loadDevData": true,
   "showUmc": "{{ include \"stack-data-ums.showUmc\" . }}",
   "subDomainsKeycloak": "{{ include \"stack-data-ums.subDomains.keycloak\" . }}"
 }
@@ -807,15 +806,6 @@ null
 </pre>
 </td>
 			<td>Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`. Example: `"dc=example,dc=org"`</td>
-		</tr>
-		<tr>
-			<td>templateContext.loadDevData</td>
-			<td>bool</td>
-			<td><pre lang="json">
-true
-</pre>
-</td>
-			<td>Load development data, such as test users.</td>
 		</tr>
 		<tr>
 			<td>tolerations</td>

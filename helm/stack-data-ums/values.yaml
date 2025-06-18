@@ -101,8 +101,6 @@ templateContext:
   # -- Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`.
   # Example: `"dc=example,dc=org"`
   ldapBaseDn: '{{ include "stack-data-ums.ldapBaseDn" . }}'
-  # -- Load development data, such as test users.
-  loadDevData: true
   subDomainsKeycloak: '{{ include "stack-data-ums.subDomains.keycloak" . }}'
   # -- Enable the plain UMC login. Enabling it will show the UMC login tile.
   # This value is also controlled globally, which will cause the ingress to be
