@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.94.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.1...v0.94.2) (2025-06-20)
+
+
+### Bug Fixes
+
+* LDAP browser permissions for UDM navigation ([6dd66b7](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/6dd66b7866f2ccbfe464c8a52c97205c33d8fff3)), closes [univention/dev/internal/team-nubus#953](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/953)
+
 ## [0.94.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.0...v0.94.1) (2025-06-17)
 
 
