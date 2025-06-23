@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.94.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.2...v0.94.3) (2025-06-23)
+
+
+### Bug Fixes
+
+* bump umc-base-image version ([83ca88b](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/83ca88bdd48b17efccad10fcb4b10c2b16751db9)), closes [univention/dev/internal/team-nubus#1263](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1263)
+
 ## [0.94.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.1...v0.94.2) (2025-06-20)
 
 
