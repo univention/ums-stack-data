@@ -130,7 +130,6 @@ spec:
       volumes:
         - name: secret-udm
           secret:
-            defaultMode: 0400
             secretName: {{ include "nubus-common.secrets.name" (dict "existingSecret" .Values.udm.auth.existingSecret "defaultNameSuffix" "udm" "context" .) | quote }}
         - name: "data"
           configMap:
