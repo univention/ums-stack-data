@@ -9,7 +9,7 @@ from univention.testing.helm.client.password import Password, PasswordOwner
 class TestManagedPassoword(PasswordOwner, Password):
     secret_name = "release-name-stack-data-ums-administrator"
 
-    derived_password = "00fc6a413808ae50b3026ee107d95367526a28fe"
+    derived_password = "0734474a5cc8a2472a2b476e38ce5ead772d1b6e"
 
     prefix_mapping = {
         "templateContext.initialPasswordAdministrator": "password",
