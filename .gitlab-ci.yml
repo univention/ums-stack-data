@@ -5,7 +5,7 @@
 
 include:
   - project: "univention/dev/nubus-for-k8s/common-ci"
-    ref: "v1.42.1"
+    ref: "v1.43.2"
     file:
       - "defaults/stages.yaml"
       - "defaults/nubus-workflow.yaml"
@@ -15,6 +15,7 @@ include:
       - "jobs/container-build-external.yaml"
       - "jobs/package-and-publish-helm-charts-external.yaml"
       - "jobs/check-debian-updates.yaml"
+      - "templates/sonarqube.yaml"
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
@@ -80,5 +81,8 @@ check-debian-updates:
     matrix: *build-matrix
   variables:
     TARGET_IMAGE: "${CI_REGISTRY_IMAGE}/${IMAGE_NAME}:latest"
+
+sonarqube:
+  extends: .sonarqube
 
 ...
