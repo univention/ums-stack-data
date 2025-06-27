@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.95.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.3...v0.95.0) (2025-06-27)
+
+
+### Features
+
+* Ensure the initial Administrator password generates the same value as before ([eee21b3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/eee21b30548aaa946519add96ca045e158c920f6)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Labels and Annotations follow common default behavior ([486a128](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/486a128b26d4b0cbe7b69f703602afe26a2a720c)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Manage the value of initialPasswordAdministrator ([22957a7](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/22957a7b904686136c610493d9100300448a49d0)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Remove parameter "udmApiPasswordFile" ([4824769](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/4824769a34e374c4877222406f5fe15639405294)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Remove unused value "initialPasswordSysIdpUser" from values ([ce8a110](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/ce8a1103a422982d126d1203f203cef980813424)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* The value "udm.connetion.url" is now used ([8450e8a](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/8450e8ad430189b6ce1dbe11acec8da9982c79e4)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Update dependency nubus-common to version 0.21.0 ([b27c047](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/b27c0477cca6cd2ef033675037797376df2586ef)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Use "udm.auth.password" according to common secret handling ([708fe9f](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/708fe9f60024263e8c76b38d7acd93e4693caded)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+
+
+### Bug Fixes
+
+* Correct handling of "global.secrets.keep" ([9389672](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/93896726aea2cde2ed6912d9030a674f2e81fa53)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Do not set an imagePullPolicy by default ([6711745](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/67117451a1080834e5ce1d12069ce954d580e3ce)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Follow common behavior regarding the image configuration ([6aaa6b0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/6aaa6b0a188aff6ea711b1460c3ef490c22ddc26)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Remove obsolete value "loadDevData" from template context ([6a144ed](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/6a144ed4aa09ba2cc9d2437c89818cf23e3f31fe)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Remove restriction around mounted secret ([8260951](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/8260951559f62a4823cf1778b4382fc8c0cab225)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+* Use "quote" instead of putting the template into double quotes ([72ceaec](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/72ceaec5c493be96472a94bfaca24875361acb76)), closes [univention/dev/internal/team-nubus#892](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/892)
+
 ## [0.94.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.2...v0.94.3) (2025-06-23)
 
 
