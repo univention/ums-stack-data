@@ -14,6 +14,15 @@ log = logging.getLogger(__name__)
 ActionType = Callable[[UDM, str, str, dict, dict], None]
 
 
+# TODO: Find a more solid way to check if the object exists
+def object_exists_response(response: str) -> bool:
+    if '"dn" Object exists' in response:
+        return True
+    if "The Context ID has already been taken!" in response:
+        return True
+    return False
+
+
 def ensure_udm_object(
     udm: UDM,
     module: str,
@@ -29,9 +38,7 @@ def ensure_udm_object(
     try:
         obj.save()
     except UnprocessableEntity as exc:
-        object_exists_message = '"dn" Object exists'
-        # TODO: Find a more solid way to check if the object exists
-        if object_exists_message in str(exc):
+        if object_exists_response(str(exc)):
             log.info("Object does already exist, not updating anything.")
         else:
             raise
@@ -59,8 +66,7 @@ def upsert_udm_object(udm: UDM, module: str, position: str, properties, policies
     try:
         obj.save()
     except UnprocessableEntity as exc:
-        object_exists_message = '"dn" Object exists'
-        if object_exists_message not in str(exc):
+        if not object_exists_response(str(exc)):
             raise
         update_position = f"{dn_part},{position}"
         update_udm_object(udm, module, update_position, properties, {})
