@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.96.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.95.0...v0.96.0) (2025-07-17)
+
+
+### Features
+
+* update ucs-base to 5.2.2-build.20250714 ([0d5da28](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/0d5da28aac90d97cc48bbf5e6852dcd92a4aa042)), closes [univention/dev/internal/team-nubus#1320](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1320)
+
+
+### Bug Fixes
+
+* use ucs-base-python image ([a409d6a](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/a409d6a9cca521d0603d863fb81ab1f9879fd63e)), closes [univention/dev/internal/team-nubus#1320](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1320)
+
 ## [0.95.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.94.3...v0.95.0) (2025-06-27)
 
 
