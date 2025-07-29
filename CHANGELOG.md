@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.97.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.96.0...v0.97.0) (2025-07-29)
+
+
+### Features
+
+* add creation of Keycloak 2FA group ([a901e66](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/a901e66769e17acf160781445a119e4da8bf728d)), closes [univention/dev/internal/team-nubus#1347](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1347)
+
 ## [0.96.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.95.0...v0.96.0) (2025-07-17)
 
 
