@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.97.4](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.97.3...v0.97.4) (2025-08-29)
+
+
+### Bug Fixes
+
+* Update base image to version 5.2.2-build.20250821 ([80508ef](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/80508ef18a2c06a8bf0fa2a8d9e98225c3632ca2)), closes [univention/dev/internal/team-nubus#1385](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1385)
+
 ## [0.97.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.97.2...v0.97.3) (2025-08-28)
 
 
