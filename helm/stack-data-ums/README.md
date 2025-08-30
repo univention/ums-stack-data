@@ -754,6 +754,7 @@ false
   "enableDefaultLogin": "{{ include \"stack-data-ums.enableDefaultLogin\" . }}",
   "externalMailDomain": "{{ include \"stack-data-ums.externalMailDomain\" . }}",
   "initialPasswordAdministrator": null,
+  "keycloakTwofaGroup": "2FA Users",
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
   "showUmc": "{{ include \"stack-data-ums.showUmc\" . }}",
   "subDomainsKeycloak": "{{ include \"stack-data-ums.subDomains.keycloak\" . }}"
@@ -797,6 +798,15 @@ null
 </pre>
 </td>
 			<td>The initial password of the user "Administrator".  A random password will be generated if unset.</td>
+		</tr>
+		<tr>
+			<td>templateContext.keycloakTwofaGroup</td>
+			<td>string</td>
+			<td><pre lang="json">
+"2FA Users"
+</pre>
+</td>
+			<td>Creates the group needed for enforcing configuration of a second factor in Keycloak.</td>
 		</tr>
 		<tr>
 			<td>templateContext.ldapBaseDn</td>

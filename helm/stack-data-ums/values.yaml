@@ -109,6 +109,8 @@ templateContext:
   # Example: `false`
   enableDefaultLogin: '{{ include "stack-data-ums.enableDefaultLogin" . }}'
   showUmc: '{{ include "stack-data-ums.showUmc" . }}'
+  # -- Creates the group needed for enforcing configuration of a second factor in Keycloak.
+  keycloakTwofaGroup: "2FA Users"
 
 
 # TODO: the template processing of the data files is being moved into the
