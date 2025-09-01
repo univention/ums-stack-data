@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.97.5](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.97.4...v0.97.5) (2025-09-01)
+
+
+### Bug Fixes
+
+* Add missing value "keycloakTwofaGroup" into template context ([ca2aa46](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/ca2aa46191e34e937ef4e289ca076f6cf1556c1e)), closes [univention/dev/internal/team-nubus#1385](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1385)
+
 ## [0.97.4](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.97.3...v0.97.4) (2025-08-29)
 
 
