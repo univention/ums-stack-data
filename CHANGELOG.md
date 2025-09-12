@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.98.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.97.10...v0.98.0) (2025-09-12)
+
+
+### Features
+
+* **ucr-defaults:** add ldap/server/oauthbearer SASL configuration ([2ee9054](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/2ee90544b54bb201761e6ad72a90c413860971b2)), closes [univention/dev/internal/dev-issues/dev-incidents#138](https://git.knut.univention.de/univention/dev/internal/dev-issues/dev-incidents/issues/138)
+* **ucr-defaults:** add umc/oidc/ OIDC configuration for UMC ([c4ed95c](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/c4ed95cbafaa100d2376f0ea868a2e120824bc21)), closes [univention/dev/internal/dev-issues/dev-incidents#138](https://git.knut.univention.de/univention/dev/internal/dev-issues/dev-incidents/issues/138)
+
+
+### Bug Fixes
+
+* **docs:** Fix name of UDM REST API ([23a7b3b](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/23a7b3b25af498a61f1d5c3ae655c36e3a2388f7)), closes [univention/dev/internal/dev-issues/dev-incidents#138](https://git.knut.univention.de/univention/dev/internal/dev-issues/dev-incidents/issues/138)
+
 ## [0.97.10](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.97.9...v0.97.10) (2025-09-12)
 
 
