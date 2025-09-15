@@ -623,10 +623,10 @@ null
 			<td>stackDataContext.portalAuthMode</td>
 			<td>string</td>
 			<td><pre lang="json">
-"saml"
+"oidc"
 </pre>
 </td>
-			<td>The authentication method to use for the portal. Default is `saml`.</td>
+			<td>The authentication method to use for the portal. Default is `oidc`.</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.portalFqdn</td>

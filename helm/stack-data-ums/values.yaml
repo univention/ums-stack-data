@@ -173,8 +173,8 @@ stackDataContext:
   # -- List of SAML Service Provider URLs which the LDAP server should trust (comma-separated).
   # Example: `"https://portal.souvap.example.org/univention/saml/metadata"`
   ldapSamlSpUrls: null
-  # -- The authentication method to use for the portal. Default is `saml`.
-  portalAuthMode: "saml"
+  # -- The authentication method to use for the portal. Default is `oidc`.
+  portalAuthMode: "oidc"
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
   # Example: `"example.org"`
   externalDomainName: ""
