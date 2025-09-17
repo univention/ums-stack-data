@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.99.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.98.2...v0.99.0) (2025-09-17)
+
+
+### Features
+
+* enable umc oidc ([b4f9fef](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/b4f9fefdc169281def2b1cac4d402f358c11a890)), closes [univention/dev/internal/team-nubus#1435](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1435)
+* OIDC by default for portal login ([52e6f51](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/52e6f51e825b8d0bf89f8a8d9566a51fdad6e5d4)), closes [univention/dev/internal/team-nubus#1435](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1435)
+
 ## [0.98.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.98.1...v0.98.2) (2025-09-16)
 
 
