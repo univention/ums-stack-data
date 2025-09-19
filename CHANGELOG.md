@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.99.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.0...v0.99.1) (2025-09-19)
+
+
+### Bug Fixes
+
+* disable SAML SSO by default ([4596720](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/45967205e0004a1c83a9f16c4247dc1d98600bc3)), closes [univention/dev/internal/team-nubus#1435](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1435)
+
 ## [0.99.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.98.2...v0.99.0) (2025-09-17)
 
 
