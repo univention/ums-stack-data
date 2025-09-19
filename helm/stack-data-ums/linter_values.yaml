@@ -3,8 +3,19 @@
 
 ---
 
+stackDataUms:
+  logContext: false
+  logTemplate: false
+
 udm:
   connection:
     url: "http://udm-rest-api:9979/udm"
   auth:
     password: "linter-udm-password"
+
+templateContext:
+  domainName: "test.example.org"
+  externalMailDomain: "test.example.org"
+  initialPasswordAdministrator: "test-password"
+  ldapBaseDn: "dc=test,dc=example,dc=org"
+  keycloakTwofaGroup: "2FA Test Users"
