@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2024-2025 Univention GmbH
+---
+# Add service-specific configuration here
+# For stack-data-ums testing
+stackDataUms:
+  replicaCount: 1
+  logContext: false
+  logTemplate: false
+
+dataLoader:
+  enabled: true
+
+templateContext:
+  domainName: "test.example.org"
+  externalMailDomain: "test.example.org"
+  initialPasswordAdministrator: "test-password"
+  ldapBaseDn: "dc=test,dc=example,dc=org"
+  keycloakTwofaGroup: "2FA Test Users"
