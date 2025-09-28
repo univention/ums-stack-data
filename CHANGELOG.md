@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.99.5](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.4...v0.99.5) (2025-09-28)
+
+
+### Bug Fixes
+
+* **deps:** Update dependency univention/dev/nubus-for-k8s/common-ci to v1.44.9 ([e08aa6d](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/e08aa6d86abf910de85971eac25f26ed6fde7af8)), closes [#0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/0)
+
 ## [0.99.4](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.3...v0.99.4) (2025-09-27)
 
 
