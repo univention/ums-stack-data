@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.99.6](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.5...v0.99.6) (2025-09-29)
+
+
+### Bug Fixes
+
+* auto kyverno linting and fixes ([235add9](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/235add9e571fed94a24ccae2597ba8d98c4e98c2)), closes [univention/dev/internal/team-nubus#1426](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1426)
+
 ## [0.99.5](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.4...v0.99.5) (2025-09-28)
 
 
