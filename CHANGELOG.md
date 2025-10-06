@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.99.7](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.6...v0.99.7) (2025-10-06)
+
+
+### Bug Fixes
+
+* enable portal logout refresh by default ([4cb3810](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/4cb3810249aad41ea83244d2dbb9cece01e7e424)), closes [univention/dev/internal/team-nubus#1439](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1439)
+
 ## [0.99.6](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.5...v0.99.6) (2025-09-29)
 
 
