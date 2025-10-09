@@ -130,7 +130,7 @@ spec:
       volumes:
         - name: secret-udm
           secret:
-            secretName: {{ include "nubus-common.secrets.name" (dict "existingSecret" .Values.udm.auth.existingSecret "defaultNameSuffix" "udm" "context" .) | quote }}
+            secretName: {{ include "nubus-common.secrets.name" (dict "existingSecret" .Values.udm.auth.existingSecret "defaultNameSuffix" "udm" "context" .) }}
         - name: "data"
           configMap:
             {{- $defaultConfigMapName := printf "%s-data" (include "common.names.fullname" . ) }}

@@ -21,7 +21,7 @@ data:
     ) . | quote }}
   UDM_API_USER: {{ tpl
     ( required
-      "A UDM username has to be supplied, see parameter udm.auth.username"
+      "A UDM username is required, see parameter udm.auth.username"
       .Values.udm.auth.username
     ) . | quote }}
   UDM_API_PASSWORD_FILE: "/run/secrets/univention.de/data-loader/udm_secret"
