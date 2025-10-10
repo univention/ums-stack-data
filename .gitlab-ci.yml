@@ -5,7 +5,7 @@
 
 include:
   - project: "univention/dev/nubus-for-k8s/common-ci"
-    ref: "mmeschter/buildkit"
+    ref: "9a751136e350658a5059d19e403a9ef67d6373a1"
     file:
       - "defaults/stages.yaml"
       - "defaults/nubus-workflow.yaml"
