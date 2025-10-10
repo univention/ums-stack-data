@@ -19,11 +19,11 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "python-jsonpath",
     "pdbpp",
+    "pytest>8.0.0",
     "pytest-cov<6.0,>=5.0",
     "pytest-mock",
-    "pytest",
+    "python-jsonpath",
     # additional Helm unittest dependencies
     # TODO: Currently fails the test container build because of git dependency
     # "pytest-helm",
