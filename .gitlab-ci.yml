@@ -33,9 +33,9 @@ include:
   - IMAGE_NAME:
       - "data-loader"
 
-default:
-  tags:
-    - "k8s"
+# default:
+#   tags:
+#     - "k8s"
 
 container-build:
   parallel:
