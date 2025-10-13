@@ -1,6 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023-2025 Univention GmbH
-
 ---
 
 services:
@@ -61,7 +60,7 @@ services:
   pre-commit:
     profiles:
       - "test"
-    image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/container-pre-commit/upx-pre-commit:latest"
+    image: gitregistry.knut.univention.de/univention/dev/tooling/pre-commit/upx-pre-commit:latest
     volumes:
       - type: "bind"
         source: "."
@@ -86,5 +85,6 @@ secrets:
 
 volumes:
   pre-commit-cache:
+
 
 ...
