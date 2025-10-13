@@ -85,7 +85,7 @@ spec:
         volumeMounts:
           - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
-            subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password") | quote }}
+            subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password" "context" .) }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
       {{ end }}
@@ -117,7 +117,7 @@ spec:
         volumeMounts:
           - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
-            subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password") | quote }}
+            subPath: {{ include "nubus-common.secrets.key" (dict "existingSecret" .Values.udm.auth.existingSecret "key" "password" "context" .) }}
           - name: "plugin-targets"
             mountPath: "/join-data"
             subPath: udm-data-loader
