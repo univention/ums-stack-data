@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: 2025 Univention GmbH
 
 import pytest
+
 from univention.testing.helm.client.password import Password, PasswordOwner
 
 

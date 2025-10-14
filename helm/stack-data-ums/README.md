@@ -39,7 +39,7 @@ helm uninstall stack-data-udm
 
 | Repository | Name | Version |
 |------------|------|---------|
-| oci://artifacts.software-univention.de/nubus/charts | nubus-common | 0.21.0 |
+| oci://artifacts.software-univention.de/nubus/charts | nubus-common | 0.28.0 |
 
 ## Values
 
