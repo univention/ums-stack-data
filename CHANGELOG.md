@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.99.10](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.9...v0.99.10) (2025-10-15)
+
+
+### Bug Fixes
+
+* create read only user in LDAP for keycloak bootstrap ([e11a72a](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/e11a72a78cc31ae9535bbfabc96a490e858a838e)), closes [univention/dev/internal/team-nubus#1398](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1398)
+
 ## [0.99.9](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.8...v0.99.9) (2025-10-15)
 
 
