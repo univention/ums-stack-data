@@ -774,8 +774,10 @@ false
   "initialPasswordAdministrator": null,
   "keycloakTwofaGroup": "2FA Users",
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
+  "readonlyUserPassword": null,
   "showUmc": "{{ include \"stack-data-ums.showUmc\" . }}",
-  "subDomainsKeycloak": "{{ include \"stack-data-ums.subDomains.keycloak\" . }}"
+  "subDomainsKeycloak": "{{ include \"stack-data-ums.subDomains.keycloak\" . }}",
+  "svcPortalServerUserPassword": null
 }
 </pre>
 </td>
@@ -834,6 +836,24 @@ null
 </pre>
 </td>
 			<td>Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`. Example: `"dc=example,dc=org"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.readonlyUserPassword</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>The password for the Keycloak service readonly user  A random password will be generated if unset.</td>
+		</tr>
+		<tr>
+			<td>templateContext.svcPortalServerUserPassword</td>
+			<td>string</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>The password for the Portal service user  A random password will be generated if unset.</td>
 		</tr>
 		<tr>
 			<td>tolerations</td>

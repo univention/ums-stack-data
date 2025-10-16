@@ -98,6 +98,14 @@ templateContext:
   #
   # A random password will be generated if unset.
   initialPasswordAdministrator: null
+  # -- The password for the Portal service user
+  #
+  # A random password will be generated if unset.
+  svcPortalServerUserPassword: null
+  # -- The password for the Keycloak service readonly user
+  #
+  # A random password will be generated if unset.
+  readonlyUserPassword: null
   # -- Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`.
   # Example: `"dc=example,dc=org"`
   ldapBaseDn: '{{ include "stack-data-ums.ldapBaseDn" . }}'
