@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.99.11](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.10...v0.99.11) (2025-10-16)
+
+
+### Bug Fixes
+
+* **helm:** Improve helm docs ([90da862](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/90da8629bec6bc1b431c1dedea0ec88a8330ad21)), closes [univention/dev/internal/team-nubus#1398](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1398)
+
 ## [0.99.10](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.9...v0.99.10) (2025-10-15)
 
 
