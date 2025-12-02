@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.99.27](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.26...v0.99.27) (2025-12-02)
+
+
+### Bug Fixes
+
+* bump image to errata 298 ([724db83](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/724db83456d466aaf83e44f4ec4e94871f82ac78)), closes [univention/dev/internal/team-nubus#1543](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1543)
+
 ## [0.99.26](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.25...v0.99.26) (2025-11-29)
 
 
