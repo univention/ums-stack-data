@@ -1,9 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2023-2025 Univention GmbH
 ---
-
 services:
-
   data-loader:
     profiles:
       - "test"
@@ -72,7 +70,7 @@ services:
         target: "/cache"
 
   test-chart-stack-data-ums:
-    image: gitregistry.knut.univention.de/univention/dev/nubus-for-k8s/common-helm/testrunner:0.28.0
+    image: gitregistry.knut.univention.de/univention/dev/nubus-for-k8s/common-helm/testrunner:0.29.0
     pull_policy: "if_not_present"
     command: "pytest tests/chart"
     profiles:
@@ -87,6 +85,3 @@ secrets:
 
 volumes:
   pre-commit-cache:
-
-
-...

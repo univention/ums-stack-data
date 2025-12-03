@@ -40,14 +40,11 @@ global:
       # See "udm.connection.url".
       url: null
 
-
 dataLoader:
   # -- Allows to disable the data loader Job.
   enabled: true
 
-
 stackDataUms:
-
   # -- The internal port on which the UDM REST API is listening in the Kubernetes Pod.
   # Chart defaults to `9979`.
   udmApiPort: ""
@@ -119,7 +116,6 @@ templateContext:
   showUmc: '{{ include "stack-data-ums.showUmc" . }}'
   # -- Creates the group needed for enforcing configuration of a second factor in Keycloak.
   keycloakTwofaGroup: "2FA Users"
-
 
 # TODO: the template processing of the data files is being moved into the
 # run-time of the container "data-loader". "stackDataContext" will be removed
@@ -206,30 +202,30 @@ stackDataContext:
 nubusUmcServer:
   # -- Hostname of the UMC server used to disable self-service rate-limiting for requests from inside the cluster
   # This does set the UCR variable `umc/self-service/rate-limit/trusted-hosts`
-  host: ''
+  host: ""
   memcached:
     connection:
       # -- Hostname to use for memcached of the selfservice in UMC.
       # This does set the UCR variable `umc/self-service/memcached/socket`.
-      host: ''
+      host: ""
     auth:
       # -- Username to use for memcached of the selfservice in UMC.
       # This does set the UCR variable `umc/self-service/memcached/username`. UCR has no default.
-      username: ''
+      username: ""
   postgresql:
     connection:
       # -- Hostname to use for postgresql of the selfservice in UMC.
       # This does set the UCR variable `umc/self-service/postgresql/hostname`. UCR default is `localhost`.
-      host: ''
+      host: ""
       # -- Port to use for postgresql of the selfservice in UMC.
       # This does set the UCR variable `umc/self-service/postgresql/port`. UCR default is `5432`.
-      port: ''
+      port: ""
     auth:
       # -- Username to use for postgresql of the selfservice in UMC.
       # This does set the UCR variable `umc/self-service/postgresql/username`. UCR default is `selfservice`.
-      username: ''
+      username: ""
       # This does set the UCR variable `umc/self-service/postgresql/database`. UCR default is `selfservice`.
-      database: ''
+      database: ""
 # -- Container image configuration
 image:
   registry: ""
@@ -251,6 +247,13 @@ systemExtensions: []
 
 # -- Additional custom annotations to add to deployed objects.
 additionalAnnotations: {}
+
+# -- Array with extra environment variables to add to containers.
+#
+# extraEnvVars:
+#   - name: FOO
+#     value: "bar"
+extraEnvVars: []
 
 ## Global values
 affinity: {}
@@ -305,5 +308,3 @@ serviceAccount:
   automountServiceAccountToken: false
   # -- Additional custom labels for the ServiceAccount.
   labels: {}
-
-...

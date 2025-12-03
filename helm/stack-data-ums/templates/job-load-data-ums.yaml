@@ -49,6 +49,10 @@ spec:
           - |
             mkdir -p /target/udm-data-loader
             cp -RLv --preserve=all /join-data/* /target/udm-data-loader
+        {{- with .Values.extraEnvVars }}
+        env:
+          {{- . | toYaml | nindent 12 }}
+        {{- end }}
         volumeMounts:
           - name: plugin-targets
             mountPath: /target
@@ -65,6 +69,10 @@ spec:
         {{- end }}
         image: "{{ coalesce .image.registry $.Values.global.imageRegistry }}/{{ .image.repository }}:{{ .image.tag }}"
         imagePullPolicy: {{ coalesce .image.pullPolicy $.Values.global.imagePullPolicy | quote }}
+        {{- with $.Values.extraEnvVars }}
+        env:
+          {{- . | toYaml | nindent 12 }}
+        {{- end }}
         volumeMounts:
           - name: plugin-targets
             mountPath: /target
@@ -82,6 +90,10 @@ spec:
         envFrom:
           - configMapRef:
               name: {{ include "common.names.fullname" . }}
+        {{- with $.Values.extraEnvVars }}
+        env:
+          {{- . | toYaml | nindent 12 }}
+        {{- end }}
         volumeMounts:
           - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
@@ -114,6 +126,9 @@ spec:
         env:
           - name: SET_STATUS_FLAG
             value: "true"
+          {{- with .Values.extraEnvVars }}
+          {{- . | toYaml | nindent 10 }}
+          {{- end }}
         volumeMounts:
           - name: secret-udm
             mountPath: /run/secrets/univention.de/data-loader/udm_secret
