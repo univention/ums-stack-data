@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.100.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.28...v0.100.0) (2025-12-05)
+
+
+### Features
+
+* **helm:** Add component-specific extraEnvVars support ([523bb61](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/523bb61aa2737e6ba020a8c761baaa381bd64f62)), closes [univention/dev/internal/team-nubus#977](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/977)
+
 ## [0.99.28](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.99.27...v0.99.28) (2025-12-03)
 
 
