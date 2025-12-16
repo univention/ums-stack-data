@@ -1,0 +1,10 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "Test project to check if dependency updating works",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.13.2"
+  }
+}
