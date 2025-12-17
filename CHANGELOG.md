@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.100.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.1...v0.100.2) (2025-12-17)
+
+
+### Bug Fixes
+
+* Align Renovate preset ([59199d2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/59199d22190fda8aab59f3aa8f22b4a6e465400c)), closes [univention/dev/internal/team-nubus#1423](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1423)
+
 ## [0.100.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.0...v0.100.1) (2025-12-10)
 
 
