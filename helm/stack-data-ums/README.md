@@ -641,7 +641,7 @@ null
 			<td>stackDataContext.portalFqdn</td>
 			<td>string</td>
 			<td><pre lang="json">
-"portal.{{ include \"stack-data-ums.externalDomainName\" . }}"
+"{{ include \"stack-data-ums.portalFqdn\" . }}"
 </pre>
 </td>
 			<td></td>

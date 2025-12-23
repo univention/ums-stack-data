@@ -183,7 +183,7 @@ stackDataContext:
   # Example: `"example.org"`
   externalDomainName: ""
 
-  portalFqdn: 'portal.{{ include "stack-data-ums.externalDomainName" . }}'
+  portalFqdn: '{{ include "stack-data-ums.portalFqdn" . }}'
 
   # -- Self-service emails: SMTP host
   smtpHost: ""
