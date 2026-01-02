@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.100.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.2...v0.100.3) (2026-01-02)
+
+
+### Bug Fixes
+
+* **helm:** Use portalFqdn helper instead of hardcoded portal subdomain ([68eff21](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/68eff217ec00de307f5124d281e8875e5311460d)), closes [univention/dev/internal/team-nubus#866](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/866)
+
 ## [0.100.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.1...v0.100.2) (2025-12-17)
 
 
