@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.100.7](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.6...v0.100.7) (2026-01-15)
+
+
+### Bug Fixes
+
+* Set LDAP overlay values to match UCS defaults ([99f518c](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/99f518cc2a31bef21ce4f18d11146685bc7f8723)), closes [univention/dev/internal/team-nubus#1518](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1518)
+
 ## [0.100.6](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.5...v0.100.6) (2026-01-15)
 
 
