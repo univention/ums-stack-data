@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.100.6](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.5...v0.100.6) (2026-01-15)
+
+
+### Bug Fixes
+
+* failing pipeline job ([162c3cc](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/162c3cc609690d876dfb6f95e8f45b51e3e1c6a3)), closes [univention/dev/internal/team-nubus#1518](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1518)
+
 ## [0.100.5](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.4...v0.100.5) (2026-01-14)
 
 
