@@ -52,7 +52,7 @@ def _connect_to_udm():
     udm_api_url = os.environ["UDM_API_URL"]
     log.info("Connecting to UDM API at URL %s", udm_api_url)
     udm_api_user = os.environ["UDM_API_USER"]
-    with open(os.environ["UDM_API_PASSWORD_FILE"], "r") as password_file:
+    with open(os.environ["UDM_API_PASSWORD_FILE"]) as password_file:
         udm_api_password = password_file.read()
     udm = UDM.http(udm_api_url, udm_api_user, udm_api_password)
     return udm

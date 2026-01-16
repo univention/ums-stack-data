@@ -87,6 +87,6 @@ def _assert_all_have_security_context(result, expected_security_context):
     for container in containers:
         security_context = container.get("securityContext", {})
         name = container["name"]
-        assert (
-            security_context.items() >= expected_security_context.items()
-        ), f'Wrong securityContext in container "{name}"'
+        assert security_context.items() >= expected_security_context.items(), (
+            f'Wrong securityContext in container "{name}"'
+        )

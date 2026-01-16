@@ -84,7 +84,7 @@ def test_load_context_reads_file(mocker, file_content):
 
     result = cli.load_context("stub_context.yaml")
 
-    mock_open.assert_called_once_with("stub_context.yaml", "r")
+    mock_open.assert_called_once_with("stub_context.yaml")
     expected_context = yaml.safe_load(file_content)
     assert result == expected_context
 

@@ -23,7 +23,7 @@ class App:
         self.udm_api_port = os.environ["UDM_API_PORT"]
 
     def _get_udm_password(self):
-        with open(self.udm_api_password_file, "r") as passwd_file:
+        with open(self.udm_api_password_file) as passwd_file:
             password = passwd_file.read().strip()
         return password
 

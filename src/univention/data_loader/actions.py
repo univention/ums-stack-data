@@ -4,7 +4,7 @@
 
 
 import logging
-from typing import Callable
+from collections.abc import Callable
 
 from univention.admin.rest.client import UDM, NotFound, UnprocessableEntity
 

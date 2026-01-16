@@ -6,9 +6,12 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
+default_language_version:
+  python: python3.11
+
 repos:
   - repo: "https://github.com/pre-commit/pre-commit-hooks"
-    rev: "v4.4.0"
+    rev: "v6.0.0"
     hooks:
       # "check for added large files"
       - id: "check-added-large-files"
@@ -22,15 +25,11 @@ repos:
       # "fix end of files"
       - id: "end-of-file-fixer"
         exclude: "^helm/.+/(README.md|.*.svg)"
-      # "fix python encoding pragma"
-      - id: "fix-encoding-pragma"
-        args:
-          - "--remove"
       # "trim trailing whitespace"
       - id: "trailing-whitespace"
 
   - repo: "https://git.knut.univention.de/univention/dist/pre-commit-ucr"
-    rev: "0.0.9"
+    rev: "0.1.7"
     hooks:
       # "flake8 --select E1,E2 for UCR templates"
       - id: "ucr-flake8"
@@ -44,7 +43,7 @@ repos:
         stages: ["manual"]
 
   - repo: "https://github.com/compilerla/conventional-pre-commit"
-    rev: "v2.1.1"
+    rev: "v4.3.0"
     hooks:
       - id: "conventional-pre-commit"
         stages: ["commit-msg"]
@@ -62,8 +61,15 @@ repos:
       # "Debian control file formatter"
       - id: "debian-control"
 
+  - repo: "https://github.com/asottile/pyupgrade"
+    rev: "v3.21.2"
+    hooks:
+      - id: "pyupgrade"
+        args:
+          - "--py311-plus"
+
   - repo: "https://github.com/astral-sh/ruff-pre-commit"
-    rev: "v0.5.2"
+    rev: "v0.14.13"
     hooks:
       - id: "ruff"
         args:
@@ -77,7 +83,7 @@ repos:
   # shellcheck doesn't have it's own .pre-commit-hooks.yaml
   # https://github.com/koalaman/shellcheck/pull/1032
   - repo: "https://gitlab.com/univention/pre-commit-hooks/pre-commit-shell"
-    rev: "v1.0.6"
+    rev: "v1.0.6+uv1"
     hooks:
       # "Shell Syntax Check"
       - id: "shell-lint"
@@ -100,13 +106,13 @@ repos:
 
   # "Helm chart linter"
   - repo: "https://github.com/gruntwork-io/pre-commit"
-    rev: "v0.1.21"
+    rev: "v0.1.30"
     hooks:
       - id: "helmlint"
 
   # "Helm docs linter"
   - repo: "https://github.com/norwoodj/helm-docs"
-    rev: "v1.11.0"
+    rev: "v1.14.2"
     hooks:
     - id: "helm-docs"
       args:
@@ -115,7 +121,7 @@ repos:
       always_run: true
 
   - repo: "https://git.knut.univention.de/univention/infrastructure/pre-commit-hooks/addlicense"
-    rev: "v1.0.1"
+    rev: "v1.0.3"
     hooks:
       - id: "addlicense"
         name: "Check or add license headers to files"

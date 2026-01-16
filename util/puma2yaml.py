@@ -48,7 +48,7 @@ def main(input_file, password):
     NOTE: CSV header row is ignored
     """
 
-    with open(input_file, "r", encoding="utf8") as users_file:
+    with open(input_file, encoding="utf8") as users_file:
         users_reader = csv.reader(users_file, delimiter="\t")
 
         config_object = {

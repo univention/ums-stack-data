@@ -4,7 +4,7 @@
 
 
 import logging
-from typing import Annotated, List, Optional
+from typing import Annotated
 
 import typer
 import yaml
@@ -54,11 +54,11 @@ def main(
         ),
     ] = False,
     template_context: Annotated[
-        Optional[List[str]],
+        list[str] | None,
         typer.Option(help="Load the template context from this YAML file."),
     ] = None,
     template_extension: Annotated[
-        Optional[str],
+        str | None,
         typer.Option(
             help="Restrict template processing to a specific filename extension",
         ),
@@ -82,7 +82,7 @@ def main(
 
 
 def read_from_file(filename):
-    with open(filename, "r") as input_file:
+    with open(filename) as input_file:
         content = input_file.read()
     return content
 
