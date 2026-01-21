@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.101.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.8...v0.101.0) (2026-01-21)
+
+
+### Features
+
+* disable structured logging by default ([187c4a7](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/187c4a75c155274a5202e27a010e5217b262842d)), closes [univention/dev/internal/team-nubus#1588](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1588)
+
 ## [0.100.8](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.100.7...v0.100.8) (2026-01-16)
 
 
