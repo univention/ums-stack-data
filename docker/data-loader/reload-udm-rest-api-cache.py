@@ -35,7 +35,7 @@ class App:
         log.info("Refreshing cache for %s", ip)
         headers = {"Accept": "application/json"}
         response = requests.get(
-            f"http://{ip}:{self.udm_api_port}/udm/users/user/add",
+            f"http://{ip}:{self.udm_api_port}/univention/udm/users/user/add",
             auth=(self.udm_api_user, self._get_udm_password()),
             headers=headers,
         )
