@@ -151,12 +151,6 @@ stackDataContext:
   # -- DN of the UMS instance. Chart defaults to `cn=admin,dc=univention-organization,dc=intranet`.
   # Example: `"cn=ucs-1234,cn=dc,cn=computers,dc=example,dc=org"`
   ldapHostDn: ""
-  # -- SAML Identity Provider metadata URL (as visible from the user/internet).
-  # Example: `"https://id.souvap.example.org/realms/ucs/protocol/saml/descriptor"`
-  idpSamlMetadataUrl: null
-  # -- SAML Identity Provider metadata URL (as visible from inside the container), optional.
-  # Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`
-  idpSamlMetadataUrlInternal: ""
   # -- OIDC Identity Provider issuer URL (as visible from the user/internet).
   # Example: `"https://id.souvap.example.org/realms/ucs"`
   idpOidcIssuerUrl: null
@@ -168,9 +162,6 @@ stackDataContext:
   # -- SAML Service Provider hostname (FQDN of the UMC, which is the service provider)
   # Example: `"portal.souvap.example.org"`
   umcSamlSpFqdn: null
-  # -- Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`.
-  # Example: `"https, http"`
-  umcSamlSchemes: "https"
   # -- The FQDN of the identity provider (w/o the protocol specification).
   # Example: `"id.souvap.example.org"`
   idpFqdn: null

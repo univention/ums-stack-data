@@ -82,22 +82,6 @@ false
 {{- end -}}
 {{- end -}}
 
-{{- define "stack-data-ums.samlMetadataUrl" -}}
-{{- if .Values.stackDataContext.idpSamlMetadataUrl -}}
-{{- .Values.stackDataContext.idpSamlMetadataUrl -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.samlMetadataUrl" .  -}}
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.samlMetadataUrlInternal" -}}
-{{- if .Values.stackDataContext.idpSamlMetadataUrlInternal -}}
-{{- .Values.stackDataContext.idpSamlMetadataUrlInternal -}}
-{{- else if .Values.global.nubusDeployment -}}
-{{- include "nubusTemplates.ldapServer.samlMetadataUrlInternal" .  -}}
-{{- end -}}
-{{- end -}}
-
 {{- define "stack-data-ums.oidcIssuerUrl" -}}
 {{- if .Values.stackDataContext.idpOidcIssuerUrl -}}
 {{- .Values.stackDataContext.idpOidcIssuerUrl -}}
@@ -213,14 +197,6 @@ id
 {{- .Values.stackDataContext.portalAuthMode -}}
 {{- else if .Values.global.nubusDeployment -}}
 saml
-{{- end -}}
-{{- end -}}
-
-{{- define "stack-data-ums.umcSamlSchemes" -}}
-{{- if .Values.stackDataContext.umcSamlSchemes -}}
-{{- .Values.stackDataContext.umcSamlSchemes -}}
-{{- else if .Values.global.nubusDeployment -}}
-https
 {{- end -}}
 {{- end -}}
 

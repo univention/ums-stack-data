@@ -548,24 +548,6 @@ null
 			<td>OIDC Identity Provider issuer URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs"`</td>
 		</tr>
 		<tr>
-			<td>stackDataContext.idpSamlMetadataUrl</td>
-			<td>string</td>
-			<td><pre lang="json">
-null
-</pre>
-</td>
-			<td>SAML Identity Provider metadata URL (as visible from the user/internet). Example: `"https://id.souvap.example.org/realms/ucs/protocol/saml/descriptor"`</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.idpSamlMetadataUrlInternal</td>
-			<td>string</td>
-			<td><pre lang="json">
-""
-</pre>
-</td>
-			<td>SAML Identity Provider metadata URL (as visible from inside the container), optional. Example: `"http://keycloak:8080/realms/ucs/protocol/saml/descriptor"`</td>
-		</tr>
-		<tr>
 			<td>stackDataContext.ldapBase</td>
 			<td>string</td>
 			<td><pre lang="json">
@@ -699,15 +681,6 @@ true
 </pre>
 </td>
 			<td>UMC web page title. Chart supports templated values.</td>
-		</tr>
-		<tr>
-			<td>stackDataContext.umcSamlSchemes</td>
-			<td>string</td>
-			<td><pre lang="json">
-"https"
-</pre>
-</td>
-			<td>Which address scheme to consider for SAML ACS (string, comma-separated). Chart default is `https`. Example: `"https, http"`</td>
 		</tr>
 		<tr>
 			<td>stackDataContext.umcSamlSpFqdn</td>
