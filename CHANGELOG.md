@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.101.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.101.1...v0.101.2) (2026-02-10)
+
+
+### Bug Fixes
+
+* Remove SAML UCR variables ([50a9902](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/50a9902d4f62b18f6ae17fa585ff07ce01df88c4)), closes [univention/dev/internal/team-nubus#1563](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1563)
+
 ## [0.101.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.101.0...v0.101.1) (2026-01-24)
 
 
