@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.101.4](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.101.3...v0.101.4) (2026-02-12)
+
+
+### Bug Fixes
+
+* Use UDM root_path ([72bd9a6](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/72bd9a6af835a05701d29389e29473874a98f012)), closes [univention/dev/internal/team-nubus#1553](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1553)
+
 ## [0.101.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.101.2...v0.101.3) (2026-02-11)
 
 
