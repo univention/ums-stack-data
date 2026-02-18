@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.102.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.101.4...v0.102.0) (2026-02-18)
+
+
+### Features
+
+* Remove SSL certificate validity check ([0285421](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/0285421688e8953e0959234fa5b1b415bd0d047b)), closes [univention/dev/ucs#3367](https://git.knut.univention.de/univention/dev/ucs/issues/3367)
+
 ## [0.101.4](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.101.3...v0.101.4) (2026-02-12)
 
 
