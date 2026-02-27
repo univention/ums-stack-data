@@ -3,7 +3,7 @@
 
 # Inspired by: https://hynek.me/articles/docker-uv/
 
-ARG UCS_BASE_IMAGE_TAG=5.2.4-build.20260224@sha256:b3ec1d42122f836a2c4a08793eeb5be868459e450501fdebbc60fcbadd7824e5
+ARG UCS_BASE_IMAGE_TAG=5.2.4-build.20260226@sha256:7930a94c518b270e2825e62e4a98b427688d5a79670bed1404baf28f74ca6623
 ARG UCS_BASE_IMAGE=gitregistry.knut.univention.de/univention/dev/projects/ucs-base-image/ucs-base-python
 
 ###############################################
