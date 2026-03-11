@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.102.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.102.1...v0.102.2) (2026-03-11)
+
+
+### Bug Fixes
+
+* Dependency updates ([81650be](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/81650be514c6241f793d51cd856dae5a31a9201c)), closes [univention/dev/internal/team-nubus#1477](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1477)
+
 ## [0.102.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.102.0...v0.102.1) (2026-02-25)
 
 
