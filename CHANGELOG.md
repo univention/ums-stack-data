@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.102.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.102.2...v0.102.3) (2026-03-12)
+
+
+### Bug Fixes
+
+* **default-base:** set ldap/translog-ignore-temporary=true ([731557c](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/731557ccdf9f2a8a56dc2c849ac6ae3c8f13ad37)), closes [univention/dev/internal/dev-issues/dev-incidents#199](https://git.knut.univention.de/univention/dev/internal/dev-issues/dev-incidents/issues/199) [#59026](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/59026)
+
 ## [0.102.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.102.1...v0.102.2) (2026-03-11)
 
 
