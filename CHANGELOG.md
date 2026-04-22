@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.103.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.102.5...v0.103.0) (2026-04-22)
+
+
+### Features
+
+* **helm:** add Nubus4K8S version information ([01b7845](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/01b7845ceb99d85675aaa9c4b25e3b315aa882d3)), closes [univention/dev/internal/team-nubus#1615](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1615)
+
 ## [0.102.5](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.102.4...v0.102.5) (2026-04-17)
 
 
