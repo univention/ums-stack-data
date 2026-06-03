@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.103.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.103.1...v0.103.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* **deps:** Pin urllib3 >=2.7.0 to address urllib3 CVEs ([56cd5da](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/56cd5da35f1fb3d2037f51e987f772383158b90a)), closes [univention/dev/internal/team-nubus#1649](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1649)
+
 ## [0.103.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.103.0...v0.103.1) (2026-05-18)
 
 
