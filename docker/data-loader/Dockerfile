@@ -3,7 +3,7 @@
 
 # Inspired by: https://hynek.me/articles/docker-uv/
 
-ARG UCS_BASE_IMAGE_TAG=5.2.5-build.20260514@sha256:ee3b21e557d4f6780ece498209ef5e280f70c7c121b7784c29eeffa93c375b4d
+ARG UCS_BASE_IMAGE_TAG=5.3.0-build.20260702@sha256:8787ee424a1322ba25fa285f1840fe4bba62d7ec1f44a14a39b6e2024ad3e735
 ARG UCS_BASE_IMAGE=gitregistry.knut.univention.de/univention/dev/projects/ucs-base-image/ucs-base-python
 
 ###############################################
@@ -16,7 +16,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.6.3@sha256:8257f3d17fd04794feaf89d83b4ccca3b2
 ENV UV_LINK_MODE=copy \
     UV_COMPILE_BYTECODE=1 \
     UV_PYTHON_DOWNLOADS=never \
-    UV_PYTHON=python3.11
+    UV_PYTHON=python3.13
 
 COPY ./uv.lock \
      ./pyproject.toml \
@@ -62,9 +62,9 @@ USER ${USER}
 CMD ["process-all.sh"]
 
 RUN \
-  python3.11 -V && \
-  python3.11 -m site && \
-  python3.11 -c 'import univention.data_loader.cli'
+  python3.13 -V && \
+  python3.13 -m site && \
+  python3.13 -c 'import univention.data_loader.cli'
 
 ###############################################
 # Stage 3: testrunner image
