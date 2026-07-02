@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.103.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.103.2...v0.103.3) (2026-07-02)
+
+
+### Bug Fixes
+
+* **deps:** Update base image ([ddae420](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/ddae420704c91065b3913a1608d60790fa837591)), closes [univention/dev/internal/team-nubus#1663](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1663)
+
 ## [0.103.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.103.1...v0.103.2) (2026-06-03)
 
 
