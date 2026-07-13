@@ -11,7 +11,7 @@ include:
       - "jobs/lint-pre-commit.yaml"
       - "jobs/lint-commit-messages.yaml"
       - "jobs/semantic-release-env.yaml"
-      - "jobs/container-build-external.yaml"
+      - "jobs/container-build-external-buildkit.yaml"
       - "jobs/package-and-publish-helm-charts-external.yaml"
       - "jobs/check-debian-updates.yaml"
       - "templates/sonarqube.yaml"
@@ -19,14 +19,14 @@ include:
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
     DOCKERFILE_PATH: "docker/data-loader/Dockerfile"
-    KANIKO_ARGS: "--target test"
-    KANIKO_BUILD_CONTEXT: "${CI_PROJECT_DIR}"
+    BUILD_TARGET: "test"
+    BUILD_CONTEXT: "${CI_PROJECT_DIR}"
   - IMAGE_NAME: "data-loader"
     DOCKERFILE_PATH: "docker/data-loader/Dockerfile"
-    KANIKO_ARGS: "--target final"
-    KANIKO_BUILD_CONTEXT: "${CI_PROJECT_DIR}"
+    BUILD_TARGET: "final"
+    BUILD_CONTEXT: "${CI_PROJECT_DIR}"
   - IMAGE_NAME: "joinscript-tools"
-    KANIKO_BUILD_CONTEXT: "docker/joinscript-tools"
+    BUILD_CONTEXT: "docker/joinscript-tools"
 
 .publish-matrix: &publish-matrix
   - IMAGE_NAME:
