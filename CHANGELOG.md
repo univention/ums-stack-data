@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.104.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.103.3...v0.104.0) (2026-07-16)
+
+
+### Features
+
+* create index for memberOf LDAP attribute by default ([0e8ec84](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/0e8ec84e81ee69e93de6c0c38e39b387877c4c28)), closes [univention/dev/ucs#1297](https://git.knut.univention.de/univention/dev/ucs/issues/1297)
+
 ## [0.103.3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.103.2...v0.103.3) (2026-07-02)
 
 
