@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.105.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.104.0...v0.105.0) (2026-07-21)
+
+
+### Features
+
+* disable NT hash generation ([738818b](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/738818bd62c858ec0f97c15899a78105a9e59783)), closes [univention/dev/ucs#3637](https://git.knut.univention.de/univention/dev/ucs/issues/3637)
+
 ## [0.104.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.103.3...v0.104.0) (2026-07-16)
 
 
