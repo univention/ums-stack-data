@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.106.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.105.0...v0.106.0) (2026-08-12)
+
+
+### Features
+
+* **helm:** Enable structured logging by default ([fe3ac3a](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/fe3ac3a3d9799b744cb5fc66024681d545482562)), closes [univention/dev/internal/team-nubus#1671](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1671)
+
+
+### Bug Fixes
+
+* **helm:** Remove memberOf from default LDAP eq index ([2ade0df](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/2ade0df80efdca2c5bd55c4b5e53292e2e593d91)), closes [univention/dev/internal/team-nubus#1671](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1671)
+
 ## [0.105.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.104.0...v0.105.0) (2026-07-21)
 
 
