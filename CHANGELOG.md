@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.106.0...v0.107.0) (2026-08-19)
+
+
+### Features
+
+* add secure defaults for UCR variable kerberos/defaults/enctypes/permitted ([4d37ba9](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/4d37ba965b32ca86093ca8cb033d9d1303a900a9)), closes [univention/dev/nubus-for-k8s/umc#14](https://git.knut.univention.de/univention/dev/nubus-for-k8s/umc/issues/14)
+
 ## [0.106.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.105.0...v0.106.0) (2026-08-12)
 
 
