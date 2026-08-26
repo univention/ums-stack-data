@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.2](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.1...v0.107.2) (2026-08-26)
+
+
+### Bug Fixes
+
+* **stack-data-ums:** set directory/manager/rest/server/port ([a3f6a02](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/a3f6a02110e2f5b2d7b8609bf0fca0ba5bd0e177)), closes [#0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/0)
+
 ## [0.107.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.0...v0.107.1) (2026-08-25)
 
 
