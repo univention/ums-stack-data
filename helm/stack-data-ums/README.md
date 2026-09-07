@@ -170,6 +170,10 @@ true
 {
   "administrator": {
     "contextKey": "initialPasswordAdministrator",
+    "derivation": {
+      "site": "nubus-administrator",
+      "username": "nubus"
+    },
     "existingSecret": {
       "keyMapping": {
         "password": null
@@ -179,6 +183,10 @@ true
   },
   "readonlyUser": {
     "contextKey": "readonlyUserPassword",
+    "derivation": {
+      "site": "ldap-readonly",
+      "username": "ldap-server"
+    },
     "existingSecret": {
       "keyMapping": {
         "password": null
@@ -188,6 +196,10 @@ true
   },
   "svcPortalServer": {
     "contextKey": "svcPortalServerUserPassword",
+    "derivation": {
+      "site": "nubus",
+      "username": "svc-portal-server"
+    },
     "existingSecret": {
       "keyMapping": {
         "password": null

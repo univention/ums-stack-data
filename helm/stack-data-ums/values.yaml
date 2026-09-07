@@ -97,18 +97,33 @@ udm:
 contextUsers:
   svcPortalServer:
     contextKey: "svcPortalServerUserPassword"
+    # Inputs to the generated password, used when neither `templateContext.<contextKey>` nor
+    # `existingSecret` supplies one. In `global.secrets.masterPassword` mode the value is
+    # `derivePassword 1 <outputTemplate> <masterPassword> <username> <site> | sha1sum`, with
+    # `outputTemplate` fixed at the chart default `long`. Declaring the inputs here rather than
+    # hard-coding them in the template means a deployment can reproduce a generated password
+    # without reading the chart, and a change to them is visible as a values change.
+    derivation:
+      username: "svc-portal-server"
+      site: "nubus"
     existingSecret:
       name: null
       keyMapping:
         password: null
   administrator:
     contextKey: "initialPasswordAdministrator"
+    derivation:
+      username: "nubus"
+      site: "nubus-administrator"
     existingSecret:
       name: null
       keyMapping:
         password: null
   readonlyUser:
     contextKey: "readonlyUserPassword"
+    derivation:
+      username: "ldap-server"
+      site: "ldap-readonly"
     existingSecret:
       name: null
       keyMapping:
