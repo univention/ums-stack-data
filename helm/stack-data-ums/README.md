@@ -200,6 +200,24 @@ true
 			<td>Array with extra environment variables to add to containers.  extraEnvVars:   - name: FOO     value: "bar"</td>
 		</tr>
 		<tr>
+			<td>extraVolumeMounts</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Optionally specify an extra list of additional volumeMounts. They are added to the `main` container and to the `wait-for-udm-rest-api` init container.  extraVolumeMounts:   - name: "custom-data"     mountPath: "/custom-data"     readOnly: true</td>
+		</tr>
+		<tr>
+			<td>extraVolumes</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Optionally specify an extra list of additional volumes.  extraVolumes:   - name: "custom-data"     configMap:       name: "stack-data-customization"</td>
+		</tr>
+		<tr>
 			<td>fullnameOverride</td>
 			<td>string</td>
 			<td><pre lang="json">

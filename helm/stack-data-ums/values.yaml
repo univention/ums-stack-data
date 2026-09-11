@@ -246,6 +246,24 @@ additionalAnnotations: {}
 #     value: "bar"
 extraEnvVars: []
 
+# -- Optionally specify an extra list of additional volumes.
+#
+# extraVolumes:
+#   - name: "custom-data"
+#     configMap:
+#       name: "stack-data-customization"
+extraVolumes: []
+
+# -- Optionally specify an extra list of additional volumeMounts.
+# They are added to the `main` container and to the `wait-for-udm-rest-api`
+# init container.
+#
+# extraVolumeMounts:
+#   - name: "custom-data"
+#     mountPath: "/custom-data"
+#     readOnly: true
+extraVolumeMounts: []
+
 ## Global values
 affinity: {}
 configMapUcr: '{{ include "common.names.fullname" . }}-ucr'
