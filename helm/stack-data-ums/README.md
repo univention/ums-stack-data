@@ -164,6 +164,43 @@ true
 			<td>Disallow custom Seccomp profile by setting it to RuntimeDefault.</td>
 		</tr>
 		<tr>
+			<td>contextUsers</td>
+			<td>object</td>
+			<td><pre lang="json">
+{
+  "administrator": {
+    "contextKey": "initialPasswordAdministrator",
+    "existingSecret": {
+      "keyMapping": {
+        "password": null
+      },
+      "name": null
+    }
+  },
+  "readonlyUser": {
+    "contextKey": "readonlyUserPassword",
+    "existingSecret": {
+      "keyMapping": {
+        "password": null
+      },
+      "name": null
+    }
+  },
+  "svcPortalServer": {
+    "contextKey": "svcPortalServerUserPassword",
+    "existingSecret": {
+      "keyMapping": {
+        "password": null
+      },
+      "name": null
+    }
+  }
+}
+</pre>
+</td>
+			<td>Context users provisioned by the data-loader Job.  This is an open map: each entry's `contextKey` is the `templateContext` key whose password the entry manages, and its `existingSecret`, when set, makes the data-loader Job read that password from the referenced Secret at runtime (the `prepare-context` initContainer merges it into context.yaml and the key is dropped from the chart-emitted `<release>-context` Secret) instead of from `templateContext`. The three built-ins below also generate their password + emit a per-user Secret (consumed by portal-server / keycloak- bootstrap) when no `existingSecret` is set; additional entries are treated as merge-only (provide the value via `existingSecret`, or via `templateContext` directly). Downstream consumers resolve Secret names via `nubus-common.secrets.name`, so they pick up externally-provided Secrets.</td>
+		</tr>
+		<tr>
 			<td>dataLoader.enabled</td>
 			<td>bool</td>
 			<td><pre lang="json">
