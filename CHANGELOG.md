@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.5](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.4...v0.107.5) (2026-09-15)
+
+
+### Bug Fixes
+
+* **helm:** Add extraVolumes and extraVolumeMounts to the helm chart ([ea7c8ea](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/ea7c8ea37e413c0d26edfc6af702427a8f290003)), closes [univention/dev/nubus-for-k8s/stack-data#3](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/3)
+
 ## [0.107.4](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.3...v0.107.4) (2026-09-11)
 
 
