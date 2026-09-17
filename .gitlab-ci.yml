@@ -4,17 +4,27 @@
 
 include:
   - project: "univention/dev/nubus-for-k8s/common-ci"
-    ref: "v1.67.6"
+    # TEST RUN: pinned to a feature branch to validate the "build pushes
+    # straight to harbor, no push-image-external hop" change end to end
+    # before it lands in common-ci proper. Revert to a tagged common-ci
+    # release once validated.
+    ref: "isakov/skip-push-to-gitregistry"
     file:
       - "defaults/stages.yaml"
       - "defaults/nubus-workflow.yaml"
       - "jobs/lint-pre-commit.yaml"
       - "jobs/lint-commit-messages.yaml"
       - "jobs/semantic-release-env.yaml"
-      - "jobs/container-build-external-buildkit.yaml"
+      - "jobs/container-build-direct-buildkit.yaml"
+      - "jobs/container-publish-direct.yaml"
+      - "jobs/container-malware-scan.yaml"
       - "jobs/package-and-publish-helm-charts-external.yaml"
       - "jobs/check-debian-updates.yaml"
       - "templates/sonarqube.yaml"
+  - project: "univention/infrastructure/docker-services"
+    ref: "master"
+    file:
+      - "dind.yml"
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
@@ -39,26 +49,49 @@ container-build:
 container-malware-scan:
   parallel:
     matrix: *publish-matrix
+  variables:
+    SCAN_REGISTRY_IMAGE: "${EXTERNAL_PRIVATE_IMAGE_REGISTRY}"
 
 test-data-loader-unittests:
   stage: "test"
-  image: "${CI_REGISTRY_IMAGE}/data-loader-test-runner:${RELEASE_VERSION}"
+  # The test-runner image now lives in harbor (private project), not
+  # gitregistry, so it can't be pulled via the native "image:" keyword (that
+  # pull happens before any in-job login could take effect, and there is no
+  # DOCKER_AUTH_CONFIG configured for harbor). Pull it explicitly instead, via
+  # .dind, reusing the same robot-account login pattern used by
+  # promote-image-public/container-sign-external.
+  extends: .dind
+  image: "${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:24.0.7"
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: "never"
     - when: "on_success"
+  before_script:
+    - unset DOCKER_API_VERSION
+    - echo "${EXTERNAL_REGISTRY_ROBOT_TOKEN}" | docker login "${EXTERNAL_REGISTRY_HOST}" --username "${EXTERNAL_REGISTRY_ROBOT_ACCOUNT}" --password-stdin
+    - docker pull "${EXTERNAL_PRIVATE_IMAGE_REGISTRY}/data-loader-test-runner:${RELEASE_VERSION}"
   script:
-    - pytest --cov=src/ --cov-report=term-missing
+    - >
+      docker run --rm
+      -v "${CI_PROJECT_DIR}:${CI_PROJECT_DIR}"
+      -w "${CI_PROJECT_DIR}"
+      "${EXTERNAL_PRIVATE_IMAGE_REGISTRY}/data-loader-test-runner:${RELEASE_VERSION}"
+      pytest --cov=src/ --cov-report=term-missing
 
 test-data-loader-container:
   stage: "test"
-  image: "${CI_REGISTRY_IMAGE}/data-loader:${RELEASE_VERSION}"
+  extends: .dind
+  image: "${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:24.0.7"
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: "never"
     - when: "on_success"
+  before_script:
+    - unset DOCKER_API_VERSION
+    - echo "${EXTERNAL_REGISTRY_ROBOT_TOKEN}" | docker login "${EXTERNAL_REGISTRY_HOST}" --username "${EXTERNAL_REGISTRY_ROBOT_ACCOUNT}" --password-stdin
+    - docker pull "${EXTERNAL_PRIVATE_IMAGE_REGISTRY}/data-loader:${RELEASE_VERSION}"
   script:
-    - process-join-data --help
+    - docker run --rm "${EXTERNAL_PRIVATE_IMAGE_REGISTRY}/data-loader:${RELEASE_VERSION}" process-join-data --help
 
 test-chart-unittests:
   stage: test
@@ -68,7 +101,7 @@ test-chart-unittests:
     - helm dep build helm/stack-data-ums
     - pytest tests/chart
 
-push-image-external:
+promote-image-public:
   parallel:
     matrix: *publish-matrix
 
@@ -84,7 +117,7 @@ check-debian-updates:
   parallel:
     matrix: *build-matrix
   variables:
-    TARGET_IMAGE: "${CI_REGISTRY_IMAGE}/${IMAGE_NAME}:latest"
+    TARGET_IMAGE: "${EXTERNAL_PRIVATE_IMAGE_REGISTRY}/${IMAGE_NAME}:latest"
 
 sonarqube:
   extends: .sonarqube

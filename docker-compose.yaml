@@ -5,7 +5,7 @@ services:
   data-loader:
     profiles:
       - "test"
-    image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/data-loader:${IMAGE_TAG:-latest}"
+    image: "artifacts.software-univention.de/nubus-dev/images/data-loader:${IMAGE_TAG:-latest}"
     build:
       dockerfile: "./docker/data-loader/Dockerfile"
       target: "final"
@@ -37,7 +37,7 @@ services:
   joinscript-tools:
     profiles:
       - "test"
-    image: "gitregistry.knut.univention.de/univention/customers/dataport/upx/stack-data/joinscript-tools:${IMAGE_TAG:-latest}"
+    image: "artifacts.software-univention.de/nubus-dev/images/joinscript-tools:${IMAGE_TAG:-latest}"
     build:
       context: "./docker/joinscript-tools"
     platform: "linux/amd64"
