@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.6](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.5...v0.107.6) (2026-09-21)
+
+
+### Bug Fixes
+
+* **ucr:** Disable ldap kerberos integration to enable dropping dependencies from the LDAP container ([c0ea193](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/c0ea19395a8c5f3e6dcd10a3a4bed7fb7497b71d)), closes [univention/dev/internal/team-nubus#1677](https://git.knut.univention.de/univention/dev/internal/team-nubus/issues/1677)
+
 ## [0.107.5](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.4...v0.107.5) (2026-09-15)
 
 
