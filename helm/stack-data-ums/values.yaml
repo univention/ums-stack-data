@@ -81,6 +81,39 @@ udm:
       keyMapping:
         password: null
 
+# -- Context users provisioned by the data-loader Job.
+#
+# This is an open map: each entry's `contextKey` is the `templateContext`
+# key whose password the entry manages, and its `existingSecret`, when set,
+# makes the data-loader Job read that password from the referenced Secret at
+# runtime (the `prepare-context` initContainer merges it into context.yaml and
+# the key is dropped from the chart-emitted `<release>-context` Secret) instead
+# of from `templateContext`. The three built-ins below also generate their
+# password + emit a per-user Secret (consumed by portal-server / keycloak-
+# bootstrap) when no `existingSecret` is set; additional entries are treated as
+# merge-only (provide the value via `existingSecret`, or via `templateContext`
+# directly). Downstream consumers resolve Secret names via
+# `nubus-common.secrets.name`, so they pick up externally-provided Secrets.
+contextUsers:
+  svcPortalServer:
+    contextKey: "svcPortalServerUserPassword"
+    existingSecret:
+      name: null
+      keyMapping:
+        password: null
+  administrator:
+    contextKey: "initialPasswordAdministrator"
+    existingSecret:
+      name: null
+      keyMapping:
+        password: null
+  readonlyUser:
+    contextKey: "readonlyUserPassword"
+    existingSecret:
+      name: null
+      keyMapping:
+        password: null
+
 # -- Context used to render the data file templates in the data loader.
 templateContext:
   # -- Domain name of the instance. Chart defaults to `univention-organization.intranet`
