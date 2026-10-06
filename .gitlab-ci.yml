@@ -4,7 +4,7 @@
 
 include:
   - project: "univention/dev/nubus-for-k8s/common-ci"
-    ref: "v1.68.2"
+    ref: "mmeschter/sbom-upload"  # Trial only: common-ci MR 259 records pushed/<IMAGE_NAME>. Pin a release before merging.
     file:
       - "defaults/stages.yaml"
       - "defaults/nubus-workflow.yaml"
@@ -15,6 +15,30 @@ include:
       - "jobs/package-and-publish-helm-charts-external.yaml"
       - "jobs/check-debian-updates.yaml"
       - "templates/sonarqube.yaml"
+  # Build-time SBOM: attested to the image and uploaded to the Dependency-Track
+  # v5 instance as a release-versioned project. Included from vul-man directly
+  # while the component and its common-ci wrapper are unreleased;
+  # switch to common-ci's "jobs/sbom-upload.yaml" once both are tagged.
+  - component: "$CI_SERVER_FQDN/univention/dev/tooling/vulnerability-management/sbom-upload@mmeschter/sbom-upload"
+    inputs:
+      image_name: "data-loader"
+      # vul-man's DEP_TRACK_API_KEY belongs to the v4 instance; the v5 one has its own key.
+      dep_track_api_key: "$DEP_TRACK_V5_API_KEY"
+      # The hubble ingress serves its certificate without the intermediate.
+      # Known cluster issue; drop this once it is fixed.
+      dep_track_ca_bundle: "$DEP_TRACK_V5_CA_BUNDLE"
+      # Trial only: the vul-man image exists under its branch version until the
+      # vul-man MR is merged and released. Remove before merging.
+      vul_man_image: "gitregistry.knut.univention.de/univention/dev/tooling/vulnerability-management/vul-man:1.0.0-pre-mmeschter-sbom-upload@sha256:35d47c1bd6204b0c15f250ecd3b39b9d974ec18cb86115386adf8d77a8b19818"
+      # Trial only: this branch is never a release. Remove before merging.
+      release_only: false
+      # Trial only: run on this branch. Remove before merging; the defaults are
+      # main and release tags.
+      job_rules:
+        - if: '$CI_PIPELINE_SOURCE == "schedule"'
+          when: "never"
+        - if: '$CI_COMMIT_BRANCH == "mmeschter/sbom-upload"'
+        - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
