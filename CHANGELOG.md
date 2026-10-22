@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.8](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.7...v0.107.8) (2026-10-22)
+
+
+### Bug Fixes
+
+* **deps:** Replace gitregistry.knut.univention.de/univention/dev/tooling/pre-commit/upx-pre-commit Docker tag with gitregistry.knut.univention.de/univention/dev/tooling/pre-commit/univention-pre-commit latest ([5906d14](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/5906d14c6e1b4eed23456ed4bede465c2a8575f6)), closes [#0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/0)
+
 ## [0.107.7](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.6...v0.107.7) (2026-09-25)
 
 
