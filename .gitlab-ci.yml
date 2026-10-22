@@ -4,7 +4,7 @@
 
 include:
   - project: "univention/dev/nubus-for-k8s/common-ci"
-    ref: "v1.68.2"
+    ref: "2e0724e1b0774439b0603f031a3be9d3df300e32"  # TODO: common-ci release with the vul-man component
     file:
       - "defaults/stages.yaml"
       - "defaults/nubus-workflow.yaml"
@@ -15,6 +15,7 @@ include:
       - "jobs/package-and-publish-helm-charts-external.yaml"
       - "jobs/check-debian-updates.yaml"
       - "templates/sonarqube.yaml"
+  - component: "$CI_SERVER_FQDN/univention/dev/nubus-for-k8s/common-ci/vul-man@2e0724e1b0774439b0603f031a3be9d3df300e32"
 
 .build-matrix: &build-matrix
   - IMAGE_NAME: "data-loader-test-runner"
@@ -37,6 +38,10 @@ container-build:
     matrix: *build-matrix
 
 container-malware-scan:
+  parallel:
+    matrix: *publish-matrix
+
+sbom-upload:
   parallel:
     matrix: *publish-matrix
 
