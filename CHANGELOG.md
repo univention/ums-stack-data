@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.9](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.8...v0.107.9) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** Update nubus-common Docker tag to v0.29.22 ([3369f25](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/3369f252d8ea699776e49e750afff43d1ac50641)), closes [#0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/0)
+
 ## [0.107.8](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.7...v0.107.8) (2026-10-22)
 
 
