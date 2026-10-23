@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.10](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.9...v0.107.10) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** Update Python dependencies ([e1462a9](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/e1462a91779ea58f45c66e8bcdbb62d5aa1db2c3)), closes [#0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/0)
+
 ## [0.107.9](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.8...v0.107.9) (2026-10-23)
 
 
