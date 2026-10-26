@@ -30,7 +30,7 @@ spec:
       restartPolicy: Never
       {{- include "nubus-common.images.renderPullSecrets" . | nindent 6 }}
       {{- if .Values.podSecurityContext.enabled }}
-      securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 8 }}
+      securityContext: {{- include "nubus-common.compatibility.renderSecurityContext" (dict "secContext" $.Values.podSecurityContext "context" $) | nindent 8 }}
       {{- end }}
       {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ include "common.names.fullname" . }}
@@ -39,7 +39,7 @@ spec:
       initContainers:
       - name: "load-internal-plugins"
         {{- if .Values.containerSecurityContext.enabled }}
-        securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+        securityContext: {{- include "nubus-common.compatibility.renderSecurityContext" (dict "secContext" $.Values.containerSecurityContext "context" $) | nindent 12 }}
         {{- end }}
         image: "{{ coalesce .Values.image.registry .Values.global.imageRegistry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ coalesce .Values.image.pullPolicy .Values.global.imagePullPolicy | quote }}
@@ -65,7 +65,7 @@ spec:
       {{- range (concat $systemExtensions $extensions) }}
       - name: "load-{{ .name }}-extension"
         {{- if $.Values.containerSecurityContext.enabled }}
-        securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+        securityContext: {{- include "nubus-common.compatibility.renderSecurityContext" (dict "secContext" $.Values.containerSecurityContext "context" $) | nindent 12 }}
         {{- end }}
         image: "{{ coalesce .image.registry $.Values.global.imageRegistry }}/{{ .image.repository }}:{{ .image.tag }}"
         imagePullPolicy: {{ coalesce .image.pullPolicy $.Values.global.imagePullPolicy | quote }}
@@ -81,7 +81,7 @@ spec:
       - name: wait-for-udm-rest-api
         command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-udm-rest-api.py"]
         {{- if $.Values.containerSecurityContext.enabled }}
-        securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+        securityContext: {{- include "nubus-common.compatibility.renderSecurityContext" (dict "secContext" $.Values.containerSecurityContext "context" $) | nindent 12 }}
         {{- end }}
         {{- with .Values.image }}
         image: "{{ coalesce .registry $.Values.global.imageRegistry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
@@ -117,7 +117,7 @@ spec:
           - --log-template
           {{- end }}
         {{- if $.Values.containerSecurityContext.enabled }}
-        securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+        securityContext: {{- include "nubus-common.compatibility.renderSecurityContext" (dict "secContext" $.Values.containerSecurityContext "context" $) | nindent 12 }}
         {{- end }}
         {{- with .Values.image }}
         image: "{{ coalesce .registry $.Values.global.imageRegistry }}/{{ .repository }}{{ if .sha256 }}@sha256:{{ .sha256 }}{{ else }}:{{ .tag }}{{ end }}"
