@@ -199,6 +199,16 @@ properties:
       option: ""
     - command: "udm/syntax/choices"
       option: ""
+    - command: "udm/syntax/choices/key"
+      option: ""
+---
+action: ensure_list_contains
+module: settings/umc_operationset
+position: "cn=udm-syntax,cn=operations,cn=UMC,cn=univention,{{ ldapBaseDn }}"
+properties:
+  operation:
+    - command: "udm/syntax/choices/key"
+      option: ""
 ---
 action: create
 module: settings/umc_operationset
