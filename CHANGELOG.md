@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.13](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.12...v0.107.13) (2026-11-04)
+
+
+### Bug Fixes
+
+* **udm:** allow syntax choice key lookups in UMC permissions ([9e03c9e](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/9e03c9eb5f32996de438ae87c7c03c94aee15728)), closes [#60084](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/60084)
+
 ## [0.107.12](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.11...v0.107.12) (2026-10-30)
 
 
