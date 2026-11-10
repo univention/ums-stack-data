@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.107.14](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.13...v0.107.14) (2026-11-10)
+
+
+### Bug Fixes
+
+* **ldap-server:** raise the default open files limit to 65535 ([6b1faea](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/6b1faea4d0a970ece3b9555d800353164d452beb)), closes [univention/dev/nubus-for-k8s/ldap#16](https://git.knut.univention.de/univention/dev/nubus-for-k8s/ldap/issues/16)
+
 ## [0.107.13](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.12...v0.107.13) (2026-11-04)
 
 
