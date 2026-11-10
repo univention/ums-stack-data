@@ -20,5 +20,9 @@ templateContext:
   domainName: "test.example.org"
   externalMailDomain: "test.example.org"
   initialPasswordAdministrator: "test-password"
+  readonlyUserPassword:
+    kubernetes_secret:
+      name: "linter-readonly-user"
+      key: "password"
   ldapBaseDn: "dc=test,dc=example,dc=org"
   keycloakTwofaGroup: "2FA Test Users"
