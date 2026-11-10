@@ -21,14 +21,18 @@ class SecretReader(Protocol):
     def get(self, name: str, key: str) -> str: ...
 
 
+def is_reference(node) -> bool:
+    return isinstance(node, dict) and REFERENCE_KEY in node
+
+
 def resolve_references(node, reader: SecretReader, path: str = ""):
+    if is_reference(node):
+        name, key = _validate(node, path)
+        try:
+            return reader.get(name, key)
+        except SecretReadError as error:
+            raise SecretReadError(f"{path or '<root>'}: {error}") from error
     if isinstance(node, dict):
-        if REFERENCE_KEY in node:
-            name, key = _validate(node, path)
-            try:
-                return reader.get(name, key)
-            except SecretReadError as error:
-                raise SecretReadError(f"{path or '<root>'}: {error}") from error
         return {key: resolve_references(value, reader, _join(path, key)) for key, value in node.items()}
     if isinstance(node, list):
         return [resolve_references(item, reader, f"{path}[{index}]") for index, item in enumerate(node)]
