@@ -12,6 +12,7 @@ import yaml
 from univention.admin.rest.client import UDM
 
 from . import process_template
+from .secret_refs import is_reference
 
 log = logging.getLogger("app")
 
@@ -103,7 +104,7 @@ def load_context(filename):
 
 def deep_merge(target, source):
     for key, value in source.items():
-        if isinstance(value, dict):
+        if isinstance(value, dict) and not is_reference(value):
             sub_target = target.setdefault(key, {})
             deep_merge(sub_target, value)
         else:
