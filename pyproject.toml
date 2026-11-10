@@ -16,6 +16,7 @@ dependencies = [
     "dnspython",
     "jinja2",
     "pyyaml",
+    "requests",
     "typer",
     "udm-rest-api-client<1.0.0,>=0.0.2",
     "urllib3>=2.7.0",
