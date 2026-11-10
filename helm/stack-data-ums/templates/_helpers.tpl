@@ -217,3 +217,10 @@ univention-organization.intranet
 false
 {{- end -}}
 {{- end -}}
+
+{{- /* Renders "true" if the value is a `kubernetes_secret` reference, which the data-loader resolves at runtime. */}}
+{{- define "stack-data-ums.isSecretReference" -}}
+{{- if and (kindIs "map" .) (hasKey . "kubernetes_secret") -}}
+true
+{{- end -}}
+{{- end -}}
