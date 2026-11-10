@@ -50,3 +50,26 @@ def test_a_referenced_password_is_kept_and_has_no_user_secret(chart, context_key
 
     assert context_of(result)[context_key] == ref("operator-secret", "operator-key")
     assert [s for s in result.get_resources(kind="Secret") if s["metadata"]["name"] == user_secret] == []
+
+
+def test_the_service_account_may_read_secrets_in_its_namespace(chart):
+    result = chart.helm_template()
+
+    role = result.get_resource(kind="Role", name="release-name-stack-data-ums")
+    assert role["rules"] == [{"apiGroups": [""], "resources": ["secrets"], "verbs": ["get"]}]
+    binding = result.get_resource(kind="RoleBinding", name="release-name-stack-data-ums")
+    assert binding["roleRef"] == {
+        "apiGroup": "rbac.authorization.k8s.io",
+        "kind": "Role",
+        "name": role["metadata"]["name"],
+    }
+    assert binding["subjects"] == [
+        {"kind": "ServiceAccount", "name": "release-name-stack-data-ums", "namespace": role["metadata"]["namespace"]},
+    ]
+
+
+def test_the_job_pod_mounts_the_service_account_token(chart):
+    result = chart.helm_template()
+
+    [job] = result.get_resources(kind="Job")
+    assert job["spec"]["template"]["spec"]["automountServiceAccountToken"] is True
