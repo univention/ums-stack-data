@@ -245,3 +245,41 @@ class TestUDMConfig:
             udm_api_password,
         )
         assert result.exit_code == 0
+
+
+class StubSecretReader:
+    def get(self, name, key):
+        return f"value-of-{name}-{key}"
+
+
+reference_context = {"initialPasswordAdministrator": {"kubernetes_secret": {"name": "admin", "key": "password"}}}
+
+
+@patch("univention.data_loader.cli.KubernetesSecretReader", StubSecretReader)
+@patch("univention.data_loader.cli.process_template.run")
+@patch("univention.data_loader.cli._connect_to_udm")
+@patch("univention.data_loader.cli.load_context", return_value=reference_context)
+class TestSecretReferences:
+    def test_renders_with_the_resolved_secret_value(self, mock_load_context, mock_udm, mock_run):
+        result = runner.invoke(
+            cli.cli_app,
+            ["examples/example-data.yaml", "--template-context", "context.yaml"],
+            env=DEFAULT_ENV,
+        )
+
+        assert result.exit_code == 0
+        assert mock_run.call_args.kwargs["template_context"] == {
+            "initialPasswordAdministrator": "value-of-admin-password",
+        }
+
+    def test_logs_the_context_with_references_and_without_values(self, mock_load_context, mock_udm, mock_run, caplog):
+        with caplog.at_level(logging.DEBUG, logger="app"):
+            result = runner.invoke(
+                cli.cli_app,
+                ["examples/example-data.yaml", "--log-context", "--template-context", "context.yaml"],
+                env=DEFAULT_ENV,
+            )
+
+        assert result.exit_code == 0
+        assert "kubernetes_secret" in caplog.text
+        assert "value-of-admin-password" not in caplog.text
