@@ -56,3 +56,8 @@ def _validate(node: dict, path: str) -> tuple[str, str]:
 
 def _join(path: str, key) -> str:
     return f"{path}.{key}" if path else str(key)
+
+
+class KubernetesSecretReader:
+    def get(self, name: str, key: str) -> str:
+        raise NotImplementedError

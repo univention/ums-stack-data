@@ -12,7 +12,7 @@ import yaml
 from univention.admin.rest.client import UDM
 
 from . import process_template
-from .secret_refs import is_reference
+from .secret_refs import KubernetesSecretReader, is_reference, resolve_references
 
 log = logging.getLogger("app")
 
@@ -71,6 +71,7 @@ def main(
     context = load_and_merge_contexts(template_context) if template_context else {}
     if log_context:
         log.debug("Merged context\n%s", yaml.safe_dump(context))
+    context = resolve_references(context, KubernetesSecretReader())
 
     udm = _connect_to_udm(udm_api_url, udm_api_user, udm_api_password_file)
     process_template.run(
