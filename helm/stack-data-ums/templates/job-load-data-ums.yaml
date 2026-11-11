@@ -34,7 +34,7 @@ spec:
       {{- end }}
       {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ include "common.names.fullname" . }}
-      # The data-loader reads referenced Secrets with this token; other pods using the ServiceAccount get none.
+      # The ServiceAccount turns the token off; the data-loader needs it to read referenced Secrets.
       automountServiceAccountToken: true
       {{- end }}
       {{ if .Values.stackDataUms.dependencyUdmApiWait }}
