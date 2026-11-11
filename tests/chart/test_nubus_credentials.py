@@ -32,7 +32,7 @@ def test_no_credentials_for_a_referenced_administrator_password(chart):
         """
         templateContext:
           initialPasswordAdministrator:
-            kubernetes_secret:
+            kubernetesSecret:
               name: operator-secret
               key: administrator-password
         """,

@@ -85,7 +85,7 @@ udm:
 #
 # Any value can be a reference to a key of a Secret in the release namespace,
 # which the data loader reads through the Kubernetes API, for example
-# `{kubernetes_secret: {name: ldapsearch-ox, key: password}}`.
+# `{kubernetesSecret: {name: ldapsearch-ox, key: password}}`.
 # Such a value is never stored in the context Secret.
 # It needs `serviceAccount.create`, which also creates the Role to read Secrets.
 templateContext:
@@ -100,19 +100,19 @@ templateContext:
   # -- The initial password of the user "Administrator".
   #
   # A random password will be generated if unset.
-  # Takes a string or a `kubernetes_secret` reference.
+  # Takes a string or a `kubernetesSecret` reference.
   # With a reference, the chart renders no Secret for this user.
   initialPasswordAdministrator: null
   # -- The password for the Portal service user
   #
   # A random password will be generated if unset.
-  # Takes a string or a `kubernetes_secret` reference.
+  # Takes a string or a `kubernetesSecret` reference.
   # With a reference, the chart renders no Secret for this user.
   svcPortalServerUserPassword: null
   # -- The password for the Keycloak service readonly user
   #
   # A random password will be generated if unset.
-  # Takes a string or a `kubernetes_secret` reference.
+  # Takes a string or a `kubernetesSecret` reference.
   # With a reference, the chart renders no Secret for this user.
   readonlyUserPassword: null
   # -- Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`.
