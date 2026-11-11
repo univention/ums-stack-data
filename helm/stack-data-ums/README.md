@@ -782,7 +782,7 @@ false
 }
 </pre>
 </td>
-			<td>Context used to render the data file templates in the data loader.  Any value can be a reference to a key of a Secret in the release namespace, which the data loader reads through the Kubernetes API, for example `{kubernetes_secret: {name: ldapsearch-ox, key: password}}`. Such a value is never stored in the context Secret. It needs `serviceAccount.create`, which also creates the Role to read Secrets.</td>
+			<td>Context used to render the data file templates in the data loader.  Any value can be a reference to a key of a Secret in the release namespace, which the data loader reads through the Kubernetes API, for example `{kubernetesSecret: {name: ldapsearch-ox, key: password}}`. Such a value is never stored in the context Secret. It needs `serviceAccount.create`, which also creates the Role to read Secrets.</td>
 		</tr>
 		<tr>
 			<td>templateContext.domainName</td>
@@ -818,7 +818,7 @@ false
 null
 </pre>
 </td>
-			<td>The initial password of the user "Administrator".  A random password will be generated if unset. Takes a string or a `kubernetes_secret` reference. With a reference, the chart renders no Secret for this user.</td>
+			<td>The initial password of the user "Administrator".  A random password will be generated if unset. Takes a string or a `kubernetesSecret` reference. With a reference, the chart renders no Secret for this user.</td>
 		</tr>
 		<tr>
 			<td>templateContext.keycloakTwofaGroup</td>
@@ -854,7 +854,7 @@ null
 null
 </pre>
 </td>
-			<td>The password for the Keycloak service readonly user  A random password will be generated if unset. Takes a string or a `kubernetes_secret` reference. With a reference, the chart renders no Secret for this user.</td>
+			<td>The password for the Keycloak service readonly user  A random password will be generated if unset. Takes a string or a `kubernetesSecret` reference. With a reference, the chart renders no Secret for this user.</td>
 		</tr>
 		<tr>
 			<td>templateContext.svcPortalServerUserPassword</td>
@@ -863,7 +863,7 @@ null
 null
 </pre>
 </td>
-			<td>The password for the Portal service user  A random password will be generated if unset. Takes a string or a `kubernetes_secret` reference. With a reference, the chart renders no Secret for this user.</td>
+			<td>The password for the Portal service user  A random password will be generated if unset. Takes a string or a `kubernetesSecret` reference. With a reference, the chart renders no Secret for this user.</td>
 		</tr>
 		<tr>
 			<td>tolerations</td>

@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2026 Univention GmbH
 
-"""Resolve `kubernetes_secret` references in the template context."""
+"""Resolve `kubernetesSecret` references in the template context."""
 
 import base64
 import os
@@ -10,7 +10,7 @@ from typing import Protocol
 
 import requests
 
-REFERENCE_KEY = "kubernetes_secret"
+REFERENCE_KEY = "kubernetesSecret"
 REFERENCE_FIELDS = {"name", "key"}
 SERVICE_ACCOUNT_DIR = Path("/var/run/secrets/kubernetes.io/serviceaccount")
 

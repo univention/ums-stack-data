@@ -17,7 +17,7 @@ built_in_passwords = pytest.mark.parametrize(
 
 
 def ref(name, key):
-    return {"kubernetes_secret": {"name": name, "key": key}}
+    return {"kubernetesSecret": {"name": name, "key": key}}
 
 
 def context_of(result):
@@ -40,7 +40,7 @@ def test_a_referenced_password_is_kept_and_has_no_user_secret(chart, context_key
         f"""
         templateContext:
           {context_key}:
-            kubernetes_secret:
+            kubernetesSecret:
               name: operator-secret
               key: operator-key
         """,
