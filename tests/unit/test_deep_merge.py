@@ -42,8 +42,8 @@ def test_set_a_value_to_none():
 
 def test_a_secret_reference_replaces_a_string():
     target = {"password": "plain"}
-    source = {"password": {"kubernetes_secret": {"name": "admin", "key": "password"}}}
+    source = {"password": {"kubernetesSecret": {"name": "admin", "key": "password"}}}
 
     deep_merge(target, source)
 
-    assert target == {"password": {"kubernetes_secret": {"name": "admin", "key": "password"}}}
+    assert target == {"password": {"kubernetesSecret": {"name": "admin", "key": "password"}}}

@@ -252,7 +252,7 @@ class StubSecretReader:
         return f"value-of-{name}-{key}"
 
 
-reference_context = {"initialPasswordAdministrator": {"kubernetes_secret": {"name": "admin", "key": "password"}}}
+reference_context = {"initialPasswordAdministrator": {"kubernetesSecret": {"name": "admin", "key": "password"}}}
 
 
 @patch("univention.data_loader.cli.KubernetesSecretReader", StubSecretReader)
@@ -281,5 +281,5 @@ class TestSecretReferences:
             )
 
         assert result.exit_code == 0
-        assert "kubernetes_secret" in caplog.text
+        assert "kubernetesSecret" in caplog.text
         assert "value-of-admin-password" not in caplog.text

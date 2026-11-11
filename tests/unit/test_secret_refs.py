@@ -17,7 +17,7 @@ class FakeSecretReader:
 
 
 def ref(name: str, key: str) -> dict:
-    return {"kubernetes_secret": {"name": name, "key": key}}
+    return {"kubernetesSecret": {"name": name, "key": key}}
 
 
 def test_replaces_a_top_level_reference_with_the_secret_value():
@@ -41,13 +41,13 @@ def test_replaces_references_in_list_items():
 @pytest.mark.parametrize(
     "malformed",
     [
-        pytest.param({"kubernetes_secret": {"name": "admin", "key": "password"}, "extra": 1}, id="sibling key"),
-        pytest.param({"kubernetes_secret": {"name": "admin"}}, id="missing key"),
-        pytest.param({"kubernetes_secret": {"key": "password"}}, id="missing name"),
-        pytest.param({"kubernetes_secret": {"name": "", "key": "password"}}, id="empty name"),
-        pytest.param({"kubernetes_secret": {"name": "admin", "key": 1}}, id="key not a string"),
-        pytest.param({"kubernetes_secret": {"name": "a", "key": "b", "namespace": "c"}}, id="unknown field"),
-        pytest.param({"kubernetes_secret": "admin"}, id="not a mapping"),
+        pytest.param({"kubernetesSecret": {"name": "admin", "key": "password"}, "extra": 1}, id="sibling key"),
+        pytest.param({"kubernetesSecret": {"name": "admin"}}, id="missing key"),
+        pytest.param({"kubernetesSecret": {"key": "password"}}, id="missing name"),
+        pytest.param({"kubernetesSecret": {"name": "", "key": "password"}}, id="empty name"),
+        pytest.param({"kubernetesSecret": {"name": "admin", "key": 1}}, id="key not a string"),
+        pytest.param({"kubernetesSecret": {"name": "a", "key": "b", "namespace": "c"}}, id="unknown field"),
+        pytest.param({"kubernetesSecret": "admin"}, id="not a mapping"),
     ],
 )
 def test_rejects_a_malformed_reference_and_names_its_path(malformed):

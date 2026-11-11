@@ -218,9 +218,9 @@ false
 {{- end -}}
 {{- end -}}
 
-{{- /* Renders "true" if the value is a `kubernetes_secret` reference, which the data-loader resolves at runtime. */}}
+{{- /* Renders "true" if the value is a `kubernetesSecret` reference, which the data-loader resolves at runtime. */}}
 {{- define "stack-data-ums.isSecretReference" -}}
-{{- if and (kindIs "map" .) (hasKey . "kubernetes_secret") -}}
+{{- if and (kindIs "map" .) (hasKey . "kubernetesSecret") -}}
 true
 {{- end -}}
 {{- end -}}
