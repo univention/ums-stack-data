@@ -116,6 +116,11 @@ templateContext:
   showUmc: '{{ include "stack-data-ums.showUmc" . }}'
   # -- Creates the group needed for enforcing configuration of a second factor in Keycloak.
   keycloakTwofaGroup: "2FA Users"
+  # -- (bool) Activate (`true`) or deactivate (`false`) the portal entry "Register Passkey"
+  # in the user menu. This value only controls the portal entry. To enable passkeys in
+  # Keycloak, use `nubusKeycloakBootstrap.bootstrap.passkeys.enabled`. When not set, the
+  # activation state of the entry stays unchanged, for example a state set in the portal.
+  passkeyRegistrationActivated: null
 
 # TODO: the template processing of the data files is being moved into the
 # run-time of the container "data-loader". "stackDataContext" will be removed
