@@ -774,6 +774,7 @@ false
   "initialPasswordAdministrator": null,
   "keycloakTwofaGroup": "2FA Users",
   "ldapBaseDn": "{{ include \"stack-data-ums.ldapBaseDn\" . }}",
+  "passkeyRegistrationActivated": null,
   "readonlyUserPassword": null,
   "showUmc": "{{ include \"stack-data-ums.showUmc\" . }}",
   "subDomainsKeycloak": "{{ include \"stack-data-ums.subDomains.keycloak\" . }}",
@@ -836,6 +837,15 @@ null
 </pre>
 </td>
 			<td>Base DN of the LDAP directory. Chart defaults to `dc=univention-organization,dc=intranet`. Example: `"dc=example,dc=org"`</td>
+		</tr>
+		<tr>
+			<td>templateContext.passkeyRegistrationActivated</td>
+			<td>bool</td>
+			<td><pre lang="json">
+null
+</pre>
+</td>
+			<td>Activate (`true`) or deactivate (`false`) the portal entry "Register Passkey" in the user menu. This value only controls the portal entry. To enable passkeys in Keycloak, use `nubusKeycloakBootstrap.bootstrap.passkeys.enabled`. When not set, the activation state of the entry stays unchanged, for example a state set in the portal.</td>
 		</tr>
 		<tr>
 			<td>templateContext.readonlyUserPassword</td>
