@@ -33,7 +33,7 @@ action: ensure_list_contains
 module: groups/group
 position: cn=Domain Admins,cn=groups,{{ ldapBaseDn }}
 properties:
-  guardianRoles:
-    - "domain-administrator"
+  guardianMemberRoles:
+    - "udm:default-roles:domain-administrator"
   users:
     - "uid=Administrator,cn=users,{{ ldapBaseDn }}"
