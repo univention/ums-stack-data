@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.108.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.15...v0.108.0) (2026-11-16)
+
+
+### Features
+
+* **stack-data-ums:** support passkey registration from the portal ([8171bd1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/8171bd1ef4aba6ca9c743f15635459d2ba1fb411)), closes [univention/dev/ucs#3794](https://git.knut.univention.de/univention/dev/ucs/issues/3794)
+
 ## [0.107.15](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.14...v0.107.15) (2026-11-14)
 
 
