@@ -325,8 +325,8 @@ serviceAccount:
   create: true
   # Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
+  # The name of an existing service account to use if create is false; the chart binds its Role to it.
+  # If create is true, a name is generated using the fullname template.
   name: ""
   ## @param serviceAccount.automountServiceAccountToken Allows auto mount of ServiceAccountToken on the serviceAccount created
   ## Can be set to false if pods using this serviceAccount do not need to use K8s API
@@ -334,3 +334,7 @@ serviceAccount:
   automountServiceAccountToken: false
   # -- Additional custom labels for the ServiceAccount.
   labels: {}
+
+rbac:
+  # -- Create the Role that lets the data-loader read Secrets in its namespace, and bind it to the service account.
+  create: true

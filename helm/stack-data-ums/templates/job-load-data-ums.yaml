@@ -32,11 +32,9 @@ spec:
       {{- if .Values.podSecurityContext.enabled }}
       securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 8 }}
       {{- end }}
-      {{- if .Values.serviceAccount.create }}
-      serviceAccountName: {{ include "common.names.fullname" . }}
-      # The ServiceAccount turns the token off; the data-loader needs it to read referenced Secrets.
-      automountServiceAccountToken: true
-      {{- end }}
+      serviceAccountName: {{ include "stack-data-ums.serviceAccountName" . }}
+      # Only the main container gets the token, through the "service-account-token" volume.
+      automountServiceAccountToken: false
       {{ if .Values.stackDataUms.dependencyUdmApiWait }}
       initContainers:
       - name: "load-internal-plugins"
@@ -145,6 +143,9 @@ spec:
           - name: context-config
             mountPath: /template-context
             readOnly: true
+          - name: "service-account-token"
+            mountPath: "/var/run/secrets/kubernetes.io/serviceaccount"
+            readOnly: true
           {{- if .Values.extraVolumeMounts }}
           {{- include "common.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" .) | nindent 10 }}
           {{- end }}
@@ -163,6 +164,23 @@ spec:
             secretName: "{{ include "common.names.fullname" . }}-context"
         - name: "plugin-targets"
           emptyDir: {}
+        # What the kubelet mounts with automountServiceAccountToken, for the main container only:
+        # the data-loader reads referenced Secrets through the Kubernetes API, the extension init containers don't.
+        - name: "service-account-token"
+          projected:
+            sources:
+              - serviceAccountToken:
+                  path: "token"
+              - configMap:
+                  name: "kube-root-ca.crt"
+                  items:
+                    - key: "ca.crt"
+                      path: "ca.crt"
+              - downwardAPI:
+                  items:
+                    - path: "namespace"
+                      fieldRef:
+                        fieldPath: "metadata.namespace"
         {{- if .Values.extraVolumes }}
         {{- include "common.tplvalues.render" (dict "value" .Values.extraVolumes "context" .) | nindent 8 }}
         {{- end }}
