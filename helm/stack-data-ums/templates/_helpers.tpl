@@ -224,3 +224,12 @@ false
 true
 {{- end -}}
 {{- end -}}
+
+{{- /* The data-loader Job's ServiceAccount, which the chart binds its Role to. */}}
+{{- define "stack-data-ums.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+{{ include "common.names.fullname" . }}
+{{- else -}}
+{{ required "serviceAccount.name must be set if serviceAccount.create is false, so the Role is not bound to the default ServiceAccount" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}

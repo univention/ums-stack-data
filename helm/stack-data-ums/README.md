@@ -449,6 +449,15 @@ true
 			<td></td>
 		</tr>
 		<tr>
+			<td>rbac.create</td>
+			<td>bool</td>
+			<td><pre lang="json">
+true
+</pre>
+</td>
+			<td>Create the Role that lets the data-loader read Secrets in its namespace, and bind it to the service account.</td>
+		</tr>
+		<tr>
 			<td>resources</td>
 			<td>object</td>
 			<td><pre lang="json">

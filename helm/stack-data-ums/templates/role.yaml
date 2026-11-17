@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2026 Univention GmbH
-{{- if .Values.serviceAccount.create }}
+{{- if .Values.rbac.create }}
 ---
 # The data-loader resolves `kubernetesSecret` references in the template context through the Kubernetes API.
 apiVersion: "rbac.authorization.k8s.io/v1"
@@ -36,6 +36,6 @@ roleRef:
   name: {{ include "common.names.fullname" . }}
 subjects:
   - kind: "ServiceAccount"
-    name: {{ include "common.names.fullname" . }}
+    name: {{ include "stack-data-ums.serviceAccountName" . }}
     namespace: {{ include "common.names.namespace" . | quote }}
 {{- end }}

@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # SPDX-FileCopyrightText: 2026 Univention GmbH
 
+import subprocess
+
 import pytest
 from pytest_helm.utils import load_yaml
 
@@ -68,8 +70,61 @@ def test_the_service_account_may_read_secrets_in_its_namespace(chart):
     ]
 
 
-def test_the_job_pod_mounts_the_service_account_token(chart):
-    result = chart.helm_template()
+SERVICE_ACCOUNT_DIR = "/var/run/secrets/kubernetes.io/serviceaccount"
 
+
+def pod_spec(result):
     [job] = result.get_resources(kind="Job")
-    assert job["spec"]["template"]["spec"]["automountServiceAccountToken"] is True
+    return job["spec"]["template"]["spec"]
+
+
+def test_only_the_main_container_gets_the_service_account_token(chart):
+    spec = pod_spec(chart.helm_template())
+
+    assert spec["automountServiceAccountToken"] is False
+    [volume] = [v for v in spec["volumes"] if v["name"] == "service-account-token"]
+    assert [next(iter(source)) for source in volume["projected"]["sources"]] == [
+        "serviceAccountToken",
+        "configMap",
+        "downwardAPI",
+    ]
+    [main] = spec["containers"]
+    assert {"name": "service-account-token", "mountPath": SERVICE_ACCOUNT_DIR, "readOnly": True} in main["volumeMounts"]
+    for init in spec["initContainers"]:
+        assert "service-account-token" not in [m["name"] for m in init.get("volumeMounts", [])]
+
+
+def test_an_existing_service_account_gets_the_role(chart):
+    values = load_yaml(
+        """
+        serviceAccount:
+          create: false
+          name: operator-account
+        """,
+    )
+
+    result = chart.helm_template(values)
+
+    assert pod_spec(result)["serviceAccountName"] == "operator-account"
+    assert result.get_resources(kind="ServiceAccount") == []
+    binding = result.get_resource(kind="RoleBinding", name="release-name-stack-data-ums")
+    assert [s["name"] for s in binding["subjects"]] == ["operator-account"]
+
+
+def test_an_existing_service_account_needs_a_name(chart):
+    values = load_yaml("serviceAccount:\n  create: false\n")
+
+    with pytest.raises(subprocess.CalledProcessError) as error:
+        chart.helm_template(values)
+
+    assert "serviceAccount.name" in error.value.stderr
+
+
+def test_rbac_can_be_disabled(chart):
+    values = load_yaml("rbac:\n  create: false\n")
+
+    result = chart.helm_template(values)
+
+    assert result.get_resources(kind="Role") == []
+    assert result.get_resources(kind="RoleBinding") == []
+    assert pod_spec(result)["serviceAccountName"] == "release-name-stack-data-ums"
