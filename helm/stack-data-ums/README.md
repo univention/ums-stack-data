@@ -458,6 +458,15 @@ true
 			<td>Create the Role that lets the data-loader read Secrets in its namespace, and bind it to the service account.</td>
 		</tr>
 		<tr>
+			<td>rbac.secretNames</td>
+			<td>list</td>
+			<td><pre lang="json">
+[]
+</pre>
+</td>
+			<td>Limit the Role to these Secret names, templated. Empty allows every Secret in the namespace.</td>
+		</tr>
+		<tr>
 			<td>resources</td>
 			<td>object</td>
 			<td><pre lang="json">

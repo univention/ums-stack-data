@@ -128,3 +128,26 @@ def test_rbac_can_be_disabled(chart):
     assert result.get_resources(kind="Role") == []
     assert result.get_resources(kind="RoleBinding") == []
     assert pod_spec(result)["serviceAccountName"] == "release-name-stack-data-ums"
+
+
+def test_the_role_can_be_limited_to_named_secrets(chart):
+    values = load_yaml(
+        """
+        rbac:
+          secretNames:
+            - "{{ .Release.Name }}-administrator"
+            - operator-secret
+        """,
+    )
+
+    result = chart.helm_template(values)
+
+    role = result.get_resource(kind="Role", name="release-name-stack-data-ums")
+    assert role["rules"] == [
+        {
+            "apiGroups": [""],
+            "resources": ["secrets"],
+            "verbs": ["get"],
+            "resourceNames": ["release-name-administrator", "operator-secret"],
+        },
+    ]
