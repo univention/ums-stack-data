@@ -18,6 +18,13 @@ rules:
   - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["get"]
+    {{- with .Values.rbac.secretNames }}
+    # An empty list in resourceNames would allow every name, so the field only appears with names.
+    resourceNames:
+      {{- range . }}
+      - {{ tpl . $ | quote }}
+      {{- end }}
+    {{- end }}
 ---
 apiVersion: "rbac.authorization.k8s.io/v1"
 kind: "RoleBinding"
