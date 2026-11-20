@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.108.1](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.108.0...v0.108.1) (2026-11-20)
+
+
+### Bug Fixes
+
+* **deps:** Update gitregistry.knut.univention.de/univention/dev/projects/ucs-base-image/ucs-base-python Docker tag to v5.3.0-build.20261119 ([26fe4f8](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/commit/26fe4f89b6d67af4490defe64d0b9d503d913a9d)), closes [#0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/issues/0)
+
 ## [0.108.0](https://git.knut.univention.de/univention/dev/nubus-for-k8s/stack-data/compare/v0.107.15...v0.108.0) (2026-11-16)
 
 
